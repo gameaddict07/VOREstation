@@ -1,0 +1,13 @@
+From most to least important. Mark these off as they are done.
+Github repository is here: https://github.com/SpadesNeil/VOREstation
+
+TO DO:
+1. Port vore code to new Bay code.
+2. Port resize code to new Bay code.
+3. Port taur code to new Bay code.
+4. Port various tweaks and adjustments to new Bay code.
+
+DONE:
+1. Not a damn thing yet.
+
+Also I really hate the new maps. They make me cringe. -Spades
