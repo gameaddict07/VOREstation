@@ -48,7 +48,8 @@
 		if("help")
 
 			if(M.playerscale - playerscale >= RESIZE_NORMAL - RESIZE_TINY)
-				get_scooped(M)
+				var/obj/item/weapon/holder/m_holder = get_scooped(M)
+				m_holder.name = name
 				return
 			if(istype(H) && health < config.health_threshold_crit)
 

@@ -51,7 +51,7 @@
 	grabber << "You scoop up [src]."
 	src << "[grabber] scoops you up."
 	grabber.status_flags |= PASSEMOTES
-	return
+	return H
 
 //Mob specific holders.
 
