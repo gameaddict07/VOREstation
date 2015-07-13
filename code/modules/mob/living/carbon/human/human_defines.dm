@@ -81,3 +81,5 @@
 	var/hand_blood_color
 
 	var/list/flavor_texts = list()
+
+	holder_type = /obj/item/weapon/holder/micro
