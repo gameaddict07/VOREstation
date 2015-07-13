@@ -1,3 +1,10 @@
+var/const/RESIZE_HUGE = 2
+var/const/RESIZE_BIG = 1.5
+var/const/RESIZE_NORMAL = 1
+var/const/RESIZE_SMALL = 0.5
+var/const/RESIZE_TINY = 0.25
+//these aren't defines so they can stay in this file
+
 /mob/var/playerscale = 1
 /mob/var/basesize = 1
 
@@ -18,15 +25,15 @@
 	var/playersize = input("Size") in list("Macro","Big","Normal","Small","Tiny")
 	switch(playersize)
 		if("Macro")
-			resize(2)
+			resize(RESIZE_HUGE)
 		if("Big")
-			resize(1.5)
+			resize(RESIZE_BIG)
 		if("Normal")
-			resize(1)
+			resize(RESIZE_NORMAL)
 		if("Small")
-			resize(0.5)
+			resize(RESIZE_SMALL)
 		if("Tiny")
-			resize(0.25)
+			resize(RESIZE_TINY)
 
 
 /* When we add this to character customization, "short" will set you a little smaller basesize than normal, or "tall" for one that's a little larger than normal.
