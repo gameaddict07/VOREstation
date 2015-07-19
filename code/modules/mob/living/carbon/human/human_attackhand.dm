@@ -47,6 +47,10 @@
 	switch(M.a_intent)
 		if("help")
 
+			if(M.playerscale - playerscale >= RESIZE_NORMAL - RESIZE_TINY)
+				var/obj/item/weapon/holder/m_holder = get_scooped(M)
+				m_holder.name = name
+				return
 			if(istype(H) && health < config.health_threshold_crit)
 
 				if((H.head && (H.head.flags & HEADCOVERSMOUTH)) || (H.wear_mask && (H.wear_mask.flags & MASKCOVERSMOUTH)))

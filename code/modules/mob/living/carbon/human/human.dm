@@ -40,6 +40,10 @@
 		dna.real_name = real_name
 	make_blood()
 
+	//Non-default verbs go here.
+	verbs += /mob/living/proc/set_size
+
+
 /mob/living/carbon/human/Stat()
 	..()
 	statpanel("Status")

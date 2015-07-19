@@ -51,7 +51,7 @@
 	grabber << "You scoop up [src]."
 	src << "[grabber] scoops you up."
 	grabber.status_flags |= PASSEMOTES
-	return
+	return H
 
 //Mob specific holders.
 
@@ -79,3 +79,20 @@
 	desc = "It's a slimy brain slug. Gross."
 	icon_state = "borer"
 	origin_tech = "biotech=6"
+
+
+//micro holders
+/obj/item/weapon/holder/micro
+	name = "micro"
+	desc = "Another crewmember, small enough to fit in your hand."
+	icon_state = "micro"
+	slot_flags = SLOT_FEET | SLOT_HEAD
+	w_class = 2
+
+/obj/item/weapon/holder/micro/attack_self(var/mob/living/user)
+	for(var/mob/living/carbon/human/M in contents)
+		M.help_shake_act(user)
+
+/obj/item/weapon/holder/micro/afterattack(var/mob/living/carbon/target, var/mob/user, var/proximity)
+	if(!proximity)	return
+	/*eating code to be finished when systems are implemented*/

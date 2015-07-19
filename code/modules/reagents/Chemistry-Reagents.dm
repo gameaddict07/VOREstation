@@ -1445,6 +1445,71 @@ datum
 				..()
 				return
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// NW's shrinking serum ///
+//////////////////////////
+
+		macrocillin
+			name = "Macrocillin"
+			id = "macrocillin"
+			description = "Glowing yellow liquid."
+			reagent_state = LIQUID
+			color = "#FFFF00" // rgb: 255, 255, 0
+
+			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
+				src = null
+				if((prob(20)) && (method == TOUCH || method == INGEST))
+					switch(M.playerscale)
+						if(1.5 to 1)
+							M.resize(2)
+							M << "<font color='green'>You grow!</font>"
+						if(1 to 1.5)
+							M.resize(1.5)
+							M << "<font color='green'>You grow!</font>"
+						if(0.5 to 1)
+							M.resize(1)
+							M << "<font color='green'>You grow!</font>"
+						if(0.01 to 0.25)
+							M.resize(0.5)
+							M << "<font color='green'>You grow!</font>"
+						if(-1)
+							M.resize(0.25)
+							M << "<font color='green'>You grow!</font>"
+						if(2 to INFINITY)
+							M << "<span class='alert'>Your body can't grow any larger!</span>"
+						else
+							M.resize(0.25)
+							M << "<font color='green'>You grow!</font><span class='alert'> And you broke something in the code. Congrats on reaching a size that shouldn't have been possible.</span>"
+
+		microcillin
+			name = "Microcillin"
+			id = "microcillin"
+			description = "Murky purple liquid."
+			reagent_state = LIQUID
+			color = "#800080"
+
+			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
+				src = null
+				if((prob(20)) && (method == TOUCH || method == INGEST))
+					switch(M.playerscale)
+						if(2 to INFINITY)
+							M.resize(1.5)
+							M << "<span class='alert'>You shrink!</span>"
+						if(1.5 to 2)
+							M.resize(1)
+							M << "<span class='alert'>You shrink!</span>"
+						if(1 to 1.5)
+							M.resize(0.5)
+							M << "<span class='alert'>You shrink!</span>"
+						if(0.25 to 1)
+							M.resize(0.25)
+							M << "<span class='alert'>You can't shrink any further.</span>"
+						if(-1)
+							M.resize(0.25)
+							M << "<span class='alert'>You shrink!</span>"
+						else
+							M.resize(0.25)
+							M << "<span class='alert'>You shrink! <b>And you broke something in the code.</b> Congrats on reaching a size that shouldn't have been possible.</span>"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
