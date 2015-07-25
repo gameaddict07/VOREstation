@@ -785,7 +785,7 @@
 			spawn(100)	//and you have 10 more for mad dash to the bucket
 				Stun(5)
 
-				src.visible_message("<spawn class='warning'>[src] throws up!","<spawn class='warning'>You throw up!")
+				src.visible_message("<spawn class='warning'>[src] throws up!</span>","<spawn class='warning'>You throw up!</span>")
 				if(stomach_contents.len) // Vore code. Copied from vore.dm, so people in your belly get spat out if you puke.
 					for(var/mob/M in src)
 						if(M in stomach_contents)
