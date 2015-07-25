@@ -51,9 +51,12 @@
 		// Type 1 (Visual) emotes are sent to anyone in view of the item
 		if (m_type & 1)
 			//for (var/mob/O in viewers(src, null))
-			for (var/mob/O in viewers(get_turf(src), null)) //This may break people with x-ray being able to see emotes across walls,
-															//but this saves many headaches down the road, involving mechs and pAIs.
-															//x-ray is so rare these days anyways.
+			/*
+			 * This may break people with x-ray being able to see emotes across walls,
+			 * but this saves many headaches down the road, involving mechs and pAIs.
+			 * x-ray is so rare these days anyways. (On Extended maybe, outside of R&D)
+			 */
+			for (var/mob/O in viewers(get_turf(src), null) | get_mobs_in_view(world.view,src)) //Modified by Ace to bypass problems, that said, get_turf should solve this
 
 				if(O.status_flags & PASSEMOTES)
 
@@ -73,7 +76,7 @@
 		// Type 2 (Audible) emotes are sent to anyone in hear range
 		// of the *LOCATION* -- this is important for AIs/pAIs to be heard
 		else if (m_type & 2)
-			for (var/mob/O in hearers(get_turf(src), null))
+			for (var/mob/O in hearers(get_turf(src), null) | get_mobs_in_view(world.view,src))
 
 				if(O.status_flags & PASSEMOTES)
 

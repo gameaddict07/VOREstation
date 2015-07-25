@@ -229,13 +229,30 @@
 		msg += "<span class='warning'>[t_He] [t_is] on fire!.</span>\n"
 	msg += "<span class='warning'>"
 
-	if(nutrition < 100)
-		msg += "[t_He] [t_is] severely malnourished.\n"
-	else if(nutrition >= 500)
-		/*if(usr.nutrition < 100)
-			msg += "[t_He] [t_is] plump and delicious looking - Like a fat little piggy. A tasty piggy.\n"
-		else*/
-		msg += "[t_He] [t_is] quite chubby.\n"
+	if(nutrition < 50) // used to be 100, changed this
+//Ace WAS HERE. Modified fatness to add new levels of fat. Vore code stuff is here.
+		msg += "[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!\n"
+	else if(nutrition >= 50 && nutrition < 100)
+		msg += "[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.\n"
+	else if(nutrition >= 500 && nutrition < 650)
+		msg += "[t_He] [t_is] bloated with a slightly distended gut.\n"
+	else if(nutrition >= 650 && nutrition < 1000)
+		msg += "[t_He] [t_is] swollen with a big churning belly. You wonder if [t_He] [t_is] digesting someone, or if [t_He] raided a fridge.\n"
+	else if(nutrition >= 1000 && nutrition < 3000)
+		msg += "[t_He] [t_is] stuffed with a huge gurgling stomach! You're almost certain [t_He] [t_is] digesting a whole person inside--maybe two! Either that or [t_He] ate a whole pantry worth of food.\n"
+	else if(nutrition >= 3000 && nutrition < 6000)
+		msg += "[t_his] stomach is firmly packed with loudly churning food. They must have eaten several people, or a whole truckload of food!\n"
+	else if(nutrition >= 6000)
+		msg += "[t_He] [t_is] so gorged, you aren't sure how [t_He] [t_is] able to move. [t_his] belly is dragging across the floor and it doesn't look like [t_He] can get any bigger. [t_his] stomach isn't even squishy anymore and the surface looks sorely strained. [t_He] is either full with most of the crew's digesting remains, or the station's entire food supply!\n"
+//		else
+	if(stomach_contents.len)
+		msg += "[t_He] [t_has] something solid in [t_his] stomach!\n"
+	if(womb_contents.len || wombfull == 1)
+		msg += "[t_He] [t_has] something in [t_his] lower belly!\n"
+	if(cock_contents.len || cockfull == 1)
+		msg += "[t_He] has a throbbing large sack below [t_his] hips!\n"
+	if(boob_contents.len || boobfull == 1)
+		msg += "[t_He] has a swollen pair of breasts!\n"
 
 	msg += "</span>"
 

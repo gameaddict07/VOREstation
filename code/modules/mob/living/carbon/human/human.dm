@@ -8,6 +8,19 @@
 	var/list/hud_list[9]
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 
+	// Vore code starts here.
+	var/stendo = 1 // Stomach. Endo flags set to 1 so you start with digestion off by default.
+	var/cvendo = 1 // Cockvore.
+	var/bvendo = 1 // Boobvore.
+	var/wombheal = "Hold" // Set to hold to prevent someone from transforming or melting in the womb.
+	var/cockfull = 0 // Set to 0 because you don't start the damn game with balls/womb/boobs already full.
+	var/wombfull = 0
+	var/boobfull = 0
+	var/insideflavour[4]  //Defines a list four entries long that deals with the characters' innards' descriptions - NW
+	var/predlocation = "stomach" // Checks where a prey is inside the pred
+	var/digestable = 1 // Set to 1 so you are digestable by default
+	// Vore code ends here.
+
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 
 	if(!dna)
@@ -42,6 +55,17 @@
 
 	//Non-default verbs go here.
 	verbs += /mob/living/proc/set_size
+	//verbs += /mob/living/carbon/human/proc/endo_toggle // Adding vore verbs.
+	//verbs += /mob/living/carbon/human/proc/cvendo_toggle
+	//verbs += /mob/living/carbon/human/proc/bvendo_toggle
+	verbs += /mob/living/carbon/human/proc/orifice_toggle
+	//verbs += /mob/living/carbon/human/proc/womb_toggle
+	verbs += /mob/living/carbon/human/proc/vore_release
+	verbs += /mob/living/proc/escapeOOC //NW WOZ ERE 2. OOC escape verb.
+	verbs += /mob/proc/fixtaur // Temporary fix until we unfuck taurs. -Ace
+	verbs += /mob/living/carbon/human/proc/All_Digestion_Toggles //NW WOZ ERE AGAIN. Moved all the endo toggle verbs into one
+	verbs += /mob/living/carbon/human/proc/insidePanel
+	verbs += /mob/living/carbon/human/proc/I_am_not_mad // I SWEAR I'M NOT. This bit does the prey-side digestable toggle.
 
 
 /mob/living/carbon/human/Stat()
@@ -761,7 +785,17 @@
 			spawn(100)	//and you have 10 more for mad dash to the bucket
 				Stun(5)
 
-				src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
+				src.visible_message("<spawn class='warning'>[src] throws up!","<spawn class='warning'>You throw up!")
+				if(stomach_contents.len) // Vore code. Copied from vore.dm, so people in your belly get spat out if you puke.
+					for(var/mob/M in src)
+						if(M in stomach_contents)
+							stomach_contents.Remove(M)
+							for (var/mob/living/carbon/R in hearers(src.loc, null))
+								if(src in R.stomach_contents)
+									M.loc = R.stomach_contents
+								else
+									M.loc = loc
+					src.visible_message("\green <B>[src] also hurls out the contents of their stomach!</B>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 				var/turf/location = loc

@@ -2,6 +2,9 @@
 	gender = MALE
 	var/datum/species/species //Contains icon generation and language information, set during New().
 	var/list/stomach_contents = list()
+	var/list/womb_contents = list() //
+	var/list/cock_contents = list() //   Vore code.
+	var/list/boob_contents = list() //
 	var/list/datum/disease2/disease/virus2 = list()
 	var/list/antibodies = list()
 	var/last_eating = 0 	//Not sure what this does... I found it hidden in food.dm
