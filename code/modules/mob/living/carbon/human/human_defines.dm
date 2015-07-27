@@ -23,6 +23,12 @@
 	var/g_skin = 0
 	var/b_skin = 0
 
+	//Taur stuff
+	var/taur = 0
+	var/r_taur = 0
+	var/g_taur = 0
+	var/b_taur = 0
+
 	var/damage_multiplier = 1 //multiplies melee combat damage
 	var/icon_update = 1 //whether icon updating shall take place
 

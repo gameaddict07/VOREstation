@@ -69,6 +69,10 @@ datum/preferences
 	var/r_skin = 0						//Skin color
 	var/g_skin = 0						//Skin color
 	var/b_skin = 0						//Skin color
+	var/taur = 0						//Taur body
+	var/r_taur = 30						//Taur colour
+	var/g_taur = 30						// SO YOU CAN ACTUALLY SEE THE FUCKING DETAILS
+	var/b_taur = 30						//Taur colour
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
@@ -308,6 +312,9 @@ datum/preferences
 	dat += "Blood Type: <a href='byond://?src=\ref[user];preference=b_type;task=input'>[b_type]</a><br>"
 	dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>"
 	//dat += "Skin pattern: <a href='byond://?src=\ref[user];preference=skin_style;task=input'>Adjust</a><br>"
+	dat += "Taur body: <a href='byond://?src=\ref[user];preference=taurbody;task=input'>[taur]</a><br>"
+	dat += "<a href='?_src_=prefs;preference=t_tone;task=input'>Taur colour</a> <font face='fixedsys' size='3' color='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur, 2)]'><table style='display:inline;' bgcolor='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur)]'><tr><td>__</td></tr></table></font> "
+	dat += "(<a href='?_src_=prefs;preference=skin2taur;task=input'>Skin tone to taur colour</A>)<br>"
 	dat += "Needs Glasses: <a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]</b></a><br>"
 	dat += "Limbs: <a href='byond://?src=\ref[user];preference=limbs;task=input'>Adjust</a><br>"
 	dat += "Internal Organs: <a href='byond://?src=\ref[user];preference=organs;task=input'>Adjust</a><br>"
@@ -1194,6 +1201,10 @@ datum/preferences
 					r_skin = rand(0,255)
 					g_skin = rand(0,255)
 					b_skin = rand(0,255)
+				if("t_tone")
+					r_taur = rand(0,255)
+					g_taur = rand(0,255)
+					b_taur = rand(0,255)
 				if("bag")
 					backbag = rand(1,4)
 				/*if("skin_style")
@@ -1377,6 +1388,26 @@ datum/preferences
 					var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
 					if(new_s_tone)
 						s_tone = 35 - max(min( round(new_s_tone), 220),1)
+
+				if("taurbody")
+					var/list/taur_types = list("None","Fluffy","Naga","Horse","Cow","Lizard","Spider")
+					var/new_taur = input(user, "Choose your character's taur body:", "Character Preference") as null|anything in taur_types  //list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
+					taur = taur_types.Find(new_taur) - 1
+
+
+				if("t_tone")
+					//if(species != "Human")
+					//	return
+					var/new_t_tone = input(user, "Choose your character's taur-tone:", "Character Preference")  as color|null
+					if(new_t_tone)
+						r_taur = hex2num(copytext(new_t_tone, 2, 4))
+						g_taur = hex2num(copytext(new_t_tone, 4, 6))
+						b_taur = hex2num(copytext(new_t_tone, 6, 8))
+
+				if("skin2taur")
+					r_taur = r_skin
+					g_taur = g_skin
+					b_taur = b_skin
 
 				if("skin")
 					if(species == "Unathi" || species == "Tajara" || species == "Skrell")
@@ -1673,6 +1704,11 @@ datum/preferences
 	character.b_skin = b_skin
 
 	character.s_tone = s_tone
+
+	character.taur = taur
+	character.r_taur = r_taur
+	character.g_taur = g_taur
+	character.b_taur = b_taur
 
 	character.h_style = h_style
 	character.f_style = f_style

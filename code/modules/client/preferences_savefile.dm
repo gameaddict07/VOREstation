@@ -108,6 +108,7 @@
 	S["age"]				>> age
 	S["species"]			>> species
 	S["language"]			>> language
+	S["taur"]				>> taur
 	S["spawnpoint"]			>> spawnpoint
 
 	//colors to be consolidated into hex strings (requires some work with dna code)
@@ -121,6 +122,9 @@
 	S["skin_red"]			>> r_skin
 	S["skin_green"]			>> g_skin
 	S["skin_blue"]			>> b_skin
+	S["taur_red"]			>> r_taur
+	S["taur_green"]			>> g_taur
+	S["taur_blue"]			>> b_taur
 	S["hair_style_name"]	>> h_style
 	S["facial_style_name"]	>> f_style
 	S["eyes_red"]			>> r_eyes
@@ -206,6 +210,7 @@
 	be_random_name	= sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	gender			= sanitize_gender(gender)
 	age				= sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
+	taur			= sanitize_integer(taur, 0, 8, initial(taur))
 	r_hair			= sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair			= sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair			= sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -216,6 +221,9 @@
 	r_skin			= sanitize_integer(r_skin, 0, 255, initial(r_skin))
 	g_skin			= sanitize_integer(g_skin, 0, 255, initial(g_skin))
 	b_skin			= sanitize_integer(b_skin, 0, 255, initial(b_skin))
+	r_taur			= sanitize_integer(r_taur, 0, 255, initial(r_taur))
+	g_taur			= sanitize_integer(g_taur, 0, 255, initial(g_taur))
+	b_taur			= sanitize_integer(b_taur, 0, 255, initial(b_taur))
 	h_style			= sanitize_inlist(h_style, hair_styles_list, initial(h_style))
 	f_style			= sanitize_inlist(f_style, facial_hair_styles_list, initial(f_style))
 	r_eyes			= sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
@@ -264,6 +272,7 @@
 	S["age"]				<< age
 	S["species"]			<< species
 	S["language"]			<< language
+	S["taur"]				<< taur
 	S["hair_red"]			<< r_hair
 	S["hair_green"]			<< g_hair
 	S["hair_blue"]			<< b_hair
@@ -274,6 +283,9 @@
 	S["skin_red"]			<< r_skin
 	S["skin_green"]			<< g_skin
 	S["skin_blue"]			<< b_skin
+	S["taur_red"]			<< r_taur
+	S["taur_green"]			<< g_taur
+	S["taur_blue"]			<< b_taur
 	S["hair_style_name"]	<< h_style
 	S["facial_style_name"]	<< f_style
 	S["eyes_red"]			<< r_eyes

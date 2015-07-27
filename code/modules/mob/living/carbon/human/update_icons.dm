@@ -901,12 +901,50 @@ proc/get_damage_icon_part(damage_state, body_part)
 /mob/living/carbon/human/proc/update_tail_showing(var/update_icons=1)
 	overlays_standing[TAIL_LAYER] = null
 
-	if(species.tail)
-		if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
-			var/icon/tail_s = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[species.tail]_s")
-			tail_s.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
+	if(taur > 0)
+		if(taur == 1)
+			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "wolf_s")
+			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
 
-			overlays_standing[TAIL_LAYER]	= image(tail_s)
+			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+
+		if(taur == 2)
+			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "naga_s")
+			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+
+			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+
+		if(taur == 3)
+			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "horse_s")
+			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+
+			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+
+		if(taur == 4)
+			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "cow_s")
+			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+
+			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+
+		if(taur == 5)
+			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "lizard_s")
+			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+
+			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+
+		if(taur == 6)
+			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "spider_s")
+			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+
+			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+
+	else
+		if(species.tail)
+			if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
+				var/icon/tail_s = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[species.tail]_s")
+				tail_s.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
+
+				overlays_standing[TAIL_LAYER]	= image(tail_s)
 
 	if(update_icons)
 		update_icons()
