@@ -5,53 +5,49 @@
 	set name = "Toggle Stomach Digestion"
 	set category = "Vore"
 
-	if(stendo == 0)
-		stendo = 1
-		src << "<span class='notice'>You will no longer digest people in your stomach.</span>"
-	else
-		stendo = 0
-		src << "<span class='notice'>You will now digest people in your stomach.</span>"
+	stendo = !stendo //invert
+	switch(stendo)
+		if(0)	src << "<span class='notice'>You will no longer digest people in your stomach.</span>"
+		if(1)	src << "<span class='notice'>You will now digest people in your stomach.</span>"
 
 /mob/living/carbon/human/proc/cvendo_toggle()
 	set name = "Toggle Cockvore Digestion"
 	set category = "Vore"
 
-	if(cvendo == 0)
-		cvendo = 1
-		src << "<span class='notice'>You will no longer cummify people.</span>"
-	else
-		cvendo = 0
-		src << "<span class='notice'>You will now cummify people.</span>"
+	cvendo = !cvendo
+	switch(cvendo)
+		if(0)	src << "<span class='notice'>You will no longer cummify people.</span>"
+		if(1)	src << "<span class='notice'>You will now cummify people.</span>"
 
 /mob/living/carbon/human/proc/bvendo_toggle()
 	set name = "Toggle Breastvore Digestion"
 	set category = "Vore"
 
-	if(bvendo == 0)
-		bvendo = 1
-		src << "<span class='notice'>You will no longer milkify people.</span>"
-	else
-		bvendo = 0
-		src << "<span class='notice'>You will now milkify people.</span>"
+	bvendo = !bvendo
+
+	switch(vendo)
+		if(0)	src << "<span class='notice'>You will no longer milkify people.</span>"
+		if(1)	src << "<span class='notice'>You will now milkify people.</span>"
 
 /mob/living/carbon/human/proc/womb_toggle()
 	set name = "Set Womb Mode"
 	set category = "Vore"
 	wombheal = input("Womb Mode") in list("Hold","Heal","Transform (Male)","Transform (Female)","Transform (Keep Gender)","Transform (Change Species)","Digest")
-	if(wombheal == "Heal")
-		src << "<span class='notice'>You will now heal people you've unbirthed.</span>"
-	if(wombheal == "Digest")
-		src << "<span class='notice'>You will now digest people you've unbirthed.</span>"
-	if(wombheal == "Hold")
-		src << "<span class='notice'>You will now harmlessly hold people you've unbirthed.</span>"
-	if(wombheal == "Transform (Male)")
-		src << "<span class='notice'>You will now transform people you've unbirthed into your son.</span>"
-	if(wombheal == "Transform (Female)")
-		src << "<span class='notice'>You will now transform people you've unbirthed into your daughter.</span>"
-	if(wombheal == "Transform (Keep Gender)")
-		src << "<span class='notice'>You will now transform people you've unbirthed, but they will keep their gender.</span>"
-	if(wombheal == "Transform (Change Species)")
-		src << "<span class='notice'>You will now transform people you've unbirthed to look similar to your species.</span>"
+	switch(wombheal)
+		if("Heal")
+			src << "<span class='notice'>You will now heal people you've unbirthed.</span>"
+		if("Digest")
+			src << "<span class='notice'>You will now digest people you've unbirthed.</span>"
+		if("Hold")
+			src << "<span class='notice'>You will now harmlessly hold people you've unbirthed.</span>"
+		if("Transform (Male)")
+			src << "<span class='notice'>You will now transform people you've unbirthed into your son.</span>"
+		if("Transform (Female)")
+			src << "<span class='notice'>You will now transform people you've unbirthed into your daughter.</span>"
+		if("Transform (Keep Gender)")
+			src << "<span class='notice'>You will now transform people you've unbirthed, but they will keep their gender.</span>"
+		if("Transform (Change Species)")
+			src << "<span class='notice'>You will now transform people you've unbirthed to look similar to your species.</span>"
 
 /mob/living/carbon/human/proc/orifice_toggle()
 	set name = "Choose Vore Mode"
@@ -66,113 +62,152 @@
 	set name = "Digestion Toggles"
 	set category = "Vore"
 	var/digestzone = input("Choose Organ") in list("Stomach","Cock","Breasts","Womb")
-	if(digestzone == "Stomach")
-		endo_toggle()
-		return
-	if(digestzone == "Cock")
-		cvendo_toggle()
-		return
-	if(digestzone == "Breasts")
-		bvendo_toggle()
-		return
-	if(digestzone == "Womb")
-		womb_toggle()
-		return
+
+	switch(digestzone)
+		if("Stomach")
+			endo_toggle()
+		if("Cock")
+			cvendo_toggle()
+		if("Breasts")
+			vendo_toggle()
+		if("Womb")
+			womb_toggle()
 
 
 /mob/living/carbon/human/proc/vore_release()
 	set name = "Release"
 	set category = "Vore"
 	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)","Stomach (by Anus)","Womb","Cock","Breasts")
-	if(releaseorifice == "Stomach (by Mouth)")
-		if(stomach_contents.len)
-			for(var/mob/M in src)
-				if(M in stomach_contents)
+
+	switch(releaseorfice)
+		if("Stomach (by Mouth)")
+			if(stomach_contents.len)
+				for(var/mob/M in stomach_contents)
+
+					M.loc = src.loc //this is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
 					stomach_contents.Remove(M)
-					for (var/mob/living/carbon/R in hearers(src.loc, null))
-						if(src in R.stomach_contents)
-							M.loc = R.stomach_contents
-						else
-							M.loc = loc
-				//Paralyse(10)
-			src.visible_message("\green <B>[src] hurls out the contents of their stomach!</B>")
-			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-		return
-	if(releaseorifice == "Stomach (by Anus)")
-		if(stomach_contents.len)
-			for(var/mob/M in src)
-				if(M in stomach_contents)
+
+					if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
+						var/mob/living/carbon/loc_mob = src.loc
+
+						if(src in loc_mob.stomach_contents)
+							loc_mob.stomach_contents += M
+						if(src in loc_mob.womb_contents)
+							loc_mob.womb_contents += M
+						if(src in loc_mob.cock_contents)
+							loc_mob.cock_contents += M
+						if(src in loc_mob.boob_contents)
+							loc_mob.boob_contents += M
+
+				visible_message("<font color='green'><b>[src] hurls out the contents of their stomach!</b></font>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+
+		if("Stomach (by Anus)")
+			if(stomach_contents.len)
+				for(var/mob/M in stomach_contents)
+
+					M.loc = src.loc
 					stomach_contents.Remove(M)
-					for (var/mob/living/carbon/R in hearers(src.loc, null))
-						if(src in R.stomach_contents)
-							M.loc = R.stomach_contents
-						else
-							M.loc = loc
-					//Paralyse(10)
-			src.visible_message("\green <B>[src] releases their stomach contents out of their rear!</B>")
-			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-		return
-	if(releaseorifice == "Womb")
-		if(womb_contents.len)
-			for(var/mob/M in src)
-				if(M in womb_contents)
+
+					if(iscarbon(src.loc))
+						var/mob/living/carbon/loc_mob = src.loc
+
+						if(src in loc_mob.stomach_contents)
+							loc_mob.stomach_contents += M
+						if(src in loc_mob.womb_contents)
+							loc_mob.womb_contents += M
+						if(src in loc_mob.cock_contents)
+							loc_mob.cock_contents += M
+						if(src in loc_mob.boob_contents)
+							loc_mob.boob_contents += M
+
+				visible_message("<font color='green'><b>[src] releases their stomach contents out of their rear!</b></font>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+
+		if("Womb")
+			if(womb_contents.len)
+				for(var/mob/M in womb_contents)
+
+					M.loc = src.loc
 					womb_contents.Remove(M)
-					for (var/mob/living/carbon/R in hearers(src.loc, null))
-						if(src in R.womb_contents)
-							M.loc = R.womb_contents
-						else
-							M.loc = loc
-					//Paralyse(10)
-			src.visible_message("\green <B>[src] gushes out the contents of their womb!</B>")
-			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-		else
-			if(src.wombfull == 1)
-				wombfull = 0
-				src.visible_message("\red <B>[src] gushes out a puddle of liquid from their folds!</B>")
+
+					if(iscarbon(src.loc))
+						var/mob/living/carbon/loc_mob = src.loc
+
+						if(src in loc_mob.stomach_contents)
+							loc_mob.stomach_contents += M
+						if(src in loc_mob.womb_contents)
+							loc_mob.womb_contents += M
+						if(src in loc_mob.cock_contents)
+							loc_mob.cock_contents += M
+						if(src in loc_mob.boob_contents)
+							loc_mob.boob_contents += M
+
+				visible_message("<font color='green'><b>[src] gushes out the contents of their womb!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-		return
-	if(releaseorifice == "Cock")
-		if(cock_contents.len)
-			for(var/mob/M in src)
-				if(M in cock_contents)
+			else
+				if(wombfull) //checks if true. If it's anything but 0, null, or "", it will set to 0.
+					wombfull = 0
+					visible_message("<span class='danger'>[src] gushes out a puddle of liquid from their folds!</span>")
+					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+
+		if("Cock")
+			if(cock_contents.len)
+				for(var/mob/M in cock_contents)
+
+					M.loc = src.loc
 					cock_contents.Remove(M)
-					for (var/mob/living/carbon/R in hearers(src.loc, null))
-						if(src in R.cock_contents)
-							M.loc = R.cock_contents
-						else
-							M.loc = loc
-					//Paralyse(10)
-			src.visible_message("\green <B>[src] splurts out the contents of their cock!</B>")
-			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-		else
-			if(src.cockfull == 1)
-				cockfull = 0
-				src.visible_message("\red <B>[src] gushes out a puddle of cum from their cock!</B>")
+
+					if(iscarbon(src.loc))
+						var/mob/living/carbon/loc_mob = src.loc
+
+						if(src in loc_mob.stomach_contents)
+							loc_mob.stomach_contents += M
+						if(src in loc_mob.womb_contents)
+							loc_mob.womb_contents += M
+						if(src in loc_mob.cock_contents)
+							loc_mob.cock_contents += M
+						if(src in loc_mob.boob_contents)
+							loc_mob.boob_contents += M
+
+				visible_message("<font color='green'><b>[src] splurts out the contents of their cock!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-		return
+			else
+				if(cockfull)
+					cockfull = 0
+					visible_message("<span class='danger'>[src] gushes out a puddle of cum from their cock!</span>")
+					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-	if(releaseorifice == "Breasts")
-		if(boob_contents.len)
-			for(var/mob/M in src)
-				if(M in boob_contents)
+		if("Breasts")
+			if(boob_contents.len)
+				for(var/mob/M in boob_contents)
+
+					M.loc = src.loc
 					boob_contents.Remove(M)
-					for (var/mob/living/carbon/R in hearers(src.loc, null))
-						if(src in R.boob_contents)
-							M.loc = R.boob_contents
-						else
-							M.loc = loc
-					//Paralyse(10)
-				src.visible_message("\green <B>[src] squirts out the contents of their breasts!</B>")
-				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-		else
-			if(src.boobfull == 1)
-				boobfull = 0
-				src.visible_message("\red <B>[src] squirts out a puddle of milk from their breasts!</B>")
+
+					if(iscarbon(src.loc))
+						var/mob/living/carbon/loc_mob = src.loc
+
+						if(src in loc_mob.stomach_contents)
+							loc_mob.stomach_contents += M
+						if(src in loc_mob.womb_contents)
+							loc_mob.womb_contents += M
+						if(src in loc_mob.cock_contents)
+							loc_mob.cock_contents += M
+						if(src in loc_mob.boob_contents)
+							loc_mob.boob_contents += M
+
+				visible_message("<font color='green'><b>[src] squirts out the contents of their breasts!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-		return
+			else
+				if(boobfull)
+					boobfull = 0
+					visible_message("<span class='danger'>[src] squirts out a puddle of milk from their breasts!</span>")
+					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+
 
 /////////////////////////////
 //// NW's emergency code ////
@@ -181,13 +216,18 @@
 /mob/living/proc/escapeOOC()
 	set name = "OOC escape"
 	set category = "Vore"
-	if(alert(src,"This button is for escaping from your partner if they have disconnected or your preferences are being violated. Do not use it for anything else!","","Okay","cancel") == "Okay")
-		if(istype(src.loc,/mob/living/carbon)||istype(src.loc,/mob/living/simple_animal))
-			msg_admin_attack("[key_name(usr)] used the OOC escape button to get out of [src.loc]")
+
+	var/confirm = alert(src, "This button is for escaping from your partner if they have disconnected or your preferences are being violated. Do not use it for anything else!", "Confirmation", "Okay", "Cancel")
+
+	if(confirm == "Cancel")	return
+
+	else if(confirm == "Okay")
+		if(iscarbon(loc) || isanimal(loc))
+			msg_admin_attack("[key_name(src)] used the OOC escape button to get out of [loc]")
 			src.loc = get_turf(src.loc)
 
 		else
-			src.visible_message("\red You aren't inside anyone, you clod.")
+			src << "<span class='alert'>You aren't inside anyone, you clod.</span>"
 
 /////////////////////////
 /// NW's Inside Panel ///
@@ -266,19 +306,19 @@
 	if(href_list["helpout"])
 		var/mob/living/subj=locate(href_list["helpout"])
 		var/mob/living/eater = usr.loc
-		usr << "\green You begin to push [subj] to freedom!"
+		usr << "<font color='green'>You begin to push [subj] to freedom!</font>"
 		subj << "[usr] begins to push you to freedom!"
-		eater << "\red Someone is trying to escape from inside you!"
+		eater << "<span class='warning'>Someone is trying to escape from inside you!<span>"
 		sleep(50)
 		if(prob(33))
 			subj.loc = eater.loc
-			usr << "\green You manage to help [subj] to safety!"
-			subj << "\green [usr] pushes you free!"
-			eater << "\red [subj] forces free of the confines of your body!"
+			usr << "<font color='green'>You manage to help [subj] to safety!</font>"
+			subj << "<font color='green'>[usr] pushes you free!</font>"
+			eater << "<span class='alert'>[subj] forces free of the confines of your body!</span>"
 		else
-			usr << "\red [subj] slips back down inside despite your efforts."
-			subj << "\red Even with [usr]'s help, you slip back inside again."
-			eater << "\green Your body efficiently shoves [subj] back where they belong."
+			usr << "<span class='alert'>[subj] slips back down inside despite your efforts.</span>"
+			subj << "<span class='alert'> Even with [usr]'s help, you slip back inside again.</span>"
+			eater << "<font color='green'>Your body efficiently shoves [subj] back where they belong.</font>"
 
 	if(href_list["set_description_belly"])
 		var/mob/living/carbon/human/M = usr
@@ -296,12 +336,12 @@
 		var/mob/living/carbon/human/M = usr
 		M.insideflavour[4] = input(M, "Input a few flavour text!", "Breasts flavour text", M.insideflavour[4])
 
-mob/living/carbon/human/proc/I_am_not_mad()
+/mob/living/carbon/human/proc/I_am_not_mad()
 	set name = "Toggle digestability"
 	set category = "Vore"
 
 	if(alert(src, "This button is for those who don't like being digested. It will make you undigestable. Don't abuse this button by toggling it back and forth to extend a scene or whatever, or you'll make the admins cry. Note that this cannot be toggled inside someone's belly.", "", "Okay", "Cancel") == "Okay")
-		src.digestable = !src.digestable
-		if(src.digestable == 1) usr << "\red You are now digestable."
-		else usr << "\red You are now undigestable."
-		msg_admin_attack("[key_name(usr)] toggled their digestability to [src.digestable]")
+		digestable = !digestable
+		if(src.digestable == 1) usr << "<span class='alert'>You are now digestable.</span>"
+		else usr << "<span class='alert'>You are now undigestable.</span>"
+		msg_admin_attack("[key_name(src)] toggled their digestability to [digestable]")
