@@ -1465,13 +1465,15 @@
 				if(M.loc != src)
 					stomach_contents.Remove(M)
 					continue
+
 				if(istype(M, /mob/living/carbon/human))
 					var/mob/living/carbon/human/R = M
 					if(R.digestable == 0)
 						continue
-				if(stat != 2 && stendo != 1) // For some reason this can't be checked in the if statement below.
-					if(istype(M, /mob/living/carbon) || istype(M, /mob/living/simple_animal)) // If human or simple mob and you're set to digest.
-						if(M.stat == 2)
+
+				if(stat != DEAD && stendo) //According to vore.dm, stendo being true means people should digest. // also: For some reason this can't be checked in the if statement below.
+					if(iscarbon(M) || isanimal(M) // If human or simple mob and you're set to digest.
+						if(M.stat == DEAD)
 							M.death(1)
 							stomach_contents.Remove(M)
 							digest_alert = rand(1,9) // Increase this number per emote.
@@ -1524,25 +1526,29 @@
 							nutrition += 20 // so eating dead mobs gives you *something*.
 							del(M)
 							continue
+
 						if(air_master.current_cycle%3==1)
 							if(!(M.status_flags & GODMODE))
 								M.adjustBruteLoss(2)
 								M.adjustFireLoss(3)
 								var/difference = src.playerscale / M.playerscale 	// LOOK HOW FUCKING CLEVER I AM.
 								nutrition += 10/difference 							// I AM SO PROUD OF MYSELF. -Ace 	 PROUD OF YOU -NW.
+
 	proc/handle_cock()
 		spawn(0)
 			for(var/mob/living/M in cock_contents)
 				if(M.loc != src)
 					cock_contents.Remove(M)
 					continue
+
 				if(istype(M, /mob/living/carbon/human))
 					var/mob/living/carbon/human/R = M
 					if(R.digestable == 0)
 						continue
-				if(stat != 2 && cvendo != 1) // For some reason this can't be checked in the if statement below.
-					if(istype(M, /mob/living/carbon) || istype(M, /mob/living/simple_animal)) // If human or simple mob and you're set to digest.
-						if(M.stat == 2)
+
+				if(stat != DEAD && cvendo) // For some reason this can't be checked in the if statement below.
+					if(iscarbon(M) || isanimal(M) // If human or simple mob and you're set to digest.
+						if(M.stat == DEAD)
 							cockfull = 1
 							M.death(1)
 							cock_contents.Remove(M)
@@ -1550,23 +1556,27 @@
 							M << "<span class='notice'>You dissolve into hot cum in [src]'s throbbing, swollen groin.</span>"
 							del(M)
 							continue
+
 						if(air_master.current_cycle%3==1)
 							if(!(M.status_flags & GODMODE))
 								M.adjustBruteLoss(2)
 								M.adjustFireLoss(3)
+
 	proc/handle_boob()
 		spawn(0)
 			for(var/mob/living/M in boob_contents)
 				if(M.loc != src)
 					boob_contents.Remove(M)
 					continue
+
 				if(istype(M, /mob/living/carbon/human))
 					var/mob/living/carbon/human/R = M
 					if(R.digestable == 0)
 						continue
-				if(stat != 2 && bvendo != 1) // For some reason this can't be checked in the if statement below.
-					if(istype(M, /mob/living/carbon) || istype(M, /mob/living/simple_animal)) // If human or simple mob and you're set to digest.
-						if(M.stat == 2)
+
+				if(stat != DEAD && bvendo) // For some reason this can't be checked in the if statement below.
+					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
+						if(M.stat == DEAD)
 							boobfull = 1
 							M.death(1)
 							boob_contents.Remove(M)
@@ -1574,17 +1584,21 @@
 							M << "<span class='notice'>You melt into creamy milk, leaving [src]'s breasts full and jiggling.</span>"
 							del(M)
 							continue
+
 						if(air_master.current_cycle%3==1)
 							if(!(M.status_flags & GODMODE))
 								M.adjustBruteLoss(2)
 								M.adjustFireLoss(3)
+
 	proc/handle_womb() // TODO: Make simple mobs work here. // TODO: Optimize the ever living fuck out of this horrible code.
 		spawn(0)
 			for(var/mob/living/M in womb_contents)
 				if(M.loc != src)
 					womb_contents.Remove(M)
 					continue
-				if(istype(M, /mob/living/carbon) && stat != 2 && wombheal == "Heal" && M.stat != 2)
+
+			//WOMB HEAL
+				if(iscarbon(M) && stat != DEAD && wombheal == "Heal" && M.stat != DEAD)
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))
 							if(nutrition > 90)
@@ -1593,12 +1607,14 @@
 								nutrition -= 2
 								if(M.nutrition <= 400)
 									M.nutrition += 1
-				if(istype(M, /mob/living/carbon) && stat != 2 && wombheal == "Digest")
+
+			//WOMB DIGEST
+				if(iscarbon(M) && stat != DEAD && wombheal == "Digest")
 					if(istype(M, /mob/living/carbon/human))
 						var/mob/living/carbon/human/R = M
 						if(R.digestable == 0)
 							continue
-					if(M.stat == 2)
+					if(M.stat == DEAD)
 						wombfull = 1
 						M.death(1)
 						womb_contents.Remove(M)
@@ -1610,12 +1626,17 @@
 						if(!(M.status_flags & GODMODE))
 							M.adjustBruteLoss(2)
 							M.adjustFireLoss(3)
-				if(istype(M, /mob/living/carbon/human) && stat != 2 && wombheal == "Transform (Female)" && M.stat != 2)
+
+			//WOMB TRANSFORM (FEM)
+				if(ishuman(M) && stat != DEAD && wombheal == "Transform (Female)" && M.stat != DEAD)
 					var/mob/living/carbon/human/P = M
+
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))
+
 							var/TFchance = prob(10)
 							if(TFchance == 1)
+
 								var/TFmodify = rand(1,3)
 								if(TFmodify == 1 && P.r_eyes != src.r_eyes && P.g_eyes != src.g_eyes && P.b_eyes != src.b_eyes)
 									P.r_eyes = src.r_eyes
@@ -1624,6 +1645,7 @@
 									P << "<span class='notice'>You feel lightheaded and drowsy...</span>"
 									src << "<span class='notice'>Your belly feels warm as your womb makes subtle changes to your captive's body.</span>"
 									P.update_body()
+
 								if(TFmodify == 2 && P.r_hair != src.r_hair && P.g_hair != src.g_hair && P.b_hair != src.b_hair && P.r_skin != src.r_skin && P.g_skin != src.g_skin && P.b_skin != src.b_skin)
 									P.r_hair = src.r_hair
 									P.g_hair = src.g_hair
@@ -1635,24 +1657,32 @@
 									P << "<span class='notice'>Your body tingles all over...</span>"
 									src << "<span class='notice'>Your belly tingles as your womb makes noticeable changes to your captive's body.</span>"
 									P.update_hair()
+
 								if(TFmodify == 3 && P.gender != FEMALE)
 									P.f_style = "Shaved"
 									P.gender = FEMALE
 									P << "<span class='notice'>Your body feels very strange...</span>"
 									src << "<span class='notice'>Your belly feels strange as your womb alters your captive's gender.</span>"
 									P.update_body()
+
 							M.adjustBruteLoss(-1)
 							M.adjustFireLoss(-1)
+
 							if(nutrition > 0)
 								nutrition -= 2
 							if(P.nutrition < 400)
 								P.nutrition += 1
-				if(istype(M, /mob/living/carbon/human) && stat != 2 && wombheal == "Transform (Male)" && M.stat != 2)
+
+			//WOMB TRANSFORM (MALE)
+				if(ishuman(M) && stat != DEAD && wombheal == "Transform (Male)" && M.stat != DEAD)
 					var/mob/living/carbon/human/P = M
+
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))
+
 							var/TFchance = prob(10)
 							if(TFchance == 1)
+
 								var/TFmodify = rand(1,3)
 								if(TFmodify == 1 && P.r_eyes != src.r_eyes && P.g_eyes != src.g_eyes && P.b_eyes != src.b_eyes)
 									P.r_eyes = src.r_eyes
@@ -1661,6 +1691,7 @@
 									P << "<span class='notice'>You feel lightheaded and drowsy...</span>"
 									src << "<span class='notice'>Your belly feels warm as your womb makes subtle changes to your captive's body.</span>"
 									P.update_body()
+
 								if(TFmodify == 2 && P.r_hair != src.r_hair && P.g_hair != src.g_hair && P.b_hair != src.b_hair && P.r_skin != src.r_skin && P.g_skin != src.g_skin && P.b_skin != src.b_skin)
 									P.r_hair = src.r_hair
 									P.r_facial = src.r_hair
@@ -1675,23 +1706,31 @@
 									P << "<span class='notice'>Your body tingles all over...</span>"
 									src << "<span class='notice'>Your belly tingles as your womb makes noticeable changes to your captive's body.</span>"
 									P.update_hair()
+
 								if(TFmodify == 3 && P.gender != MALE)
 									P.gender = MALE
 									P << "<span class='notice'>Your body feels very strange...</span>"
 									src << "<span class='notice'>Your belly feels strange as your womb alters your captive's gender.</span>"
 									P.update_body()
+
 							M.adjustBruteLoss(-1)
 							M.adjustFireLoss(-1)
+
 							if(nutrition > 0)
 								nutrition -= 2
 							if(P.nutrition < 400)
 								P.nutrition += 1
-				if(istype(M, /mob/living/carbon/human) && stat != 2 && wombheal == "Transform (Keep Gender)" && M.stat != 2)
+
+			//WOMB TRANSFORM (KEEP GENDER)
+				if(ishuman(M) && stat != DEAD && wombheal == "Transform (Keep Gender)" && M.stat != DEAD)
 					var/mob/living/carbon/human/P = M
+
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))
+
 							var/TFchance = prob(10)
 							if(TFchance == 1)
+
 								var/TFmodify = rand(1,2)
 								if(TFmodify == 1 && P.r_eyes != src.r_eyes && P.g_eyes != src.g_eyes && P.b_eyes != src.b_eyes)
 									P.r_eyes = src.r_eyes
@@ -1700,6 +1739,7 @@
 									P << "<span class='notice'>You feel lightheaded and drowsy...</span>"
 									src << "<span class='notice'>Your belly feels warm as your womb makes subtle changes to your captive's body.</span>"
 									P.update_body()
+
 								if(TFmodify == 2 && P.r_hair != src.r_hair && P.g_hair != src.g_hair && P.b_hair != src.b_hair && P.r_skin != src.r_skin && P.g_skin != src.g_skin && P.b_skin != src.b_skin)
 									P.r_hair = src.r_hair
 									P.r_facial = src.r_hair
@@ -1714,18 +1754,25 @@
 									P << "<span class='notice'>Your body tingles all over...</span>"
 									src << "<span class='notice'>Your belly tingles as your womb makes noticeable changes to your captive's body.</span>"
 									P.update_hair()
+
 							M.adjustBruteLoss(-1)
 							M.adjustFireLoss(-1)
+
 							if(nutrition > 0)
 								nutrition -= 2
 							if(P.nutrition < 400)
 								P.nutrition += 1
-				if(istype(M, /mob/living/carbon/human) && stat != 2 && wombheal == "Transform (Change Species)" && M.stat != 2)
+
+			//WOMB TRANSFORM (CHANGE SPECIES)
+				if(ishuman(M) && stat != DEAD && wombheal == "Transform (Change Species)" && M.stat != DEAD)
 					var/mob/living/carbon/human/P = M
+
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))
+
 							var/TFchance = prob(10)
 							if(TFchance == 1)
+
 								var/TFmodify = rand(1,3)
 								if(TFmodify == 1 && P.r_eyes != src.r_eyes && P.g_eyes != src.g_eyes && P.b_eyes != src.b_eyes)
 									P.r_eyes = src.r_eyes
@@ -1734,6 +1781,7 @@
 									P << "<span class='notice'>You feel lightheaded and drowsy...</span>"
 									src << "<span class='notice'>Your belly feels warm as your womb makes subtle changes to your captive's body.</span>"
 									P.update_body()
+
 								if(TFmodify == 2 && P.r_hair != src.r_hair && P.g_hair != src.g_hair && P.b_hair != src.b_hair && P.r_skin != src.r_skin && P.g_skin != src.g_skin && P.b_skin != src.b_skin)
 									P.r_hair = src.r_hair
 									P.r_facial = src.r_hair
@@ -1751,6 +1799,7 @@
 									//Omitted clause : P.race_icon != src.race_icon
 									//No idea how to work with that one, species system got changed a lot
 									//Also this makes it similar to the previous one until fixed
+
 								if(TFmodify == 3 && P.r_hair != src.r_hair && P.g_hair != src.g_hair && P.b_hair != src.b_hair && P.r_skin != src.r_skin && P.g_skin != src.g_skin && P.b_skin != src.b_skin)
 									P.r_hair = src.r_hair
 									P.r_facial = src.r_hair
@@ -1769,8 +1818,10 @@
 									P << "<span class='notice'>You lose sensation of your body, feeling only the warmth of the womb...</span>"
 									src << "<span class='notice'>Your belly shifts as your womb makes dramatic changes to your captive's body.</span>"
 									P.update_hair()
+
 							M.adjustBruteLoss(-1)
 							M.adjustFireLoss(-1)
+
 							if(nutrition > 0)
 								nutrition -= 2
 							if(P.nutrition < 400)
