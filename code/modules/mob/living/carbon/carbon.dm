@@ -202,7 +202,7 @@
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
-				N.show_message(text("\red <B>[M] bursts out of [src]!</B>"), 2)
+				N.show_message(text("<span class='danger'>[M] bursts out of [src]!</span>"), 2)
 	. = ..()
 //End vore script.
 
