@@ -332,6 +332,7 @@
 		if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell)) return
 		if(species && (species.flags & NO_BREATHE || species.flags & IS_SYNTHETIC)) return
 		if(istype(loc, /obj/item/weapon/holder/micro)) return
+		if(ismob(loc))	return //otherwise return_air will return nothing and therefore immediately suffocate them
 
 		var/datum/gas_mixture/environment = loc.return_air()
 		var/datum/gas_mixture/breath
