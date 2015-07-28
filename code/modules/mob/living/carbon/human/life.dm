@@ -1472,7 +1472,7 @@
 						continue
 
 				if(stat != DEAD && stendo) //According to vore.dm, stendo being true means people should digest. // also: For some reason this can't be checked in the if statement below.
-					if(iscarbon(M) || isanimal(M) // If human or simple mob and you're set to digest.
+					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 						if(M.stat == DEAD)
 							M.death(1)
 							stomach_contents.Remove(M)
@@ -1547,7 +1547,7 @@
 						continue
 
 				if(stat != DEAD && cvendo) // For some reason this can't be checked in the if statement below.
-					if(iscarbon(M) || isanimal(M) // If human or simple mob and you're set to digest.
+					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 						if(M.stat == DEAD)
 							cockfull = 1
 							M.death(1)

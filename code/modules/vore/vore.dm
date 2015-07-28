@@ -25,7 +25,7 @@
 
 	bvendo = !bvendo
 
-	switch(vendo)
+	switch(bvendo)
 		if(0)	src << "<span class='notice'>You will no longer milkify people.</span>"
 		if(1)	src << "<span class='notice'>You will now milkify people.</span>"
 
@@ -69,7 +69,7 @@
 		if("Cock")
 			cvendo_toggle()
 		if("Breasts")
-			vendo_toggle()
+			bvendo_toggle()
 		if("Womb")
 			womb_toggle()
 
@@ -79,7 +79,7 @@
 	set category = "Vore"
 	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)","Stomach (by Anus)","Womb","Cock","Breasts")
 
-	switch(releaseorfice)
+	switch(releaseorifice)
 		if("Stomach (by Mouth)")
 			if(stomach_contents.len)
 				for(var/mob/M in stomach_contents)
