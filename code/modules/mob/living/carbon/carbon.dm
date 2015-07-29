@@ -61,136 +61,154 @@
 	..()
  */
 
+/mob/living/carbon
+	var/recent_struggle = 0 // To prevent spammage
+
 //Vore code, struggle stuff
-mob/living/carbon/relaymove(var/mob/user, direction)
+/mob/living/carbon/relaymove(var/mob/user, var/direction)
 	var/struggle_sound // To randomize the squishy noises when prey struggles.
 	var/struggle_message // To randomize emotes.
-	var/recent_struggle = 0 // To prevent spammage
-	if(user in src.stomach_contents)
-		if(prob(40) && !recent_struggle)
-			recent_struggle = 1
-			for(var/mob/M in hearers(4, src)) //for(var/mob/M in viewers(user, null)) // <- This only works from the prey's POV.
-				if(M.client)
-					var/stomach = pick("stomach","gut","tummy","belly")// To randomize the word for 'stomach'
-					struggle_message = rand(1,8) // Increase this number per emote.
-					switch(struggle_message)
-						if(1)
-							M.show_message(text("\red [src]'s [stomach] wobbles with a squirming meal."), 2)
-							user << "\red You squirm inside of [src]'s [stomach], making it wobble around."
-						if(2)
-							M.show_message(text("\red [src]'s [stomach] jostles with movement."), 2)
-							user << "\red You jostle [src]'s [stomach] with movement."
-						if(3)
-							M.show_message(text("\red [src]'s [stomach] briefly swells outward as someone pushes from inside."), 2)
-							user << "\red You shove against the walls of [src]'s [stomach], making it briefly swell outward."
-						if(4)
-							M.show_message(text("\red [src]'s [stomach] fidgets with a trapped victim."), 2)
-							user << "\red You fidget around inside of [src]'s [stomach]."
-						if(5)
-							M.show_message(text("\red [src]'s [stomach] jiggles with motion from inside."), 2)
-							user << "\red Your motion causes [src]'s [stomach] to jiggle."
-						if(6)
-							M.show_message(text("\red [src]'s [stomach] sloshes around."), 2)
-							user << "\red Your movement only causes [src]'s [stomach] to slosh around you."
-						if(7)
-							M.show_message(text("\red [src]'s [stomach] gushes softly."), 2)
-							user << "\red Your struggles only cause [src]'s [stomach] to gush softly around you."
-						if(8)
-							M.show_message(text("\red [src]'s [stomach] lets out a wet squelch."), 2)
-							user << "\red Your useless squirming only causes [src]'s slimy [stomach] to squelch over your body."
-					struggle_sound = rand(1,4) // Increase this number per sound.
-					switch(struggle_sound)
-						if(1)
-							playsound(user.loc, 'sound/vore/squish1.ogg', 50, 1)
-						if(2)
-							playsound(user.loc, 'sound/vore/squish2.ogg', 50, 1)
-						if(3)
-							playsound(user.loc, 'sound/vore/squish3.ogg', 50, 1)
-						if(4)
-							playsound(user.loc, 'sound/vore/squish4.ogg', 50, 1)
-				spawn(20)
-					recent_struggle = 0
 
-	if(user in src.womb_contents)
-		if(prob(40) && !recent_struggle)
-			recent_struggle = 1
-			for(var/mob/M in hearers(4, src)) //for(var/mob/M in viewers(user, null)) // <- This only works from the prey's POV.
-				if(M.client)
-					struggle_message = rand(1,3) // Increase this number per emote
-					switch(struggle_message)
-						if(1)
-							M.show_message(text("\red [src]'s pregnant belly squirms with movement."), 2)
-							user << "\red You squirm inside of [src]'s pregnant belly."
-						if(2)
-							M.show_message(text("\red [src]'s swollen womb wriggles with movement."), 2)
-							user << "\red You wriggle inside of [src]'s womb."
-						if(3)
-							M.show_message(text("\red [src]'s lower tummy writhes around"), 2)
-							user << "\red You writhe inside of [src]'s lower tummy."
-					struggle_sound = rand(1,3) // Increase this number per sound.
-					switch(struggle_sound)
-						if(1)
-							playsound(user.loc, 'sound/vore/insertion1.ogg', 50, 1)
-						if(2)
-							playsound(user.loc, 'sound/vore/insertion2.ogg', 50, 1)
-						if(3)
-							playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
-				spawn(20)
-					recent_struggle = 0
+	var/struggle_outer_message
+	var/struggle_user_message
 
-	if(user in src.cock_contents)
-		if(prob(40) && !recent_struggle)
-			recent_struggle = 1
-			for(var/mob/M in hearers(4, src)) //for(var/mob/M in viewers(user, null)) // <- This only works from the prey's POV.
-				if(M.client)
-					struggle_message = rand(1,3) // Increase this number per emote.
-					switch(struggle_message)
-						if(1)
-							M.show_message(text("\red [src]'s oversized balls sway with movement."), 2)
-							user << "\red You cause [src]'s oversized balls to sway with movement."
-						if(2)
-							M.show_message(text("\red [src]'s gorged sack wobbles with someone inside."), 2)
-							user << "\red You wobble around inside of [src]'s gorged sack."
-						if(3)
-							M.show_message(text("\red [src]'s swollen testicles bounce and squirm."), 2)
-							user << "\red You bounce and squirm within [src]'s swollen testicles."
-					struggle_sound = rand(1,3) // Increase this number per sound.
-					switch(struggle_sound)
-						if(1)
-							playsound(user.loc, 'sound/vore/insertion1.ogg', 50, 1)
-						if(2)
-							playsound(user.loc, 'sound/vore/insertion2.ogg', 50, 1)
-						if(3)
-							playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
-				spawn(20)
-					recent_struggle = 0
+	if(recent_struggle) return
 
-	if(user in src.boob_contents)
-		if(prob(40) && !recent_struggle)
-			recent_struggle = 1
-			for(var/mob/M in hearers(4, src)) //for(var/mob/M in viewers(user, null)) // <- This only works from the prey's POV.
-				if(M.client)
-					struggle_message = rand(1,3) // Increase this number per emote.
-					switch(struggle_message)
-						if(1)
-							M.show_message(text("\red [src]'s bust jostles abruptly."), 2)
-							user << "\red You jostle [src]'s bust up and down."
-						if(2)
-							M.show_message(text("\red [src]'s massive breasts jiggle and sway."), 2)
-							user << "\red Your squirmy movement makes [src]'s breasts jiggle and sway."
-						if(3)
-							M.show_message(text("\red [src]'s plump boobs wobble and bounce."), 2)
-							user << "\red You cause [src]'s boobs to wobble and bounce."
-					struggle_sound = rand(1,3) // Increase this number per sound.
-					switch(struggle_sound)
-						if(1)
-							playsound(user.loc, 'sound/vore/insertion1.ogg', 50, 1)
-						if(2)
-							playsound(user.loc, 'sound/vore/insertion2.ogg', 50, 1)
-						if(3)
-							playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
-				spawn(20)
-					recent_struggle = 0
+	recent_struggle = 1
+	spawn(20)
+		recent_struggle = 0
+
+	if(user in stomach_contents)
+		if(prob(40))
+
+			var/stomach_noun = pick("stomach","gut","tummy","belly")// To randomize the word for 'stomach'
+			struggle_message = rand(1,8) // Increase this number per emote.
+
+			switch(struggle_message)
+				if(1)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] wobbles with a squirming meal.</span>"
+					struggle_user_message = "<span class='alert'>You squirm inside of [src]'s [stomach_noun], making it wobble around.</span>"
+				if(2)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] jostles with movement.</span>"
+					struggle_user_message = "<span class='alert'>You jostle [src]'s [stomach_noun] with movement.</span>"
+				if(3)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] briefly swells outward as someone pushes from inside.</span>"
+					struggle_user_message = "<span class='alert'>You shove against the walls of [src]'s [stomach_noun], making it briefly swell outward.</span>"
+				if(4)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] fidgets with a trapped victim.</span>"
+					struggle_user_message = "<span class='alert'>You fidget around inside of [src]'s [stomach_noun].</span>"
+				if(5)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] jiggles with motion from inside.</span>"
+					struggle_user_message = "<span class='alert'>Your motion causes [src]'s [stomach_noun] to jiggle.</span>"
+				if(6)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] sloshes around.</span>"
+					struggle_user_message = "<span class='alert'>Your movement only causes [src]'s [stomach_noun] to slosh around you.</span>"
+				if(7)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] gushes softly.</span>"
+					struggle_user_message = "<span class='alert'>Your struggles only cause [src]'s [stomach_noun] to gush softly around you.</span>"
+				if(8)
+					struggle_outer_message = "<span class='alert'>[src]'s [stomach_noun] lets out a wet squelch.</span>"
+					struggle_user_message = "<span class='alert'>Your useless squirming only causes [src]'s slimy [stomach_noun] to squelch over your body.</span>"
+
+			for(var/mob/M in hearers(4,src))
+				M.show_message(struggle_outer_message, 2) //hearable
+			user << struggle_user_message
+
+			struggle_sound = rand(1,4) // Increase this number per sound.
+			switch(struggle_sound)
+				if(1)
+					playsound(user.loc, 'sound/vore/squish1.ogg', 50, 1)
+				if(2)
+					playsound(user.loc, 'sound/vore/squish2.ogg', 50, 1)
+				if(3)
+					playsound(user.loc, 'sound/vore/squish3.ogg', 50, 1)
+				if(4)
+					playsound(user.loc, 'sound/vore/squish4.ogg', 50, 1)
+
+	if(user in womb_contents)
+		if(prob(40))
+
+			struggle_message = rand(1,3) // Increase this number per emote
+			switch(struggle_message)
+				if(1)
+					struggle_outer_message = "<span class='alert'>[src]'s pregnant belly squirms with movement.</span>"
+					struggle_user_message = "<span class='alert'>You squirm inside of [src]'s pregnant belly.</span>"
+				if(2)
+					struggle_outer_message = "<span class='alert'>[src]'s swollen womb wriggles with movement.</span>"
+					struggle_user_message = "<span class='alert'>You wriggle inside of [src]'s womb.</span>"
+				if(3)
+					struggle_outer_message = "<span class='alert'>[src]'s lower tummy writhes around.</span>"
+					struggle_user_message = "<span class='alert'>You writhe inside of [src]'s lower tummy.</span>"
+
+			for(var/mob/M in hearers(4,src))
+				M.show_message(struggle_outer_message, 2) //hearable
+			user << struggle_user_message
+
+			struggle_sound = rand(1,3) // Increase this number per sound.
+			switch(struggle_sound)
+				if(1)
+					playsound(user.loc, 'sound/vore/insertion1.ogg', 50, 1)
+				if(2)
+					playsound(user.loc, 'sound/vore/insertion2.ogg', 50, 1)
+				if(3)
+					playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
+
+	if(user in cock_contents)
+		if(prob(40))
+
+			struggle_message = rand(1,3) // Increase this number per emote.
+			switch(struggle_message)
+				if(1)
+					struggle_outer_message = "<span class='alert'>[src]'s oversized balls sway with movement.</span>"
+					struggle_user_message = "<span class='alert'>You cause [src]'s oversized balls to sway with movement.</span>"
+				if(2)
+					struggle_outer_message = "<span class='alert'>[src]'s gorged sack wobbles with someone inside.</span>"
+					struggle_user_message = "<span class='alert'>You wobble around inside of [src]'s gorged sack.</span>"
+				if(3)
+					struggle_outer_message = "<span class='alert'>[src]'s swollen testicles bounce and squirm.</span>"
+					struggle_user_message = "<span class='alert'>You bounce and squirm within [src]'s swollen testicles.</span>"
+
+			for(var/mob/M in hearers(4,src))
+				M.show_message(struggle_outer_message, 2) //hearable
+			user << struggle_user_message
+
+			struggle_sound = rand(1,3) // Increase this number per sound.
+			switch(struggle_sound)
+				if(1)
+					playsound(user.loc, 'sound/vore/insertion1.ogg', 50, 1)
+				if(2)
+					playsound(user.loc, 'sound/vore/insertion2.ogg', 50, 1)
+				if(3)
+					playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
+
+	if(user in boob_contents)
+		if(prob(40))
+
+			struggle_message = rand(1,3) // Increase this number per emote.
+			switch(struggle_message)
+				if(1)
+					struggle_outer_message = "<span class='alert'>[src]'s bust jostles abruptly.</span>"
+					struggle_user_message = "<span class='alert'>You jostle [src]'s bust up and down.</span>"
+				if(2)
+					struggle_outer_message = "<span class='alert'>[src]'s massive breasts jiggle and sway.</span>"
+					struggle_user_message = "<span class='alert'>Your squirmy movement makes [src]'s breasts jiggle and sway.</span>"
+				if(3)
+					struggle_outer_message = "<span class='alert'>[src]'s plump boobs wobble and bounce.</span>"
+					struggle_user_message = "<span class='alert'>You cause [src]'s boobs to wobble and bounce.</span>"
+
+			for(var/mob/M in hearers(4,src))
+				M.show_message(struggle_outer_message, 2) //hearable
+			user << struggle_user_message
+
+			//This isn't part of the for loop. It just plays a sound once.
+			struggle_sound = rand(1,3) // Increase this number per sound.
+			switch(struggle_sound)
+				if(1)
+					playsound(user.loc, 'sound/vore/insertion1.ogg', 50, 1)
+				if(2)
+					playsound(user.loc, 'sound/vore/insertion2.ogg', 50, 1)
+				if(3)
+					playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
@@ -205,7 +223,7 @@ mob/living/carbon/relaymove(var/mob/user, direction)
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
-				N.show_message(text("\red <B>[M] bursts out of [src]!</B>"), 2)
+				N.show_message(text("<span class='danger'>[M] bursts out of [src]!</span>"), 2)
 	. = ..()
 //End vore script.
 

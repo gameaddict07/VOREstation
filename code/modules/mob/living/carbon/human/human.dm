@@ -785,17 +785,29 @@
 			spawn(100)	//and you have 10 more for mad dash to the bucket
 				Stun(5)
 
-				src.visible_message("<spawn class='warning'>[src] throws up!</span>","<spawn class='warning'>You throw up!</span>")
-				if(stomach_contents.len) // Vore code. Copied from vore.dm, so people in your belly get spat out if you puke.
-					for(var/mob/M in src)
-						if(M in stomach_contents)
-							stomach_contents.Remove(M)
-							for (var/mob/living/carbon/R in hearers(src.loc, null))
-								if(src in R.stomach_contents)
-									M.loc = R.stomach_contents
-								else
-									M.loc = loc
-					src.visible_message("\green <B>[src] also hurls out the contents of their stomach!</B>")
+				src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
+
+				/* Force any mob to exit their stomach. */
+				if(stomach_contents.len)
+					for(var/mob/M in stomach_contents)
+
+						M.loc = src.loc //this is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
+						stomach_contents.Remove(M)
+
+						if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
+							var/mob/living/carbon/loc_mob = src.loc
+
+							if(src in loc_mob.stomach_contents)
+								loc_mob.stomach_contents += M
+							if(src in loc_mob.womb_contents)
+								loc_mob.womb_contents += M
+							if(src in loc_mob.cock_contents)
+								loc_mob.cock_contents += M
+							if(src in loc_mob.boob_contents)
+								loc_mob.boob_contents += M
+
+					visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
+
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 				var/turf/location = loc
