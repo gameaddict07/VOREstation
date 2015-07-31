@@ -898,45 +898,38 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 	if(update_icons) update_icons()
 
+#define TOTAL_TAUR_ICONS 6 //If more icons are ever added, or removed, this _has_ to be updated accordingly.
 /mob/living/carbon/human/proc/update_tail_showing(var/update_icons=1)
 	overlays_standing[TAIL_LAYER] = null
 
-	if(taur > 0)
-		if(taur == 1)
-			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "wolf_s")
-			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+	if(taur && taur <= TOTAL_TAUR_ICONS) //taur is True and not exceeding the actual number of possible options
 
-			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+		var/icon/taur_s //Holder value to transfer onto the mob. Null by default.
 
-		if(taur == 2)
-			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "naga_s")
-			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+		switch(taur) //Shorthand for if(taur == [value])
 
-			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+			if(1)	//Wolf
+				taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "wolf_s")
 
-		if(taur == 3)
-			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "horse_s")
-			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+			if(2)	//Naga
+				taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "naga_s")
 
-			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+			if(3)	//Horse
+				taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "horse_s")
 
-		if(taur == 4)
-			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "cow_s")
-			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+			if(4)	//Cow
+				taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "cow_s")
 
-			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+			if(5)	//Lizard
+				taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "lizard_s")
 
-		if(taur == 5)
-			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "lizard_s")
-			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
+			if(6)	//Spider
+				taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "spider_s")
 
-			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+		if(!taur_s)	return //Avoid runtimes if taur_s does not get a value
 
-		if(taur == 6)
-			var/icon/taur_s = new/icon("icon" = 'icons/effects/taurs.dmi', "icon_state" = "spider_s")
-			taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY)
-
-			overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale))
+		taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY) //Note, this could be moved to the switch above if needed, but currently every taur uses _MULTIPLY
+		overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale)) //Apply taur to overlays, with required pixel offset applied.
 
 	else
 		if(species.tail)
