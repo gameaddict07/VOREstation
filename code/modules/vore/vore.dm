@@ -5,34 +5,27 @@
 	set name = "Toggle Stomach Digestion"
 	set category = "Vore"
 
-	stendo = !stendo //invert
-	switch(stendo)
-		if(0)	src << "<span class='notice'>You will no longer digest people in your stomach.</span>"
-		if(1)	src << "<span class='notice'>You will now digest people in your stomach.</span>"
+	stendo = !stendo //Boolean inverter
+	src << "<span class='notice'>You will [stendo ? "now" : "no longer"] digest people in your stomach.</span>"
 
 /mob/living/carbon/human/proc/cvendo_toggle()
 	set name = "Toggle Cockvore Digestion"
 	set category = "Vore"
 
 	cvendo = !cvendo
-	switch(cvendo)
-		if(0)	src << "<span class='notice'>You will no longer cummify people.</span>"
-		if(1)	src << "<span class='notice'>You will now cummify people.</span>"
+	src << "<span class='notice'>You will [cvendo ? "now" : "no longer"] cummify people.</span>"
 
 /mob/living/carbon/human/proc/bvendo_toggle()
 	set name = "Toggle Breastvore Digestion"
 	set category = "Vore"
 
 	bvendo = !bvendo
-
-	switch(bvendo)
-		if(0)	src << "<span class='notice'>You will no longer milkify people.</span>"
-		if(1)	src << "<span class='notice'>You will now milkify people.</span>"
+	src << "<span class='notice'>You will [bvendo ? "now" : "no longer"] milkify people.</span>"
 
 /mob/living/carbon/human/proc/womb_toggle()
 	set name = "Set Womb Mode"
 	set category = "Vore"
-	wombheal = input("Womb Mode") in list("Hold","Heal","Transform (Male)","Transform (Female)","Transform (Keep Gender)","Transform (Change Species)","Digest")
+	wombheal = input("Womb Mode") in list("Hold", "Heal", "Transform (Male)", "Transform (Female)", "Transform (Keep Gender)", "Transform (Change Species)","Digest")
 	switch(wombheal)
 		if("Heal")
 			src << "<span class='notice'>You will now heal people you've unbirthed.</span>"
@@ -52,8 +45,9 @@
 /mob/living/carbon/human/proc/orifice_toggle()
 	set name = "Choose Vore Mode"
 	set category = "Vore"
-	vorifice = input("Choose Vore Mode") in list("Oral Vore","Unbirth","Anal Vore","Cock Vore","Breast Vore")
+	vorifice = input("Choose Vore Mode") in list("Oral Vore", "Unbirth", "Anal Vore", "Cock Vore", "Breast Vore")
 	src << "<span class='notice'>[vorifice] selected.</span>"
+
 //////////////////////////////////////////
 /// NW's digestion toggle optimisation ///
 //////////////////////////////////////////
@@ -73,18 +67,17 @@
 		if("Womb")
 			womb_toggle()
 
-
 /mob/living/carbon/human/proc/vore_release()
 	set name = "Release"
 	set category = "Vore"
-	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)","Stomach (by Anus)","Womb","Cock","Breasts")
+	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)", "Stomach (by Anus)", "Womb", "Cock", "Breasts")
 
 	switch(releaseorifice)
 		if("Stomach (by Mouth)")
 			if(stomach_contents.len)
 				for(var/mob/M in stomach_contents)
 
-					M.loc = src.loc //this is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
+					M.loc = src.loc //This is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
 					stomach_contents.Remove(M)
 
 					if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
@@ -147,7 +140,7 @@
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 			else
-				if(wombfull) //checks if true. If it's anything but 0, null, or "", it will set to 0.
+				if(wombfull) //Checks if true. If it's anything but 0, null, or "", it will set to 0.
 					wombfull = 0
 					visible_message("<span class='danger'>[src] gushes out a puddle of liquid from their folds!</span>")
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -208,7 +201,6 @@
 					visible_message("<span class='danger'>[src] squirts out a puddle of milk from their breasts!</span>")
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-
 /////////////////////////////
 //// NW's emergency code ////
 /////////////////////////////
@@ -219,11 +211,12 @@
 
 	var/confirm = alert(src, "This button is for escaping from your partner if they have disconnected or your preferences are being violated. Do not use it for anything else!", "Confirmation", "Okay", "Cancel")
 
-	if(confirm == "Cancel")	return
+	if(confirm == "Cancel")
+		return
 
 	else if(confirm == "Okay")
 		if(iscarbon(loc) || isanimal(loc))
-			msg_admin_attack("[key_name(src)] used the OOC escape button to get out of [loc]")
+			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
 			src.loc = get_turf(src.loc)
 
 		else
@@ -237,22 +230,27 @@
 	set name = "Inside"
 	set category = "Vore"
 
-	var/datum/vore_look/picker_holder=new()
+	var/datum/vore_look/picker_holder = new()
 	picker_holder.loop=picker_holder
 
 	var/dat
 	if(istype(src.loc,/mob/living/carbon/human))
 		var/mob/living/carbon/human/eater = src.loc
-		// This big block here figures out where the prey is
+		//This big block here figures out where the prey is
 		for(var/mob/living/M in eater.stomach_contents)
-			if(M == src) src.predlocation = "stomach"
+			if(M == src)
+				src.predlocation = "stomach"
 		for(var/mob/living/M in eater.cock_contents)
-			if(M == src) src.predlocation = "balls"
+			if(M == src)
+				src.predlocation = "balls"
 		for(var/mob/living/M in eater.womb_contents)
-			if(M == src) src.predlocation = "womb"
+			if(M == src)
+				src.predlocation = "womb"
 		for(var/mob/living/M in eater.boob_contents)
-			if(M == src) src.predlocation = "breast"
-		// Done
+			if(M == src)
+				src.predlocation = "breast"
+
+		//Done
 		dat += "<font color = 'green'>You are currently inside</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[src.predlocation]</font>!<br><br>"
 		if(src.predlocation == "stomach")
 			if(!eater.insideflavour[1])
@@ -342,6 +340,5 @@
 
 	if(alert(src, "This button is for those who don't like being digested. It will make you undigestable. Don't abuse this button by toggling it back and forth to extend a scene or whatever, or you'll make the admins cry. Note that this cannot be toggled inside someone's belly.", "", "Okay", "Cancel") == "Okay")
 		digestable = !digestable
-		if(src.digestable == 1) usr << "<span class='alert'>You are now digestable.</span>"
-		else usr << "<span class='alert'>You are now undigestable.</span>"
-		msg_admin_attack("[key_name(src)] toggled their digestability to [digestable]")
+		usr << "<span class='alert'>You are [digestable ? "no longer" : "now"] digestable.</span>"
+		message_admins("[key_name(src)] toggled their digestability to [digestable] ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
