@@ -11,9 +11,9 @@ var/const/RESIZE_TINY = 0.25
 /mob/proc/resize(var/size_mod) //this proc resizes the mob immediately to the desired mod, it can be used by anything that calls it
 	var/matrix/resize = matrix() // Defines the matrix to change the player's size
 
-	resize.Scale(size_mod*basesize) //Change the size of the matrix
+	resize.Scale(size_mod * basesize) //Change the size of the matrix
 
-	resize.Translate(0,-1*(1-size_mod)*basesize*16) //Move the player down or up in the tile so their feet align with the bottom
+	resize.Translate(0, -1 * (1 - size_mod) * basesize * 16) //Move the player down or up in the tile so their feet align with the bottom
 
 	animate(src,transform = resize, time = 5) //Animate the player resizing
 	playerscale = size_mod //Change playerscale so that other items can interact with them
@@ -22,7 +22,7 @@ var/const/RESIZE_TINY = 0.25
 /mob/living/proc/set_size()
 	set name = "Set character size"
 	set category = "Resize"
-	var/playersize = input("Size") in list("Macro","Big","Normal","Small","Tiny")
+	var/playersize = input("Size") in list("Macro", "Big", "Normal", "Small", "Tiny")
 	switch(playersize)
 		if("Macro")
 			resize(RESIZE_HUGE)
