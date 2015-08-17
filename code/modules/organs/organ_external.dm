@@ -1040,18 +1040,18 @@ obj/item/weapon/organ/New(loc, mob/living/carbon/human/H)
 	else
 		base = icon('icons/mob/human_races/r_human.dmi')
 
-	if(base)
+//	if(base)
 		//Changing limb's skin tone to match owner
-		if(!H.species || H.species.flags & HAS_SKIN_TONE)
-			if (H.s_tone >= 0)
-				base.Blend(rgb(H.s_tone, H.s_tone, H.s_tone), ICON_ADD)
-			else
-				base.Blend(rgb(-H.s_tone,  -H.s_tone,  -H.s_tone), ICON_SUBTRACT)
-
+//		if(!H.species || H.species.flags & HAS_SKIN_TONE)
+//			if (H.s_tone >= 0)
+//				base.Blend(rgb(H.s_tone, H.s_tone, H.s_tone), ICON_ADD)
+//			else
+//				base.Blend(rgb(-H.s_tone,  -H.s_tone,  -H.s_tone), ICON_SUBTRACT)
+//Goodbye Skintone, Orbis
 	if(base)
 		//Changing limb's skin color to match owner
 		if(!H.species || H.species.flags & HAS_SKIN_COLOR)
-			base.Blend(rgb(H.r_skin, H.g_skin, H.b_skin), ICON_ADD)
+			base.Blend(rgb(H.r_skin, H.g_skin, H.b_skin), ICON_MULTIPLY) //CHANGED ADD TO MULTIPLY. ORBIS
 
 	icon = base
 	set_dir(SOUTH)

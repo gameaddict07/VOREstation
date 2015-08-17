@@ -6,7 +6,7 @@ datum/preferences
 				gender = MALE
 			else
 				gender = FEMALE
-		s_tone = random_skin_tone()
+	//	s_tone = random_skin_tone() //Goodbye Skintone, Orbis
 		h_style = random_hair_style(gender, species)
 		f_style = random_facial_hair_style(gender, species)
 		randomize_hair_color("hair")
@@ -214,14 +214,14 @@ datum/preferences
 
 		// Skin color
 		if(current_species && (current_species.flags & HAS_SKIN_COLOR))
-			preview_icon.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
+			preview_icon.Blend(rgb(r_skin, g_skin, b_skin), ICON_MULTIPLY) //CHANGED ICON ADD TO MULTIPLY
 
-		// Skin tone
-		if(current_species && (current_species.flags & HAS_SKIN_TONE))
-			if (s_tone >= 0)
-				preview_icon.Blend(rgb(s_tone, s_tone, s_tone), ICON_ADD)
-			else
-				preview_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
+		// Skin tone //Goodbye Skintone, Orbis
+//		if(current_species && (current_species.flags & HAS_SKIN_TONE))
+//			if (s_tone >= 0)
+//				preview_icon.Blend(rgb(s_tone, s_tone, s_tone), ICON_ADD)
+//			else
+//				preview_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 
 		var/icon/eyes_s = new/icon("icon" = 'icons/mob/human_face.dmi', "icon_state" = current_species ? current_species.eyes : "eyes_s")
 		if ((current_species && (current_species.flags & HAS_EYE_COLOR)))

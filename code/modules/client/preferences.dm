@@ -65,7 +65,7 @@ datum/preferences
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
 	var/b_facial = 0					//Face hair color
-	var/s_tone = 0						//Skin tone
+//	var/s_tone = 0						//Skin tone //Goodbye Skintone, Orbis
 	var/r_skin = 0						//Skin color
 	var/g_skin = 0						//Skin color
 	var/b_skin = 0						//Skin color
@@ -310,7 +310,7 @@ datum/preferences
 	dat += "Species: <a href='?src=\ref[user];preference=species;task=change'>[species]</a><br>"
 	dat += "Secondary Language:<br><a href='byond://?src=\ref[user];preference=language;task=input'>[language]</a><br>"
 	dat += "Blood Type: <a href='byond://?src=\ref[user];preference=b_type;task=input'>[b_type]</a><br>"
-	dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>"
+	//dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>" //Goodbye Skintone, Orbis
 	//dat += "Skin pattern: <a href='byond://?src=\ref[user];preference=skin_style;task=input'>Adjust</a><br>"
 	dat += "Taur body: <a href='byond://?src=\ref[user];preference=taurbody;task=input'>[taur]</a><br>"
 	dat += "<a href='?_src_=prefs;preference=t_tone;task=input'>Taur colour</a> <font face='fixedsys' size='3' color='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur, 2)]'><table style='display:inline;' bgcolor='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur)]'><tr><td>__</td></tr></table></font> "
@@ -1195,8 +1195,8 @@ datum/preferences
 					r_eyes = rand(0,255)
 					g_eyes = rand(0,255)
 					b_eyes = rand(0,255)
-				if("s_tone")
-					s_tone = random_skin_tone()
+			//	if("s_tone")
+			//		s_tone = random_skin_tone() //Goodbye Skintone, Orbis
 				if("s_color")
 					r_skin = rand(0,255)
 					g_skin = rand(0,255)
@@ -1274,7 +1274,7 @@ datum/preferences
 						g_hair = 0//hex2num(copytext(new_hair, 4, 6))
 						b_hair = 0//hex2num(copytext(new_hair, 6, 8))
 
-						s_tone = 0
+					//	s_tone = 0 //Goodbye Skintone, Orbis
 
 				if("language")
 					var/languages_available
@@ -1310,7 +1310,7 @@ datum/preferences
 						b_type = new_b_type
 
 				if("hair")
-					if(species == "Human" || species == "Unathi" || species == "Tajara" || species == "Skrell")
+					if(species != "Vox" || species != "Machine" || species != "Diona")
 						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference", rgb(r_hair, g_hair, b_hair)) as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
@@ -1382,13 +1382,13 @@ datum/preferences
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
 						b_eyes = hex2num(copytext(new_eyes, 6, 8))
 
-				if("s_tone")
-					if(species != "Human")
-						return
-					var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
-					if(new_s_tone)
-						s_tone = 35 - max(min( round(new_s_tone), 220),1)
-
+			//	if("s_tone") //Goodbye Skintone, Orbis
+			//		if(species != "Human")
+			//			return
+			//		else
+			//			var/new_s_tone = input(user, "Choose your character's skin-tone:\n(Light 1 - 220 Dark)", "Character Preference")  as num|null
+			//			if(new_s_tone)
+			//				s_tone = 35 - max(min( round(new_s_tone), 220),1)
 				if("taurbody")
 					var/list/taur_types = list("None","Fluffy","Naga","Horse","Cow","Lizard","Spider")
 					var/new_taur = input(user, "Choose your character's taur body:", "Character Preference") as null|anything in taur_types  //list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
@@ -1396,8 +1396,6 @@ datum/preferences
 
 
 				if("t_tone")
-					//if(species != "Human")
-					//	return
 					var/new_t_tone = input(user, "Choose your character's taur-tone:", "Character Preference")  as color|null
 					if(new_t_tone)
 						r_taur = hex2num(copytext(new_t_tone, 2, 4))
@@ -1410,7 +1408,7 @@ datum/preferences
 					b_taur = b_skin
 
 				if("skin")
-					if(species == "Unathi" || species == "Tajara" || species == "Skrell")
+					if(species != "Vox" || species != "Machine" || species != "Diona")
 						var/new_skin = input(user, "Choose your character's skin colour: ", "Character Preference", rgb(r_skin, g_skin, b_skin)) as color|null
 						if(new_skin)
 							r_skin = hex2num(copytext(new_skin, 2, 4))
@@ -1703,7 +1701,7 @@ datum/preferences
 	character.g_skin = g_skin
 	character.b_skin = b_skin
 
-	character.s_tone = s_tone
+//	character.s_tone = s_tone //Goodbye Skintone, Orbis
 
 	character.taur = taur
 	character.r_taur = r_taur
