@@ -301,14 +301,6 @@
 	key = "z"
 	syllables = list ("grr", "gah", "woof", "arf", "arra", "rah", "wor", "sarg")
 
-/datum/language/sharks
-	name = "Gutter"
-	desc = "Much like Standard, this crude pidgin tongue descended from numerous languages and serves as Tradeband for criminal elements."
-	speech_verb = "growls"
-	colour = "rough"
-	key = "3"
-	syllables = list ("gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra")
-
 /datum/language/xenocommon
 	name = "Xenomorph"
 	colour = "alien"
