@@ -478,6 +478,7 @@
 			phrases += "Rawr..."
 			phrases += "Blop..."
 			phrases += "Blorble..."
+			phrases += "Eat the nerd.."  //Easter Egg. Orbis
 			if (rabid || attacked)
 				phrases += "Hrr..."
 				phrases += "Nhuu..."
