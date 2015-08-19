@@ -478,7 +478,10 @@
 			phrases += "Rawr..."
 			phrases += "Blop..."
 			phrases += "Blorble..."
-			phrases += "Eat the nerd.."  //Easter Egg. Orbis
+			if (prob(1))
+				if (prob(1))
+					if (prob(1)) //1 in millon chance to add this to the slime phrases.
+						phrases += "Eat the nerd..."  //Easter Egg. Orbis
 			if (rabid || attacked)
 				phrases += "Hrr..."
 				phrases += "Nhuu..."
