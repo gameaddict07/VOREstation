@@ -28,3 +28,9 @@
 /mob/living/carbon/human/machine/New(var/new_loc)
 	h_style = "blue IPC screen"
 	..(new_loc, "Machine")
+
+/mob/living/carbon/human/shark/New(var/new_loc)
+	..(new_loc, "Akula")
+
+/mob/living/carbon/human/Sergal/New(var/new_loc)
+	..(new_loc, "Sergal")

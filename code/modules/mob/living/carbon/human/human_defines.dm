@@ -16,7 +16,7 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/s_tone = 0	//Skin tone
+//	var/s_tone = 0	//Skin tone //Goodbye Skintone, Orbis
 
 	//Skin colour
 	var/r_skin = 0

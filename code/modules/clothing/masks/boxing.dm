@@ -10,6 +10,8 @@
 	sprite_sheets = list(
 		"Tajara" = 'icons/mob/species/tajaran/mask.dmi',
 		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Sergal" = 'icons/mob/species/sergal/mask.dmi',
+		"Akula"  = 'icons/mob/species/akula/mask.dmi',
 		)
 
 /obj/item/clothing/mask/balaclava/tactical
@@ -23,6 +25,8 @@
 	sprite_sheets = list(
 		"Tajara" = 'icons/mob/species/tajaran/mask.dmi',
 		"Unathi" = 'icons/mob/species/unathi/mask.dmi',
+		"Sergal" = 'icons/mob/species/sergal/mask.dmi',
+		"Akula"  = 'icons/mob/species/akula/mask.dmi',
 		)
 
 /obj/item/clothing/mask/luchador

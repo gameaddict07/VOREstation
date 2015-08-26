@@ -244,7 +244,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 	stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
 
-	var/icon_key = "[species.race_key][g][s_tone]"
+	var/icon_key = "[species.race_key][g]" //[s_tone]" //Goodbye Skintone, Orbis
 	for(var/datum/organ/external/part in organs)
 
 		if(istype(part,/datum/organ/external/head) && !(part.status & ORGAN_DESTROYED))
@@ -259,7 +259,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 		else
 			icon_key = "[icon_key]1"
 
-	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0][s_tone]"
+	icon_key = "[icon_key][husk ? 1 : 0][fat ? 1 : 0][hulk ? 1 : 0][skeleton ? 1 : 0]" // [s_tone]" //Goodbye Skintone, Orbis
 
 	var/icon/base_icon
 	if(human_icon_cache[icon_key])
@@ -344,13 +344,14 @@ proc/get_damage_icon_part(damage_state, body_part)
 			base_icon.Blend(husk_over, ICON_OVERLAY)
 
 
-		//Skin tone.
-		if(!husk && !hulk)
-			if(species.flags & HAS_SKIN_TONE)
-				if(s_tone >= 0)
-					base_icon.Blend(rgb(s_tone, s_tone, s_tone), ICON_ADD)
-				else
-					base_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
+		//Skin tone. //Goodbye Skintone, Orbis
+	//	if(!husk && !hulk)
+	//		if(species.flags & HAS_SKIN_TONE)
+	//			if(s_tone >= 0)
+	//				base_icon.Blend(rgb(s_tone, s_tone, s_tone), ICON_ADD)
+	//			else
+	//				base_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
+
 
 		human_icon_cache[icon_key] = base_icon
 
@@ -362,7 +363,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 	//Skin colour. Not in cache because highly variable (and relatively benign).
 	if (species.flags & HAS_SKIN_COLOR)
-		stand_icon.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
+		stand_icon.Blend(rgb(r_skin, g_skin, b_skin), ICON_MULTIPLY) //CHANGED ICON_ADD TO ICON_MULTIPLY. ORBIS
 
 	if(has_head)
 		//Eyes
@@ -935,7 +936,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 		if(species.tail)
 			if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
 				var/icon/tail_s = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[species.tail]_s")
-				tail_s.Blend(rgb(r_skin, g_skin, b_skin), ICON_ADD)
+				tail_s.Blend(rgb(r_skin, g_skin, b_skin), ICON_MULTIPLY) //changed icon add to multiply. Orbis
 
 				overlays_standing[TAIL_LAYER]	= image(tail_s)
 

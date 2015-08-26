@@ -76,7 +76,7 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES
 	siemens_coefficient = 1
 
-/obj/item/clothing/head/helmet/tactical
+/obj/item/clothing/head/helmet/tactical //temporary suits.
 	name = "tactical helmet"
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
 	icon_state = "swathelm"
@@ -85,8 +85,10 @@
 	sprite_sheets = list(
 		"Tajara" = 'icons/mob/species/tajaran/helmet.dmi',
 		"Unathi" = 'icons/mob/species/unathi/helmet.dmi',
+		"Sergal" = 'icons/mob/species/sergal/helmet.dmi',
+		"Akula" = 'icons/mob/species/akula/helmet.dmi',
 		)
-	
+
 	armor = list(melee = 62, bullet = 50, laser = 50,energy = 35, bomb = 10, bio = 2, rad = 0)
 	flags_inv = HIDEEARS
 	siemens_coefficient = 0.7

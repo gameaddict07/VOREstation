@@ -189,13 +189,13 @@ proc/trigger_armed_response_team(var/force = 0)
 		M.g_eyes = hex2num(copytext(new_eyes, 4, 6))
 		M.b_eyes = hex2num(copytext(new_eyes, 6, 8))
 
-	var/new_tone = input("Please select skin tone level: 1-220 (1=albino, 35=caucasian, 150=black, 220='very' black)", "Character Generation")  as text
-
-	if (!new_tone)
-		new_tone = 35
-	M.s_tone = max(min(round(text2num(new_tone)), 220), 1)
-	M.s_tone =  -M.s_tone + 35
-
+//	var/new_tone = input("Please select skin tone level: 1-220 (1=albino, 35=caucasian, 150=black, 220='very' black)", "Character Generation")  as text
+//
+//	if (!new_tone)
+//		new_tone = 35
+//	M.s_tone = max(min(round(text2num(new_tone)), 220), 1)
+//	M.s_tone =  -M.s_tone + 35
+//Goodbye Skintone, Orbis
 	// hair
 	var/list/all_hairs = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
 	var/list/hairs = list()
