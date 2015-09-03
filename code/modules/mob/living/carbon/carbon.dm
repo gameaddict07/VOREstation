@@ -78,7 +78,7 @@
 	spawn(20)
 		recent_struggle = 0
 
-	if(user in stomach_contents)
+	if(user in internal_contents["Stomach"])
 		if(prob(40))
 
 			var/stomach_noun = pick("stomach","gut","tummy","belly")// To randomize the word for 'stomach'
@@ -125,7 +125,7 @@
 				if(4)
 					playsound(user.loc, 'sound/vore/squish4.ogg', 50, 1)
 
-	if(user in womb_contents)
+	if(user in internal_contents["Womb"])
 		if(prob(40))
 
 			struggle_message = rand(1,3) // Increase this number per emote
@@ -153,7 +153,7 @@
 				if(3)
 					playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
 
-	if(user in cock_contents)
+	if(user in internal_contents["Cock"])
 		if(prob(40))
 
 			struggle_message = rand(1,3) // Increase this number per emote.
@@ -181,7 +181,7 @@
 				if(3)
 					playsound(user.loc, 'sound/vore/insertion3.ogg', 50, 1)
 
-	if(user in boob_contents)
+	if(user in internal_contents["Boob"])
 		if(prob(40))
 
 			struggle_message = rand(1,3) // Increase this number per emote.
@@ -212,14 +212,6 @@
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
-		if(M in stomach_contents)
-			stomach_contents.Remove(M)
-		if(M in womb_contents)
-			womb_contents.Remove(M)
-		if(M in cock_contents)
-			cock_contents.Remove(M)
-		if(M in boob_contents)
-			boob_contents.Remove(M)
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
