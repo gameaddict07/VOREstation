@@ -1,0 +1,36 @@
+> Updated botany
+	> More trays
+	> No longer cut in half
+	> Swapped position of seed extractor and biogenerator
+> Updated Gateway and EVA
+	> All changes from the old map brought over
+	> Expanded the gateway into maintenance space
+	> Added loads of supplies and chargers
+	> EVA no longer has a requests console, but we never used it anyway
+	> Remove 
+> Replaced the empty space areas near the bridge with gardens
+	> Makes it a bit harder to grief by venting the main hallway into space
+> Gutted incinerator again
+	> Kept the disposal to space
+	> Added a new line to vent canisters and the like directly to space
+> Expanded engineering dorms
+	> Cut into an empty space in maintenance
+	> Had to make the janitor's closet a bit smaller to compensate
+> Added new room to maintenance above botany
+> Made holodeck windows tintable
+> Added privacy shutters to the HoS' office
+> Added an omni filter to the CE's office to clean plasma out of distro
+	> Moved the supply to waste pump down the line accordingly
+	> Adjusted the CE's back door and the window across from tech storage to control LoS
+> Removed blob spawns from bar to make them easier on the general population
+> Removed sex dungeon
+> Adjusted bar back room, added passage back into the fitness room
+> Re-added Genetics
+	> Added disposals to Genetics; might be broken
+> Added new room to maintenance just underneath misc research
+> Distribted a few muzzles throughout maintenance
+> The solars now start out wired
+> Added dorms, showers, and a restroom to security
+> Added a pair of private doorms to the public dorms
+> Added a dorm to the locker room near arrivals
+> Revamped starboard wing of the mining station

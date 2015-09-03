@@ -1398,6 +1398,14 @@ area/space/atmosalert()
 	name = "\improper Tactical Equipment"
 	icon_state = "Tactical"
 
+/area/security/dorms
+	name = "\improper Security Dormitories"
+	icon_state = "security"
+
+/area/security/showers
+	name = "\improper Security Showers"
+	icon_state = "security"
+
 
 /*
 	New()
