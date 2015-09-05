@@ -53,6 +53,16 @@ datum/announcement/proc/Message(message as text, message_title as text)
 			if (announcer)
 				M << "<span class='alert'> -[html_encode(announcer)]</span>"
 
+datum/announcement/proc/NotifyChat(message as text, message_title as text)
+	if (config.jchat_url)
+		spawn(0)
+			var/query_string = "action=announceAllRooms"
+			query_string += "&key=[url_encode(config.jchat_api_key)]"
+			query_string += "&message=[url_encode(message)]"
+			query_string += "&title=[url_encode(message_title)]"
+			query_string += "&announcer=[url_encode(announcer)]"
+			world.Export("[config.jchat_url]/voreStationApi.srv?[query_string]")
+
 datum/announcement/minor/Message(message as text, message_title as text)
 	world << "<b>[message]</b>"
 
@@ -62,6 +72,7 @@ datum/announcement/priority/Message(message as text, message_title as text)
 	if(announcer)
 		world << "<span class='alert'> -[html_encode(announcer)]</span>"
 	world << "<br>"
+	NotifyChat(message, message_title)
 
 datum/announcement/priority/command/Message(message as text, message_title as text)
 	var/command
