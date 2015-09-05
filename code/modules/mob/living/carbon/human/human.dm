@@ -787,26 +787,28 @@
 
 				src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
 
+				var/tick = 0 //easiest way to check if the list has anything
 				/* Force any mob to exit their stomach. */
-				if(stomach_contents.len)
-					for(var/mob/M in stomach_contents)
+				for(var/mob/M in internal_contents["Stomach"])
 
-						M.loc = src.loc //this is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
-						stomach_contents.Remove(M)
+					M.loc = src.loc //this is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
+					internal_contents["Stomach"] -= M
 
-						if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
-							var/mob/living/carbon/loc_mob = src.loc
+					if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
+						var/mob/living/carbon/loc_mob = src.loc
 
-							if(src in loc_mob.stomach_contents)
-								loc_mob.stomach_contents += M
-							if(src in loc_mob.womb_contents)
-								loc_mob.womb_contents += M
-							if(src in loc_mob.cock_contents)
-								loc_mob.cock_contents += M
-							if(src in loc_mob.boob_contents)
-								loc_mob.boob_contents += M
+						if(src in loc_mob.internal_contents["Stomach"])
+							loc_mob.internal_contents["Stomach"] += M
+						if(src in loc_mob.internal_contents["Womb"])
+							loc_mob.internal_contents["Womb"] += M
+						if(src in loc_mob.internal_contents["Cock"])
+							loc_mob.internal_contents["Cock"] += M
+						if(src in loc_mob.internal_contents["Boob"])
+							loc_mob.internal_contents["Boob"] += M
 
-					visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
+					tick++
+
+				if(tick)	visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
 
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 

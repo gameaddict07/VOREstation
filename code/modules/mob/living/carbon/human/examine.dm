@@ -245,13 +245,18 @@
 	else if(nutrition >= 6000)
 		msg += "[t_He] [t_is] so gorged, you aren't sure how [t_He] [t_is] able to move. [t_his] belly is dragging across the floor and it doesn't look like [t_He] can get any bigger. [t_his] stomach isn't even squishy anymore and the surface looks sorely strained. [t_He] is either full with most of the crew's digesting remains, or the station's entire food supply!\n"
 //		else
-	if(stomach_contents.len)
+
+	var/list/cont_list = internal_contents["Stomach"]
+	if(cont_list.len)
 		msg += "[t_He] [t_has] something solid in [t_his] stomach!\n"
-	if(womb_contents.len || wombfull == 1)
+	cont_list = internal_contents["Womb"]
+	if(cont_list.len || wombfull == 1)
 		msg += "[t_He] [t_has] something in [t_his] lower belly!\n"
-	if(cock_contents.len || cockfull == 1)
+	cont_list = internal_contents["Cock"]
+	if(cont_list.len || cockfull == 1)
 		msg += "[t_He] has a throbbing large sack below [t_his] hips!\n"
-	if(boob_contents.len || boobfull == 1)
+	cont_list = internal_contents["Boob"]
+	if(cont_list.len || boobfull == 1)
 		msg += "[t_He] has a swollen pair of breasts!\n"
 
 	msg += "</span>"

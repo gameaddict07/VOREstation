@@ -74,68 +74,76 @@
 
 	switch(releaseorifice)
 		if("Stomach (by Mouth)")
-			if(stomach_contents.len)
-				for(var/mob/M in stomach_contents)
+			var/tick = 0 //easiest way to check if the list has anything
+			for(var/mob/M in internal_contents["Stomach"])
 
-					M.loc = src.loc //This is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
-					stomach_contents.Remove(M)
+				M.loc = src.loc //This is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
+				internal_contents["Stomach"] -= M
 
-					if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
-						var/mob/living/carbon/loc_mob = src.loc
+				if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
+					var/mob/living/carbon/loc_mob = src.loc
 
-						if(src in loc_mob.stomach_contents)
-							loc_mob.stomach_contents += M
-						if(src in loc_mob.womb_contents)
-							loc_mob.womb_contents += M
-						if(src in loc_mob.cock_contents)
-							loc_mob.cock_contents += M
-						if(src in loc_mob.boob_contents)
-							loc_mob.boob_contents += M
+					if(src in loc_mob.internal_contents["Stomach"])
+						loc_mob.internal_contents["Stomach"] += M
+					if(src in loc_mob.internal_contents["Womb"])
+						loc_mob.internal_contents["Womb"] += M
+					if(src in loc_mob.internal_contents["Cock"])
+						loc_mob.internal_contents["Cock"] += M
+					if(src in loc_mob.internal_contents["Boob"])
+						loc_mob.internal_contents["Boob"] += M
+				tick++
 
+			if(tick)
 				visible_message("<font color='green'><b>[src] hurls out the contents of their stomach!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Stomach (by Anus)")
-			if(stomach_contents.len)
-				for(var/mob/M in stomach_contents)
+			var/tick = 0
+			for(var/mob/M in internal_contents["Stomach"])
 
-					M.loc = src.loc
-					stomach_contents.Remove(M)
+				M.loc = src.loc
+				internal_contents["Stomach"] -= M
 
-					if(iscarbon(src.loc))
-						var/mob/living/carbon/loc_mob = src.loc
+				if(iscarbon(src.loc))
+					var/mob/living/carbon/loc_mob = src.loc
 
-						if(src in loc_mob.stomach_contents)
-							loc_mob.stomach_contents += M
-						if(src in loc_mob.womb_contents)
-							loc_mob.womb_contents += M
-						if(src in loc_mob.cock_contents)
-							loc_mob.cock_contents += M
-						if(src in loc_mob.boob_contents)
-							loc_mob.boob_contents += M
+					if(src in loc_mob.internal_contents["Stomach"])
+						loc_mob.internal_contents["Stomach"] += M
+					if(src in loc_mob.internal_contents["Womb"])
+						loc_mob.internal_contents["Womb"] += M
+					if(src in loc_mob.internal_contents["Cock"])
+						loc_mob.internal_contents["Cock"] += M
+					if(src in loc_mob.internal_contents["Boob"])
+						loc_mob.internal_contents["Boob"] += M
 
+				tick++
+
+			if(tick)
 				visible_message("<font color='green'><b>[src] releases their stomach contents out of their rear!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Womb")
-			if(womb_contents.len)
-				for(var/mob/M in womb_contents)
+			var/tick = 0
+			for(var/mob/M in internal_contents["Womb"])
 
-					M.loc = src.loc
-					womb_contents.Remove(M)
+				M.loc = src.loc
+				internal_contents["Womb"] -= M
 
-					if(iscarbon(src.loc))
-						var/mob/living/carbon/loc_mob = src.loc
+				if(iscarbon(src.loc))
+					var/mob/living/carbon/loc_mob = src.loc
 
-						if(src in loc_mob.stomach_contents)
-							loc_mob.stomach_contents += M
-						if(src in loc_mob.womb_contents)
-							loc_mob.womb_contents += M
-						if(src in loc_mob.cock_contents)
-							loc_mob.cock_contents += M
-						if(src in loc_mob.boob_contents)
-							loc_mob.boob_contents += M
+					if(src in loc_mob.internal_contents["Stomach"])
+						loc_mob.internal_contents["Stomach"] += M
+					if(src in loc_mob.internal_contents["Womb"])
+						loc_mob.internal_contents["Womb"] += M
+					if(src in loc_mob.internal_contents["Cock"])
+						loc_mob.internal_contents["Cock"] += M
+					if(src in loc_mob.internal_contents["Boob"])
+						loc_mob.internal_contents["Boob"] += M
 
+				tick++
+
+			if(tick)
 				visible_message("<font color='green'><b>[src] gushes out the contents of their womb!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
@@ -146,24 +154,28 @@
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Cock")
-			if(cock_contents.len)
-				for(var/mob/M in cock_contents)
 
-					M.loc = src.loc
-					cock_contents.Remove(M)
+			var/tick = 0
+			for(var/mob/M in internal_contents["Cock"])
 
-					if(iscarbon(src.loc))
-						var/mob/living/carbon/loc_mob = src.loc
+				M.loc = src.loc
+				internal_contents["Cock"] -= M
 
-						if(src in loc_mob.stomach_contents)
-							loc_mob.stomach_contents += M
-						if(src in loc_mob.womb_contents)
-							loc_mob.womb_contents += M
-						if(src in loc_mob.cock_contents)
-							loc_mob.cock_contents += M
-						if(src in loc_mob.boob_contents)
-							loc_mob.boob_contents += M
+				if(iscarbon(src.loc))
+					var/mob/living/carbon/loc_mob = src.loc
 
+					if(src in loc_mob.internal_contents["Stomach"])
+						loc_mob.internal_contents["Stomach"] += M
+					if(src in loc_mob.internal_contents["Womb"])
+						loc_mob.internal_contents["Womb"] += M
+					if(src in loc_mob.internal_contents["Cock"])
+						loc_mob.internal_contents["Cock"] += M
+					if(src in loc_mob.internal_contents["Boob"])
+						loc_mob.internal_contents["Boob"] += M
+
+				tick++
+
+			if(tick)
 				visible_message("<font color='green'><b>[src] splurts out the contents of their cock!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
@@ -174,24 +186,27 @@
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Breasts")
-			if(boob_contents.len)
-				for(var/mob/M in boob_contents)
+			var/tick = 0
+			for(var/mob/M in internal_contents["Boob"])
 
-					M.loc = src.loc
-					boob_contents.Remove(M)
+				M.loc = src.loc
+				internal_contents["Boob"] -= M
 
-					if(iscarbon(src.loc))
-						var/mob/living/carbon/loc_mob = src.loc
+				if(iscarbon(src.loc))
+					var/mob/living/carbon/loc_mob = src.loc
 
-						if(src in loc_mob.stomach_contents)
-							loc_mob.stomach_contents += M
-						if(src in loc_mob.womb_contents)
-							loc_mob.womb_contents += M
-						if(src in loc_mob.cock_contents)
-							loc_mob.cock_contents += M
-						if(src in loc_mob.boob_contents)
-							loc_mob.boob_contents += M
+					if(src in loc_mob.internal_contents["Stomach"])
+						loc_mob.internal_contents["Stomach"] += M
+					if(src in loc_mob.internal_contents["Womb"])
+						loc_mob.internal_contents["Womb"] += M
+					if(src in loc_mob.internal_contents["Cock"])
+						loc_mob.internal_contents["Cock"] += M
+					if(src in loc_mob.internal_contents["Boob"])
+						loc_mob.internal_contents["Boob"] += M
 
+				tick++
+
+			if(tick)
 				visible_message("<font color='green'><b>[src] squirts out the contents of their breasts!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
@@ -237,16 +252,16 @@
 	if(istype(src.loc,/mob/living/carbon/human))
 		var/mob/living/carbon/human/eater = src.loc
 		//This big block here figures out where the prey is
-		for(var/mob/living/M in eater.stomach_contents)
+		for(var/mob/living/M in eater.internal_contents["Stomach"])
 			if(M == src)
 				src.predlocation = "stomach"
-		for(var/mob/living/M in eater.cock_contents)
+		for(var/mob/living/M in eater.internal_contents["Cock"])
 			if(M == src)
 				src.predlocation = "balls"
-		for(var/mob/living/M in eater.womb_contents)
+		for(var/mob/living/M in eater.internal_contents["Womb"])
 			if(M == src)
 				src.predlocation = "womb"
-		for(var/mob/living/M in eater.boob_contents)
+		for(var/mob/living/M in eater.internal_contents["Boob"])
 			if(M == src)
 				src.predlocation = "breast"
 
@@ -257,28 +272,28 @@
 				eater.insideflavour[1] = "There is nothing interesting about this stomach."
 			dat += "[eater.insideflavour[1]]<br><br>"
 			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.stomach_contents)
+			for(var/mob/living/M in eater.internal_contents["Stomach"])
 				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
 		if(src.predlocation == "balls")
 			if(!eater.insideflavour[2])
 				eater.insideflavour[2] = "Generic sac description"
 			dat += "[eater.insideflavour[2]]<br><br>"
 			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.cock_contents)
+			for(var/mob/living/M in eater.internal_contents["Cock"])
 				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
 		if(src.predlocation == "womb")
 			if(!eater.insideflavour[3])
 				eater.insideflavour[3] = "Generic womb description"
 			dat += "[eater.insideflavour[3]]<br><br>"
 			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.womb_contents)
+			for(var/mob/living/M in eater.internal_contents["Womb"])
 				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
 		if(src.predlocation == "breast")
 			if(!eater.insideflavour[4])
 				eater.insideflavour[4] = "Generic boob description"
 			dat += "[eater.insideflavour[4]]<br><br>"
 			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.boob_contents)
+			for(var/mob/living/M in eater.internal_contents["Boob"])
 				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
 		dat += "<br>"
 	else
@@ -340,5 +355,5 @@
 
 	if(alert(src, "This button is for those who don't like being digested. It will make you undigestable. Don't abuse this button by toggling it back and forth to extend a scene or whatever, or you'll make the admins cry. Note that this cannot be toggled inside someone's belly.", "", "Okay", "Cancel") == "Okay")
 		digestable = !digestable
-		usr << "<span class='alert'>You are [digestable ? "no longer" : "now"] digestable.</span>"
+		usr << "<span class='alert'>You are [digestable ?  "now" : "no longer"] digestable.</span>"
 		message_admins("[key_name(src)] toggled their digestability to [digestable] ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
