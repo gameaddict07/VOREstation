@@ -93,11 +93,8 @@
 		//Random events (vomiting etc)
 		handle_random_events()
 
-		//stuff in the stomach
-		handle_stomach()
-		handle_womb() // Added by vore script.
-		handle_cock() // Added by vore script.
-		handle_boob() // Added by vore script.
+		//stuff in the internal contents
+		handle_internal_contents()
 
 		handle_shock()
 
@@ -1458,25 +1455,41 @@
 				playsound_local(src,pick(scarySounds),50, 1, -1)
 
 // Start vore code. Digestion code is handled here.
-	proc/handle_stomach()
+
+	proc/handle_internal_contents()
 		var/digest_alert
 		var/weight_msg
-		spawn(0)
-			for(var/mob/living/M in stomach_contents)
-				if(M.loc != src)
-					stomach_contents.Remove(M)
-					continue
 
+		spawn(0)	//Handle basics first
+			for(var/mob/living/M in internal_contents["Stomach"])
+				if(M.loc != src)	internal_contents["Stomach"] -= M
+
+			for(var/mob/living/M in internal_contents["Cock"])
+				if(M.loc != src)	internal_contents["Cock"] -= M
+
+			for(var/mob/living/M in internal_contents["Boob"])
+				if(M.loc != src)	internal_contents["Boob"] -= M
+
+			for(var/mob/living/M in internal_contents["Womb"])
+				if(M.loc != src)	internal_contents["Womb"] -= M
+
+
+
+		//Stomach
+		spawn(0)
+			for(var/mob/living/M in internal_contents["Stomach"])
 				if(istype(M, /mob/living/carbon/human))
 					var/mob/living/carbon/human/R = M
-					if(R.digestable == 0)
+					if(!R.digestable)
 						continue
 
 				if(stat != DEAD && stendo) //According to vore.dm, stendo being true means people should digest. // also: For some reason this can't be checked in the if statement below.
 					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
+
 						if(M.stat == DEAD)
 							M.death(1)
-							stomach_contents.Remove(M)
+							internal_contents["Stomach"] -= M
+
 							digest_alert = rand(1,9) // Increase this number per emote.
 							switch(digest_alert)
 								if(1)
@@ -1535,16 +1548,11 @@
 								var/difference = src.playerscale / M.playerscale 	// LOOK HOW FUCKING CLEVER I AM.
 								nutrition += 10/difference 							// I AM SO PROUD OF MYSELF. -Ace 	 PROUD OF YOU -NW.
 
-	proc/handle_cock()
 		spawn(0)
-			for(var/mob/living/M in cock_contents)
-				if(M.loc != src)
-					cock_contents.Remove(M)
-					continue
-
+			for(var/mob/living/M in internal_contents["Cock"])
 				if(istype(M, /mob/living/carbon/human))
 					var/mob/living/carbon/human/R = M
-					if(R.digestable == 0)
+					if(!R.digestable)
 						continue
 
 				if(stat != DEAD && cvendo) // For some reason this can't be checked in the if statement below.
@@ -1552,7 +1560,7 @@
 						if(M.stat == DEAD)
 							cockfull = 1
 							M.death(1)
-							cock_contents.Remove(M)
+							internal_contents["Cock"] -= M
 							src << "<span class='notice'>You feel [M] dissolve into hot cum in your throbbing, swollen groin.</span>"
 							M << "<span class='notice'>You dissolve into hot cum in [src]'s throbbing, swollen groin.</span>"
 							del(M)
@@ -1563,16 +1571,11 @@
 								M.adjustBruteLoss(2)
 								M.adjustFireLoss(3)
 
-	proc/handle_boob()
 		spawn(0)
-			for(var/mob/living/M in boob_contents)
-				if(M.loc != src)
-					boob_contents.Remove(M)
-					continue
-
+			for(var/mob/living/M in internal_contents["Boob"])
 				if(istype(M, /mob/living/carbon/human))
 					var/mob/living/carbon/human/R = M
-					if(R.digestable == 0)
+					if(!R.digestable)
 						continue
 
 				if(stat != DEAD && bvendo) // For some reason this can't be checked in the if statement below.
@@ -1580,7 +1583,7 @@
 						if(M.stat == DEAD)
 							boobfull = 1
 							M.death(1)
-							boob_contents.Remove(M)
+							internal_contents["Boob"] -= M
 							src << "<span class='notice'>You feel [M] melt into creamy milk, leaving your breasts full and jiggling.</span>"
 							M << "<span class='notice'>You melt into creamy milk, leaving [src]'s breasts full and jiggling.</span>"
 							del(M)
@@ -1591,13 +1594,8 @@
 								M.adjustBruteLoss(2)
 								M.adjustFireLoss(3)
 
-	proc/handle_womb() // TODO: Make simple mobs work here. // TODO: Optimize the ever living fuck out of this horrible code.
 		spawn(0)
-			for(var/mob/living/M in womb_contents)
-				if(M.loc != src)
-					womb_contents.Remove(M)
-					continue
-
+			for(var/mob/living/M in internal_contents["Womb"])
 			//WOMB HEAL
 				if(iscarbon(M) && stat != DEAD && wombheal == "Heal" && M.stat != DEAD)
 					if(air_master.current_cycle%3==1)
@@ -1615,14 +1613,16 @@
 						var/mob/living/carbon/human/R = M
 						if(R.digestable == 0)
 							continue
+
 					if(M.stat == DEAD)
 						wombfull = 1
 						M.death(1)
-						womb_contents.Remove(M)
+						internal_contents["Womb"] -= M
 						src << "<span class='notice'>You feel [M] dissolve into nothing but warm fluids inside your womb.</span>"
 						M << "<span class='notice'>You dissolve into nothing but warm fluids inside [src]'s womb.</span>"
 						del(M)
 						continue
+
 					if(air_master.current_cycle%3==1)
 						if(!(M.status_flags & GODMODE))
 							M.adjustBruteLoss(2)

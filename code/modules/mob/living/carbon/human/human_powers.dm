@@ -200,12 +200,26 @@
 	set desc = "Empties the contents of your stomach"
 	set category = "Abilities"
 
-	if(stomach_contents.len)
-		for(var/mob/M in src)
-			if(M in stomach_contents)
-				stomach_contents.Remove(M)
-				M.loc = loc
-		src.visible_message("\red <B>[src] hurls out the contents of their stomach!</B>")
+	var/tick = 0 //easiest way to check if the list has anything
+	for(var/mob/M in internal_contents["Stomach"])
+		M.loc = loc
+
+		if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
+			var/mob/living/carbon/loc_mob = src.loc
+
+			if(src in loc_mob.internal_contents["Stomach"])
+				loc_mob.internal_contents["Stomach"] += M
+			if(src in loc_mob.internal_contents["Womb"])
+				loc_mob.internal_contents["Womb"] += M
+			if(src in loc_mob.internal_contents["Cock"])
+				loc_mob.internal_contents["Cock"] += M
+			if(src in loc_mob.internal_contents["Boob"])
+				loc_mob.internal_contents["Boob"] += M
+
+		internal_contents["Stomach"] -= M
+		tick++
+
+	if(tick)	src.visible_message("\red <B>[src] hurls out the contents of their stomach!</B>")
 	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())

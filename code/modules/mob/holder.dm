@@ -102,92 +102,94 @@
 			if(M == target)
 				return
 
-		//Oral Vore
-			if(target.vorifice == "Oral Vore")
-				user.visible_message("<span class='danger'>[user] is attempting to stuff [M] down [target]'s throat!</span>")
+			switch(target.vorifice)
 
-				if(!do_mob(user, M)||!do_after(user, 100)) return
+			//Oral Vore
+				if("Oral Vore")
+					user.visible_message("<span class='danger'>[user] is attempting to stuff [M] down [target]'s throat!</span>")
 
-				user.visible_message("<span class='danger'>[target] swallows the last of [M]!</span>")
+					if(!do_mob(user, M)||!do_after(user, 100)) return
 
-				M.loc = target
-				//contents.Remove(M) //This isn't neccessary. contents is handled by BYOND and hooked into loc, they will be removed by setting the loc.
-				target.stomach_contents.Add(M)
+					user.visible_message("<span class='danger'>[target] swallows the last of [M]!</span>")
 
-				if(target == user)
-					msg_admin_attack("[key_name(user)] oral vored [key_name(M)]")
-				else
-					msg_admin_attack("[key_name(user)] fed [key_name(M)] to [key_name(target)]")
+					M.loc = target
+					//contents.Remove(M) //This isn't neccessary. contents is handled by BYOND and hooked into loc, they will be removed by setting the loc.
+					target.internal_contents["Stomach"] += M
 
-				playsound(src, 'sound/vore/gulp.ogg', 100, 1) // This is a new feature. Only available for oral vore currently.
+					if(target == user)
+						msg_admin_attack("[key_name(user)] oral vored [key_name(M)]")
+					else
+						msg_admin_attack("[key_name(user)] fed [key_name(M)] to [key_name(target)]")
 
-		//Unbirth
-			if(target.vorifice == "Unbirth")
-				user.visible_message("<span class='danger'>[user] starts to push [M] into [target]'s pussy!</span>")
+					playsound(src, 'sound/vore/gulp.ogg', 100, 1) // This is a new feature. Only available for oral vore currently.
 
-				if(!do_mob(user, M)||!do_after(user, 100)) return
+			//Unbirth
+				if("Unbirth")
+					user.visible_message("<span class='danger'>[user] starts to push [M] into [target]'s pussy!</span>")
 
-				user.visible_message("<span class='danger'>The last of [M] vanishes into [target]'s vagina!</span>")
-				playsound(src, 'sound/vore/insert.ogg', 100, 1)
+					if(!do_mob(user, M)||!do_after(user, 100)) return
 
-				M.loc = target
-				target.womb_contents.Add(M)
+					user.visible_message("<span class='danger'>The last of [M] vanishes into [target]'s vagina!</span>")
+					playsound(src, 'sound/vore/insert.ogg', 100, 1)
 
-				if(target == user)
-					msg_admin_attack("[key_name(user)] unbirthed [key_name(M)]")
-				else
-					msg_admin_attack("[key_name(user)] forced [key_name(target)] to unbirth [key_name(M)]")
+					M.loc = target
+					target.internal_contents["Womb"] += M
 
-		//Cock Vore
-			if(target.vorifice == "Cock Vore")
-				user.visible_message("<span class='danger'>[user] begins to force [M] down [target]'s shaft!</span>")
+					if(target == user)
+						msg_admin_attack("[key_name(user)] unbirthed [key_name(M)]")
+					else
+						msg_admin_attack("[key_name(user)] forced [key_name(target)] to unbirth [key_name(M)]")
 
-				if(!do_mob(user, M)||!do_after(user, 100)) return
+			//Cock Vore
+				if("Cock Vore")
+					user.visible_message("<span class='danger'>[user] begins to force [M] down [target]'s shaft!</span>")
 
-				user.visible_message("<span class='danger'>[M] disappears into [target]'s cock!</span>")
+					if(!do_mob(user, M)||!do_after(user, 100)) return
 
-				M.loc = target
-				target.cock_contents.Add(M)
+					user.visible_message("<span class='danger'>[M] disappears into [target]'s cock!</span>")
 
-				if(target == user)
-					msg_admin_attack("[key_name(user)] cock vored [key_name(M)]")
-				else
-					msg_admin_attack("[key_name(user)] forced [key_name(target)] to cock vore [key_name(M)]")
+					M.loc = target
+					target.internal_contents["Cock"] += M
 
-				playsound(src, 'sound/vore/gulp.ogg', 100, 1)
+					if(target == user)
+						msg_admin_attack("[key_name(user)] cock vored [key_name(M)]")
+					else
+						msg_admin_attack("[key_name(user)] forced [key_name(target)] to cock vore [key_name(M)]")
 
-		//Anal Vore
-			if(target.vorifice == "Anal Vore")
-				user.visible_message("<span class='danger'>[user] starts sliding [M] up [target]'s ass!</span>")
+					playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 
-				if(!do_mob(user, M)||!do_after(user, 100)) return
+			//Anal Vore
+				if("Anal Vore")
+					user.visible_message("<span class='danger'>[user] starts sliding [M] up [target]'s ass!</span>")
 
-				user.visible_message("<span class='danger'>[M] fully slides into [target]'s ass!</span>")
+					if(!do_mob(user, M)||!do_after(user, 100)) return
 
-				M.loc = target
-				target.stomach_contents.Add(M)
+					user.visible_message("<span class='danger'>[M] fully slides into [target]'s ass!</span>")
 
-				if(target == user)
-					msg_admin_attack("[key_name(user)] anal vored [key_name(M)]")
-				else
-					msg_admin_attack("[key_name(user)] forced [key_name(target)] to anal vore [key_name(M)]")
+					M.loc = target
+					target.internal_contents["Stomach"] += M
 
-				playsound(src, 'sound/vore/schlorp.ogg', 100, 1)
+					if(target == user)
+						msg_admin_attack("[key_name(user)] anal vored [key_name(M)]")
+					else
+						msg_admin_attack("[key_name(user)] forced [key_name(target)] to anal vore [key_name(M)]")
 
-		//Breast Vore
-			if(target.vorifice == "Breast Vore")
-				user.visible_message("<span class='danger'>[user] is trying to force [M] into [target]'s breasts!</span>")
+					playsound(src, 'sound/vore/schlorp.ogg', 100, 1)
 
-				if(!do_mob(user, M)||!do_after(user, 100)) return
+			//Breast Vore
+				if("Breast Vore")
+					user.visible_message("<span class='danger'>[user] is trying to force [M] into [target]'s breasts!</span>")
 
-				user.visible_message("<span class='danger'>[user] stuffs the last of [M] into [target]'s boobs!</span>")
+					if(!do_mob(user, M)||!do_after(user, 100)) return
 
-				M.loc = target
-				target.boob_contents.Add(M)
+					user.visible_message("<span class='danger'>[user] stuffs the last of [M] into [target]'s boobs!</span>")
 
-				if(target == user)
-					msg_admin_attack("[key_name(user)] breast vored [key_name(M)]")
-				else
-					msg_admin_attack("[key_name(user)] forced [key_name(target)] to breast vore [key_name(M)]")
+					M.loc = target
+					target.internal_contents["Boob"] += M
 
-				playsound(src, 'sound/vore/insert.ogg', 100, 1)
+					if(target == user)
+						msg_admin_attack("[key_name(user)] breast vored [key_name(M)]")
+					else
+						msg_admin_attack("[key_name(user)] forced [key_name(target)] to breast vore [key_name(M)]")
+
+					playsound(src, 'sound/vore/insert.ogg', 100, 1)
