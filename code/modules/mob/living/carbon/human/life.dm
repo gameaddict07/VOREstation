@@ -1461,19 +1461,9 @@
 		var/weight_msg
 
 		spawn(0)	//Handle basics first
-			for(var/mob/living/M in internal_contents["Stomach"])
-				if(M.loc != src)	internal_contents["Stomach"] -= M
-
-			for(var/mob/living/M in internal_contents["Cock"])
-				if(M.loc != src)	internal_contents["Cock"] -= M
-
-			for(var/mob/living/M in internal_contents["Boob"])
-				if(M.loc != src)	internal_contents["Boob"] -= M
-
-			for(var/mob/living/M in internal_contents["Womb"])
-				if(M.loc != src)	internal_contents["Womb"] -= M
-
-
+			for (var/bellytype in internal_contents)
+				for(var/mob/living/M in internal_contents[bellytype])
+					if(M.loc != src)	internal_contents[bellytype] -= M
 
 		//Stomach
 		spawn(0)
@@ -1538,9 +1528,11 @@
 									src << "<span class='notice'>You feel a rush of warmth as [M]'s now-liquified remains start pumping through your intestines.</span>"
 									M << "<span class='notice'>Your now-liquified remains start pumping through [src]'s intestines, filling their body with a rush of warmth.</span>"
 							nutrition += 20 // so eating dead mobs gives you *something*.
+							// TODO - Handle indigestable clothes/equipment
 							del(M)
 							continue
 
+						// Deal digestion damage (and feed the pred)
 						if(air_master.current_cycle%3==1)
 							if(!(M.status_flags & GODMODE))
 								M.adjustBruteLoss(2)
@@ -1563,9 +1555,11 @@
 							internal_contents["Cock"] -= M
 							src << "<span class='notice'>You feel [M] dissolve into hot cum in your throbbing, swollen groin.</span>"
 							M << "<span class='notice'>You dissolve into hot cum in [src]'s throbbing, swollen groin.</span>"
+							// TODO - Handle indigestable clothes/equipment
 							del(M)
 							continue
 
+						// Deal digestion damage
 						if(air_master.current_cycle%3==1)
 							if(!(M.status_flags & GODMODE))
 								M.adjustBruteLoss(2)
@@ -1586,9 +1580,11 @@
 							internal_contents["Boob"] -= M
 							src << "<span class='notice'>You feel [M] melt into creamy milk, leaving your breasts full and jiggling.</span>"
 							M << "<span class='notice'>You melt into creamy milk, leaving [src]'s breasts full and jiggling.</span>"
+							// TODO - Handle indigestable clothes/equipment
 							del(M)
 							continue
 
+						// Deal digestion damage
 						if(air_master.current_cycle%3==1)
 							if(!(M.status_flags & GODMODE))
 								M.adjustBruteLoss(2)

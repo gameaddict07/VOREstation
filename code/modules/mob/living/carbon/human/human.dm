@@ -796,16 +796,9 @@
 
 					if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
 						var/mob/living/carbon/loc_mob = src.loc
-
-						if(src in loc_mob.internal_contents["Stomach"])
-							loc_mob.internal_contents["Stomach"] += M
-						if(src in loc_mob.internal_contents["Womb"])
-							loc_mob.internal_contents["Womb"] += M
-						if(src in loc_mob.internal_contents["Cock"])
-							loc_mob.internal_contents["Cock"] += M
-						if(src in loc_mob.internal_contents["Boob"])
-							loc_mob.internal_contents["Boob"] += M
-
+						for (var/bellytype in loc_mob.internal_contents)
+							if(src in loc_mob.internal_contents[bellytype])
+								loc_mob.internal_contents[bellytype] += M
 					tick++
 
 				if(tick)	visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
