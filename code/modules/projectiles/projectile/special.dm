@@ -138,15 +138,15 @@
 			M.adjustBrainLoss(20)
 			M.hallucination += 20
 
-/obj/item/projectile/icarus/pointdefense/process()
-	Icarus_FireLaser(get_turf(original))
+/obj/item/projectile/Daedalus/pointdefense/process()
+	Daedalus_FireLaser(get_turf(original))
 	spawn
 		del src
 
 	return
 
-/obj/item/projectile/icarus/guns/process()
-	Icarus_FireCannon(get_turf(original))
+/obj/item/projectile/Daedalus/guns/process()
+	Daedalus_FireCannon(get_turf(original))
 	spawn
 		del src
 	return

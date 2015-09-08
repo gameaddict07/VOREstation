@@ -6,7 +6,7 @@
 		round_time // time of the round at which this should be announced, in seconds
 		message // body of the message
 		author = "NanoTrasen Editor"
-		channel_name = "Nyx Daily"
+		channel_name = "Virgo Prime Daily"
 		can_be_redacted = 0
 		message_type = "Story"
 
@@ -38,6 +38,7 @@
 			 			the experiments, and reported to have died in a \"work accident\" by Nanotrasen Inc."}
 			author = "Unauthorized"
 
+/*
 	bluespace_research
 
 		announcement
@@ -48,6 +49,22 @@
 						to experiment with and research Bluespace effects. Rumours have it some of these
 						stations even sport functional \"travel gates\" that can instantly move a whole research
 						team to an alternate reality."}
+*/
+
+	redspace_research
+
+		breaking_news
+			channel_name = "Virgo-Prime Daily"
+			author = "Reporter Brad Cast"
+			message = {"The new field of research trying to explain several interesting spacetime oddities,
+						also known as \"Redspace Research\", has reached new heights. Discovered by scientists
+						in the Virgo system, it is the counterpart to bluespace and opposite in almost every
+						way. Its most notable effects have been its reported ability to shrink and grow many objects
+						and even people in a safe manner. It is believed that redspace is a universe small enough
+						to fit into the singularity of a black hole, where our laws of physics do not apply. This
+						is just one of many theories, however. Some believe that redspace, if harnesed safely, could
+						be used for controlled time travel, just as bluespace is used for space travel."}
+			round_time = 60 * 10
 
 	random_junk
 
@@ -66,7 +83,7 @@
 			round_time = 60 * 50
 
 		found_ssd
-			channel_name = "Nyx Daily"
+			channel_name = "Virgo Prime Daily"
 			author = "Doctor Eric Hanfield"
 
 			message = {"Several people have been found unconscious at their terminals. It is thought that it was due
@@ -78,7 +95,7 @@
 	lotus_tree
 
 		explosions
-			channel_name = "Nyx Daily"
+			channel_name = "Virgo Prime Daily"
 			author = "Reporter Leland H. Howards"
 
 			message = {"The newly-christened civillian transport Lotus Tree suffered two very large explosions near the
@@ -92,18 +109,23 @@
 	food_riots
 
 		breaking_news
-			channel_name = "Nyx Daily"
+			channel_name = "Virgo Prime Daily"
 			author = "Reporter Ro'kii Ar-Raqis"
 
-			message = {"Breaking news: Food riots have broken out throughout the Refuge asteroid colony in the Tenebrae
-						Lupus system. This comes only hours after NanoTrasen officials announced they will no longer trade with the
-						colony, citing the increased presence of \"hostile factions\" on the colony has made trade too dangerous to
-						continue. NanoTrasen officials have not given any details about said factions. More on that at the top of
-						the hour."}
+			message = {"Life in the Refuge asteroid colony in the Tenebrae Lupus is finally returning to a sense of normalcy in the wake of a civil war in 2558.
+						Leaders of the facist group known as the \"Tenebrae Lupus Socialist Workers' Party\" were arrested by UNSC special forces and deported
+						to Earth to stand trial for crimes against humanity. It is estimated that roughly 10,000 Tajaran colonists were rounded up and exterminated
+						by the facist group. The humanitarian crisis was put to an end when their top leader, Adalwolf Hiedler, was discovered to actually be Adolf Hitler.
+						Hitler was killed in the UNSC's Operation Wolf Hunt after it was discovered that Blue Space technology had been used to time-travel and retrieve Hitler
+						from the past. Details about the technology has been seized and classified by the UNSC. A spokesman for the UNSC even claimed the technology was outright
+						destroyed, stating; \"While the study of this technology could prove invaluable to historians and scientists, we made the choice to destroy it because of
+						its potential to be abused. Humanity just isn't ready to be meddling with the past. At the very least, we've made one important discovery through this
+						crisis... Multiverse Theory it is. Suck it, Feynman!\""}
 			round_time = 60 * 10
 
+/*
 		more
-			channel_name = "Nyx Daily"
+			channel_name = "Virgo Prime Daily"
 			author = "Reporter Ro'kii Ar-Raqis"
 
 			message = {"More on the Refuge food riots: The Refuge Council has condemned NanoTrasen's withdrawal from
@@ -113,9 +135,9 @@
 			\"further proof\" of the colony's anti-NanoTrasen stance. Meanwhile, Refuge Security has been unable to quell
 			the riots. More on this at 6."}
 			round_time = 60 * 60
+*/
 
-
-var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluespace_research, /datum/news_announcement/lotus_tree, /datum/news_announcement/random_junk,  /datum/news_announcement/food_riots)
+var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/redspace_research, /datum/news_announcement/lotus_tree, /datum/news_announcement/random_junk,  /datum/news_announcement/food_riots)
 
 proc/process_newscaster()
 	check_for_newscaster_updates(ticker.mode.newscaster_announcements)

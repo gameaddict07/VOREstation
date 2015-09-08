@@ -84,7 +84,7 @@
 //A power generator that runs on solid plasma sheets.
 /obj/machinery/power/port_gen/pacman
 	name = "\improper P.A.C.M.A.N.-type Portable Generator"
-	desc = "A power generator that runs on solid phoron sheets. Rated for 80 kW max safe output."
+	desc = "A power generator that runs on refined phorite sheets. Rated for 80 kW max safe output."
 
 	var/sheet_name = "Phoron Sheets"
 	var/sheet_path = /obj/item/stack/sheet/mineral/phoron
