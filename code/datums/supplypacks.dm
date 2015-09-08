@@ -551,7 +551,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	group = "Science"
 
 /datum/supply_packs/solar
-	name = "Solar Pack crate"
+	name = "Solar Pack crate (x21)"
 	contains  = list(/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
@@ -631,6 +631,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	access = access_ce
 	group = "Engineering"
 
+/*
 /datum/supply_packs/mecha_ripley
 	name = "Circuit Crate (\"Ripley\" APLU)"
 	contains = list(/obj/item/weapon/book/manual/ripley_build_and_repair,
@@ -651,6 +652,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containername = "\"Odysseus\" Circuit Crate"
 	access = access_robotics
 	group = "Science"
+*/
 
 /datum/supply_packs/hoverpod
 	name = "Hoverpod Shipment"

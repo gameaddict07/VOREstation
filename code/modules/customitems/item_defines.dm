@@ -1179,9 +1179,9 @@
 	icon_state = "head_m"
 	body_parts_covered = FACE|EYES
 
-//Painted mask: Dante Cicero - andrewmeythaler
+//Painted mask: Dante Cicero - andrewmeyCredit
 
-/obj/item/clothing/mask/andrewmeythaler
+/obj/item/clothing/mask/andrewmeyCredit
 	name = "painted mask"
 	desc = "A ghoulish mask with a stylized painting of a flame over the left eye, and a painted tear stream coming from the right eye."
 	icon = 'icons/obj/custom_items.dmi'

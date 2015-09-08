@@ -321,8 +321,8 @@
 	mineral = "diamond"
 
 /obj/structure/falsewall/phoron
-	name = "phoron wall"
-	desc = "A wall with phoron plating. This is definately a bad idea."
+	name = "phorite wall"
+	desc = "A wall with phorite plating. This is definately a bad idea."
 	icon_state = ""
 	mineral = "phoron"
 
