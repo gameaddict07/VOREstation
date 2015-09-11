@@ -57,6 +57,11 @@
 /mob/living/simple_animal/New()
 	..()
 	verbs -= /mob/verb/observe
+	// Vore Code Start
+	// Setup the types of bellies present.
+	internal_contents["Stomach"] = new /vore/belly/stomach(src)
+	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
+	// Vore Code End
 
 /mob/living/simple_animal/Login()
 	if(src && src.client)
@@ -89,6 +94,17 @@
 	handle_stunned()
 	handle_weakened()
 	handle_paralysed()
+
+	// Start vore code. Digestion code is handled here.
+	// For each belly type
+	for (var/bellytype in internal_contents)
+		var/vore/belly/B = internal_contents[bellytype]
+		for(var/mob/living/M in B.internal_contents)
+			if(M.loc != src)
+				B.internal_contents -= M
+				log_debug("Had to remove [M] from belly [B] in [src]")
+		B.process_Life()
+	//End vore code.
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
@@ -283,6 +299,8 @@
 				user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
 				gib()
 			return
+	else if (istype(O, /obj/item/weapon/grab) || istype(O, /obj/item/weapon/holder/micro))
+		return ..()
 
 	if(O.force)
 		var/damage = O.force

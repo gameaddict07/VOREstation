@@ -200,20 +200,11 @@
 	set desc = "Empties the contents of your stomach"
 	set category = "Abilities"
 
-	var/tick = 0 //easiest way to check if the list has anything
-	for(var/mob/M in internal_contents["Stomach"])
-		M.loc = loc
-
-		if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
-			var/mob/living/carbon/loc_mob = src.loc
-			for (var/bellytype in loc_mob.internal_contents)
-				if (src in loc_mob.internal_contents[bellytype])
-					loc_mob.internal_contents[bellytype] += M
-
-		internal_contents["Stomach"] -= M
-		tick++
-
-	if(tick)	src.visible_message("\red <B>[src] hurls out the contents of their stomach!</B>")
+	// Vore Code Begin
+	var/vore/belly/B = internal_contents["Stomach"]
+	if (B.release_all_contents())
+		src.visible_message("\red <B>[src] hurls out the contents of their stomach!</B>")
+	// Vore Code End
 	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())

@@ -96,100 +96,23 @@
 //This should most likely be preattack. Check whenever possible (doing a straight port)
 /obj/item/weapon/holder/micro/afterattack(var/mob/living/carbon/target, var/mob/user, var/proximity)
 	if(!proximity) return
+
+	// Note! In old code, when feeding to an animal, the animals attackby() proc fired first, and this second.
+	// By the time the thread got to this point, the micro had already been removed from contents.
+	// That was the only thing preventing a crash due to bad typecast.
+	// So lets start out by making sure!
+	// TODO LESHANA - Review whether these procs should actually go into the classes of the vore-capable objects instead
+	if (!is_vore_predator(target)) return
+
 	for(var/mob/living/M in contents)
-		if(ishuman(target) || isalien(target) || isanimal(target))
+		if(M == target)
+			return
 
-			if(M == target)
-				return
+		// TODO - Do we want to do any size comparisons? "micro" is relative after all, could be normal sized in macro paws!
 
-			switch(target.vorifice)
+		// NOTE! Which belly the micro goes into is based on the TARGET's vore setting
+		// 	not the attacker's vore setting! This is the same behavior as old code. Keeping it for now -Leshana
+		var/vore/voretype/target_voretype = target.vorifice
+		if (target_voretype)
+			target_voretype.eat_held_mob(user, M, target)
 
-			//Oral Vore
-				if("Oral Vore")
-					user.visible_message("<span class='danger'>[user] is attempting to stuff [M] down [target]'s throat!</span>")
-
-					if(!do_mob(user, M)||!do_after(user, 100)) return
-
-					user.visible_message("<span class='danger'>[target] swallows the last of [M]!</span>")
-
-					M.loc = target
-					//contents.Remove(M) //This isn't neccessary. contents is handled by BYOND and hooked into loc, they will be removed by setting the loc.
-					target.internal_contents["Stomach"] += M
-
-					if(target == user)
-						msg_admin_attack("[key_name(user)] oral vored [key_name(M)]")
-					else
-						msg_admin_attack("[key_name(user)] fed [key_name(M)] to [key_name(target)]")
-
-					playsound(src, 'sound/vore/gulp.ogg', 100, 1) // This is a new feature. Only available for oral vore currently.
-
-			//Unbirth
-				if("Unbirth")
-					user.visible_message("<span class='danger'>[user] starts to push [M] into [target]'s pussy!</span>")
-
-					if(!do_mob(user, M)||!do_after(user, 100)) return
-
-					user.visible_message("<span class='danger'>The last of [M] vanishes into [target]'s vagina!</span>")
-					playsound(src, 'sound/vore/insert.ogg', 100, 1)
-
-					M.loc = target
-					target.internal_contents["Womb"] += M
-
-					if(target == user)
-						msg_admin_attack("[key_name(user)] unbirthed [key_name(M)]")
-					else
-						msg_admin_attack("[key_name(user)] forced [key_name(target)] to unbirth [key_name(M)]")
-
-			//Cock Vore
-				if("Cock Vore")
-					user.visible_message("<span class='danger'>[user] begins to force [M] down [target]'s shaft!</span>")
-
-					if(!do_mob(user, M)||!do_after(user, 100)) return
-
-					user.visible_message("<span class='danger'>[M] disappears into [target]'s cock!</span>")
-
-					M.loc = target
-					target.internal_contents["Cock"] += M
-
-					if(target == user)
-						msg_admin_attack("[key_name(user)] cock vored [key_name(M)]")
-					else
-						msg_admin_attack("[key_name(user)] forced [key_name(target)] to cock vore [key_name(M)]")
-
-					playsound(src, 'sound/vore/gulp.ogg', 100, 1)
-
-			//Anal Vore
-				if("Anal Vore")
-					user.visible_message("<span class='danger'>[user] starts sliding [M] up [target]'s ass!</span>")
-
-					if(!do_mob(user, M)||!do_after(user, 100)) return
-
-					user.visible_message("<span class='danger'>[M] fully slides into [target]'s ass!</span>")
-
-					M.loc = target
-					target.internal_contents["Stomach"] += M
-
-					if(target == user)
-						msg_admin_attack("[key_name(user)] anal vored [key_name(M)]")
-					else
-						msg_admin_attack("[key_name(user)] forced [key_name(target)] to anal vore [key_name(M)]")
-
-					playsound(src, 'sound/vore/schlorp.ogg', 100, 1)
-
-			//Breast Vore
-				if("Breast Vore")
-					user.visible_message("<span class='danger'>[user] is trying to force [M] into [target]'s breasts!</span>")
-
-					if(!do_mob(user, M)||!do_after(user, 100)) return
-
-					user.visible_message("<span class='danger'>[user] stuffs the last of [M] into [target]'s boobs!</span>")
-
-					M.loc = target
-					target.internal_contents["Boob"] += M
-
-					if(target == user)
-						msg_admin_attack("[key_name(user)] breast vored [key_name(M)]")
-					else
-						msg_admin_attack("[key_name(user)] forced [key_name(target)] to breast vore [key_name(M)]")
-
-					playsound(src, 'sound/vore/insert.ogg', 100, 1)
