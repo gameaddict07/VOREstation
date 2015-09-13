@@ -123,7 +123,7 @@
 	icon_state = "justicepink"
 	item_state = "justicepink"
 
-/obj/item/clothing/head/rabbitears
+/obj/item/clothing/head/accessory/bunny
 	name = "rabbit ears"
 	desc = "Wearing these makes you looks useless, and only good for your sex appeal."
 	icon_state = "bunny"

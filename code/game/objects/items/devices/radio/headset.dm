@@ -75,9 +75,7 @@
 /obj/item/device/radio/headset/headset_sec/tactical
 	name = "Tactical Radio Headset"
 	desc = "A Tactical Radio Headset. It's basically a security headset with a camera. You wonder why this isn't standard issue. To access the security channel, use :s"
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "tacheadset"
-	item_state = "headset"
+	icon_state = "tac_headset"
 	var/obj/machinery/camera/camera
 
 /obj/item/device/radio/headset/headset_sec/tactical/attack_self(mob/user)
