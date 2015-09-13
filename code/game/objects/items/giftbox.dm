@@ -70,8 +70,8 @@
 						/obj/item/clothing/suit/armor/heavy,
 						/obj/item/clothing/suit/armor/vest,
 						/obj/item/clothing/suit/armor/laserproof,
-						/obj/effect/landmark/costume/*,
-						/obj/random/gun/guarenteed*/) // Need to add random melee weapon spawns too.
+						// /obj/random/gun/guarenteed,
+						/obj/effect/landmark/costume) // Need to add random melee weapon spawns too.
 						// I should add phazon parts to this...
 		new loot(usr.loc)
 		usr << "You unwrap the box."
