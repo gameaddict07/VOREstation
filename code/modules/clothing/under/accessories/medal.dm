@@ -11,7 +11,7 @@
 
 /obj/item/clothing/accessory/medal/first
 	name = "1st place medal"
-	desc = "Awarded to the winner of some contest!"
+	desc = "Awarded to the winner of some contest."
 	icon_state = "firstplace"
 	item_state = "gold"
 
