@@ -206,10 +206,10 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "45-10"
 	item_to_spawn()
-		return pick(prob(6);/obj/item/weapon/storage/box/beanbags,\
-					prob(2);/obj/item/weapon/storage/box/shotgunammo,\
-					prob(4);/obj/item/weapon/storage/box/shotgunshells,\
-					prob(1);/obj/item/weapon/storage/box/stunshells,\
+		return pick(prob(6);/obj/item/weapon/storage/box/shotgunbeanbags,\
+					prob(2);/obj/item/weapon/storage/box/shotgunslugs,\
+					prob(4);/obj/item/weapon/storage/box/shotgunpellets,\
+					prob(1);/obj/item/weapon/storage/box/shotgunstunshells,\
 					prob(2);/obj/item/ammo_magazine/c45m,\
 					prob(4);/obj/item/ammo_magazine/c45m/rubber,\
 					prob(4);/obj/item/ammo_magazine/c45m/flash,\

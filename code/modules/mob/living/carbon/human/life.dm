@@ -1452,7 +1452,7 @@
 		if(isturf(loc) && rand(1,1000) == 1)
 			var/turf/currentTurf = loc
 			if(!currentTurf.lighting_lumcount)
-				playsound_local(src,pick(scarySounds),50, 1, -1)
+//				playsound_local(src,pick(scarySounds),50, 1, -1)
 
 // Start vore code. Digestion code is handled here.
 

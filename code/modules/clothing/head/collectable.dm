@@ -130,3 +130,9 @@
 	desc = "Now you can be in the Deathsquad too!"
 	icon_state = "swat"
 	item_state = "swat"
+
+/obj/item/clothing/head/collectable/soviet
+	name = "collectable Soviet officer's hat"
+	desc = "In Soviet army, it takes more courage to retreat than advance!"
+	icon_state = "hgpiratecap"
+	item_state = "hgpiratecap"
