@@ -507,7 +507,7 @@ datum
 			result_amount = 3
 
 		phoronsolidification
-			name = "Solid Phoron"
+			name = "Solid Phorite"
 			id = "solidphoron"
 			result = null
 			required_reagents = list("iron" = 5, "frostoil" = 5, "phoron" = 20)

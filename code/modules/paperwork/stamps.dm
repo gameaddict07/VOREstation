@@ -58,10 +58,10 @@
 	icon_state = "stamp-intaff"
 	item_color = "intaff"
 
-/obj/item/weapon/stamp/centcomm
-	name = "centcomm rubber stamp"
+/obj/item/weapon/stamp/CentCom
+	name = "CentCom rubber stamp"
 	icon_state = "stamp-cent"
-	item_color = "centcomm"
+	item_color = "CentCom"
 
 // Syndicate stamp to forge documents.
 /obj/item/weapon/stamp/chameleon/attack_self(mob/user as mob)

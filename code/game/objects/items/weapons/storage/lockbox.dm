@@ -86,3 +86,28 @@
 	New()
 		..()
 		new /obj/item/weapon/grenade/flashbang/clusterbang(src)
+
+
+/obj/item/weapon/storage/lockbox/medals_low
+	name = "lockbox of low-tier medals"
+	desc = "Contains a conduct medal, medical medal, science medal, and bronze heart."
+	req_access = list(access_captain)
+
+	New()
+		..()
+		new /obj/item/clothing/accessory/medal/conduct(src)
+		new /obj/item/clothing/accessory/medal/medical(src)
+		new /obj/item/clothing/accessory/medal/nobel_science(src)
+		new /obj/item/clothing/accessory/medal/bronze_heart(src)
+
+/obj/item/weapon/storage/lockbox/medals_high
+	name = "lockbox of high-tier medals"
+	desc = "Contains a security medal, a valor medal, a teamworking medal, and a leadership medal."
+	req_access = list(access_captain)
+
+	New()
+		..()
+		new /obj/item/clothing/accessory/medal/silver/security(src)
+		new /obj/item/clothing/accessory/medal/silver/valor(src)
+		new /obj/item/clothing/accessory/medal/silver/unity(src)
+		new /obj/item/clothing/accessory/medal/gold/leadership(src)

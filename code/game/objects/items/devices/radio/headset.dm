@@ -70,6 +70,26 @@
 	item_state = "headset"
 	ks2type = /obj/item/device/encryptionkey/headset_sec
 
+//------ Tactical headset ------//
+
+/obj/item/device/radio/headset/headset_sec/tactical
+	name = "Tactical Radio Headset"
+	desc = "A Tactical Radio Headset. It's basically a security headset with a camera. You wonder why this isn't standard issue. To access the security channel, use :s"
+	icon_state = "tac_headset"
+	var/obj/machinery/camera/camera
+
+/obj/item/device/radio/headset/headset_sec/tactical/attack_self(mob/user)
+	if(camera)
+		..(user)
+	else
+		camera = new /obj/machinery/camera(src)
+		camera.network = list("SS13")
+		cameranet.removeCamera(camera)
+		camera.c_tag = "TacCam Headset - [user.name]" // This is better, so they are organized when in use.
+		user << "\blue User scanned as [camera.c_tag]. Camera activated."
+
+//------------------------------//
+
 /obj/item/device/radio/headset/headset_eng
 	name = "engineering radio headset"
 	desc = "When the engineers wish to chat like girls."

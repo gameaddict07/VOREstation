@@ -134,7 +134,7 @@ var/list/mechtoys = list(
 	New()
 		ordernum = rand(1,9000)
 
-	//Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
+	//Supply shuttle ticker - handles supply point regenertion and shuttle travelling between CentCom and the station
 	proc/process()
 		for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs))
 			var/datum/supply_packs/P = new typepath()
@@ -149,7 +149,7 @@ var/list/mechtoys = list(
 
 				sleep(processing_interval)
 
-	//To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
+	//To stop things being sent to CentCom which should not be sent to CentCom. Recursively checks for these types.
 	proc/forbidden_atoms_check(atom/A)
 		if(istype(A,/mob/living))
 			return 1

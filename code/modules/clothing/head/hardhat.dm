@@ -36,3 +36,10 @@
 	icon_state = "hardhat0_dblue"
 	item_state = "hardhat0_dblue"
 	item_color = "dblue"
+
+/obj/item/clothing/head/hardhat/justice
+	name = "THE HELMET OF JUSTICE!"
+	desc = "<b>YOU <i>ARE</i> THE LAW!</b>"
+	icon_state = "hardhat0_justice"
+	item_state = "hardhat0_justice"
+	item_color = "justice"

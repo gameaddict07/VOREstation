@@ -55,7 +55,7 @@
 					"You have (1) new message!",\
 					"You have (2) new profile views!")
 				if(3)
-					sender = pick("Galactic Payments Association","Better Business Bureau","Nyx E-Payments","NAnoTransen Finance Deparmtent","Luxury Replicas")
+					sender = pick("Galactic Payments Association","Better Business Bureau","Virgo Prime E-Payments","NAnoTransen Finance Deparmtent","Luxury Replicas")
 					message = pick("Luxury watches for Blowout sale prices!",\
 					"Watches, Jewelry & Accessories, Bags & Wallets !",\
 					"Deposit 100$ and get 300$ totally free!",\
@@ -65,7 +65,7 @@
 				if(4)
 					sender = pick("Buy Dr. Maxman","Having dysfuctional troubles?")
 					message = pick("DR MAXMAN: REAL Doctors, REAL Science, REAL Results!",\
-					"Dr. Maxman was created by George Acuilar, M.D, a CentComm Certified Urologist who has treated over 70,000 patients sector wide with 'male problems'.",\
+					"Dr. Maxman was created by George Acuilar, M.D, a CentCom Certified Urologist who has treated over 70,000 patients sector wide with 'male problems'.",\
 					"After seven years of research, Dr Acuilar and his team came up with this simple breakthrough male enhancement formula.",\
 					"Men of all species report AMAZING increases in length, width and stamina.")
 				if(5)

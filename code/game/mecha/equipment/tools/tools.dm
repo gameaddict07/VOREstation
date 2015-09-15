@@ -15,7 +15,7 @@
 	action(atom/target)
 		if(!action_checks(target)) return
 		if(!cargo_holder) return
-		
+
 		//loading
 		if(istype(target,/obj))
 			var/obj/O = target
@@ -29,7 +29,7 @@
 			if(cargo_holder.cargo.len >= cargo_holder.cargo_capacity)
 				occupant_message("<font color='red'>Not enough room in cargo compartment.</font>")
 				return
-			
+
 			occupant_message("You lift [target] and start to load it into cargo compartment.")
 			chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
 			set_ready_state(0)
@@ -821,7 +821,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/generator
 	name = "phoron generator"
-	desc = "Generates power using solid phoron as fuel. Pollutes the environment."
+	desc = "Generates power using refined phorite as fuel. Pollutes the environment."
 	icon_state = "tesla"
 	origin_tech = "phorontech=2;powerstorage=2;engineering=1"
 	equip_cooldown = 10
