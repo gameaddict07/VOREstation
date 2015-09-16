@@ -1752,6 +1752,10 @@
 
 // Guns
 
+#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
+#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
+#define MAGAZINE 		4	//The magazine item itself goes inside the gun
+
 /obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
 	name = "FN Five Seven"
 	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real."
@@ -1760,6 +1764,7 @@
 	magazine_type = /obj/item/ammo_magazine/c28mm
 	max_shells = 10
 	caliber = "5.7×28mm"
+	load_method = MAGAZINE
 
 /obj/item/weapon/gun/projectile/automatic/m14
 	name = "M14 Battle Rifle"
@@ -1772,7 +1777,8 @@
 	//slot_flags = SLOT_BACK
 	origin_tech = "combat=2"
 	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = 3
+	ammo_type = /obj/item/ammo_casing/a51mm
+	load_method = MAGAZINE
 	max_shells = 10
 	caliber = "7.62x51mm"
 
@@ -1790,7 +1796,9 @@
 	max_shells = 5
 	caliber = "rifle" // Prevents loading shotgun shells into the rifle.
 	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
-	magazine_type = /obj/item/ammo_casing/shotgun/rifle
+	magazine_type = /obj/item/ammo_magazine/rifle_clip
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle
+	load_method = SINGLE_CASING | SPEEDLOADER
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
 	name = "ZM Kar 1"
@@ -1902,7 +1910,7 @@
 	throwforce = 10
 	max_shells = 10
 	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = 2
+	load_method = 4
 	caliber = "7.62x51mm"
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -1945,9 +1953,9 @@
 	name = "magazine (5.7×28mm)"
 	icon_state = "45"
 	ammo_type = /obj/item/ammo_casing/c28mm
-	caliber = ".45"
 	max_ammo = 10
 	multiple_sprites = 1
+	mag_type = MAGAZINE
 	caliber = "5.7×28mm"
 
 /obj/item/ammo_magazine/c28mm/empty
@@ -1965,8 +1973,10 @@
 	name = "ammo magazine (M14)"
 	icon_state = "75"
 	ammo_type = /obj/item/ammo_casing/a51mm
+	mag_type = MAGAZINE
 	multiple_sprites = 1
 	max_ammo = 10
+	caliber = "7.62x51mm"
 
 /obj/item/ammo_magazine/a51mm/empty
 	name = "ammo magazine (M14)"
@@ -1984,11 +1994,13 @@
 /obj/item/ammo_casing/shotgun/rifle/chalk // For target shooting.
 	name = "chalk rifle round"
 	desc = "A round from a rifle, which uses a chalk bullet."
+	caliber = "rifle"
 	projectile_type = /obj/item/projectile/bullet/weakbullet/chalk
 
 /obj/item/ammo_casing/shotgun/rifle/blank // For ceremonies.
 	name = "practice rifle round"
 	desc = "There's no bullet. Just a cartrige with a crimped top end."
+	caliber = "rifle"
 	projectile_type = /obj/item/projectile/energy/blank // Because anything else shatters windows.
 
 /obj/item/ammo_magazine/rifle_clip
@@ -1996,7 +2008,9 @@
 	desc = "A clip of rifle rounds"
 	icon_state = "riflestrip"
 	ammo_type = /obj/item/ammo_casing/shotgun/rifle
+	mag_type = SPEEDLOADER
 	max_ammo = 5
+	caliber = "rifle"
 	multiple_sprites = 1
 	/* // Breaks things.
 	New() // So they scatter on the floor.
@@ -2007,12 +2021,14 @@
 /obj/item/ammo_magazine/rifle_clip/chalk
 	name = "rifle clip of chalk rounds"
 	desc = "A clip of rifle rounds with chalk bullets."
+	caliber = "rifle"
 	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
 
 
 /obj/item/ammo_magazine/rifle_clip/blank
 	name = "rifle clip of blank rounds"
 	desc = "A clip of rifle rounds with chalk bullets."
+	caliber = "rifle"
 	ammo_type = /obj/item/projectile/energy/blank
 
 
