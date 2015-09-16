@@ -86,7 +86,7 @@ var/blobevent   = 0
 
 var/diary          = null
 var/href_logfile   = null
-var/station_name   = "NSS Exodus"
+var/station_name   = "NSS Virgo Orbital Research Establishment"
 var/game_version   = "Baystation12"
 var/changelog_hash = ""
 var/game_year      = (text2num(time2text(world.realtime, "YYYY")) + 544)
@@ -232,6 +232,7 @@ var/list/robot_module_types = list(
 )
 
 // Some scary sounds.
+/*
 var/static/list/scarySounds = list(
 	'sound/weapons/thudswoosh.ogg',
 	'sound/weapons/Taser.ogg',
@@ -251,6 +252,7 @@ var/static/list/scarySounds = list(
 	'sound/effects/clownstep1.ogg',
 	'sound/effects/clownstep2.ogg'
 )
+*/
 
 // Bomb cap!
 var/max_explosion_range = 14

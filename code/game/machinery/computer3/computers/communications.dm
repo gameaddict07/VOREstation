@@ -36,7 +36,7 @@
 	var/state = STATE_DEFAULT
 	var/aistate = STATE_DEFAULT
 	var/message_cooldown = 0
-	var/centcomm_message_cooldown = 0
+	var/CentCom_message_cooldown = 0
 	var/tmp_alertlevel = 0
 
 	var/status_display_freq = "1435"
@@ -184,29 +184,29 @@
 			stat_msg2 = reject_bad_text(trim(sanitize(copytext(input("Line 2", "Enter Message Text", stat_msg2) as text|null, 1, 40)), 40))
 			computer.updateDialog()
 
-		// OMG CENTCOMM LETTERHEAD
-		if("MessageCentcomm" in href_list)
+		// OMG CentCom LETTERHEAD
+		if("MessageCentCom" in href_list)
 			if(!computer.radio.subspace)
 				return
 			if(authenticated==2)
-				if(centcomm_message_cooldown)
+				if(CentCom_message_cooldown)
 					usr << "Arrays recycling.  Please stand by."
 					return
-				var/input = stripped_input(usr, "Please choose a message to transmit to Centcomm via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response.", "To abort, send an empty message.", "")
+				var/input = stripped_input(usr, "Please choose a message to transmit to CentCom via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response.", "To abort, send an empty message.", "")
 				if(!input || !interactable())
 					return
-				Centcomm_announce(input, usr)
+				CentCom_announce(input, usr)
 				usr << "Message transmitted."
-				log_say("[key_name(usr)] has made a Centcomm announcement: [input]")
-				centcomm_message_cooldown = 1
+				log_say("[key_name(usr)] has made a CentCom announcement: [input]")
+				CentCom_message_cooldown = 1
 				spawn(600)//10 minute cooldown
-					centcomm_message_cooldown = 0
+					CentCom_message_cooldown = 0
 
 
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate" in href_list)
 			if((authenticated==2) && (computer.emagged))
-				if(centcomm_message_cooldown)
+				if(CentCom_message_cooldown)
 					usr << "Arrays recycling.  Please stand by."
 					return
 				var/input = stripped_input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response.", "To abort, send an empty message.", "")
@@ -215,9 +215,9 @@
 				Syndicate_announce(input, usr)
 				usr << "Message transmitted."
 				log_say("[key_name(usr)] has made an illegal announcement: [input]")
-				centcomm_message_cooldown = 1
+				CentCom_message_cooldown = 1
 				spawn(600)//10 minute cooldown
-					centcomm_message_cooldown = 0
+					CentCom_message_cooldown = 0
 
 		if("RestoreBackup" in href_list)
 			usr << "Backup routing data restored!"
@@ -288,7 +288,7 @@
 			if (authenticated==2)
 				dat += "<BR>\[ <A HREF='?src=\ref[src];announce'>Make An Announcement</A> \]"
 				if(computer.emagged == 0)
-					dat += "<BR>\[ <A HREF='?src=\ref[src];MessageCentcomm'>Send an emergency message to Centcomm</A> \]"
+					dat += "<BR>\[ <A HREF='?src=\ref[src];MessageCentCom'>Send an emergency message to CentCom</A> \]"
 				else
 					dat += "<BR>\[ <A HREF='?src=\ref[src];MessageSyndicate'>Send an emergency message to \[UNKNOWN\]</A> \]"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];RestoreBackup'>Restore Backup Routing Data</A> \]"

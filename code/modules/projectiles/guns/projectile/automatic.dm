@@ -89,7 +89,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/z8
 	name = "\improper Z8 Bulldog"
-	desc = "An older model bullpup carbine, made by the now defunct Zendai Foundries. Uses armor piercing 5.56mm rounds. Makes you feel like a space marine when you hold it."
+	desc = "An older model bullpup carbine, designed by the now defunct Zendai Foundries. Uses armor piercing 5.56mm rounds. Makes you feel like a space marine when you hold it."
 	icon_state = "carbine"
 	item_state = "z8carbine"
 	w_class = 4
@@ -103,7 +103,7 @@
 	magazine_type = /obj/item/ammo_magazine/a556
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	
+
 	var/use_launcher = 0
 	var/obj/item/weapon/gun/launcher/grenade/underslung/launcher
 
