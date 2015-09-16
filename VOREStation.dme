@@ -5,7 +5,6 @@
 // END_INTERNALS
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-<<<<<<< HEAD
 #define FILE_DIR "html"
 #define FILE_DIR "html/images"
 #define FILE_DIR "icons"
@@ -74,8 +73,6 @@
 #define FILE_DIR "tools"
 #define FILE_DIR "tools/AddToChangelog"
 #define FILE_DIR "tools/AddToChangelog/AddToChangelog"
-=======
->>>>>>> dev-Joan
 // END_FILE_DIR
 // BEGIN_PREFERENCES
 #define DEBUG
