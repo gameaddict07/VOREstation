@@ -253,6 +253,12 @@
 		reagents.add_reagent("sacid", 60)
 		update_icon()
 
+/obj/item/weapon/reagent_containers/glass/beaker/neurotoxin
+	New()
+		..()
+		reagents.add_reagent("neurotoxin",50)
+		update_icon()
+
 /obj/item/weapon/reagent_containers/glass/bucket
 	desc = "It's a bucket."
 	name = "bucket"

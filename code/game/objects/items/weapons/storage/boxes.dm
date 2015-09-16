@@ -135,7 +135,7 @@
 		new /obj/item/weapon/dnainjector/m2h(src)
 
 
-/obj/item/weapon/storage/box/blanks
+/obj/item/weapon/storage/box/shotgunblanks
 	name = "box of blank shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
 
@@ -149,7 +149,7 @@
 		new /obj/item/ammo_casing/shotgun/blank(src)
 		new /obj/item/ammo_casing/shotgun/blank(src)
 
-/obj/item/weapon/storage/box/beanbags
+/obj/item/weapon/storage/box/shotgunbeanbags
 	name = "box of beanbag shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 
@@ -163,7 +163,7 @@
 		new /obj/item/ammo_casing/shotgun/beanbag(src)
 		new /obj/item/ammo_casing/shotgun/beanbag(src)
 
-/obj/item/weapon/storage/box/shotgunammo
+/obj/item/weapon/storage/box/shotgunslugs
 	name = "box of shotgun slugs"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 
@@ -177,7 +177,7 @@
 		new /obj/item/ammo_casing/shotgun(src)
 		new /obj/item/ammo_casing/shotgun(src)
 
-/obj/item/weapon/storage/box/shotgunshells
+/obj/item/weapon/storage/box/shotgunpellets
 	name = "box of shotgun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 
@@ -191,7 +191,7 @@
 		new /obj/item/ammo_casing/shotgun/pellet(src)
 		new /obj/item/ammo_casing/shotgun/pellet(src)
 
-/obj/item/weapon/storage/box/flashshells
+/obj/item/weapon/storage/box/shotgunflashshells
 	name = "box of illumination shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 
@@ -205,7 +205,7 @@
 		new /obj/item/ammo_casing/shotgun/flash(src)
 		new /obj/item/ammo_casing/shotgun/flash(src)
 
-/obj/item/weapon/storage/box/stunshells
+/obj/item/weapon/storage/box/shotgunstunshells
 	name = "box of stun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 

@@ -143,7 +143,7 @@ var/list/DEPT_FREQS = list(SCI_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SUP_FREQ, SRV
 	// Antags!
 	if (frequency in ANTAG_FREQS)
 		return "syndradio"
-	// centcomm channels (deathsquid and ert)
+	// CentCom channels (deathsquid and ert)
 	else if(frequency in CENT_FREQS)
 		return "centradio"
 	// command channel

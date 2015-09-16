@@ -160,29 +160,56 @@
 	force_wielded = 30
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
-	flags = NOSHIELD
+	flags = NOSHIELD | NOBLOODY
 	origin_tech = "magnets=3;syndicate=4"
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = 1
 	edge = 1
 
-/obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
-	..()
-	if((CLUMSY in user.mutations) && (wielded) &&prob(40))
-		user << "\red You twirl around a bit before losing your balance and impaling yourself on the [src]."
-		user.take_organ_damage(20,25)
-		return
-	if((wielded) && prob(50))
-		spawn(0)
-			for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2))
-				user.set_dir(i)
-				sleep(1)
+	New()
+		item_color = pick("red", "blue", "green", "purple")
 
-/obj/item/weapon/twohanded/dualsaber/IsShield()
-	if(wielded)
-		return 1
-	else
-		return 0
+	update_icon()
+		if(wielded)
+			icon_state = "dualsaber[item_color][wielded]"
+		else
+			icon_state = "dualsaber0"
+		//clean_blood()//blood overlays get weird otherwise, because the sprite changes. // No longer needed because nobloody flag.
+		return
+
+	attack(target as mob, mob/living/user as mob)
+		..()
+		if((CLUMSY in user.mutations) && (wielded) &&prob(40))
+			user << "\red You twirl around a bit before losing your balance and impaling yourself on the [src]."
+			user.take_organ_damage(20,25)
+			return
+		if((wielded) && prob(50))
+			spawn(0)
+				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2))
+					user.set_dir(i)
+					sleep(1)
+
+	IsShield()
+		if(wielded)
+			return 1
+		else
+			return 0
+
+/obj/item/weapon/twohanded/dualsaber/green
+	New()
+		item_color = "green"
+
+/obj/item/weapon/twohanded/dualsaber/red
+	New()
+		item_color = "red"
+
+/obj/item/weapon/twohanded/dualsaber/blue
+	New()
+		item_color = "blue"
+
+/obj/item/weapon/twohanded/dualsaber/purple
+	New()
+		item_color = "purple"
 
 //spears, bay edition
 /obj/item/weapon/twohanded/spear

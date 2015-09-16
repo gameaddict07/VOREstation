@@ -8,7 +8,7 @@ var/list/weighted_mundaneevent_locations = list()
 	var/distance = 0
 	var/list/willing_to_buy = list()
 	var/list/willing_to_sell = list()
-	var/can_shuttle_here = 0		//one day crew from the exodus will be able to travel to this destination
+	var/can_shuttle_here = 0		//one day crew from the V.O.R.E. will be able to travel to this destination
 	var/list/viable_random_events = list()
 	var/list/temp_price_change[BIOMEDICAL]
 	var/list/viable_mundane_events = list()
@@ -17,8 +17,8 @@ var/list/weighted_mundaneevent_locations = list()
 	return null
 
 //distance is measured in AU and co-relates to travel time
-/datum/trade_destination/centcomm
-	name = "CentComm"
+/datum/trade_destination/CentCom
+	name = "CentCom"
 	description = "NanoTrasen's administrative centre for Tau Ceti."
 	distance = 1.2
 	willing_to_buy = list()
@@ -41,9 +41,9 @@ var/list/weighted_mundaneevent_locations = list()
 		[pick("mind-machine interfacing","neuroscience","nano-augmentation","genetics")]. NanoTrasen is expected to announce a co-exploitation deal within the fortnight."
 	return null
 
-/datum/trade_destination/icarus
-	name = "NMV Icarus"
-	description = "Corvette assigned to patrol NSS Exodus local space."
+/datum/trade_destination/Daedalus
+	name = "NDV Daedalus"
+	description = "Corvette assigned to patrol NSS V.O.R.E. local space."
 	distance = 0.1
 	willing_to_buy = list()
 	willing_to_sell = list()

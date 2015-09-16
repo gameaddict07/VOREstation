@@ -32,7 +32,7 @@
 	icon_state = "coin_iron"
 
 /obj/item/weapon/coin/phoron
-	name = "solid phoron coin"
+	name = "phorite coin"
 	icon_state = "coin_phoron"
 
 /obj/item/weapon/coin/uranium
