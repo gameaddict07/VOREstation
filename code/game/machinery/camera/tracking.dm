@@ -219,7 +219,7 @@ mob/living/proc/near_camera()
 
 /mob/living/proc/tracking_status()
 	// Easy checks first.
-	// Don't detect mobs on Centcom. Since the wizard den is on Centcomm, we only need this.
+	// Don't detect mobs on Centcom. Since the wizard den is on CentCom, we only need this.
 	if(InvalidPlayerTurf(get_turf(src)))
 		return TRACKING_TERMINATE
 	if(invisibility >= INVISIBILITY_LEVEL_ONE) //cloaked

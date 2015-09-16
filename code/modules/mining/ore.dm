@@ -30,7 +30,7 @@
 	oretag = "sand"
 
 /obj/item/weapon/ore/phoron
-	name = "phoron crystals"
+	name = "phorite crystals"
 	icon_state = "Phoron ore"
 	origin_tech = "materials=2"
 	oretag = "phoron"

@@ -116,8 +116,9 @@ obj/item/stack/sheet/mineral/iron/New()
 	recipes = uranium_recipes
 
 /obj/item/stack/sheet/mineral/phoron
-	name = "solid phoron"
+	name = "refined phorite"
 	icon_state = "sheet-phoron"
+	desc = "This appears to be a solid, refined state of the fuel known as phoron."
 	origin_tech = "phorontech=2;materials=2"
 	perunit = 2000
 	sheettype = "phoron"

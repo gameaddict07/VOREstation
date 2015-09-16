@@ -688,7 +688,7 @@ proc/get_damage_icon_part(damage_state, body_part)
 	if(head)
 		head.screen_loc = ui_head		//TODO
 		var/image/standing
-		if(istype(head,/obj/item/clothing/head/kitty))
+		if(istype(head,/obj/item/clothing/head/accessory/kitty))
 			standing = image("icon" = head:mob)
 		else
 			if(head.icon_override)

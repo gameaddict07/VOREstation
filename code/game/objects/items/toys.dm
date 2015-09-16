@@ -891,13 +891,13 @@
 
 /obj/structure/plushie/drone
 	name = "plush drone"
-	desc = "A plushie of a happy drone! It appears to be smiling, and has a small tag which reads \"N.D.V. Icarus Gift Shop\"."
+	desc = "A plushie of a happy drone! It appears to be smiling, and has a small tag which reads \"N.D.V. Daedalus Gift Shop\"."
 	icon_state = "droneplushie"
 	phrase = "Beep boop!"
 
 /obj/structure/plushie/carp
 	name = "plush carp"
-	desc = "A plushie of an elated carp! Straight from the wilds of the Nyx frontier, now right here in your hands."
+	desc = "A plushie of an elated carp! Straight from the wilds of the Virgo Prime frontier, now right here in your hands."
 	icon_state = "carpplushie"
 	phrase = "Glorf!"
 
