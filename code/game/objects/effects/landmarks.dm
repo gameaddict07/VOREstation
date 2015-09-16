@@ -156,12 +156,12 @@
 
 /obj/effect/landmark/costume/nyangirl/New()
 	new /obj/item/clothing/under/schoolgirl(src.loc)
-	new /obj/item/clothing/head/kitty(src.loc)
+	new /obj/item/clothing/head/accessory/kitty(src.loc)
 	del(src)
 
 /obj/effect/landmark/costume/maid/New()
 	new /obj/item/clothing/under/blackskirt(src.loc)
-	var/CHOICE = pick( /obj/item/clothing/head/beret , /obj/item/clothing/head/rabbitears )
+	var/CHOICE = pick( /obj/item/clothing/head/beret , /obj/item/clothing/head/accessory/bunny )
 	new CHOICE(src.loc)
 	new /obj/item/clothing/glasses/sunglasses/blindfold(src.loc)
 	del(src)
@@ -208,7 +208,7 @@
 
 /obj/effect/landmark/costume/waiter/New()
 	new /obj/item/clothing/under/waiter(src.loc)
-	var/CHOICE= pick( /obj/item/clothing/head/kitty, /obj/item/clothing/head/rabbitears)
+	var/CHOICE= pick( /obj/item/clothing/head/accessory/kitty, /obj/item/clothing/head/accessory/bunny)
 	new CHOICE(src.loc)
 	new /obj/item/clothing/suit/apron(src.loc)
 	del(src)

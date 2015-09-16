@@ -1456,8 +1456,8 @@
 			M.Weaken(20)
 			M.stuttering = 20
 
-	else if(href_list["CentcommReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
+	else if(href_list["CentComReply"])
+		var/mob/living/carbon/human/H = locate(href_list["CentComReply"])
 		if(!istype(H))
 			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
@@ -1465,11 +1465,11 @@
 			usr << "The person you are trying to contact is not wearing a headset"
 			return
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from Centcomm", "")
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from CentCom", "")
 		if(!input)	return
 
 		src.owner << "You sent [input] to [H] via a secure channel."
-		log_admin("[src.owner] replied to [key_name(H)]'s Centcomm message with the message [input].")
+		log_admin("[src.owner] replied to [key_name(H)]'s CentCom message with the message [input].")
 		message_admins("[src.owner] replied to [key_name(H)]'s Centcom message with: \"[input]\"")
 		H << "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from Central Command.  Message as follows. <b>\"[input]\"</b>  Message ends.\""
 
@@ -1525,11 +1525,11 @@
 			H.show(src.owner)
 		return
 
-	else if(href_list["CentcommFaxReply"])
-		var/mob/sender = locate(href_list["CentcommFaxReply"])
+	else if(href_list["CentComFaxReply"])
+		var/mob/sender = locate(href_list["CentComFaxReply"])
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CentCom", "") as message|null
 		if(!input)	return
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
@@ -1566,7 +1566,7 @@
 		var/mob/living/carbon/human/H = locate(href_list["SolGovFaxReply"])
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Centcomm", "") as message|null
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CentCom", "") as message|null
 		if(!input)	return
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
@@ -2416,7 +2416,7 @@
 					if(W.z in config.station_levels && !istype(get_area(W), /area/bridge) && !istype(get_area(W), /area/crew_quarters) && !istype(get_area(W), /area/security/prison))
 						W.req_access = list()
 				message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
-				command_announcement.Announce("Centcomm airlock control override activated. Please take this time to get acquainted with your coworkers.", new_sound = 'sound/AI/commandreport.ogg')
+				command_announcement.Announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", new_sound = 'sound/AI/commandreport.ogg')
 			if("dorf")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","DF")

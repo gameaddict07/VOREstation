@@ -129,9 +129,9 @@
 						/obj/item/clothing/head/collectable/captain,
 						/obj/item/clothing/head/that,
 						/obj/item/clothing/head/that,
-						/obj/item/clothing/head/kitty,
+						/obj/item/clothing/head/accessory/kitty,
 						/obj/item/clothing/head/collectable/kitty,
-						/obj/item/clothing/head/rabbitears,
+						/obj/item/clothing/head/accessory/bunny,
 						/obj/item/clothing/head/collectable/rabbitears,
 						/obj/item/clothing/head/beret,
 						/obj/item/clothing/head/collectable/beret,
@@ -203,13 +203,13 @@
 		if(/obj/item/clothing/head/caphat, /obj/item/clothing/head/collectable/captain)
 			name = "Captain [real_name]"
 			desc = "Probably better than the last captain."
-		if(/obj/item/clothing/head/kitty, /obj/item/clothing/head/collectable/kitty)
+		if(/obj/item/clothing/head/accessory/kitty, /obj/item/clothing/head/collectable/kitty)
 			name = "Runtime"
 			emote_see = list("coughs up a furball", "stretches")
 			emote_hear = list("purrs")
 			speak = list("Purrr", "Meow!", "MAOOOOOW!", "HISSSSS", "MEEEEEEW")
 			desc = "It's a cute little kitty-cat! ... wait ... what the hell?"
-		if(/obj/item/clothing/head/rabbitears, /obj/item/clothing/head/collectable/rabbitears)
+		if(/obj/item/clothing/head/accessory/bunny, /obj/item/clothing/head/collectable/rabbitears)
 			name = "Hoppy"
 			emote_see = list("twitches its nose", "hops around a bit")
 			desc = "This is hoppy. It's a corgi-...urmm... bunny rabbit"

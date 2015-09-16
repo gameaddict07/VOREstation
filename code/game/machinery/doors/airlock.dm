@@ -73,6 +73,8 @@
 	name = "External Airlock"
 	icon = 'icons/obj/doors/Doorext.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
+	opacity = 0
+	glass = 1
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
@@ -230,7 +232,7 @@
 	return
 
 /obj/machinery/door/airlock/phoron
-	name = "Phoron Airlock"
+	name = "Phorite Airlock"
 	desc = "No way this can end badly."
 	icon = 'icons/obj/doors/Doorphoron.dmi'
 	mineral = "phoron"
