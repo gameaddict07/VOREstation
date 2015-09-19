@@ -20,7 +20,7 @@
 /mob/living/simple_animal/snake/Noodle
 	name = "Noodle"
 	desc = "This snake is particularly chubby and demands nothing but the finest of treats."
-	//isPredator = 1 -- Commented out until vore code revision
+	isPredator = 1
 
 //Special snek-snax for Noodle!
 obj/item/weapon/reagent_containers/food/snacks/snakesnack

@@ -30,12 +30,25 @@
 	if((src.loc) && isturf(src.loc))
 		if(!stat && !resting && !buckled)
 			for(var/mob/living/simple_animal/mouse/M in loc)
-				if(!M.stat)
-					M.splat()
-					visible_emote(pick("bites \the [M]!","toys with \the [M].","chomps on \the [M]!"))
+				if(isPredator == 1) //If the cat is a predator,
 					movement_target = null
-					stop_automated_movement = 0
+					custom_emote(1, "greedily stuffs [M] into their gaping maw!")
+					sleep(30)
+					if(M in oview(1, src))
+						custom_emote(1, "swallows down [M] into their hungry gut!")
+						M.loc = src
+						src.stomach_contents.Add(M)
+						playsound(src, 'sound/vore/gulp.ogg', 100, 1)
+					else
+						M << "You just manage to slip away from [src]'s jaws before you can be sent to a fleshy prison!"
 					break
+				else
+					if(!M.stat)
+						M.splat()
+						visible_emote(pick("bites \the [M]!","toys with \the [M].","chomps on \the [M]!"))
+						movement_target = null
+						stop_automated_movement = 0
+						break
 
 	..()
 
@@ -44,12 +57,40 @@
 			audible_emote(pick("hisses and spits!","mrowls fiercely!","eyes [snack] hungrily."))
 		break
 
+	if(!stat && !resting && !buckled) //SEE A MICRO AND ARE A PREDATOR, EAT IT!
+		for(var/mob/living/carbon/human/food in oview(src, 3))
+			if(food.playerscale < 0.3)
+				if(prob(10))
+					custom_emote(1, pick("eyes [food] hungrily!","licks their lips and turns towards [food] a little!","purrs as they imagine [food] being in their belly."))
+					break
+				else
+					if(prob(2))
+						movement_target = food
+						break
+		for(var/mob/living/carbon/human/bellyfiller in oview(1, src))
+			if(bellyfiller.playerscale < 0.3 && src.isPredator == 1)
+				movement_target = null
+				custom_emote(1, pick("slurps [bellyfiller] with their sandpapery tongue.","looms over [bellyfiller] with their maw agape.","sniffs at [bellyfiller], their belly grumbling hungrily."))
+				sleep(2)
+
+				custom_emote(1, "scoops [bellyfiller] into their maw!")
+				sleep(30)
+				if(bellyfiller in oview(1, src))
+					custom_emote(1, "swallows down [bellyfiller] with a happy purr!")
+					bellyfiller.loc = src
+					src.stomach_contents.Add(bellyfiller)
+					msg_admin_attack("[key_name(bellyfiller)] got eaten by [src]!")
+					playsound(src, 'sound/vore/gulp.ogg', 100, 1)
+				else
+					bellyfiller << "You just manage to slip away from [src]'s jaws before you can be sent to a fleshy prison!"
+				break
+
 	if(!stat && !resting && !buckled)
 		turns_since_scan++
 		if (turns_since_scan > 5)
 			walk_to(src,0)
 			turns_since_scan = 0
-			
+
 			if (flee_target) //fleeing takes precendence
 				handle_flee_target()
 			else
@@ -68,7 +109,7 @@
 			if(isturf(snack.loc) && !snack.stat)
 				movement_target = snack
 				break
-	
+
 	if(movement_target)
 		stop_automated_movement = 1
 		walk_to(src,movement_target,0,3)
@@ -106,7 +147,7 @@
 /mob/living/simple_animal/cat/bullet_act(var/obj/item/projectile/proj)
 	. = ..()
 	set_flee_target(proj.firer? proj.firer : src.loc)
-	
+
 /mob/living/simple_animal/cat/hitby(atom/movable/AM)
 	. = ..()
 	set_flee_target(AM.thrower? AM.thrower : src.loc)
@@ -193,7 +234,7 @@
 		set_dir(get_dir(src, friend))
 		say("Meow!")
 		return
-	
+
 	if (!(ishuman(usr) && befriend_job && usr.job == befriend_job))
 		usr << "<span class='notice'>[src] ignores you.</span>"
 		return
