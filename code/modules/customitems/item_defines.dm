@@ -1461,11 +1461,13 @@
 
 // Stuff by Joan Risu goes below.
 
-/obj/item/weapon/lighter/zippo/fluff/joan
+/obj/item/weapon/flame/lighter/zippo/fluff/joan
 	name = "Federation Zippo Lighter"
 	desc = "A red zippo lighter with the United Federation Logo on it."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "joanzip"
+	icon_on = "joanzipon"
+	icon_off = "joanzip"
 
 /obj/item/weapon/claymore/fluff/aria
 	name = "Aria"
@@ -1728,13 +1730,14 @@
 	item_state = "talvest"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
+	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
 	armor = list(melee = 30, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 
 /obj/item/clothing/head/squirrel/joan //Because I hate the ears matching hair color -Joan
 	name = "squirrel ears"
 	desc = "A pair of squirrel ears. NUTS!"
+	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "squirrel_old"
 
 
@@ -1749,15 +1752,19 @@
 
 // Guns
 
-/obj/item/weapon/gun/projectile/detective/semiauto/fluff/fnfiveseven // JoanRisu : Joan Risu
+#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
+#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
+#define MAGAZINE 		4	//The magazine item itself goes inside the gun
+
+/obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
 	name = "FN Five Seven"
 	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real."
 	icon = 'icons/obj/custom_items.dmi'
-//	item_state = "fnseven" // You don't want this. You want the default handgun to appear on your character.
 	icon_state = "fnseven"
-	ammo_type = "/obj/item/ammo_casing/c28mm"
+	magazine_type = /obj/item/ammo_magazine/c28mm
 	max_shells = 10
 	caliber = "5.7×28mm"
+	load_method = MAGAZINE
 
 /obj/item/weapon/gun/projectile/automatic/m14
 	name = "M14 Battle Rifle"
@@ -1769,8 +1776,9 @@
 	fire_sound = 'sound/weapons/rifleshot.ogg'
 	//slot_flags = SLOT_BACK
 	origin_tech = "combat=2"
-	ammo_type = "/obj/item/ammo_casing/a51mm"
-	load_method = 2
+	magazine_type = /obj/item/ammo_magazine/a51mm
+	ammo_type = /obj/item/ammo_casing/a51mm
+	load_method = MAGAZINE
 	max_shells = 10
 	caliber = "7.62x51mm"
 
@@ -1788,7 +1796,9 @@
 	max_shells = 5
 	caliber = "rifle" // Prevents loading shotgun shells into the rifle.
 	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle"
+	magazine_type = /obj/item/ammo_magazine/rifle_clip
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle
+	load_method = SINGLE_CASING | SPEEDLOADER
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
 	name = "ZM Kar 1"
@@ -1803,82 +1813,89 @@
 	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen."
 	ammo_type = "/obj/item/ammo_casing/shotgun/rifle/blank"
 
-//Dominator needs to have a universal locking function for kill mode that only the captain or HOS can unlock from a PDA or the alert system. || I don't think that is doable. -Spades
 /obj/item/weapon/gun/energy/fluff/dominator
 	name = "MWPSB Dominator"
 	desc = "A MWPSB's Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division."
-	item_state = "dominatorstun100"
-	icon_state = null
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "dominatorstun100"
+	item_state = null
 	fire_sound = 'sound/weapons/Taser.ogg'
-
 	charge_cost = 100 //How much energy is needed to fire.
-	projectile_type = "/obj/item/projectile/energy/electrode_strong"
+	projectile_type = /obj/item/projectile/energy/electrode_strong/dominator
 	origin_tech = "combat=3;magnets=2"
 	modifystate = "dominatorstun"
+	charge_meter = 1
 
 	var/mode = 0 //0 = stun, 1 = kill
 
 
-	attack_self(mob/living/user as mob)
-		switch(mode)
-			if(0)
-				mode = 1
-				charge_cost = 100
-				fire_sound = 'sound/weapons/gauss_shoot.ogg'
-				user << "\red [src.name] is now in Eliminator Mode. Target will be harmed. Please aim carefully."
-				user.visible_message("\red [src.name] changes into a very intimidating looking energy gun.")
-
-				projectile_type = "/obj/item/projectile/beam/heavylaser/dominator"
-				modifystate = "dominatorkill"
-			if(1)
-				mode = 0
-				charge_cost = 100
-				fire_sound = 'sound/weapons/Taser.ogg'
-				user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
-				user.visible_message("\red [src.name] is set to Paralyzer Mode.")
-
-				projectile_type = "/obj/item/projectile/energy/electrode_strong"
-				modifystate = "dominatorstun"
-		update_icon()
+/obj/item/weapon/gun/energy/fluff/dominator/attack_self(mob/living/user as mob)
+	switch(mode)
+		if(0)
+			mode = 1
+			charge_cost = 100
+			fire_sound = 'sound/weapons/gauss_shoot.ogg'
+			user << "\red [src.name] is now in Eliminator Mode. Target will be harmed. Please aim carefully."
+			user.visible_message("\red [src.name] changes into a very intimidating looking energy gun.")
+			projectile_type = /obj/item/projectile/beam/heavylaser/dominator
+			modifystate = "dominatorkill"
+		if(1)
+			mode = 0
+			charge_cost = 100
+			fire_sound = 'sound/weapons/Taser.ogg'
+			user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
+			user.visible_message("\red [src.name] is set to Paralyzer Mode.")
+			projectile_type = /obj/item/projectile/energy/electrode_strong/dominator
+			modifystate = "dominatorstun"
+	update_icon()
+	update_held_icon()
 
 /obj/item/projectile/beam/heavylaser/dominator
 	name = "Lethal Beam"
 	icon_state = "omnilaser"
-	damage = 50
+	damage = 60
+
+/obj/item/projectile/energy/electrode_strong/dominator
+	name = "stun beam"
+	icon_state = "stun"
+	taser_effect = 1
+	nodamage = 1
+	agony = 120
+	damage_type = HALLOSS
 
 /obj/item/weapon/gun/energy/fluff/aro
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon_state = "energystun100"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "kraystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	charge_cost = 200 //How much energy is needed to fire.
-	projectile_type = "/obj/item/projectile/energy/electrode"
+	projectile_type = /obj/item/projectile/energy/electrode
 	origin_tech = "combat=3;magnets=2"
-	modifystate = "energystun"
+	modifystate = "kraystun"
 
 	var/mode = 0 //0 = stun, 1 = kill
 
-
-	attack_self(mob/living/user as mob)
-		switch(mode)
-			if(0)
-				mode = 1
-				charge_cost = 100
-				fire_sound = 'sound/weapons/blaster_pistol.ogg'
-				user << "\red [src.name] is now set to kill."
-				projectile_type = "/obj/item/projectile/beam"
-				modifystate = "energykill"
-			if(1)
-				mode = 0
-				charge_cost = 200
-				fire_sound = 'sound/weapons/Taser.ogg'
-				user << "\red [src.name] is now set to stun."
-				projectile_type = "/obj/item/projectile/energy/electrode"
-				modifystate = "energystun"
-		update_icon()
-
+/obj/item/weapon/gun/energy/gun/attack_self(mob/living/user as mob)
+	switch(mode)
+		if(0)
+			mode = 1
+			charge_cost = 100
+			fire_sound = 'sound/weapons/Laser.ogg'
+			user << "<span class='warning'>[src.name] is now set to kill.</span>"
+			projectile_type = /obj/item/projectile/beam
+			modifystate = "kraykill"
+		if(1)
+			mode = 0
+			charge_cost = 100
+			fire_sound = 'sound/weapons/Taser.ogg'
+			user << "<span class='warning'>[src.name] is now set to stun.</span>"
+			projectile_type = /obj/item/projectile/beam/stun
+			modifystate = "kraystun"
+	update_icon()
+	update_held_icon()
 
 /obj/item/weapon/gun/projectile/automatic/crestrose
 	name = "Crescent Rose"
@@ -1892,32 +1909,31 @@
 	force = 40
 	throwforce = 10
 	max_shells = 10
-	ammo_type = "/obj/item/ammo_casing/a51mm"
-	load_method = 2
+	magazine_type = /obj/item/ammo_magazine/a51mm
+	load_method = 4
 	caliber = "7.62x51mm"
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	var/modifystate
+	var/modifystate = "crestrose"
 	var/mode = 0 //0 = stun, 1 = kill
 
 
-	attack_self(mob/living/user as mob)
-		switch(mode)
-			if(0)
-				mode = 1
-				user.visible_message("\red [src.name] folds up into a cool looking rifle.")
-				force = 5
-				throwforce = 2
-
-				modifystate = "crestrose_fold"
-			if(1)
-				mode = 0
-				user.visible_message("\red [src.name] changes into a very intimidating looking weapon.")
-				force = 40
-				throwforce = 10
-
-				modifystate = "crestrose"
-		update_icon()
+/obj/item/weapon/gun/projectile/automatic/crestrose/attack_self(mob/living/user as mob)
+	switch(mode)
+		if(0)
+			mode = 1
+			user.visible_message("\red [src.name] folds up into a cool looking rifle.")
+			force = 5
+			throwforce = 2
+			modifystate = "crestrose_fold"
+		if(1)
+			mode = 0
+			user.visible_message("\red [src.name] changes into a very intimidating looking weapon.")
+			force = 40
+			throwforce = 10
+			modifystate = "crestrose"
+	update_icon()
+	update_held_icon()
 
 /obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver
 	name = "Ryan's 'Devilgun'"
@@ -1936,9 +1952,11 @@
 /obj/item/ammo_magazine/c28mm // FN ammo.
 	name = "magazine (5.7×28mm)"
 	icon_state = "45"
-	ammo_type = "/obj/item/ammo_casing/c28mm"
+	ammo_type = /obj/item/ammo_casing/c28mm
 	max_ammo = 10
 	multiple_sprites = 1
+	mag_type = MAGAZINE
+	caliber = "5.7×28mm"
 
 /obj/item/ammo_magazine/c28mm/empty
 	max_ammo = 0
@@ -1946,19 +1964,24 @@
 /obj/item/ammo_casing/c28mm
 	desc = "A 5.7×28mm bullet casing."
 	caliber = "5.7×28mm"
-	projectile_type = "/obj/item/projectile/bullet/midbullet2"
+	projectile_type = /obj/item/projectile/bullet/pistol/medium/fn
 
-/obj/item/ammo_magazine/a51 // M14 ammo.
+/obj/item/projectile/bullet/pistol/medium/fn
+	damage = 35
+
+/obj/item/ammo_magazine/a51mm // M14 ammo.
 	name = "ammo magazine (M14)"
 	icon_state = "75"
-	ammo_type = "/obj/item/ammo_casing/a51mm"
+	ammo_type = /obj/item/ammo_casing/a51mm
+	mag_type = MAGAZINE
 	multiple_sprites = 1
 	max_ammo = 10
+	caliber = "7.62x51mm"
 
-/obj/item/ammo_magazine/a51/empty
+/obj/item/ammo_magazine/a51mm/empty
 	name = "ammo magazine (M14)"
 	icon_state = "75"
-	ammo_type = "/obj/item/ammo_casing/a51mm"
+	ammo_type = /obj/item/ammo_casing/a51mm
 	max_ammo = 0
 
 /obj/item/ammo_casing/shotgun/rifle
@@ -1966,24 +1989,28 @@
 	desc = "A round from a rifle."
 	icon_state = "s-casing"
 	caliber = "rifle"
-	projectile_type = "/obj/item/projectile/bullet"
+	projectile_type = /obj/item/projectile/bullet
 
 /obj/item/ammo_casing/shotgun/rifle/chalk // For target shooting.
 	name = "chalk rifle round"
 	desc = "A round from a rifle, which uses a chalk bullet."
-	projectile_type = "/obj/item/projectile/bullet/weakbullet/chalk"
+	caliber = "rifle"
+	projectile_type = /obj/item/projectile/bullet/weakbullet/chalk
 
 /obj/item/ammo_casing/shotgun/rifle/blank // For ceremonies.
 	name = "practice rifle round"
 	desc = "There's no bullet. Just a cartrige with a crimped top end."
-	projectile_type = "/obj/item/projectile/energy/electrode/blank" // Because anything else shatters windows.
+	caliber = "rifle"
+	projectile_type = /obj/item/projectile/energy/blank // Because anything else shatters windows.
 
 /obj/item/ammo_magazine/rifle_clip
 	name = "rifle clip"
 	desc = "A clip of rifle rounds"
 	icon_state = "riflestrip"
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle"
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle
+	mag_type = SPEEDLOADER
 	max_ammo = 5
+	caliber = "rifle"
 	multiple_sprites = 1
 	/* // Breaks things.
 	New() // So they scatter on the floor.
@@ -1994,13 +2021,16 @@
 /obj/item/ammo_magazine/rifle_clip/chalk
 	name = "rifle clip of chalk rounds"
 	desc = "A clip of rifle rounds with chalk bullets."
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle/chalk"
+	caliber = "rifle"
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
 
 
 /obj/item/ammo_magazine/rifle_clip/blank
 	name = "rifle clip of blank rounds"
 	desc = "A clip of rifle rounds with chalk bullets."
-	ammo_type = "/obj/item/projectile/energy/electrode/blank"
+	caliber = "rifle"
+	ammo_type = /obj/item/projectile/energy/blank
+
 
 // End ammo magazines.
 
@@ -2009,13 +2039,22 @@
 /obj/item/ammo_casing/a51mm
 	desc = "A 7.62x51mm bullet casing"
 	caliber = "7.62x51mm"
-	projectile_type = "/obj/item/projectile/bullet/a762" // Because it uses 7.62 rounds, like the SAW. Should do the same damage.
+	projectile_type = /obj/item/projectile/bullet/rifle/a762 // Because it uses 7.62 rounds, like the SAW. Should do the same damage.
 
 
 /obj/item/projectile/bullet/weakbullet/chalk // For the station to purchase rifles for competition shooting, loaded with chalk bullets.
 	damage = 10
 	stun = 0
 	weaken = 5 // They still hurt like a motherfucker.
+
+/obj/item/projectile/energy/blank
+	name = "electrode"
+	icon_state = null
+	nodamage = 1
+	taser_effect = 0
+	agony = 0
+	damage_type = HALLOSS
+	//Damage will be handled on the MOB side, to prevent window shattering.
 
 // End bullets.
 
