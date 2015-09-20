@@ -1782,6 +1782,7 @@
 	max_shells = 10
 	caliber = "7.62x51mm"
 
+
 /obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
 	name = "Gallian 4 Rifle"
 	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military."
@@ -1799,6 +1800,7 @@
 	magazine_type = /obj/item/ammo_magazine/rifle_clip
 	ammo_type = /obj/item/ammo_casing/shotgun/rifle
 	load_method = SINGLE_CASING | SPEEDLOADER
+	cocksound = 'sound/weapons/riflebolt.ogg' // This var is so we can change sounds for bolt-action rifles.
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
 	name = "ZM Kar 1"
@@ -1806,12 +1808,12 @@
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For Cargonia
 	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen."
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle/chalk"
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
 	name = "ceremonial bolt-action rifle"
 	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen."
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle/blank"
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle/blank
 
 /obj/item/weapon/gun/energy/fluff/dominator
 	name = "MWPSB Dominator"
@@ -1910,7 +1912,7 @@
 	throwforce = 10
 	max_shells = 10
 	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = 4
+	load_method = MAGAZINE
 	caliber = "7.62x51mm"
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -1935,15 +1937,43 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver
+/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver
 	name = "Ryan's 'Devilgun'"
 	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red wooden grip. Uses .357 ammo."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "ryan_winz"
+	load_method = SINGLE_CASING | SPEEDLOADER
 
-/obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver/redemption
+
+/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption
 	name = "Ryan's 'Redeemer'"
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
+	load_method = SINGLE_CASING | SPEEDLOADER
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
+	name = "\"The Judge\""
+	desc = "A breach-loading weapon produced by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
+	icon_state = "judge"
+	item_state = "gun"
+	max_shells = 5
+	w_class = 3
+	recoil = 2 // Kicks like a mule.
+	slot_flags = null // You can't wear this on your back.
+	origin_tech = "combat=4;materials=3;syndicate=4"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	load_method = SINGLE_CASING | SPEEDLOADER
+
+/* Maybe...
+	isHandgun()
+		return 1
+*/
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge/jury
+	name = "\"The Jury\""
+	desc = "A variant of the \"The Judge\" revolver sold by Cybersun Industries to the mercenary group Skinner's Legion."
+	icon_state = "jury"
+	load_method = SINGLE_CASING | SPEEDLOADER
+
 
 // End guns.
 
@@ -2429,8 +2459,8 @@
 	desc = "Used to safely transport Ryan's two personal revolvers."
 	storage_slots = 2
 	New()
-		new /obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver(src)
-		new /obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver/redemption(src)
+		new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver(src)
+		new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption(src)
 		..()
 		return
 

@@ -14,6 +14,8 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	handle_casings = HOLD_CASINGS
 	var/recentpump = 0 // to prevent spammage
+	var/cocksound = 'sound/weapons/shotgunpump.ogg' // This var is so we can change sounds for bolt-action rifles.
+
 
 /obj/item/weapon/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
@@ -26,7 +28,7 @@
 		recentpump = world.time
 
 /obj/item/weapon/gun/projectile/shotgun/pump/proc/pump(mob/M as mob)
-	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
+	playsound(M, cocksound /*'sound/weapons/shotgunpump.ogg'*/, 60, 1)
 
 	if(chambered)//We have a shell in the chamber
 		chambered.loc = get_turf(src)//Eject casing
