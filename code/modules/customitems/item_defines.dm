@@ -1815,6 +1815,24 @@
 	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen."
 	ammo_type = /obj/item/ammo_casing/shotgun/rifle/blank
 
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
+	name = "Wicked Butterfly"
+	desc = "A customized bolt-action sniper rifle that was carried by one of the most revered snipers in the Federation. The stock has a small butterfly engraved on it."
+	icon_state = "wickedbutterfly"
+	item_state = "boltaction"
+	recoil = 2 //extra kickback
+	accuracy = -1
+	scoped_accuracy = 2
+	load_method = SINGLE_CASING
+
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)
+
 /obj/item/weapon/gun/energy/fluff/dominator
 	name = "MWPSB Dominator"
 	desc = "A MWPSB's Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division."
