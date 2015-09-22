@@ -28,7 +28,7 @@
 		recentpump = world.time
 
 /obj/item/weapon/gun/projectile/shotgun/pump/proc/pump(mob/M as mob)
-	playsound(M, cocksound /*'sound/weapons/shotgunpump.ogg'*/, 60, 1)
+	playsound(M, cocksound, 60, 1)
 
 	if(chambered)//We have a shell in the chamber
 		chambered.loc = get_turf(src)//Eject casing

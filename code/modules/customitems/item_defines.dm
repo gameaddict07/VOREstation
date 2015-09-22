@@ -2476,37 +2476,40 @@
 	name = "Ryan's Gun Case"
 	desc = "Used to safely transport Ryan's two personal revolvers."
 	storage_slots = 2
-	New()
-		new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver(src)
-		new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption(src)
-		..()
-		return
+
+/obj/item/weapon/storage/briefcase/fluff/ryan_winz/New()
+	new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver(src)
+	new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption(src)
+	..()
+	return
 
 // ardithprime:Natasha Moscovich
 /obj/item/weapon/storage/box/fluff/soviet
 	name = "Soviet Officer's Kit"
 	desc = "Contains all the items needed to serve the Motherworld away from the Motherworld!"
 	storage_slots = 4
-	New()
-		new /obj/item/clothing/head/hgpiratecap(src)
-		new /obj/item/clothing/shoes/jackboots(src)
-		new /obj/item/clothing/suit/hgpirate(src)
-		new /obj/item/clothing/under/soviet(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/soviet/New()
+	new /obj/item/clothing/head/hgpiratecap(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/clothing/suit/hgpirate(src)
+	new /obj/item/clothing/under/soviet(src)
+	..()
+	return
 
 // jemli:Cirra Mayhem
 /obj/item/weapon/storage/box/fluff/pirate // jemli:Cirra Mayhem
 	name = "Instant Pirate Kit"
 	desc = "Just add Akula!"
 	storage_slots = 4
-	New()
-		new /obj/item/clothing/head/pirate(src)
-		new /obj/item/clothing/glasses/eyepatch(src)
-		new /obj/item/clothing/suit/pirate(src)
-		new /obj/item/clothing/under/pirate(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/pirate/New()
+	new /obj/item/clothing/head/pirate(src)
+	new /obj/item/clothing/glasses/eyepatch(src)
+	new /obj/item/clothing/suit/pirate(src)
+	new /obj/item/clothing/under/pirate(src)
+	..()
+	return
 
 /obj/item/device/fluff/id_kit_mime // joey4298:Emoticon
 	name = "Mime ID replacer"
@@ -2532,36 +2535,39 @@
 /obj/item/weapon/storage/box/fluff/mime // joey4298:Emoticon
 	name = "Emoticon's Mime Kit"
 	desc = "Specially packaged for the hungry catgirl mime with a taste for clown."
-	New()
-		new /obj/item/device/fluff/id_kit_mime(src)
-		new /obj/item/clothing/gloves/white(src)
-		new /obj/item/clothing/head/beret(src)
-		new /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing(src)
-		new /obj/item/clothing/shoes/black(src)
-		new /obj/item/toy/crayon/mime(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/mime/New()
+	new /obj/item/device/fluff/id_kit_mime(src)
+	new /obj/item/clothing/gloves/white(src)
+	new /obj/item/clothing/head/beret(src)
+	new /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing(src)
+	new /obj/item/clothing/shoes/black(src)
+	new /obj/item/toy/crayon/mime(src)
+	..()
+	return
 
 /obj/item/weapon/storage/box/fluff/joanrisu // joanrisu:Joan Risu
 	name = "Federation Officer's Kit"
 	desc = "A care package for every serving Federation officer serving away from the Federation."
 	storage_slots = 8
-	New()
-		new /obj/item/clothing/gloves/white(src)
-		new /obj/item/device/radio/headset/heads/captain(src)
-		new /obj/item/weapon/storage/backpack/satchel(src)
-		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-		new /obj/item/weapon/card/id/gold/fluff/badge/(src)
-		new /obj/item/weapon/card/id/captains_spare(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/joanrisu/New()
+	new /obj/item/clothing/gloves/white(src)
+	new /obj/item/device/radio/headset/heads/captain(src)
+	new /obj/item/weapon/storage/backpack/satchel(src)
+	new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
+	new /obj/item/weapon/card/id/gold/fluff/badge/(src)
+	new /obj/item/weapon/card/id/captains_spare(src)
+	..()
+	return
 
 /obj/item/weapon/storage/box/fluff/tasaldkit // bwoincognito:Tasald Corlethian
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's clothes."
 	storage_slots = 2
-	New()
-		new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
-		new /obj/item/clothing/under/det/fluff/talsald(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/tasaldkit/New()
+	new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
+	new /obj/item/clothing/under/det/fluff/talsald(src)
+	..()
+	return
