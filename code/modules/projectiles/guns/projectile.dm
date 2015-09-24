@@ -50,7 +50,7 @@
 		chambered = ammo_magazine.stored_ammo[1]
 		if(handle_casings != HOLD_CASINGS)
 			ammo_magazine.stored_ammo -= chambered
-	
+
 	if (chambered)
 		return chambered.BB
 	return null
