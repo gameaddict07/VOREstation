@@ -108,7 +108,7 @@ var/list/ghostteleportlocs = list()
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
-	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
+	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg','sound/music/Minor_Turbulence.ogg')
 
 area/space/atmosalert()
 	return
@@ -163,7 +163,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape/station
 	name = "\improper Emergency Shuttle Station"
@@ -179,7 +178,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod1
 	name = "\improper Escape Pod One"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod1/station
 	icon_state = "shuttle2"
@@ -192,7 +190,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod2
 	name = "\improper Escape Pod Two"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod2/station
 	icon_state = "shuttle2"
@@ -205,7 +202,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod3
 	name = "\improper Escape Pod Three"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod3/station
 	icon_state = "shuttle2"
@@ -218,7 +214,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod5 //Pod 4 was lost to meteors
 	name = "\improper Escape Pod Five"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod5/station
 	icon_state = "shuttle2"
@@ -324,7 +319,6 @@ area/space/atmosalert()
 
 /area/shuttle/research
 	name = "\improper Research Shuttle"
-	music = "music/escape.ogg"
 
 /area/shuttle/research/station
 	icon_state = "shuttle2"
