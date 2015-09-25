@@ -18,16 +18,16 @@
 //		iii) You can feed yourself to it!
 //
 
-/vore/voretype/proc/eat_held_mob(var/mob/attacker, var/mob/living/prey, var/mob/living/pred)
+/vore/voretype/proc/eat_held_mob(var/mob/user, var/mob/living/prey, var/mob/living/pred)
 	return
 
-/vore/voretype/proc/feed_self_to_grabbed(var/mob/living/carbon/human/attacker, var/vore/pred_capable/pred)
+/vore/voretype/proc/feed_self_to_grabbed(var/mob/living/carbon/human/user, var/vore/pred_capable/pred)
 	return
 
-/vore/voretype/proc/feed_grabbed_to_self(var/mob/living/carbon/human/attacker, var/mob/prey)
+/vore/voretype/proc/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
 	return
 
-/vore/voretype/proc/feed_grabbed_to_other(var/mob/living/carbon/human/attacker, var/mob/prey, var/vore/pred_capable/pred)
+/vore/voretype/proc/feed_grabbed_to_other(var/mob/living/carbon/human/user, var/mob/prey, var/vore/pred_capable/pred)
 	return
 
 //
@@ -40,10 +40,11 @@
 	user.visible_message(attempt_msg)
 
 	// Now give the prey time to escape... return if they did
-	if (istype(prey, /mob/living/carbon/human))
-		if(!do_mob(user, prey) || !do_after(user, human_prey_swallow_time)) return 0  // Non-humans get only 30 ticks
-	else
-		if(!do_mob(user, prey) || !do_after(user, nonhuman_prey_swallow_time)) return 0 // Humans get 100 ticks to escape.
+	var/swallow_time = istype(prey, /mob/living/carbon/human) ? human_prey_swallow_time : nonhuman_prey_swallow_time;
+	if (!do_mob(user, prey))
+		return 0; // User is not able to act upon prey
+	if(!do_after(user, swallow_time))
+		return 0 // Prey escpaed (or user disabled) before timer expired.
 
 	// If we got this far, nom successful! Announce it!
 	user.visible_message(success_msg)
