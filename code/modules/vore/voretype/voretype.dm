@@ -5,6 +5,8 @@
 /vore/voretype
 	var/name
 	var/belly_target = "Stomach"	// Which belly does this voretype lead you to?
+	var/human_prey_swallow_time = 100  // Humans get 100 ticks to escape by default
+	var/nonhuman_prey_swallow_time = 30 // Others get only 30 ticks.
 
 //
 // Note: There are currently four ways to eat somone in VIRGO, via two main methods.
@@ -38,19 +40,30 @@
 	user.visible_message(attempt_msg)
 
 	// Now give the prey time to escape... return if they did
-	if (!istype(prey, /mob/living/carbon/human))
-		if(!do_mob(user, prey) || !do_after(user, 30)) return 0  // Non-humans get only 30 ticks
+	if (istype(prey, /mob/living/carbon/human))
+		if(!do_mob(user, prey) || !do_after(user, human_prey_swallow_time)) return 0  // Non-humans get only 30 ticks
 	else
-		if(!do_mob(user, prey) || !do_after(user, 100)) return 0 // Humans get 100 ticks to escape.
+		if(!do_mob(user, prey) || !do_after(user, nonhuman_prey_swallow_time)) return 0 // Humans get 100 ticks to escape.
 
 	// If we got this far, nom successful! Announce it!
 	user.visible_message(success_msg)
 	playsound(user, sound, 100, 1)
 
+	// Unbuckle the mob
+	if (prey.buckled)
+		prey.buckled.unbuckle_mob()
+
 	// Actually put the prey where they belong.
 	prey.loc = pred
 	var/vore/belly/target_belly = pred.internal_contents[belly_target]
 	target_belly.internal_contents += prey
+
+	// Inform Admins
+	if(pred == user)
+		msg_admin_attack("[key_name(user)] [name]'d [key_name(prey)]")
+	else
+		msg_admin_attack("[key_name(user)] forced [key_name(pred)] to [name] [key_name(prey)]")
+
 	return 1
 
 // TODO LESHANA - This needs to be done much better in a cleaner way.

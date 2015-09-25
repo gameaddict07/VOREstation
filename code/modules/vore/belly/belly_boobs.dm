@@ -28,14 +28,10 @@
 		if(owner.stat != DEAD && digest_mode == DM_DIGEST) // For some reason this can't be checked in the if statement below.
 			if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 				if(M.stat == DEAD)
-					src.is_full = 1
-					M.death(1)
-					internal_contents -= M
 					owner << "<span class='notice'>You feel [M] melt into creamy milk, leaving your breasts full and jiggling.</span>"
 					M << "<span class='notice'>You melt into creamy milk, leaving [owner]'s breasts full and jiggling.</span>"
-					// TODO - Handle indigestable clothes/equipment
-					del(M)
-					continue
+					digestion_death(M);
+					continue;
 
 				// Deal digestion damage
 				if(air_master.current_cycle%3==1)

@@ -133,12 +133,12 @@
 // Callback Handler for the Inside form
 //
 /datum/vore_look
-	var/datum/browser/popup/popup
+	var/datum/browser/popup
 	var/loop = null;  // Magic self-reference to stop the handler from being GC'd before user takes action.
 /datum/vore_look/Topic(href,href_list[])
 	if (ui_interact(href, href_list))
 		popup.set_content(gen_ui(usr))
-		usr << output(popup,get_content(), "insidePanel.browser")
+		usr << output(popup.get_content(), "insidePanel.browser")
 
 /datum/vore_look/proc/gen_ui(var/mob/living/carbon/human/user)
 	var/dat
@@ -157,8 +157,8 @@
 
 		dat += "<font color = 'green'>You are currently inside</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[inside_belly.belly_name]</font>!<br><br>"
 		dat += "[inside_belly.inside_flavor]<br><br>"
-		dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-		for (var/mob/living/M in inside_belly.internal_contents)
+		dat += "<font color = 'green'>You can see the following around you:</font><br>"
+		for (var/obj/M in inside_belly.internal_contents)
 			if(M != user) dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <a href='?src=\ref[src];helpout=\ref[M]'>Help out</a><br>"
 		dat += "<br>"
 	else
@@ -170,7 +170,7 @@
 		var/vore/belly/belly = user.internal_contents[bellytype]
 		var/inside_count = 0
 		dat += "<font color = 'green'>[belly.belly_type] </font> <a href='?src=\ref[src];toggle_digestion=\ref[belly]'>Digestion: [belly.digest_mode]</a><br>"
-		for (var/mob/living/M in belly.internal_contents)
+		for (var/obj/M in belly.internal_contents)
 			dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <br>"
 			inside_count += 1
 		if (inside_count == 0)

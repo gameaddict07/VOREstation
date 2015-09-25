@@ -1461,7 +1461,7 @@
 		// For each belly type
 		for (var/bellytype in internal_contents)
 			var/vore/belly/B = internal_contents[bellytype]
-			for(var/mob/living/M in B.internal_contents)
+			for(var/obj/M in B.internal_contents)
 				if(M.loc != src)
 					B.internal_contents -= M
 					log_debug("Had to remove [M] from belly [B] in [src]")

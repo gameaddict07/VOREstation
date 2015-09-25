@@ -53,13 +53,10 @@
 					continue
 
 			if(M.stat == DEAD)
-				is_full = 1
-				M.death(1)
-				internal_contents -= M
 				owner << "<span class='notice'>You feel [M] dissolve into nothing but warm fluids inside your womb.</span>"
 				M << "<span class='notice'>You dissolve into nothing but warm fluids inside [owner]'s womb.</span>"
-				del(M)
-				continue
+				digestion_death(M);
+				continue;
 
 			if(air_master.current_cycle%3==1)
 				if(!(M.status_flags & GODMODE))

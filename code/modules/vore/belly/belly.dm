@@ -27,6 +27,22 @@
 
 	var/list/internal_contents = list();	// People/Things you've eaten into this belly!
 
+	// These items are preserved when prey are digested.
+	var/list/preserve_items = list(
+		/obj/item/weapon/hand_tele,
+		/obj/item/weapon/card/id/captains_spare,
+		/obj/item/device/aicard,
+		/obj/item/device/mmi,
+		/obj/item/device/paicard,
+		/obj/item/weapon/gun,
+		/obj/item/weapon/pinpointer,
+		/obj/item/clothing/suit,
+		/obj/item/clothing/shoes/magboots,
+		/obj/item/blueprints,
+		/obj/item/clothing/head/helmet/space,
+		/obj/item/weapon/storage/internal
+	)
+
 	// Constructor that sets the owning mob
 	// @Override
 	New(mob/owning_mob)
@@ -48,7 +64,7 @@
 	// Returns the number of mobs so released.
 	proc/release_all_contents()
 		var/tick = 0 //easiest way to check if the list has anything
-		for (var/mob/M in internal_contents)
+		for (var/obj/M in internal_contents)
 			M.loc = owner.loc  // Move the belly contents into the same location as belly's owner.
 			src.internal_contents -= M  // Remove from the belly contents
 
@@ -79,3 +95,61 @@
 	proc/relay_struggle(var/mob/user, var/direction)
 		return;
 
+	// Handle the death of a mob via digestion.
+	// Called from the process_Life() methods of bellies that digest prey.
+	// Default implementation calls M.death() and removes from internal contents.
+	// Indigestable items are removed, and M is deleted.
+	proc/digestion_death(var/mob/living/M)
+		is_full = 1
+		M.death(1)
+		internal_contents -= M
+
+		// If digested prey is also a pred... anyone inside their bellies gets moved up.
+		if (is_vore_predator(M))
+			var/vore/pred_capable/P = M;
+			for (var/bellytype in P.internal_contents)
+				var/vore/belly/belly = P.internal_contents[bellytype]
+				for (var/obj/SubPrey in belly.internal_contents)
+					SubPrey.loc = src.owner
+					internal_contents += SubPrey
+					if (istype(SubPrey, /mob))
+						SubPrey << "As [M] melts away around you, you find yourself in [src.owner]'s [belly_name]"
+						// TODO - If SubPrey is digestable, tell them its their turn to die horribly
+
+		//Drop all items into the belly.
+		for (var/obj/item/W in M)
+			_handle_digested_item(W)
+
+		// Delete the digested mob
+		del(M)
+
+	// Recursive method - To recursively scan thru someone's inventory for digestable/indigestable.
+	proc/_handle_digested_item(var/obj/item/W)
+		// PDA's are handled specially in order to get the ID out of them.
+		if (istype(W, /obj/item/device/pda))
+			var/obj/item/device/pda/PDA = W
+			if (PDA.id)
+				W = PDA.id
+				PDA.id = null
+				del(PDA)
+
+		if (istype(W, /obj/item/weapon/card/id))
+			// Keep IDs around, but destroy them!
+			var/obj/item/weapon/card/id/ID = W
+			ID.desc = "A partially digested card that has seen better days.  Much of it's data has been destroyed."
+			ID.access = list() // No access
+			ID.loc = src.owner
+			internal_contents += ID
+		else if (!_is_digestable(W))
+			W.loc = src.owner
+			internal_contents += W
+		else
+			for (var/obj/item/SubItem in W)
+				_handle_digested_item(SubItem)
+			del(W)
+
+	proc/_is_digestable(var/obj/item/I)
+		for (var/T in preserve_items)
+			if(istype(I, T))
+				return 1
+		return 0

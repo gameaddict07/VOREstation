@@ -30,9 +30,6 @@
 			if (iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 
 				if(M.stat == DEAD)
-					M.death(1)
-					internal_contents -= M
-
 					var/digest_alert = rand(1,9) // Increase this number per emote.
 					switch(digest_alert)
 						if(1)
@@ -82,8 +79,7 @@
 							owner << "<span class='notice'>You feel a rush of warmth as [M]'s now-liquified remains start pumping through your intestines.</span>"
 							M << "<span class='notice'>Your now-liquified remains start pumping through [owner]'s intestines, filling their body with a rush of warmth.</span>"
 					owner.nutrition += 20 // so eating dead mobs gives you *something*.
-					// TODO - Handle indigestable clothes/equipment
-					del(M)
+					digestion_death(M);
 					continue
 
 				// Deal digestion damage (and feed the pred)
