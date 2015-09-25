@@ -1903,7 +1903,7 @@
 		if(0)
 			mode = 1
 			charge_cost = 100
-			fire_sound = 'sound/weapons/Laser.ogg'
+			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
 			modifystate = "kraykill"

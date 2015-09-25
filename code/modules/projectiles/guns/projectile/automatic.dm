@@ -3,7 +3,7 @@
 	desc = "A lightweight, fast firing gun. Uses 9mm rounds."
 	icon_state = "saber"	//ugly
 	w_class = 3
-	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it.
+	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it. // We HAVE a magazine sprite! Ugh. Lazy Bay. I'll fix this when I have time. -Ace
 	max_shells = 22
 	caliber = "9mm"
 	origin_tech = "combat=4;materials=2"
@@ -17,7 +17,7 @@
 	desc = "A lightweight, fast firing gun, for when you want someone dead. Uses .45 rounds."
 	icon_state = "mini-uzi"
 	w_class = 3
-	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it.
+	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it. // We have a magazine for this too! -_-
 	max_shells = 15
 	caliber = ".45"
 	origin_tech = "combat=5;materials=2;syndicate=8"
@@ -163,7 +163,7 @@
 	origin_tech = "combat=6;materials=1;syndicate=2"
 	slot_flags = SLOT_BACK
 	ammo_type = "/obj/item/ammo_casing/a762"
-	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
+	fire_sound = 'sound/weapons/machinegun.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a762
 	var/cover_open = 0

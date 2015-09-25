@@ -879,7 +879,7 @@ Auto Patrol: []"},
 	if(!( istype(U, /turf) ))
 		return
 
-	playsound(src.loc, src.emagged == 2 ? 'sound/weapons/Laser.ogg' : 'sound/weapons/Taser.ogg', 50, 1)
+	playsound(src.loc, src.emagged == 2 ? 'sound/weapons/blaster_pistol.ogg' : 'sound/weapons/Taser.ogg', 50, 1)
 	var/obj/item/projectile/A = new projectile (loc)
 	A.current = U
 	A.yo = U.y - T.y
