@@ -9,9 +9,10 @@
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 
 	// Vore code starts here.
-	var/stendo = 1 // Stomach. Endo flags set to 1 so you start with digestion off by default.
-	var/cvendo = 1 // Cockvore.
-	var/bvendo = 1 // Boobvore.
+	var/digest_stomach = 1 // Stomach. Endo flags set to 1 so you start with digestion off by default.
+	var/digest_cock = 1 // Cockvore.
+	var/digest_boob = 1 // Boobvore.
+
 	var/wombheal = "Hold" // Set to hold to prevent someone from transforming or melting in the womb.
 	var/cockfull = 0 // Set to 0 because you don't start the damn game with balls/womb/boobs already full.
 	var/wombfull = 0
@@ -56,8 +57,8 @@
 	//Non-default verbs go here.
 	verbs += /mob/living/proc/set_size
 	//verbs += /mob/living/carbon/human/proc/endo_toggle // Adding vore verbs.
-	//verbs += /mob/living/carbon/human/proc/cvendo_toggle
-	//verbs += /mob/living/carbon/human/proc/bvendo_toggle
+	//verbs += /mob/living/carbon/human/proc/digest_cock_toggle
+	//verbs += /mob/living/carbon/human/proc/digest_boob_toggle
 	verbs += /mob/living/carbon/human/proc/orifice_toggle
 	//verbs += /mob/living/carbon/human/proc/womb_toggle
 	verbs += /mob/living/carbon/human/proc/vore_release

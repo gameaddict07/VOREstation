@@ -1485,7 +1485,7 @@
 					if(!R.digestable)
 						continue
 
-				if(stat != DEAD && stendo) //According to vore.dm, stendo being true means people should digest. // also: For some reason this can't be checked in the if statement below.
+				if(stat != DEAD && digest_stomach) //According to vore.dm, digest_stomach being true means people should digest. // also: For some reason this can't be checked in the if statement below.
 					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 
 						if(M.stat == DEAD)
@@ -1557,7 +1557,7 @@
 					if(!R.digestable)
 						continue
 
-				if(stat != DEAD && cvendo) // For some reason this can't be checked in the if statement below.
+				if(stat != DEAD && digest_cock) // For some reason this can't be checked in the if statement below.
 					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 						if(M.stat == DEAD)
 							cockfull = 1
@@ -1580,7 +1580,7 @@
 					if(!R.digestable)
 						continue
 
-				if(stat != DEAD && bvendo) // For some reason this can't be checked in the if statement below.
+				if(stat != DEAD && digest_boob) // For some reason this can't be checked in the if statement below.
 					if(iscarbon(M) || isanimal(M)) // If human or simple mob and you're set to digest.
 						if(M.stat == DEAD)
 							boobfull = 1
