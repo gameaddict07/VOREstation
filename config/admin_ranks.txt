@@ -31,7 +31,7 @@ Admin Observer
 Moderator			+MOD
 Mentor				+MENTOR
 
-# Admin Candidate	+ADMIN
+Admin Candidate		+ADMIN
 Trial Admin			+@ +SPAWN +REJUV +VAREDIT +BAN
 Admin				+@ +POSSESS +BUILDMODE +SERVER +FUN
 Admin Supervisor	+@ +STEALTH +SOUNDS +DEBUG +PERMISSIONS
