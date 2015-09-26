@@ -151,7 +151,7 @@
 					return 0
 
 				var/datum/species/S = all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
+				if(!(S.flags & CAN_JOIN))
 					src << alert("Your current species,[client.prefs.species], is not available for play on the station.")
 					return 0
 
