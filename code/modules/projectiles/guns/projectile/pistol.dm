@@ -6,6 +6,7 @@
 	caliber = ".45"
 	origin_tech = "combat=2;materials=2"
 	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/semiauto.ogg'
 
 /obj/item/weapon/gun/projectile/colt/detective
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
@@ -37,6 +38,7 @@
 	caliber = ".45"
 	origin_tech = "combat=2;materials=2"
 	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/semiauto.ogg'
 
 /obj/item/weapon/gun/projectile/sec/flash
 	name = "\improper NT Mk58 signal pistol"
@@ -66,6 +68,7 @@
 	force = 14.0
 	caliber = ".50"
 	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/deagle.ogg'
 	magazine_type = /obj/item/ammo_magazine/a50
 	auto_eject = 1
 
@@ -78,7 +81,6 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 
 
@@ -88,7 +90,7 @@
 	icon_state = "gyropistol"
 	max_shells = 8
 	caliber = "75"
-	fire_sound = 'sound/effects/Explosion1.ogg'
+	fire_sound = 'sound/weapons/rpg.ogg'
 	origin_tech = "combat=3"
 	ammo_type = "/obj/item/ammo_casing/a75"
 	load_method = MAGAZINE
