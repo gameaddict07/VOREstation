@@ -1968,6 +1968,7 @@
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
 	load_method = SINGLE_CASING | SPEEDLOADER
 
+/*
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
 	name = "\"The Judge\""
 	desc = "A breach-loading weapon produced by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
@@ -1991,7 +1992,9 @@
 	desc = "A variant of the \"The Judge\" revolver sold by Cybersun Industries to the mercenary group Skinner's Legion."
 	icon_state = "jury"
 	load_method = SINGLE_CASING | SPEEDLOADER
+*/
 
+// TO DO: Change Judge and Jury to revolvers with CYCLE_CASINGS load method. Hacky fix is no longer required.
 
 // End guns.
 
