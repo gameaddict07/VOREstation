@@ -7,7 +7,6 @@
 
 # not_a_user - Admin
 
-# not_a_user - Admin
 JerTheAce - Host
 WankerSonOfJerkin - Game Master
 JoanRisu - Admin Supervisor

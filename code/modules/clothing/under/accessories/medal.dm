@@ -69,5 +69,5 @@
 	desc = "A prestigious medal awarded to employees for notably outstanding leadership which affects technical or administrative programs of Nanotrasen."
 
 /obj/item/clothing/accessory/medal/gold/heroism
-	name = "medal of exceptional heroism"
+	name = "medal of extraordinary heroism"
 	desc = "An extremely rare golden medal awarded only by CentCom. To receive such a medal is the highest honor, and as such, very few exist. This medal is almost never awarded to anybody but commanders."

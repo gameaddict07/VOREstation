@@ -1,5 +1,10 @@
-<h1>Welcome to Space Station 13!</h1>
+<!-- Most valid html will work in here, excluding images. -->
+<center><h1><font color="#a500ff">Welcome to the <b>V</b>irgo <b>O</b>rbital <b>R</b>esearch <b>E</b>stablishment</font></h1>
+<hr><br>
+<b><font color="red">You must be 18 or older to play here. No exceptions.</font></b><hr></center>
+<i>This server is running <a href="http://vore-station.net/">VOREstation's</a> modification of the <a href="http://baystation12.net/">Baystation 12</a> SS13 code.</i>
+<b>KNOWN BUG:</b> Taur sprites will break if you're not normal-sized and do anything to call the update_icons() function. This happens when you put suits on, usually. There's a hotfix button under resize to fix it without admin intervention for now. Also we know taur bodies are not cloned yet. We'll work on that.
 
--<i>This server is running <a href="http://baystation12.net/">Baystation 12's</a> modification of the <a href="http://ss13.eu/">/tg/station13</a> SS13 code.</i>
-<br><br>
-<strong>Bugtracker:</strong> <a href="http://baystation12.net/forums/viewtopic.php?f=18&t=8185">http://baystation12.net/forums/viewtopic.php?f=18&t=8185</a>
+<b>Code was recently updated to a 2015 version of Baystation's code. We will no longer be syncing with Bay's code, and will be producing our own code branch on Github. Please report any issues on the forums, as the code is still not fully tested.</b>
+
+<b><font color="blue">Once you have basic controls understood, please try something other than an assistant and learn how to do a job. It's no fun for anyone if everyone plays as assistants.</font></b>
