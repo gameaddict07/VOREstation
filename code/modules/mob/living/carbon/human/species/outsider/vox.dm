@@ -12,7 +12,9 @@
 	alive. They are four to five feet tall, reptillian, beaked, tailed and quilled; human crews often \
 	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
 	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
-	dealing with their traders and merchants; those that do rarely enjoy the experience."
+	dealing with their traders and merchants; those that do rarely enjoy the experience. The few Vox who work on the \
+	station have been exiled from their tribes, and will <b>never</b> be allowed into a command position on the \
+	station due to strong racism against Vox-kind by other sentient species."
 
 	speech_sounds = list('sound/voice/shriek1.ogg')
 	speech_chance = 20
