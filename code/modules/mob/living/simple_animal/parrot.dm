@@ -409,6 +409,19 @@
 					visible_message("[src] grabs the [held_item]!", "\blue You grab the [held_item]!", "You hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
+			// Nightwing was here!
+			if(istype(held_item,/obj/item/weapon/holder/micro)) //Is the target a micro?
+				if(isPredator == 1) //Is the parrot a predator?
+					for(var/mob/living/M in held_item.contents)
+						if(4*M.playerscale <= src.playerscale) //Is the parrot's playerscale at least 4 times larger than the micro's?
+							custom_emote(1, "opens its beak wide and begins to stuff [held_item] inside!") //EAT IT
+							sleep(30)
+							if(istype(held_item,/obj/item/weapon/holder/micro))
+								custom_emote(1, "swallows [held_item] alive, a little lump sliding into its gut!")
+								M.loc = src
+								src.stomach_contents.Add(M)
+								msg_admin_attack("[key_name(M)] got eaten by [src]!")
+								playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
 			return
 
