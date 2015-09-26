@@ -4,6 +4,7 @@ var/const/RESIZE_NORMAL = 1
 var/const/RESIZE_SMALL = 0.5
 var/const/RESIZE_TINY = 0.25
 //these aren't defines so they can stay in this file
+//Not sure I see the point of them? They take up far more space than putting in the values as floats, and it's not like we're planning on changing them. --Night
 
 /mob/var/playerscale = 1
 /mob/var/basesize = 1
@@ -17,6 +18,8 @@ var/const/RESIZE_TINY = 0.25
 
 	animate(src,transform = resize, time = 5) //Animate the player resizing
 	playerscale = size_mod //Change playerscale so that other items can interact with them
+
+//Seem to have removed resize_by_item proc, which was necessary for shrink rays and such to work.
 
 // Ace was here! Redid this a little so we'd use math for shrinking characters. This is the old code.
 /mob/living/proc/set_size()
