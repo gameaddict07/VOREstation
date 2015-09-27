@@ -1192,9 +1192,9 @@
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))
 	else
-		r_skin = 0
-		g_skin = 0
-		b_skin = 0
+		r_skin = 238
+		g_skin = 206
+		b_skin = 179
 
 	species.handle_post_spawn(src)
 
