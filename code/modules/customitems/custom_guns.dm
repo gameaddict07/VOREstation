@@ -56,9 +56,16 @@
 	icon_state = "eluger"
 	item_state = "energykill"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	projectile_type = /obj/item/projectile/beam/emitter
+	projectile_type = /obj/item/projectile/beam/eluger
+
 
 //Ammo//
+
+/obj/item/projectile/beam/eluger
+	name = "Laser Beam"
+	icon_state = "emitter"
+	damage = 45
+
 /obj/item/ammo_casing/stg
 	desc = "A 7.92×33mm Kurz casing."
 	caliber = "kurz"
