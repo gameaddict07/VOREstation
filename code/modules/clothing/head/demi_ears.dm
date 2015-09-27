@@ -12,7 +12,7 @@
 	var/icon/mob2
 	siemens_coefficient = 1.5 // Because fuck furries apparently? ... I'm not touching this until I know why it's here. -Ace
 
-	update_icon(var/mob/living/carbon/human/user) // Code needed in inventory.dm:272 and update_icons.dm:599 for this to work.
+	update_icon(var/mob/living/carbon/human/user) // Code needed in human/inventory.dm:291 and human/update_icons.dm:691 for this to work.
 		if(!istype(user)) return
 		mob = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]")
 		mob2 = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]")
@@ -85,6 +85,16 @@
 	desc = "A head accessory that looks like something a seductive demoness from your fantasies might wear."
 	icon_state = "succubus"
 
+/obj/item/clothing/head/fluff/succubus/dark
+	name = "succubus accessories (Dark)"
+	desc = "A head accessory that looks like something a seductive demoness from your fantasies might wear."
+	icon_state = "succubus-dark"
+
+/obj/item/clothing/head/fluff/succubus/crimson
+	name = "succubus accessories (Crimson)"
+	desc = "A head accessory that looks like something a seductive demoness from your fantasies might wear."
+	icon_state = "succubus-crimson"
+
 /obj/item/clothing/head/fluff/succubus/red
 	name = "red bat wings"
 	desc = "Flappy flappy."
@@ -140,6 +150,8 @@
 					/obj/item/clothing/head/accessory/mouse = 10,
 					/obj/item/clothing/head/accessory/bunny = 10,
 					/obj/item/clothing/head/fluff/succubus = 10,
+					/obj/item/clothing/head/fluff/succubus/crimson = 10,
+					/obj/item/clothing/head/fluff/succubus/dark = 10,
 					/obj/item/clothing/head/fluff/succubus/black = 10,
 					/obj/item/clothing/head/fluff/succubus/red = 10,
 					/obj/item/clothing/head/fluff/wisewolf = 10,

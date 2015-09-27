@@ -6,7 +6,7 @@
 	caliber = "357"
 	origin_tech = "combat=2;materials=2"
 	handle_casings = CYCLE_CASINGS
-	max_shells = 7
+	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357
 
 /obj/item/weapon/gun/projectile/revolver/mateba

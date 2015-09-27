@@ -1903,7 +1903,7 @@
 		if(0)
 			mode = 1
 			charge_cost = 100
-			fire_sound = 'sound/weapons/Laser.ogg'
+			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
 			modifystate = "kraykill"
@@ -1968,6 +1968,7 @@
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
 	load_method = SINGLE_CASING | SPEEDLOADER
 
+/*
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
 	name = "\"The Judge\""
 	desc = "A breach-loading weapon produced by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
@@ -1991,7 +1992,9 @@
 	desc = "A variant of the \"The Judge\" revolver sold by Cybersun Industries to the mercenary group Skinner's Legion."
 	icon_state = "jury"
 	load_method = SINGLE_CASING | SPEEDLOADER
+*/
 
+// TO DO: Change Judge and Jury to revolvers with CYCLE_CASINGS load method. Hacky fix is no longer required.
 
 // End guns.
 
@@ -2156,6 +2159,41 @@
 /obj/item/device/modkit/tajaran/fluff/screekit
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
+
+
+/obj/item/clothing/head/fluff/pompom
+	name = "Pom-Pom"
+	desc = "A fluffy little thingus on a thin stalk, ideal for impersonating moogles and anglerfish. Kupomnomnom."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "pom"
+	item_state = "pom"
+	w_class = 2.0
+	on = 0
+	brightness_on = 5
+	light_overlay = null
+
+/obj/item/clothing/head/fluff/pompom/attack_self(mob/user)
+	if(brightness_on)
+		if(!isturf(user.loc))
+			user << "You cannot turn the light on while in this [user.loc]"
+			return
+		on = !on
+		user << "You [on ? "light up" : "dim"] your pom-pom."
+		update_light(user)
+	else
+		return ..(user)
+
+
+/obj/item/clothing/head/fluff/pompom/update_icon(var/mob/user)
+	if(on)
+		icon_state = "pom-on"
+		item_state = "pom-on"
+	else
+		icon_state = "pom"
+		item_state = "pom"
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_head()
 
 //End Scree's stuff
 
@@ -2327,6 +2365,25 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "headphones"
 	item_state = "headset"
+
+// OrbisA Items
+
+/obj/item/weapon/melee/fluff/holochain // OrbisA: Richard D'angelo
+	name = "Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and the initials R.D. on the silver base."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "holochain"
+	item_state = "holochain"
+	flags = CONDUCT | NOBLOODY
+	no_attack_log = 1 //if you want to turn on the attack log for this, comment/delete this line. Orbis.
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 3
+	w_class = 3
+	damtype = HALLOSS
+	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
+
+ // End OrbisA Items
 
 //Weapon permits to spawn with players who have them.
 

@@ -108,20 +108,20 @@
 
 		if(/obj/item/weapon/gun/energy/taser)
 			eprojectile = /obj/item/projectile/beam
-			eshot_sound = 'sound/weapons/Laser.ogg'
+			eshot_sound = 'sound/weapons/blaster_pistol.ogg'
 
 		if(/obj/item/weapon/gun/energy/stunrevolver)
 			eprojectile = /obj/item/projectile/beam
-			eshot_sound = 'sound/weapons/Laser.ogg'
+			eshot_sound = 'sound/weapons/blaster_pistol.ogg'
 
 		if(/obj/item/weapon/gun/energy/gun)
 			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/Laser.ogg'
+			eshot_sound = 'sound/weapons/blaster_pistol.ogg'
 			egun = 1
 
 		if(/obj/item/weapon/gun/energy/gun/nuclear)
 			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/Laser.ogg'
+			eshot_sound = 'sound/weapons/blaster_pistol.ogg'
 			egun = 1
 
 /obj/machinery/porta_turret/update_icon()
