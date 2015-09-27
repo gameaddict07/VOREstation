@@ -1887,14 +1887,14 @@
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
 	icon = 'icons/obj/gun.dmi'
-	icon_state = "kraystun100"
+	icon_state = "Kraystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	charge_cost = 200 //How much energy is needed to fire.
 	projectile_type = /obj/item/projectile/energy/electrode
 	origin_tech = "combat=3;magnets=2"
-	modifystate = "kraystun"
+	modifystate = "Kraystun"
 
 	var/mode = 0 //0 = stun, 1 = kill
 
@@ -1906,14 +1906,14 @@
 			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
-			modifystate = "kraykill"
+			modifystate = "Kraykill"
 		if(1)
 			mode = 0
 			charge_cost = 100
 			fire_sound = 'sound/weapons/Taser.ogg'
 			user << "<span class='warning'>[src.name] is now set to stun.</span>"
 			projectile_type = /obj/item/projectile/beam/stun
-			modifystate = "kraystun"
+			modifystate = "Kraystun"
 	update_icon()
 	update_held_icon()
 
