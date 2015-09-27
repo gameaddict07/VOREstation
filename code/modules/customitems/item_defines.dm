@@ -1886,7 +1886,7 @@
 /obj/item/weapon/gun/energy/fluff/aro
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon = 'icons/obj/custom_items.dmi'
+	icon = 'icons/obj/gun.dmi'
 	icon_state = "kraystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_sound = 'sound/weapons/Taser.ogg'
