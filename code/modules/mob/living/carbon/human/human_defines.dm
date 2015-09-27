@@ -19,15 +19,15 @@
 //	var/s_tone = 0	//Skin tone //Goodbye Skintone, Orbis
 
 	//Skin colour
-	var/r_skin = 0
-	var/g_skin = 0
-	var/b_skin = 0
+	var/r_skin = 238 // TO DO: Set defaults for other races.
+	var/g_skin = 206
+	var/b_skin = 179
 
 	//Taur stuff
 	var/taur = 0
-	var/r_taur = 0
-	var/g_taur = 0
-	var/b_taur = 0
+	var/r_taur = 30
+	var/g_taur = 30
+	var/b_taur = 30
 
 	var/damage_multiplier = 1 //multiplies melee combat damage
 	var/icon_update = 1 //whether icon updating shall take place
@@ -35,7 +35,7 @@
 	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
 
 	var/age = 30		//Player's age (pure fluff)
-	var/b_type = "A+"	//Player's bloodtype
+	var/b_type = "O-"	//Player's bloodtype
 
 	var/underwear = 1	//Which underwear the player wants
 	var/undershirt = 0	//Which undershirt the player wants.
