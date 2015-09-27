@@ -12,7 +12,7 @@
 	var/icon/mob2
 	siemens_coefficient = 1.5 // Because fuck furries apparently? ... I'm not touching this until I know why it's here. -Ace
 
-	update_icon(var/mob/living/carbon/human/user) // Code previously needed in inventory.dm:272 and update_icons.dm:599 for this to work. Doesn't work at all now.
+	update_icon(var/mob/living/carbon/human/user) // Code needed in human/inventory.dm:291 and human/update_icons.dm:691 for this to work.
 		if(!istype(user)) return
 		mob = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]")
 		mob2 = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]")
