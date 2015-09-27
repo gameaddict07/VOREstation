@@ -1,26 +1,26 @@
 /mob/living/carbon
 	var/vorifice = "Oral Vore"
 
-/mob/living/carbon/human/proc/endo_toggle()
+/mob/living/carbon/human/proc/digest_stomach_toggle()
 	set name = "Toggle Stomach Digestion"
 	set category = "Vore"
 
-	stendo = !stendo //Boolean inverter
-	src << "<span class='notice'>You will [stendo ? "now" : "no longer"] digest people in your stomach.</span>"
+	digest_stomach = !digest_stomach //Boolean inverter
+	src << "<span class='notice'>You will [digest_stomach ? "now" : "no longer"] digest people in your stomach.</span>"
 
-/mob/living/carbon/human/proc/cvendo_toggle()
+/mob/living/carbon/human/proc/digest_cock_toggle()
 	set name = "Toggle Cockvore Digestion"
 	set category = "Vore"
 
-	cvendo = !cvendo
-	src << "<span class='notice'>You will [cvendo ? "now" : "no longer"] cummify people.</span>"
+	digest_cock = !digest_cock
+	src << "<span class='notice'>You will [digest_cock ? "now" : "no longer"] cummify people.</span>"
 
-/mob/living/carbon/human/proc/bvendo_toggle()
+/mob/living/carbon/human/proc/digest_boob_toggle()
 	set name = "Toggle Breastvore Digestion"
 	set category = "Vore"
 
-	bvendo = !bvendo
-	src << "<span class='notice'>You will [bvendo ? "now" : "no longer"] milkify people.</span>"
+	digest_boob = !digest_boob
+	src << "<span class='notice'>You will [digest_boob ? "now" : "no longer"] milkify people.</span>"
 
 /mob/living/carbon/human/proc/womb_toggle()
 	set name = "Set Womb Mode"
@@ -59,11 +59,11 @@
 
 	switch(digestzone)
 		if("Stomach")
-			endo_toggle()
+			digest_stomach_toggle()
 		if("Cock")
-			cvendo_toggle()
+			digest_cock_toggle()
 		if("Breasts")
-			bvendo_toggle()
+			digest_boob_toggle()
 		if("Womb")
 			womb_toggle()
 
