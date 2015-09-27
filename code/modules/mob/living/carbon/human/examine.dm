@@ -268,7 +268,7 @@
 		if(!key)
 			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.</span>\n"
 		else if(!client)
-			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
+			msg += "[t_He] [t_has] suddenly fallen asleep. (( Player is not connected. ))\n"
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()

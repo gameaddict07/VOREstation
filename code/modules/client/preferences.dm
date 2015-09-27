@@ -53,7 +53,7 @@ datum/preferences
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 30						//age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
-	var/b_type = "A+"					//blood type (not-chooseable)
+	var/b_type = "O-"					//blood type (not-chooseable)
 	var/underwear						//underwear type
 	var/undershirt						//undershirt type
 	var/backbag = 2						//backpack type
@@ -66,9 +66,9 @@ datum/preferences
 	var/g_facial = 0					//Face hair color
 	var/b_facial = 0					//Face hair color
 //	var/s_tone = 0						//Skin tone //Goodbye Skintone, Orbis
-	var/r_skin = 0						//Skin color
-	var/g_skin = 0						//Skin color
-	var/b_skin = 0						//Skin color
+	var/r_skin = 238					//Skin color
+	var/g_skin = 206					//Skin color
+	var/b_skin = 179					//Skin color
 	var/taur = 0						//Taur body
 	var/r_taur = 30						//Taur colour
 	var/g_taur = 30						// SO YOU CAN ACTUALLY SEE THE FUCKING DETAILS
@@ -1197,7 +1197,7 @@ datum/preferences
 					b_eyes = rand(0,255)
 			//	if("s_tone")
 			//		s_tone = random_skin_tone() //Goodbye Skintone, Orbis
-				if("s_color")
+				if("s_color") // TODO: Make a realistic skin tone generator proc.
 					r_skin = rand(0,255)
 					g_skin = rand(0,255)
 					b_skin = rand(0,255)

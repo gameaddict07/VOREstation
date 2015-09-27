@@ -1752,6 +1752,10 @@
 
 // Guns
 
+#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
+#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
+#define MAGAZINE 		4	//The magazine item itself goes inside the gun
+
 /obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
 	name = "FN Five Seven"
 	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real."
@@ -1760,6 +1764,7 @@
 	magazine_type = /obj/item/ammo_magazine/c28mm
 	max_shells = 10
 	caliber = "5.7×28mm"
+	load_method = MAGAZINE
 
 /obj/item/weapon/gun/projectile/automatic/m14
 	name = "M14 Battle Rifle"
@@ -1772,9 +1777,11 @@
 	//slot_flags = SLOT_BACK
 	origin_tech = "combat=2"
 	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = 3
+	ammo_type = /obj/item/ammo_casing/a51mm
+	load_method = MAGAZINE
 	max_shells = 10
 	caliber = "7.62x51mm"
+
 
 /obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
 	name = "Gallian 4 Rifle"
@@ -1790,7 +1797,10 @@
 	max_shells = 5
 	caliber = "rifle" // Prevents loading shotgun shells into the rifle.
 	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
-	magazine_type = /obj/item/ammo_casing/shotgun/rifle
+	magazine_type = /obj/item/ammo_magazine/rifle_clip
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle
+	load_method = SINGLE_CASING | SPEEDLOADER
+	cocksound = 'sound/weapons/riflebolt.ogg' // This var is so we can change sounds for bolt-action rifles.
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
 	name = "ZM Kar 1"
@@ -1798,12 +1808,30 @@
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For Cargonia
 	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen."
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle/chalk"
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
 	name = "ceremonial bolt-action rifle"
 	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen."
-	ammo_type = "/obj/item/ammo_casing/shotgun/rifle/blank"
+	ammo_type = /obj/item/ammo_casing/shotgun/rifle/blank
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
+	name = "Wicked Butterfly"
+	desc = "A customized bolt-action sniper rifle that was carried by one of the most revered snipers in the Federation. The stock has a small butterfly engraved on it."
+	icon_state = "wickedbutterfly"
+	item_state = "boltaction"
+	recoil = 2 //extra kickback
+	accuracy = -1
+	scoped_accuracy = 2
+	load_method = SINGLE_CASING
+
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)
 
 /obj/item/weapon/gun/energy/fluff/dominator
 	name = "MWPSB Dominator"
@@ -1858,7 +1886,7 @@
 /obj/item/weapon/gun/energy/fluff/aro
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon = 'icons/obj/custom_items.dmi'
+	icon = 'icons/obj/gun.dmi'
 	icon_state = "kraystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_sound = 'sound/weapons/Taser.ogg'
@@ -1875,7 +1903,7 @@
 		if(0)
 			mode = 1
 			charge_cost = 100
-			fire_sound = 'sound/weapons/Laser.ogg'
+			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
 			modifystate = "kraykill"
@@ -1902,7 +1930,7 @@
 	throwforce = 10
 	max_shells = 10
 	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = 2
+	load_method = MAGAZINE
 	caliber = "7.62x51mm"
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -1927,15 +1955,46 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver
+/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver
 	name = "Ryan's 'Devilgun'"
 	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red wooden grip. Uses .357 ammo."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "ryan_winz"
+	load_method = SINGLE_CASING | SPEEDLOADER
 
-/obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver/redemption
+
+/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption
 	name = "Ryan's 'Redeemer'"
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
+	load_method = SINGLE_CASING | SPEEDLOADER
+
+/*
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
+	name = "\"The Judge\""
+	desc = "A breach-loading weapon produced by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
+	icon_state = "judge"
+	item_state = "gun"
+	max_shells = 5
+	w_class = 3
+	recoil = 2 // Kicks like a mule.
+	slot_flags = null // You can't wear this on your back.
+	origin_tech = "combat=4;materials=3;syndicate=4"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	load_method = SINGLE_CASING | SPEEDLOADER
+
+/* Maybe...
+	isHandgun()
+		return 1
+*/
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge/jury
+	name = "\"The Jury\""
+	desc = "A variant of the \"The Judge\" revolver sold by Cybersun Industries to the mercenary group Skinner's Legion."
+	icon_state = "jury"
+	load_method = SINGLE_CASING | SPEEDLOADER
+*/
+
+// TO DO: Change Judge and Jury to revolvers with CYCLE_CASINGS load method. Hacky fix is no longer required.
 
 // End guns.
 
@@ -1945,9 +2004,9 @@
 	name = "magazine (5.7×28mm)"
 	icon_state = "45"
 	ammo_type = /obj/item/ammo_casing/c28mm
-	caliber = ".45"
 	max_ammo = 10
 	multiple_sprites = 1
+	mag_type = MAGAZINE
 	caliber = "5.7×28mm"
 
 /obj/item/ammo_magazine/c28mm/empty
@@ -1965,8 +2024,10 @@
 	name = "ammo magazine (M14)"
 	icon_state = "75"
 	ammo_type = /obj/item/ammo_casing/a51mm
+	mag_type = MAGAZINE
 	multiple_sprites = 1
 	max_ammo = 10
+	caliber = "7.62x51mm"
 
 /obj/item/ammo_magazine/a51mm/empty
 	name = "ammo magazine (M14)"
@@ -1984,11 +2045,13 @@
 /obj/item/ammo_casing/shotgun/rifle/chalk // For target shooting.
 	name = "chalk rifle round"
 	desc = "A round from a rifle, which uses a chalk bullet."
+	caliber = "rifle"
 	projectile_type = /obj/item/projectile/bullet/weakbullet/chalk
 
 /obj/item/ammo_casing/shotgun/rifle/blank // For ceremonies.
 	name = "practice rifle round"
 	desc = "There's no bullet. Just a cartrige with a crimped top end."
+	caliber = "rifle"
 	projectile_type = /obj/item/projectile/energy/blank // Because anything else shatters windows.
 
 /obj/item/ammo_magazine/rifle_clip
@@ -1996,7 +2059,9 @@
 	desc = "A clip of rifle rounds"
 	icon_state = "riflestrip"
 	ammo_type = /obj/item/ammo_casing/shotgun/rifle
+	mag_type = SPEEDLOADER
 	max_ammo = 5
+	caliber = "rifle"
 	multiple_sprites = 1
 	/* // Breaks things.
 	New() // So they scatter on the floor.
@@ -2007,12 +2072,14 @@
 /obj/item/ammo_magazine/rifle_clip/chalk
 	name = "rifle clip of chalk rounds"
 	desc = "A clip of rifle rounds with chalk bullets."
+	caliber = "rifle"
 	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
 
 
 /obj/item/ammo_magazine/rifle_clip/blank
 	name = "rifle clip of blank rounds"
 	desc = "A clip of rifle rounds with chalk bullets."
+	caliber = "rifle"
 	ammo_type = /obj/item/projectile/energy/blank
 
 
@@ -2092,6 +2159,41 @@
 /obj/item/device/modkit/tajaran/fluff/screekit
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
+
+
+/obj/item/clothing/head/fluff/pompom
+	name = "Pom-Pom"
+	desc = "A fluffy little thingus on a thin stalk, ideal for impersonating moogles and anglerfish. Kupomnomnom."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "pom"
+	item_state = "pom"
+	w_class = 2.0
+	on = 0
+	brightness_on = 5
+	light_overlay = null
+
+/obj/item/clothing/head/fluff/pompom/attack_self(mob/user)
+	if(brightness_on)
+		if(!isturf(user.loc))
+			user << "You cannot turn the light on while in this [user.loc]"
+			return
+		on = !on
+		user << "You [on ? "light up" : "dim"] your pom-pom."
+		update_light(user)
+	else
+		return ..(user)
+
+
+/obj/item/clothing/head/fluff/pompom/update_icon(var/mob/user)
+	if(on)
+		icon_state = "pom-on"
+		item_state = "pom-on"
+	else
+		icon_state = "pom"
+		item_state = "pom"
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_head()
 
 //End Scree's stuff
 
@@ -2264,6 +2366,25 @@
 	icon_state = "headphones"
 	item_state = "headset"
 
+// OrbisA Items
+
+/obj/item/weapon/melee/fluff/holochain // OrbisA: Richard D'angelo
+	name = "Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and the initials R.D. on the silver base."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "holochain"
+	item_state = "holochain"
+	flags = CONDUCT | NOBLOODY
+	no_attack_log = 1 //if you want to turn on the attack log for this, comment/delete this line. Orbis.
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 3
+	w_class = 3
+	damtype = HALLOSS
+	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
+
+ // End OrbisA Items
+
 //Weapon permits to spawn with players who have them.
 
 // Template.
@@ -2412,37 +2533,40 @@
 	name = "Ryan's Gun Case"
 	desc = "Used to safely transport Ryan's two personal revolvers."
 	storage_slots = 2
-	New()
-		new /obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver(src)
-		new /obj/item/weapon/gun/projectile/mateba/fluff/ryan_winz_revolver/redemption(src)
-		..()
-		return
+
+/obj/item/weapon/storage/briefcase/fluff/ryan_winz/New()
+	new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver(src)
+	new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption(src)
+	..()
+	return
 
 // ardithprime:Natasha Moscovich
 /obj/item/weapon/storage/box/fluff/soviet
 	name = "Soviet Officer's Kit"
 	desc = "Contains all the items needed to serve the Motherworld away from the Motherworld!"
 	storage_slots = 4
-	New()
-		new /obj/item/clothing/head/hgpiratecap(src)
-		new /obj/item/clothing/shoes/jackboots(src)
-		new /obj/item/clothing/suit/hgpirate(src)
-		new /obj/item/clothing/under/soviet(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/soviet/New()
+	new /obj/item/clothing/head/hgpiratecap(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/clothing/suit/hgpirate(src)
+	new /obj/item/clothing/under/soviet(src)
+	..()
+	return
 
 // jemli:Cirra Mayhem
 /obj/item/weapon/storage/box/fluff/pirate // jemli:Cirra Mayhem
 	name = "Instant Pirate Kit"
 	desc = "Just add Akula!"
 	storage_slots = 4
-	New()
-		new /obj/item/clothing/head/pirate(src)
-		new /obj/item/clothing/glasses/eyepatch(src)
-		new /obj/item/clothing/suit/pirate(src)
-		new /obj/item/clothing/under/pirate(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/pirate/New()
+	new /obj/item/clothing/head/pirate(src)
+	new /obj/item/clothing/glasses/eyepatch(src)
+	new /obj/item/clothing/suit/pirate(src)
+	new /obj/item/clothing/under/pirate(src)
+	..()
+	return
 
 /obj/item/device/fluff/id_kit_mime // joey4298:Emoticon
 	name = "Mime ID replacer"
@@ -2468,36 +2592,39 @@
 /obj/item/weapon/storage/box/fluff/mime // joey4298:Emoticon
 	name = "Emoticon's Mime Kit"
 	desc = "Specially packaged for the hungry catgirl mime with a taste for clown."
-	New()
-		new /obj/item/device/fluff/id_kit_mime(src)
-		new /obj/item/clothing/gloves/white(src)
-		new /obj/item/clothing/head/beret(src)
-		new /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing(src)
-		new /obj/item/clothing/shoes/black(src)
-		new /obj/item/toy/crayon/mime(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/mime/New()
+	new /obj/item/device/fluff/id_kit_mime(src)
+	new /obj/item/clothing/gloves/white(src)
+	new /obj/item/clothing/head/beret(src)
+	new /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing(src)
+	new /obj/item/clothing/shoes/black(src)
+	new /obj/item/toy/crayon/mime(src)
+	..()
+	return
 
 /obj/item/weapon/storage/box/fluff/joanrisu // joanrisu:Joan Risu
 	name = "Federation Officer's Kit"
 	desc = "A care package for every serving Federation officer serving away from the Federation."
 	storage_slots = 8
-	New()
-		new /obj/item/clothing/gloves/white(src)
-		new /obj/item/device/radio/headset/heads/captain(src)
-		new /obj/item/weapon/storage/backpack/satchel(src)
-		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-		new /obj/item/weapon/card/id/gold/fluff/badge/(src)
-		new /obj/item/weapon/card/id/captains_spare(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/joanrisu/New()
+	new /obj/item/clothing/gloves/white(src)
+	new /obj/item/device/radio/headset/heads/captain(src)
+	new /obj/item/weapon/storage/backpack/satchel(src)
+	new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
+	new /obj/item/weapon/card/id/gold/fluff/badge/(src)
+	new /obj/item/weapon/card/id/captains_spare(src)
+	..()
+	return
 
 /obj/item/weapon/storage/box/fluff/tasaldkit // bwoincognito:Tasald Corlethian
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's clothes."
 	storage_slots = 2
-	New()
-		new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
-		new /obj/item/clothing/under/det/fluff/talsald(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/tasaldkit/New()
+	new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
+	new /obj/item/clothing/under/det/fluff/talsald(src)
+	..()
+	return
