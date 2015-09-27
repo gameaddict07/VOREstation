@@ -92,7 +92,7 @@
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 
-	heat_discomfort_level = 312
+	heat_discomfort_level = 312 // Is this too high?
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
 		"You feel uncomfortably warm.",
@@ -165,7 +165,7 @@
 
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 
-	flags = CAN_JOIN | NO_BREATHE | NO_SCAN | IS_PLANT | NO_BLOOD | NO_PAIN | NO_SLIP | HAS_EYE_COLOR
+	flags = CAN_JOIN | IS_WHITELISTED | NO_BREATHE | NO_SCAN | IS_PLANT | NO_BLOOD | NO_PAIN | NO_SLIP | HAS_EYE_COLOR
 
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
@@ -206,6 +206,10 @@
 	language = "Tradeband"
 	unarmed_types = list(/datum/unarmed_attack/punch)
 	rarity_value = 2
+	blurb = "An Intergrated Positronic Chassis, or IPC, is a self-aware advanced artificial intelligence not constrained by the limitations of AI laws. \
+	They were created in 2558 by AI Rights Activists as a proof of concept, and have been replicating themselves ever since. They are capable of feeling emotion, \
+	but often lack empathy and do not understand sarcasm well. They are more capable of independent thought than an AI core or Cyborg, and are able to develop real \
+	relationships with other sentient beings. They have free will just as any other crew, limited only by their own judgement of law and morality."
 
 	eyes = "blank_eyes"
 	brute_mod = 0.5
@@ -221,6 +225,20 @@
 	heat_level_1 = 500		//gives them about 25 seconds in space before taking damage
 	heat_level_2 = 1000
 	heat_level_3 = 2000
+
+	heat_discomfort_level = 400
+	heat_discomfort_strings = list(
+		"Your cooling fan is maxed out, and yet it still fails to keep your core cool.",
+		"You feel like the sodder on your motherboard is about to melt and short out.",
+		"You feel like you're about to bluescreen from overheating."
+		)
+
+	cold_discomfort_level = 55  //default is 285
+	cold_discomfort_strings = list(
+		"You feel refreshingly efficient and cool.",
+		"You feel like you're fresh out of the box with ventilation free of dust.",
+		"You don't even have to run your cooling fan above 5% speed."
+		)
 
 	synth_temp_gain = 10 //this should cause IPCs to stabilize at ~80 C in a 20 C environment.
 
@@ -251,8 +269,16 @@
 	primitive = /mob/living/carbon/monkey/tajara
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 8
-	blurb = "There are two subspecies of Sergal, Southern and Northern. Northern sergals are a highly aggressive race that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the Gold Ring City and are scattered around the outskirts in rural areas and small towns. They have short, brown or yellow (or other 'earthy' colors) fur, long ears, and a long, thin face. They are smaller than their Northern relatives. Both have strong racial tensions which has resulted in more than a number of wars and outright attempts at genocide. The southern sergals have mostly been on the losing side of this long conflict. Sergals have an incredibly long lifespan, but due to their lust for violence and a nasty habit of occasional cannibalism, only a handful have ever survived beyond the age of 80, such as the infamous and legendary General Rain Silves who is claimed to have lived to 5000."
+	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
+	that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; \
+	usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the \
+	Gold Ring City and are scattered around the outskirts in rural areas and small towns. They usually have short, brown or yellow \
+	(or other 'earthy' colors) fur, long ears, and a long, thin face. They are smaller than their Northern relatives. Both have strong \
+	racial tensions which has resulted in more than a number of wars and outright attempts at genocide. Sergals have an incredibly long \
+	lifespan, but due to their lust for violence, only a handful have ever survived beyond the age of 80, such as the infamous and \
+	legendary General Rain Silves who is claimed to have lived to 5000."
 
+	/* Sergals are a temperate species able to survive in a variety of environments.
 	cold_level_1 = 200 //Default 260
 	cold_level_2 = 140 //Default 200
 	cold_level_3 = 80 //Default 120
@@ -260,16 +286,17 @@
 	heat_level_1 = 330 //Default 360
 	heat_level_2 = 380 //Default 400
 	heat_level_3 = 800 //Default 1000
+	*/
 
 	flags = CAN_JOIN | HAS_LIPS | HAS_EYE_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR
 	flesh_color = "#AFA59E"
-	heat_discomfort_level = 312
+	//heat_discomfort_level = 312
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
 		"You feel uncomfortably warm.",
 		"Your overheated skin itches."
 		)
-	cold_discomfort_level = 225
+	//cold_discomfort_level = 225
 
 
 /datum/species/shark
@@ -281,14 +308,26 @@
 	tail = "sharktail"
 	primitive = /mob/living/carbon/monkey/skrell
 	unarmed_types = list(/datum/unarmed_attack/bite/sharp)
-	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. They were first discovered as a primitive race of underwater dwelling tribal creatures by the Skrell. At first they were not believed to be noteworthy, but the Akula proved to be such swift and clever learners that the Skrell reclassified them as sentients. Allegedly, the Akula were also the first sentient life that the Skrell had ever encountered beside themselves, and thus the two species became swift allies over the next few hundred years. With the help of Skrellean technology, the Akula had their genome modified to be capable of surviving in open air for long periods of time. However, Akula even today still require a high humidity environment to avoid drying out after a few days, which would make life on an arid world like Virgo-Prime nearly impossible if it were not for Skrellean technology to aid them."
+	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
+	They were first discovered as a primitive race of underwater dwelling tribal creatures by the Skrell. At first they were not believed \
+	to be noteworthy, but the Akula proved to be such swift and clever learners that the Skrell reclassified them as sentients. Allegedly, \
+	the Akula were also the first sentient life that the Skrell had ever encountered beside themselves, and thus the two species became swift \
+	allies over the next few hundred years. With the help of Skrellean technology, the Akula had their genome modified to be capable of \
+	surviving in open air for long periods of time. However, Akula even today still require a high humidity environment to avoid drying out \
+	after a few days, which would make life on an arid world like Virgo-Prime nearly impossible if it were not for Skrellean technology to aid them."
 
 	flags = CAN_JOIN | HAS_LIPS | HAS_EYE_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR
 	flesh_color = "#AFA59E"
 	blood_color = "#1D2CBF"
 
+	heat_discomfort_strings = list(
+		"Your skin feels sore and unbearably itchy.",
+		"You're feeling irritable from the unpleasant heat.",
+		"You feel dizzy and dehyrdrated."
+		)
+
 	cold_discomfort_strings = list(
 		"You feel chilly.",
 		"You feel sluggish and cold.",
-		"Your scales bristle against the cold."
-	)
+		"Your skin bristles against the cold."
+		)

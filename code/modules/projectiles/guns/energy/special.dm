@@ -3,7 +3,7 @@
 	desc = "A man portable anti-armor weapon designed to disable mechanical threats"
 	icon_state = "ionrifle"
 	item_state = "ionrifle"
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/Laser3.ogg'
 	origin_tech = "combat=2;magnets=4"
 	w_class = 4
 	force = 10
@@ -99,13 +99,13 @@
 	desc = "A prototype weapon recovered from the ruins of Research-Station Epsilon."
 	icon_state = "xray"
 	projectile_type = /obj/item/projectile/beam/mindflayer
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/marauder.ogg' // Something exotic.
 
 /obj/item/weapon/gun/energy/toxgun
 	name = "phoron pistol"
 	desc = "A specialized firearm designed to fire lethal bolts of phoron."
 	icon_state = "toxgun"
-	fire_sound = 'sound/effects/stealthoff.ogg'
+	fire_sound = 'sound/weapons/plasmapistol.ogg'
 	w_class = 3.0
 	origin_tech = "combat=5;phorontech=4"
 	projectile_type = /obj/item/projectile/energy/phoron

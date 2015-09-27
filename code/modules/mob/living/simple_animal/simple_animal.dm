@@ -54,6 +54,13 @@
 	var/friendly = "nuzzles"
 	var/wall_smash = 0
 
+	//Vore stuff! -NW
+	var/list/stomach_contents = list() //Stomach contents list
+	var/digest_stomach = 1 //Do they digest? 0=no digest, 1=digest
+	var/digestable = 1 //Can they be digested? Probably not functional yet
+	var/isPredator = 0 //Are they capable of performing and pre-defined vore actions for their species?
+	var/swallowTime = 30 //How long it takes to eat its prey in 1/10 of a second. The default is 3 seconds.
+
 /mob/living/simple_animal/New()
 	..()
 	verbs -= /mob/verb/observe
@@ -65,6 +72,14 @@
 
 /mob/living/simple_animal/updatehealth()
 	return
+
+// NW was here. Trying to add regenerate icons for simple animals so we can grow Ian.
+/mob/living/simple_animal/regenerate_icons()
+	var/matrix/M = matrix()
+	M.Scale(playerscale) // Resize
+	if(playerscale >= 1)
+		M.Translate(0,-1*(1-playerscale)*16) // So macro resize doesn't glitch through walls.
+	src.transform = M
 
 /mob/living/simple_animal/Life()
 
