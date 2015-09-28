@@ -32,9 +32,9 @@ Moderator			+MOD
 Mentor				+MENTOR
 
 Admin Candidate		+ADMIN
-Trial Admin			+@ +SPAWN +REJUV +VAREDIT +BAN
-Admin				+@ +POSSESS +BUILDMODE +SERVER +FUN
-Admin Supervisor	+@ +STEALTH +SOUNDS +DEBUG +PERMISSIONS
+Trial Admin			+@ +STEALTH +SPAWN +REJUV +VAREDIT +BAN +FUN
+Admin				+@ +POSSESS +BUILDMODE +SERVER
+Admin Supervisor	+@ +SOUNDS +DEBUG +PERMISSIONS
 Game Master			+EVERYTHING
 Head Admin			+EVERYTHING
 Retired Admin		+ADMIN +STEALTH
