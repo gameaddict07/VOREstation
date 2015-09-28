@@ -157,9 +157,10 @@
 
 		dat += "<font color = 'green'>You are currently inside</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[inside_belly.belly_name]</font>!<br><br>"
 		dat += "[inside_belly.inside_flavor]<br><br>"
-		dat += "<font color = 'green'>You can see the following around you:</font><br>"
-		for (var/obj/M in inside_belly.internal_contents)
-			if(M != user) dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <a href='?src=\ref[src];helpout=\ref[M]'>Help out</a><br>"
+		if (inside_belly.internal_contents.len > 0)
+			dat += "<font color = 'green'>You can see the following around you:</font><br>"
+			for (var/atom/movable/M in inside_belly.internal_contents)
+				if(M != user) dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <a href='?src=\ref[src];helpout=\ref[M]'>Help out</a><br>"
 		dat += "<br>"
 	else
 		dat += "You aren't inside anyone.<br><br>"
@@ -170,7 +171,7 @@
 		var/vore/belly/belly = user.internal_contents[bellytype]
 		var/inside_count = 0
 		dat += "<font color = 'green'>[belly.belly_type] </font> <a href='?src=\ref[src];toggle_digestion=\ref[belly]'>Digestion: [belly.digest_mode]</a><br>"
-		for (var/obj/M in belly.internal_contents)
+		for (var/atom/movable/M in belly.internal_contents)
 			dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <br>"
 			inside_count += 1
 		if (inside_count == 0)
