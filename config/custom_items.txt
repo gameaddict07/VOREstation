@@ -39,3 +39,15 @@
 # kit_icon: salvage
 # }
 ##
+
+{
+ckey: arokha
+character_name: Aronai Kadigan
+item_path: /obj/item/fluff/permit/aro
+}
+
+{
+ckey: arokha
+character_name: Aronai Kadigan
+item_path: /obj/item/weapon/gun/energy/gun/fluff/aro
+}
