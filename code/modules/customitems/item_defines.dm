@@ -1898,7 +1898,7 @@
 
 	var/mode = 0 //0 = stun, 1 = kill
 
-/obj/item/weapon/gun/energy/gun/attack_self(mob/living/user as mob)
+/obj/item/weapon/gun/energy/fluff/aro/attack_self(mob/living/user as mob)
 	switch(mode)
 		if(0)
 			mode = 1
