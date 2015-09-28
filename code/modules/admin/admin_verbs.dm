@@ -74,6 +74,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/check_customitem_activity,
 	/client/proc/man_up,
 	/client/proc/global_man_up,
+	/client/proc/global_get_ic,
 	/client/proc/response_team, // Response Teams admin verb
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
@@ -894,7 +895,7 @@ var/list/admin_verbs_mentor = list(
 
 /client/proc/global_get_ic()
 	set category = "Fun"
-	set name = "!Get Back IC"
+	set name = "Get Back IC"
 	set desc = "Tells everyone to get back into character."
 
 	for (var/mob/T as mob in mob_list)
