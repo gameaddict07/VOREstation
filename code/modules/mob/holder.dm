@@ -112,7 +112,7 @@
 
 		// NOTE! Which belly the micro goes into is based on the TARGET's vore setting
 		// 	not the attacker's vore setting! This is the same behavior as old code. Keeping it for now -Leshana
-		var/vore/voretype/target_voretype = target.vorifice
+		var/datum/voretype/target_voretype = target.vorifice
 		if (target_voretype)
 			target_voretype.eat_held_mob(user, M, target)
 

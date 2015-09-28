@@ -66,7 +66,7 @@
 	verbs -= /mob/verb/observe
 	// Vore Code Start
 	// Setup the types of bellies present.
-	internal_contents["Stomach"] = new /vore/belly/stomach(src)
+	internal_contents["Stomach"] = new /datum/belly/stomach(src)
 	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
 	// Vore Code End
 
@@ -113,7 +113,7 @@
 	// Start vore code. Digestion code is handled here.
 	// For each belly type
 	for (var/bellytype in internal_contents)
-		var/vore/belly/B = internal_contents[bellytype]
+		var/datum/belly/B = internal_contents[bellytype]
 		for(var/mob/living/M in B.internal_contents)
 			if(M.loc != src)
 				B.internal_contents -= M

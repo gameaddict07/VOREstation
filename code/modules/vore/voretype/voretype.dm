@@ -2,7 +2,7 @@
 //	Type storing data/procs about the ways you can eat someone!
 //
 
-/vore/voretype
+/datum/voretype
 	var/name
 	var/belly_target = "Stomach"	// Which belly does this voretype lead you to?
 	var/human_prey_swallow_time = 100  // Humans get 100 ticks to escape by default
@@ -18,16 +18,16 @@
 //		iii) You can feed yourself to it!
 //
 
-/vore/voretype/proc/eat_held_mob(var/mob/user, var/mob/living/prey, var/mob/living/pred)
+/datum/voretype/proc/eat_held_mob(var/mob/user, var/mob/living/prey, var/mob/living/pred)
 	return
 
-/vore/voretype/proc/feed_self_to_grabbed(var/mob/living/carbon/human/user, var/vore/pred_capable/pred)
+/datum/voretype/proc/feed_self_to_grabbed(var/mob/living/carbon/human/user, var/vore/pred_capable/pred)
 	return
 
-/vore/voretype/proc/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
+/datum/voretype/proc/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
 	return
 
-/vore/voretype/proc/feed_grabbed_to_other(var/mob/living/carbon/human/user, var/mob/prey, var/vore/pred_capable/pred)
+/datum/voretype/proc/feed_grabbed_to_other(var/mob/living/carbon/human/user, var/mob/prey, var/vore/pred_capable/pred)
 	return
 
 //
@@ -35,12 +35,12 @@
 // This method removes duplicate code by consolidating the shared pieces.
 // However, if any particular vore type whishes to do its own thing, simply don't call this method (or override it!)
 //
-/vore/voretype/proc/perform_the_nom(var/mob/user, var/mob/living/prey, var/mob/living/carbon/pred, attempt_msg, success_msg, sound)
+/datum/voretype/proc/perform_the_nom(var/mob/user, var/mob/living/prey, var/vore/pred_capable/pred, attempt_msg, success_msg, sound)
 	// Announce that we start the attempt!
 	user.visible_message(attempt_msg)
 
 	// Now give the prey time to escape... return if they did
-	var/swallow_time = istype(prey, /mob/living/carbon/human) ? human_prey_swallow_time : nonhuman_prey_swallow_time;
+	var/swallow_time = istype(prey, /mob/living/carbon/human) ? human_prey_swallow_time : nonhuman_prey_swallow_time
 	if (!do_mob(user, prey))
 		return 0; // User is not able to act upon prey
 	if(!do_after(user, swallow_time))
@@ -50,21 +50,15 @@
 	user.visible_message(success_msg)
 	playsound(user, sound, 100, 1)
 
-	// Unbuckle the mob
-	if (prey.buckled)
-		prey.buckled.unbuckle_mob()
-
-	// Actually put the prey where they belong.
-	prey.loc = pred
-	var/vore/belly/target_belly = pred.internal_contents[belly_target]
-	target_belly.internal_contents += prey
+	// Actually shove prey into the belly.
+	var/datum/belly/target_belly = pred.internal_contents[belly_target]
+	target_belly.nom_mob(prey, user)
 
 	// Inform Admins
-	if(pred == user)
-		msg_admin_attack("[key_name(user)] [name]'d [key_name(prey)]")
+	if (pred == user)
+		msg_admin_attack("[key_name(pred)] [name]'d [key_name(prey)]")
 	else
 		msg_admin_attack("[key_name(user)] forced [key_name(pred)] to [name] [key_name(prey)]")
-
 	return 1
 
 // TODO LESHANA - This needs to be done much better in a cleaner way.
@@ -72,8 +66,8 @@
 // separate instances for every mob, they can share singleton instances.
 
 var/list/SINGLETON_VORETYPE_INSTANCES = list(
-		"Oral Vore" = new /vore/voretype/oral(),
-		"Unbirth" = new /vore/voretype/(),
-		"Anal Vore" = new /vore/voretype/anal(),
-		"Cock Vore" = new /vore/voretype/cock(),
-		"Breast Vore" = new /vore/voretype/boobs())
+		"Oral Vore" = new /datum/voretype/oral(),
+		"Unbirth" = new /datum/voretype/(),
+		"Anal Vore" = new /datum/voretype/anal(),
+		"Cock Vore" = new /datum/voretype/cock(),
+		"Breast Vore" = new /datum/voretype/boobs())

@@ -2,7 +2,7 @@
 
 // All living things can potentially eat you now!
 /mob/living
-	var/vore/voretype/vorifice = null // Default to no vore capability.
+	var/datum/voretype/vorifice = null // Default to no vore capability.
 	// TODO - Rename this! It is too conflicty with belly.internal_contents
 	var/list/internal_contents = list()
 
@@ -15,7 +15,7 @@
 //  to be vore capable should implement the vars and procs defined here to be vore-compatible!
 /vore/pred_capable
 	var/list/internal_contents
-	var/vore/voretype/vorifice
+	var/datum/voretype/vorifice
 
 //
 //	Check if an object is capable of eating things.
@@ -49,19 +49,19 @@
 	// TODO LESHANA - This should all be refactored into procs on voretype that are overriden...
 	switch(releaseorifice)
 		if("Stomach (by Mouth)")
-			var/vore/belly/belly = internal_contents["Stomach"]
+			var/datum/belly/belly = internal_contents["Stomach"]
 			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] hurls out the contents of their stomach!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Stomach (by Anus)")
-			var/vore/belly/belly = internal_contents["Stomach"]
+			var/datum/belly/belly = internal_contents["Stomach"]
 			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] releases their stomach contents out of their rear!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Womb")
-			var/vore/belly/belly = internal_contents["Womb"]
+			var/datum/belly/belly = internal_contents["Womb"]
 			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] gushes out the contents of their womb!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -71,7 +71,7 @@
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Cock")
-			var/vore/belly/belly = internal_contents["Cock"]
+			var/datum/belly/belly = internal_contents["Cock"]
 			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] splurts out the contents of their cock!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -81,7 +81,7 @@
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Breasts")
-			var/vore/belly/belly = internal_contents["Boob"]
+			var/datum/belly/belly = internal_contents["Boob"]
 			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] squirts out the contents of their breasts!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -144,16 +144,16 @@
 	var/dat
 	if (is_vore_predator(user.loc))
 		var/vore/pred_capable/eater = user.loc
-		var/vore/belly/inside_belly		// Which of predator's bellies are we inside?
+		var/datum/belly/inside_belly		// Which of predator's bellies are we inside?
 
 		//This big block here figures out where the prey is
 		for (var/bellytype in eater.internal_contents)
-			var/vore/belly/B = eater.internal_contents[bellytype]
+			var/datum/belly/B = eater.internal_contents[bellytype]
 			for (var/mob/living/M in B.internal_contents)
 				if (M == user)
 					inside_belly = B
 					break
-		ASSERT(inside_belly != null) // Make sure we actually found ourselves.
+		// ASSERT(inside_belly != null) // Make sure we actually found ourselves.
 
 		dat += "<font color = 'green'>You are currently inside</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[inside_belly.belly_name]</font>!<br><br>"
 		dat += "[inside_belly.inside_flavor]<br><br>"
@@ -168,7 +168,7 @@
 	// List people inside you
 	dat += "<font color = 'purple'><b><center>Contents</center></b></font><br>"
 	for (var/bellytype in user.internal_contents)
-		var/vore/belly/belly = user.internal_contents[bellytype]
+		var/datum/belly/belly = user.internal_contents[bellytype]
 		var/inside_count = 0
 		dat += "<font color = 'green'>[belly.belly_type] </font> <a href='?src=\ref[src];toggle_digestion=\ref[belly]'>Digestion: [belly.digest_mode]</a><br>"
 		for (var/atom/movable/M in belly.internal_contents)
@@ -180,7 +180,7 @@
 	// Offer flavor text customization options
 	dat += "<font color = 'purple'><b><center>Customisation options</center></b></font><br><br>"
 	for (var/bellytype in user.internal_contents)
-		var/vore/belly/belly = user.internal_contents[bellytype]
+		var/datum/belly/belly = user.internal_contents[bellytype]
 		dat += "<b>[belly.belly_type]</b><br>[belly.inside_flavor] <a href='?src=\ref[src];set_description=\ref[belly]'>Change text</a><br>"
 
 	return dat;
@@ -211,12 +211,12 @@
 			eater << "<font color='green'>Your body efficiently shoves [subj] back where they belong.</font>"
 
 	if(href_list["set_description"])
-		var/vore/belly/B = locate(href_list["set_description"])
+		var/datum/belly/B = locate(href_list["set_description"])
 		B.inside_flavor = input(usr, "Input a new flavor text!", "[B.belly_type] flavor text", B.inside_flavor) as message
 		return 1 // TODO Will this make it refresh the ui?
 
 	if (href_list["toggle_digestion"])
-		var/vore/belly/B = locate(href_list["toggle_digestion"])
+		var/datum/belly/B = locate(href_list["toggle_digestion"])
 		B.toggle_digestion()
 		return 1 // TODO Will this make it refresh the ui?
 

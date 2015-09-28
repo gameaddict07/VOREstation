@@ -2,18 +2,18 @@
 //	Implementation of Unbirthing Vore via the "womb" belly type
 //
 
-/vore/belly/womb
+/datum/belly/womb
 	belly_type = "Womb"
 	belly_name = "womb"
 	inside_flavor = "Generic womb description"
 
 // @Override
-/vore/belly/womb/get_examine_msg(t_He, t_his, t_him, t_has, t_is)
+/datum/belly/womb/get_examine_msg(t_He, t_his, t_him, t_has, t_is)
 	if(internal_contents.len || is_full == 1)
 		return "[t_He] [t_has] something in [t_his] lower belly!\n"
 
 // @Override
-/vore/belly/womb/toggle_digestion()
+/datum/belly/womb/toggle_digestion()
 	digest_mode = input("Womb Mode") in list("Hold", "Heal", "Transform (Male)", "Transform (Female)", "Transform (Keep Gender)", "Transform (Change Species)","Digest")
 	switch (digest_mode)
 		if("Heal")
@@ -32,7 +32,7 @@
 			owner << "<span class='notice'>You will now transform people you've unbirthed to look similar to your species.</span>"
 
 // @Override
-/vore/belly/womb/process_Life()
+/datum/belly/womb/process_Life()
 	for(var/mob/living/M in internal_contents)
 		//WOMB HEAL
 		if(iscarbon(M) && owner.stat != DEAD && digest_mode == DM_HEAL && M.stat != DEAD)
@@ -55,8 +55,8 @@
 			if(M.stat == DEAD)
 				owner << "<span class='notice'>You feel [M] dissolve into nothing but warm fluids inside your womb.</span>"
 				M << "<span class='notice'>You dissolve into nothing but warm fluids inside [owner]'s womb.</span>"
-				digestion_death(M);
-				continue;
+				digestion_death(M)
+				continue
 
 			if(air_master.current_cycle%3==1)
 				if(!(M.status_flags & GODMODE))

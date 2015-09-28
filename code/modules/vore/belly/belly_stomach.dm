@@ -3,23 +3,23 @@
 //	Note: This also handles Anal Vore.   Possibly consider more differentiation.
 //
 
-/vore/belly/stomach
+/datum/belly/stomach
 	belly_type = "Stomach"
 	belly_name = "stomach"
 	inside_flavor = "There is nothing interesting about this stomach."
 
 // @Override
-/vore/belly/stomach/get_examine_msg(t_He, t_his, t_him, t_has, t_is)
+/datum/belly/stomach/get_examine_msg(t_He, t_his, t_him, t_has, t_is)
 	if (internal_contents.len)
 		return "[t_He] [t_has] something solid in [t_his] stomach!\n"
 
 // @Override
-/vore/belly/stomach/toggle_digestion()
+/datum/belly/stomach/toggle_digestion()
 	digest_mode = (digest_mode == DM_DIGEST) ? DM_HOLD : DM_DIGEST
 	owner << "<span class='notice'>You will [digest_mode == DM_DIGEST ? "now" : "no longer"] digest people in your stomach.</span>"
 
 // @Override
-/vore/belly/stomach/process_Life()
+/datum/belly/stomach/process_Life()
 	for (var/mob/living/M in internal_contents)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/R = M
@@ -79,7 +79,7 @@
 							owner << "<span class='notice'>You feel a rush of warmth as [M]'s now-liquified remains start pumping through your intestines.</span>"
 							M << "<span class='notice'>Your now-liquified remains start pumping through [owner]'s intestines, filling their body with a rush of warmth.</span>"
 					owner.nutrition += 20 // so eating dead mobs gives you *something*.
-					digestion_death(M);
+					digestion_death(M)
 					continue
 
 				// Deal digestion damage (and feed the pred)
@@ -92,7 +92,7 @@
 
 
 // @Override
-/vore/belly/stomach/relay_struggle(var/mob/user, var/direction)
+/datum/belly/stomach/relay_struggle(var/mob/user, var/direction)
 	if (!(user in internal_contents))
 		return  // User is not in this belly!
 

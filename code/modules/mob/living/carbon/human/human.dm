@@ -42,10 +42,10 @@
 
 	// Vore Code Start
 	// Setup the types of bellies present.
-	internal_contents["Stomach"] = new /vore/belly/stomach(src)
-	internal_contents["Cock"] = new /vore/belly/cock(src)
-	internal_contents["Womb"] = new /vore/belly/boob(src)
-	internal_contents["Boob"] = new /vore/belly/womb(src)
+	internal_contents["Stomach"] = new /datum/belly/stomach(src)
+	internal_contents["Cock"] = new /datum/belly/cock(src)
+	internal_contents["Womb"] = new /datum/belly/boob(src)
+	internal_contents["Boob"] = new /datum/belly/womb(src)
 	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
 	// Vore Code End
 
@@ -779,7 +779,7 @@
 				src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
 
 				// Vore Code Begin
-				var/vore/belly/B = internal_contents["Stomach"]
+				var/datum/belly/B = internal_contents["Stomach"]
 				if (B.release_all_contents())
 					visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
 				// Vore Code End

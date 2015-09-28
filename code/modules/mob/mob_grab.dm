@@ -224,7 +224,7 @@
 			if(M == assailant)
 				if (is_vore_predator(user))
 					// Feed what you're holding (affecting) to yourself (user)
-					var/vore/voretype/vore_type = attacker.vorifice
+					var/datum/voretype/vore_type = attacker.vorifice
 					if (vore_type.feed_grabbed_to_self(user, affecting)) del(src)
 				else
 					log_debug("[attacker] attempted to feed [affecting] to [user] ([user.type]) but it is not predator-capable")
@@ -233,7 +233,7 @@
 			if(M == affecting)
 				if (is_vore_predator(affecting))
 					// Feed yourself (user) to what you're holding (affecting)!
-					var/vore/voretype/vore_type = attacker.vorifice  // Attacker's choice of what vorifice
+					var/datum/voretype/vore_type = attacker.vorifice  // Attacker's choice of what vorifice
 					if (vore_type.feed_self_to_grabbed(user, affecting)) del(src)
 				else
 					log_debug("[attacker] attempted to feed [user] to [affecting] ([affecting.type]) but it is not predator-capable")
@@ -242,7 +242,7 @@
 			else
 				// Feed what you're holding (affecting) to what you clicked (M)
 				if (is_vore_predator(M))
-					var/vore/voretype/vore_type = M:vorifice
+					var/datum/voretype/vore_type = M:vorifice
 					if (vore_type.feed_grabbed_to_other(user, affecting, M)) del(src)
 				else
 					log_debug("[attacker] attempted to feed [affecting] to [M] ([M.type]) but it is not predator-capable")

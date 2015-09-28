@@ -1460,7 +1460,7 @@
 	proc/handle_internal_contents()
 		// For each belly type
 		for (var/bellytype in internal_contents)
-			var/vore/belly/B = internal_contents[bellytype]
+			var/datum/belly/B = internal_contents[bellytype]
 			for(var/atom/movable/M in B.internal_contents)
 				if(M.loc != src)
 					B.internal_contents -= M
