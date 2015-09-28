@@ -248,3 +248,18 @@
 	icon_state="bsposter50"
 	name = "Pinup Girl Cindy Kate"
 	desc = "This particular one is of Cindy Kate, a seductive performer well known among less savoury circles." //idk
+
+/datum/poster/bay_51
+	icon_state="bsposter51"
+	name = "Sexy Space Arokha"
+	desc = "This is a poster of famous Space Fox Arokha flashing a camera. Look at her, with those cute eyes and boobies."
+
+/datum/poster/bay_52
+	icon_state="bsposter52"
+	name = "Joan Butt Poster"
+	desc = "Woah! A poster of Joan showing off her panty-clad butt! Better make sure she doesn't see this."
+
+/datum/poster/bay_53
+	icon_state="bsposter53"
+	name = "Keyhole Joan Poster"
+	desc = "Where are people getting posters of Joan posing for a camera? Look at her, showing off that keyhole sweater and her cleavage."
