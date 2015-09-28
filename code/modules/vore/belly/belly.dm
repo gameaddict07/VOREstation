@@ -117,8 +117,9 @@
 						// TODO - If SubPrey is digestable, tell them its their turn to die horribly
 
 		//Drop all items into the belly.
-		for (var/obj/item/W in M)
-			_handle_digested_item(W)
+		if (config.items_survive_digestion)
+			for (var/obj/item/W in M)
+				_handle_digested_item(W)
 
 		// Delete the digested mob
 		del(M)
@@ -151,5 +152,5 @@
 	proc/_is_digestable(var/obj/item/I)
 		for (var/T in preserve_items)
 			if(istype(I, T))
-				return 1
-		return 0
+				return 0
+		return 1
