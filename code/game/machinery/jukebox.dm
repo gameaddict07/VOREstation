@@ -32,8 +32,8 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Floating", 'sound/music/main.ogg'),
 		new/datum/track("Fly Me To The Moon", 'sound/music/Fly_Me_To_The_Moon.ogg'),
 		new/datum/track("Endless Space", 'sound/music/space.ogg'),
-		new/datum/track("Mad About Me", 'sound/music/jukebox/Cantina.ogg')
-		new/datum/track("Minor Turbulence", 'sound/music/jukebox/MinorTurbulenceFull.ogg')
+		new/datum/track("Mad About Me", 'sound/music/jukebox/Cantina.ogg'),
+		new/datum/track("Minor Turbulence", 'sound/music/jukebox/MinorTurbulenceFull.ogg'),
 		new/datum/track("Ode to Greed", 'sound/music/jukebox/OdeToGreed.ogg'),
 		new/datum/track("Part A", 'sound/misc/TestLoop1.ogg'),
 		new/datum/track("Ransacked", 'sound/music/jukebox/Ransacked.ogg'),
