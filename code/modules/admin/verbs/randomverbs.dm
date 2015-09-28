@@ -224,7 +224,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /*
-Allow admins to set players to be able to respawn/bypass 30 min wait, without the admin having to edit variables directly
+Allow admins to set players to be able to respawn/bypass 1 min wait, without the admin having to edit variables directly
 Ccomp's first proc.
 */
 
@@ -256,7 +256,7 @@ Ccomp's first proc.
 /client/proc/allow_character_respawn()
 	set category = "Special Verbs"
 	set name = "Allow player to respawn"
-	set desc = "Let's the player bypass the 30 minute wait to respawn or allow them to re-enter their corpse."
+	set desc = "Let's the player bypass the 1 minute wait to respawn or allow them to re-enter their corpse."
 	if(!holder)
 		src << "Only administrators may use this command."
 	var/list/ghosts= get_ghosts(1,1)

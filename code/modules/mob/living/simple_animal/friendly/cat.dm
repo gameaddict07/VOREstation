@@ -27,17 +27,17 @@
 
 /mob/living/simple_animal/cat/Life()
 	//MICE!
-	if((src.loc) && isturf(src.loc))
+	if((loc) && isturf(loc))
 		if(!stat && !resting && !buckled)
 			for(var/mob/living/simple_animal/mouse/M in loc)
-				if(isPredator == 1) //If the cat is a predator,
+				if(isPredator) //If the cat is a predator,
 					movement_target = null
 					custom_emote(1, "greedily stuffs [M] into their gaping maw!")
 					sleep(30)
 					if(M in oview(1, src))
 						custom_emote(1, "swallows down [M] into their hungry gut!")
 						M.loc = src
-						src.stomach_contents.Add(M)
+						stomach_contents.Add(M)
 						playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 					else
 						M << "You just manage to slip away from [src]'s jaws before you can be sent to a fleshy prison!"
@@ -59,7 +59,7 @@
 
 	if(!stat && !resting && !buckled) //SEE A MICRO AND ARE A PREDATOR, EAT IT!
 		for(var/mob/living/carbon/human/food in oview(src, 3))
-			if(food.playerscale < 0.3)
+			if(food.playerscale <= RESIZE_A_SMALLTINY)
 				if(prob(10))
 					custom_emote(1, pick("eyes [food] hungrily!","licks their lips and turns towards [food] a little!","purrs as they imagine [food] being in their belly."))
 					break
@@ -68,17 +68,17 @@
 						movement_target = food
 						break
 		for(var/mob/living/carbon/human/bellyfiller in oview(1, src))
-			if(bellyfiller.playerscale < 0.3 && src.isPredator == 1)
+			if(bellyfiller.playerscale <= RESIZE_A_SMALLTINY && isPredator)
 				movement_target = null
 				custom_emote(1, pick("slurps [bellyfiller] with their sandpapery tongue.","looms over [bellyfiller] with their maw agape.","sniffs at [bellyfiller], their belly grumbling hungrily."))
 				sleep(2)
 
 				custom_emote(1, "scoops [bellyfiller] into their maw!")
-				sleep(30)
+				sleep(swallowTime)
 				if(bellyfiller in oview(1, src))
 					custom_emote(1, "swallows down [bellyfiller] with a happy purr!")
 					bellyfiller.loc = src
-					src.stomach_contents.Add(bellyfiller)
+					stomach_contents.Add(bellyfiller)
 					msg_admin_attack("[key_name(bellyfiller)] got eaten by [src]!")
 					playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 				else

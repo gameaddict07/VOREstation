@@ -1066,7 +1066,7 @@
 						sleeping = max(sleeping-1, 0)
 				blinded = 1
 				stat = UNCONSCIOUS
-				if( prob(2) && health && !hal_crit )
+				if( prob(2) && health && !hal_crit && client) // client ensures they are actually connected and not SSD, because SSD snoring is fucking annoying -Ace
 					spawn(0)
 						emote("snore")
 			//CONSCIOUS

@@ -3,6 +3,13 @@ var/const/RESIZE_BIG = 1.5
 var/const/RESIZE_NORMAL = 1
 var/const/RESIZE_SMALL = 0.5
 var/const/RESIZE_TINY = 0.25
+
+//average
+var/const/RESIZE_A_HUGEBIG = (RESIZE_HUGE + RESIZE_BIG) / 2
+var/const/RESIZE_A_BIGNORMAL = (RESIZE_BIG + RESIZE_NORMAL) / 2
+var/const/RESIZE_A_NORMALSMALL = (RESIZE_NORMAL + RESIZE_SMALL) / 2
+var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
+
 //these aren't defines so they can stay in this file
 //Not sure I see the point of them? They take up far more space than putting in the values as floats, and it's not like we're planning on changing them. --Night
 
