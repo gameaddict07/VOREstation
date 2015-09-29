@@ -152,6 +152,9 @@
 /mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
 	var/pressure_difference
 
+	// If you are in someone's belly, assume its all good.
+	if (istype(loc, /mob/living)) return ONE_ATMOSPHERE
+
 	// First get the absolute pressure difference.
 	if(pressure < ONE_ATMOSPHERE) // We are in an underpressure.
 		pressure_difference = ONE_ATMOSPHERE - pressure
