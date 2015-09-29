@@ -1886,19 +1886,19 @@
 /obj/item/weapon/gun/energy/fluff/aro
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "kraystun100"
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "Kraystun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	charge_cost = 200 //How much energy is needed to fire.
 	projectile_type = /obj/item/projectile/energy/electrode
 	origin_tech = "combat=3;magnets=2"
-	modifystate = "kraystun"
+	modifystate = "Kraystun"
 
 	var/mode = 0 //0 = stun, 1 = kill
 
-/obj/item/weapon/gun/energy/gun/attack_self(mob/living/user as mob)
+/obj/item/weapon/gun/energy/fluff/aro/attack_self(mob/living/user as mob)
 	switch(mode)
 		if(0)
 			mode = 1
@@ -1906,14 +1906,14 @@
 			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
-			modifystate = "kraykill"
+			modifystate = "Kraykill"
 		if(1)
 			mode = 0
 			charge_cost = 100
 			fire_sound = 'sound/weapons/Taser.ogg'
 			user << "<span class='warning'>[src.name] is now set to stun.</span>"
 			projectile_type = /obj/item/projectile/beam/stun
-			modifystate = "kraystun"
+			modifystate = "Kraystun"
 	update_icon()
 	update_held_icon()
 
@@ -2160,6 +2160,41 @@
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
 
+
+/obj/item/clothing/head/fluff/pompom
+	name = "Pom-Pom"
+	desc = "A fluffy little thingus on a thin stalk, ideal for impersonating moogles and anglerfish. Kupomnomnom."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "pom"
+	item_state = "pom"
+	w_class = 2.0
+	on = 0
+	brightness_on = 5
+	light_overlay = null
+
+/obj/item/clothing/head/fluff/pompom/attack_self(mob/user)
+	if(brightness_on)
+		if(!isturf(user.loc))
+			user << "You cannot turn the light on while in this [user.loc]"
+			return
+		on = !on
+		user << "You [on ? "light up" : "dim"] your pom-pom."
+		update_light(user)
+	else
+		return ..(user)
+
+
+/obj/item/clothing/head/fluff/pompom/update_icon(var/mob/user)
+	if(on)
+		icon_state = "pom-on"
+		item_state = "pom-on"
+	else
+		icon_state = "pom"
+		item_state = "pom"
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_head()
+
 //End Scree's stuff
 
 //Caso's stuff
@@ -2330,6 +2365,25 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "headphones"
 	item_state = "headset"
+
+// OrbisA Items
+
+/obj/item/weapon/melee/fluff/holochain // OrbisA: Richard D'angelo
+	name = "Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and the initials R.D. on the silver base."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "holochain"
+	item_state = "holochain"
+	flags = CONDUCT | NOBLOODY
+	no_attack_log = 1 //if you want to turn on the attack log for this, comment/delete this line. Orbis.
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 3
+	w_class = 3
+	damtype = HALLOSS
+	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
+
+ // End OrbisA Items
 
 //Weapon permits to spawn with players who have them.
 

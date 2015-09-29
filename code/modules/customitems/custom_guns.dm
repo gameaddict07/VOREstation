@@ -56,9 +56,46 @@
 	icon_state = "eluger"
 	item_state = "energykill"
 	fire_sound = 'sound/weapons/eluger.ogg'
-	projectile_type = /obj/item/projectile/beam/emitter
+	projectile_type = /obj/item/projectile/beam/eluger
+
+/obj/item/weapon/gun/energy/gun/tluger
+	name = "Energy Luger"
+	desc = "The finest sidearm produced by RauMauser, this pistol can punch a hole through inch thick steel plating. It appears to be upgraded."
+	icon_state = "tlugerstun100"
+	fire_sound = 'sound/weapons/Taser.ogg'
+	item_state = "gun"
+	charge_cost = 100 //How much energy is needed to fire.
+	projectile_type = /obj/item/projectile/beam/stun
+	modifystate = "tlugerstun"
+
+/obj/item/weapon/gun/energy/gun/tluger/attack_self(mob/living/user as mob)
+	switch(mode)
+		if(0)
+			mode = 1
+			charge_cost = 100
+			fire_sound = 'sound/weapons/eluger.ogg'
+			user << "<span class='warning'>[src.name] is now set to kill.</span>"
+			projectile_type = /obj/item/projectile/beam/eluger
+			modifystate = "tlugerkill"
+		if(1)
+			mode = 0
+			charge_cost = 100
+			fire_sound = 'sound/weapons/Taser.ogg'
+			user << "<span class='warning'>[src.name] is now set to stun.</span>"
+			projectile_type = /obj/item/projectile/beam/stun
+			modifystate = "tlugerstun"
+	update_icon()
+	update_held_icon()
+
+
 
 //Ammo//
+
+/obj/item/projectile/beam/eluger
+	name = "Laser Beam"
+	icon_state = "emitter"
+	damage = 45
+
 /obj/item/ammo_casing/stg
 	desc = "A 7.92×33mm Kurz casing."
 	caliber = "kurz"

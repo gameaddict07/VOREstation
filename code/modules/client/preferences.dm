@@ -53,7 +53,7 @@ datum/preferences
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 30						//age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
-	var/b_type = "A+"					//blood type (not-chooseable)
+	var/b_type = "O-"					//blood type (not-chooseable)
 	var/underwear						//underwear type
 	var/undershirt						//undershirt type
 	var/backbag = 2						//backpack type

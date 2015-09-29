@@ -74,6 +74,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/check_customitem_activity,
 	/client/proc/man_up,
 	/client/proc/global_man_up,
+	/client/proc/global_get_ic,
 	/client/proc/response_team, // Response Teams admin verb
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
@@ -891,3 +892,14 @@ var/list/admin_verbs_mentor = list(
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
 	message_admins("\blue [key_name_admin(usr)] told everyone to man up and deal with it.", 1)
+
+/client/proc/global_get_ic()
+	set category = "Fun"
+	set name = "Get Back IC"
+	set desc = "Tells everyone to get back into character."
+
+	for (var/mob/T as mob in mob_list)
+		T << "<br><center><span class='notice'><b><font size='3' color='red'>Back into character!<br>Please stop clogging OOC!</font></b><br>We have a chatroom <i>and</i> a forum.<br>Use those instead.</span></center><br>"
+
+	log_admin("[key_name(usr)] told everyone to stop spamming OOC. That includes admins.")
+	message_admins("\red [key_name_admin(usr)] told everyone to stop spamming OOC. That includes admins.", 1)
