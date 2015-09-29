@@ -91,7 +91,7 @@
 "abM" = (/obj/item/device/radio/intercom{broadcasting = 0; freerange = 0; frequency = 1475; listening = 1; name = "Station Intercom (Security)"; pixel_x = 0; pixel_y = 22},/obj/item/device/radio/intercom{name = "Station Intercom (General)"; pixel_y = -29},/turf/simulated/floor,/area/security/range)
 "abN" = (/obj/machinery/alarm{dir = 1; icon_state = "alarm0"; pixel_y = -22},/turf/simulated/floor,/area/security/range)
 "abO" = (/obj/structure/cable/green{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/turf/simulated/floor,/area/security/range)
-"abP" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor,/area/security/range)
+"abP" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/turf/simulated/floor,/area/security/range)
 "abQ" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "Prison Gate"; name = "Security Blast Door"; opacity = 0},/obj/machinery/door/firedoor/border_only{dir = 2},/obj/machinery/door/airlock/maintenance{name = "Security Maintenance"; req_access_txt = "1"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/plating,/area/security/range)
 "abR" = (/obj/machinery/portable_atmospherics/powered/pump/filled,/turf/simulated/floor/plating,/area/maintenance/security_starboard)
 "abS" = (/obj/machinery/newscaster{pixel_y = 32},/turf/simulated/floor/carpet,/area/security/dorms)
