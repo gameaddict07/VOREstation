@@ -64,7 +64,7 @@
 // Returns the number of mobs so released.
 /datum/belly/proc/release_all_contents()
 	var/tick = 0 //easiest way to check if the list has anything
-	for (var/obj/M in internal_contents)
+	for (var/atom/movable/M in internal_contents)
 		M.loc = owner.loc  // Move the belly contents into the same location as belly's owner.
 		src.internal_contents -= M  // Remove from the belly contents
 
