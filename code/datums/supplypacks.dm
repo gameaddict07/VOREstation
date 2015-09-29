@@ -1044,8 +1044,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	group = "Operations"
 
 
-/datum/supply_packs/randomised/contraband
-//	num_contained = 1 // Random chance between items.
+/datum/supply_packs/contraband
 	contains = list(/obj/item/mysteryBox) // See giftbox.dm
 	name = "Smuggled contraband"
 	cost = 150

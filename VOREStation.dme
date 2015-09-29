@@ -562,6 +562,7 @@
 #include "code\game\objects\items\devices\PDA\cart.dm"
 #include "code\game\objects\items\devices\PDA\chatroom.dm"
 #include "code\game\objects\items\devices\PDA\PDA.dm"
+#include "code\game\objects\items\devices\PDA\PDA_mods.dm"
 #include "code\game\objects\items\devices\PDA\radio.dm"
 #include "code\game\objects\items\devices\radio\beacon.dm"
 #include "code\game\objects\items\devices\radio\electropack.dm"

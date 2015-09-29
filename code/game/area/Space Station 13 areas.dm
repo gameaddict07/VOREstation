@@ -1555,6 +1555,10 @@ area/space/atmosalert()
 	name = "\improper Server Room"
 	icon_state = "server"
 
+/area/toxins/breakroom
+	name = "\improper Research Break Room"
+	icon_state = "green"
+
 //Storage
 
 /area/storage/tools
