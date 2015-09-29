@@ -1,220 +1,94 @@
+
+
+// All living things can potentially eat you now!
+/mob/living
+	var/datum/voretype/vorifice = null // Default to no vore capability.
+	// TODO - Rename this! It is too conflicty with belly.internal_contents
+	var/list/internal_contents = list()
+
 /mob/living/carbon
-	var/vorifice = "Oral Vore"
+	var/digestable = 1	// Humans get to decide if they are digestable or not  (TODO - Can we shoved this down to :human?)
+						// Set to 1 so you are digestable by default
 
-/mob/living/carbon/human/proc/digest_stomach_toggle()
-	set name = "Toggle Stomach Digestion"
-	set category = "Vore"
+//
+//	This is an "interface" type.  No instances of this type will exist, but any type which is supposed
+//  to be vore capable should implement the vars and procs defined here to be vore-compatible!
+/vore/pred_capable
+	var/list/internal_contents
+	var/datum/voretype/vorifice
 
-	digest_stomach = !digest_stomach //Boolean inverter
-	src << "<span class='notice'>You will [digest_stomach ? "now" : "no longer"] digest people in your stomach.</span>"
+//
+//	Check if an object is capable of eating things.
+//	For now this is just simple_animals and carbons
+//
+/proc/is_vore_predator(var/mob/O)
+	return (O != null && (istype(O, /mob/living/simple_animal) || istype(O, /mob/living/carbon)) && O:vorifice)
 
-/mob/living/carbon/human/proc/digest_cock_toggle()
-	set name = "Toggle Cockvore Digestion"
-	set category = "Vore"
-
-	digest_cock = !digest_cock
-	src << "<span class='notice'>You will [digest_cock ? "now" : "no longer"] cummify people.</span>"
-
-/mob/living/carbon/human/proc/digest_boob_toggle()
-	set name = "Toggle Breastvore Digestion"
-	set category = "Vore"
-
-	digest_boob = !digest_boob
-	src << "<span class='notice'>You will [digest_boob ? "now" : "no longer"] milkify people.</span>"
-
-/mob/living/carbon/human/proc/womb_toggle()
-	set name = "Set Womb Mode"
-	set category = "Vore"
-	wombheal = input("Womb Mode") in list("Hold", "Heal", "Transform (Male)", "Transform (Female)", "Transform (Keep Gender)", "Transform (Change Species)","Digest")
-	switch(wombheal)
-		if("Heal")
-			src << "<span class='notice'>You will now heal people you've unbirthed.</span>"
-		if("Digest")
-			src << "<span class='notice'>You will now digest people you've unbirthed.</span>"
-		if("Hold")
-			src << "<span class='notice'>You will now harmlessly hold people you've unbirthed.</span>"
-		if("Transform (Male)")
-			src << "<span class='notice'>You will now transform people you've unbirthed into your son.</span>"
-		if("Transform (Female)")
-			src << "<span class='notice'>You will now transform people you've unbirthed into your daughter.</span>"
-		if("Transform (Keep Gender)")
-			src << "<span class='notice'>You will now transform people you've unbirthed, but they will keep their gender.</span>"
-		if("Transform (Change Species)")
-			src << "<span class='notice'>You will now transform people you've unbirthed to look similar to your species.</span>"
-
+//
+//	Verb for toggling which orifice you eat people with!
+//
 /mob/living/carbon/human/proc/orifice_toggle()
 	set name = "Choose Vore Mode"
 	set category = "Vore"
-	vorifice = input("Choose Vore Mode") in list("Oral Vore", "Unbirth", "Anal Vore", "Cock Vore", "Breast Vore")
-	src << "<span class='notice'>[vorifice] selected.</span>"
 
-//////////////////////////////////////////
-/// NW's digestion toggle optimisation ///
-//////////////////////////////////////////
+	var/type = input("Choose Vore Mode") in list("Oral Vore", "Unbirth", "Anal Vore", "Cock Vore", "Breast Vore")
+	// This is hard coded for now, but should be fixed later!
+	vorifice = SINGLETON_VORETYPE_INSTANCES[type];
 
-/mob/living/carbon/human/proc/All_Digestion_Toggles()
-	set name = "Digestion Toggles"
-	set category = "Vore"
-	var/digestzone = input("Choose Organ") in list("Stomach","Cock","Breasts","Womb")
-
-	switch(digestzone)
-		if("Stomach")
-			digest_stomach_toggle()
-		if("Cock")
-			digest_cock_toggle()
-		if("Breasts")
-			digest_boob_toggle()
-		if("Womb")
-			womb_toggle()
+	// TODO LESHANA - This is bad!
+	// Vorifice objects have no member vars, so are effectively immutable!
+	// Given this, we shouldn't be creating new instances for every mob!  Instead we should have global singletons.
+	// TODO - Implement this.  even better would be function pointers, but eh.
+	src << "<span class='notice'>[vorifice.name] selected.</span>"
 
 /mob/living/carbon/human/proc/vore_release()
 	set name = "Release"
 	set category = "Vore"
 	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)", "Stomach (by Anus)", "Womb", "Cock", "Breasts")
 
+	// TODO LESHANA - This should all be refactored into procs on voretype that are overriden...
 	switch(releaseorifice)
 		if("Stomach (by Mouth)")
-			var/tick = 0 //easiest way to check if the list has anything
-			for(var/mob/M in internal_contents["Stomach"])
-
-				M.loc = src.loc //This is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
-				internal_contents["Stomach"] -= M
-
-				if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
-					var/mob/living/carbon/loc_mob = src.loc
-
-					if(src in loc_mob.internal_contents["Stomach"])
-						loc_mob.internal_contents["Stomach"] += M
-					if(src in loc_mob.internal_contents["Womb"])
-						loc_mob.internal_contents["Womb"] += M
-					if(src in loc_mob.internal_contents["Cock"])
-						loc_mob.internal_contents["Cock"] += M
-					if(src in loc_mob.internal_contents["Boob"])
-						loc_mob.internal_contents["Boob"] += M
-				tick++
-
-			if(tick)
+			var/datum/belly/belly = internal_contents["Stomach"]
+			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] hurls out the contents of their stomach!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Stomach (by Anus)")
-			var/tick = 0
-			for(var/mob/M in internal_contents["Stomach"])
-
-				M.loc = src.loc
-				internal_contents["Stomach"] -= M
-
-				if(iscarbon(src.loc))
-					var/mob/living/carbon/loc_mob = src.loc
-
-					if(src in loc_mob.internal_contents["Stomach"])
-						loc_mob.internal_contents["Stomach"] += M
-					if(src in loc_mob.internal_contents["Womb"])
-						loc_mob.internal_contents["Womb"] += M
-					if(src in loc_mob.internal_contents["Cock"])
-						loc_mob.internal_contents["Cock"] += M
-					if(src in loc_mob.internal_contents["Boob"])
-						loc_mob.internal_contents["Boob"] += M
-
-				tick++
-
-			if(tick)
+			var/datum/belly/belly = internal_contents["Stomach"]
+			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] releases their stomach contents out of their rear!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Womb")
-			var/tick = 0
-			for(var/mob/M in internal_contents["Womb"])
-
-				M.loc = src.loc
-				internal_contents["Womb"] -= M
-
-				if(iscarbon(src.loc))
-					var/mob/living/carbon/loc_mob = src.loc
-
-					if(src in loc_mob.internal_contents["Stomach"])
-						loc_mob.internal_contents["Stomach"] += M
-					if(src in loc_mob.internal_contents["Womb"])
-						loc_mob.internal_contents["Womb"] += M
-					if(src in loc_mob.internal_contents["Cock"])
-						loc_mob.internal_contents["Cock"] += M
-					if(src in loc_mob.internal_contents["Boob"])
-						loc_mob.internal_contents["Boob"] += M
-
-				tick++
-
-			if(tick)
+			var/datum/belly/belly = internal_contents["Womb"]
+			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] gushes out the contents of their womb!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-
-			else
-				if(wombfull) //Checks if true. If it's anything but 0, null, or "", it will set to 0.
-					wombfull = 0
-					visible_message("<span class='danger'>[src] gushes out a puddle of liquid from their folds!</span>")
-					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+			else if (belly.is_full)
+				belly.is_full = 0
+				visible_message("<span class='danger'>[src] gushes out a puddle of liquid from their folds!</span>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		if("Cock")
-
-			var/tick = 0
-			for(var/mob/M in internal_contents["Cock"])
-
-				M.loc = src.loc
-				internal_contents["Cock"] -= M
-
-				if(iscarbon(src.loc))
-					var/mob/living/carbon/loc_mob = src.loc
-
-					if(src in loc_mob.internal_contents["Stomach"])
-						loc_mob.internal_contents["Stomach"] += M
-					if(src in loc_mob.internal_contents["Womb"])
-						loc_mob.internal_contents["Womb"] += M
-					if(src in loc_mob.internal_contents["Cock"])
-						loc_mob.internal_contents["Cock"] += M
-					if(src in loc_mob.internal_contents["Boob"])
-						loc_mob.internal_contents["Boob"] += M
-
-				tick++
-
-			if(tick)
+			var/datum/belly/belly = internal_contents["Cock"]
+			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] splurts out the contents of their cock!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-
-			else
-				if(cockfull)
-					cockfull = 0
-					visible_message("<span class='danger'>[src] gushes out a puddle of cum from their cock!</span>")
-					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-
-		if("Breasts")
-			var/tick = 0
-			for(var/mob/M in internal_contents["Boob"])
-
-				M.loc = src.loc
-				internal_contents["Boob"] -= M
-
-				if(iscarbon(src.loc))
-					var/mob/living/carbon/loc_mob = src.loc
-
-					if(src in loc_mob.internal_contents["Stomach"])
-						loc_mob.internal_contents["Stomach"] += M
-					if(src in loc_mob.internal_contents["Womb"])
-						loc_mob.internal_contents["Womb"] += M
-					if(src in loc_mob.internal_contents["Cock"])
-						loc_mob.internal_contents["Cock"] += M
-					if(src in loc_mob.internal_contents["Boob"])
-						loc_mob.internal_contents["Boob"] += M
-
-				tick++
-
-			if(tick)
-				visible_message("<font color='green'><b>[src] squirts out the contents of their breasts!</b></font>")
+			else if (belly.is_full)
+				belly.is_full = 0
+				visible_message("<span class='danger'>[src] gushes out a puddle of cum from their cock!</span>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-			else
-				if(boobfull)
-					boobfull = 0
-					visible_message("<span class='danger'>[src] squirts out a puddle of milk from their breasts!</span>")
-					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+		if("Breasts")
+			var/datum/belly/belly = internal_contents["Boob"]
+			if (belly.release_all_contents())
+				visible_message("<font color='green'><b>[src] squirts out the contents of their breasts!</b></font>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+			else if(belly.is_full)
+				belly.is_full = 0
+				visible_message("<span class='danger'>[src] squirts out a puddle of milk from their breasts!</span>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 /////////////////////////////
 //// NW's emergency code ////
@@ -232,6 +106,7 @@
 	else if(confirm == "Okay")
 		if(iscarbon(loc) || isanimal(loc))
 			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
+			// TODO - Properly escape with updating internal_contents
 			src.loc = get_turf(src.loc)
 
 		else
@@ -248,73 +123,74 @@
 	var/datum/vore_look/picker_holder = new()
 	picker_holder.loop=picker_holder
 
-	var/dat
-	if(istype(src.loc,/mob/living/carbon/human))
-		var/mob/living/carbon/human/eater = src.loc
-		//This big block here figures out where the prey is
-		for(var/mob/living/M in eater.internal_contents["Stomach"])
-			if(M == src)
-				src.predlocation = "stomach"
-		for(var/mob/living/M in eater.internal_contents["Cock"])
-			if(M == src)
-				src.predlocation = "balls"
-		for(var/mob/living/M in eater.internal_contents["Womb"])
-			if(M == src)
-				src.predlocation = "womb"
-		for(var/mob/living/M in eater.internal_contents["Boob"])
-			if(M == src)
-				src.predlocation = "breast"
+	var/dat = picker_holder.gen_ui(src)
 
-		//Done
-		dat += "<font color = 'green'>You are currently inside</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[src.predlocation]</font>!<br><br>"
-		if(src.predlocation == "stomach")
-			if(!eater.insideflavour[1])
-				eater.insideflavour[1] = "There is nothing interesting about this stomach."
-			dat += "[eater.insideflavour[1]]<br><br>"
-			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.internal_contents["Stomach"])
-				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
-		if(src.predlocation == "balls")
-			if(!eater.insideflavour[2])
-				eater.insideflavour[2] = "Generic sac description"
-			dat += "[eater.insideflavour[2]]<br><br>"
-			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.internal_contents["Cock"])
-				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
-		if(src.predlocation == "womb")
-			if(!eater.insideflavour[3])
-				eater.insideflavour[3] = "Generic womb description"
-			dat += "[eater.insideflavour[3]]<br><br>"
-			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.internal_contents["Womb"])
-				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
-		if(src.predlocation == "breast")
-			if(!eater.insideflavour[4])
-				eater.insideflavour[4] = "Generic boob description"
-			dat += "[eater.insideflavour[4]]<br><br>"
-			dat += "<font color = 'green'>You can see the following people around you:</font><br>"
-			for(var/mob/living/M in eater.internal_contents["Boob"])
-				if(M != src) dat += "[M] <a href='?src=\ref[picker_holder];look=\ref[M]'>Examine</a> <a href='?src=\ref[picker_holder];helpout=\ref[M]'>Help out</a><br>"
+	picker_holder.popup = new(src, "insidePanel","Inside!", 700, 400, picker_holder)
+	picker_holder.popup.set_content(dat)
+	picker_holder.popup.open()
+
+//
+// Callback Handler for the Inside form
+//
+/datum/vore_look
+	var/datum/browser/popup
+	var/loop = null;  // Magic self-reference to stop the handler from being GC'd before user takes action.
+/datum/vore_look/Topic(href,href_list[])
+	if (ui_interact(href, href_list))
+		popup.set_content(gen_ui(usr))
+		usr << output(popup.get_content(), "insidePanel.browser")
+
+/datum/vore_look/proc/gen_ui(var/mob/living/carbon/human/user)
+	var/dat
+	if (is_vore_predator(user.loc))
+		var/vore/pred_capable/eater = user.loc
+		var/datum/belly/inside_belly		// Which of predator's bellies are we inside?
+
+		//This big block here figures out where the prey is
+		for (var/bellytype in eater.internal_contents)
+			var/datum/belly/B = eater.internal_contents[bellytype]
+			for (var/mob/living/M in B.internal_contents)
+				if (M == user)
+					inside_belly = B
+					break
+		// ASSERT(inside_belly != null) // Make sure we actually found ourselves.
+
+		dat += "<font color = 'green'>You are currently inside</font> <font color = 'yellow'>[eater]'s</font> <font color = 'red'>[inside_belly.belly_name]</font>!<br><br>"
+		dat += "[inside_belly.inside_flavor]<br><br>"
+		if (inside_belly.internal_contents.len > 0)
+			dat += "<font color = 'green'>You can see the following around you:</font><br>"
+			for (var/atom/movable/M in inside_belly.internal_contents)
+				if(M != user) dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <a href='?src=\ref[src];helpout=\ref[M]'>Help out</a><br>"
 		dat += "<br>"
 	else
 		dat += "You aren't inside anyone.<br><br>"
 
+	// List people inside you
+	dat += "<font color = 'purple'><b><center>Contents</center></b></font><br>"
+	for (var/bellytype in user.internal_contents)
+		var/datum/belly/belly = user.internal_contents[bellytype]
+		var/inside_count = 0
+		dat += "<font color = 'green'>[belly.belly_type] </font> <a href='?src=\ref[src];toggle_digestion=\ref[belly]'>Digestion: [belly.digest_mode]</a><br>"
+		for (var/atom/movable/M in belly.internal_contents)
+			dat += "[M] <a href='?src=\ref[src];look=\ref[M]'>Examine</a> <br>"
+			inside_count += 1
+		if (inside_count == 0)
+			dat += "You have not consumed anything<br>"
+
+	// Offer flavor text customization options
 	dat += "<font color = 'purple'><b><center>Customisation options</center></b></font><br><br>"
-	dat += "<b>Stomach:</b><br>[src.insideflavour[1]] <a href='?src=\ref[picker_holder];set_description_belly=\ref[src]'>Change text</a><br>"
-	dat += "<b>Balls:</b><br>[src.insideflavour[2]] <a href='?src=\ref[picker_holder];set_description_balls=\ref[src]'>Change text</a><br>"
-	dat += "<b>Womb:</b><br>[src.insideflavour[3]] <a href='?src=\ref[picker_holder];set_description_womb=\ref[src]'>Change text</a><br>"
-	dat += "<b>Breasts:</b><br>[src.insideflavour[4]] <a href='?src=\ref[picker_holder];set_description_boobs=\ref[src]'>Change text</a><br>"
+	for (var/bellytype in user.internal_contents)
+		var/datum/belly/belly = user.internal_contents[bellytype]
+		dat += "<b>[belly.belly_type]</b><br>[belly.inside_flavor] <a href='?src=\ref[src];set_description=\ref[belly]'>Change text</a><br>"
 
-	var/datum/browser/popup = new(src, "insidePanel","Inside!", 700, 400, src)
-	popup.set_content(dat)
-	popup.open()
+	return dat;
 
-/datum/vore_look/var/loop = null
-/datum/vore_look/Topic(href,href_list[])
-
+/datum/vore_look/proc/ui_interact(href, href_list)
+	log_debug("vore_look.Topic([href])")
 	if(href_list["look"])
+		// TODO - This probably should be ATOM not mob/living
 		var/mob/living/subj=locate(href_list["look"])
-		subj.examine()
+		subj.examine(usr)
 
 	if(href_list["helpout"])
 		var/mob/living/subj=locate(href_list["helpout"])
@@ -324,6 +200,7 @@
 		eater << "<span class='warning'>Someone is trying to escape from inside you!<span>"
 		sleep(50)
 		if(prob(33))
+			// TODO - Properly escape with updating internal_contents
 			subj.loc = eater.loc
 			usr << "<font color='green'>You manage to help [subj] to safety!</font>"
 			subj << "<font color='green'>[usr] pushes you free!</font>"
@@ -333,21 +210,18 @@
 			subj << "<span class='alert'> Even with [usr]'s help, you slip back inside again.</span>"
 			eater << "<font color='green'>Your body efficiently shoves [subj] back where they belong.</font>"
 
-	if(href_list["set_description_belly"])
-		var/mob/living/carbon/human/M = usr
-		M.insideflavour[1] = input(M, "Input a few flavour text!", "Stomach flavour text", M.insideflavour[1])
+	if(href_list["set_description"])
+		var/datum/belly/B = locate(href_list["set_description"])
+		B.inside_flavor = input(usr, "Input a new flavor text!", "[B.belly_type] flavor text", B.inside_flavor) as message
+		return 1 // TODO Will this make it refresh the ui?
 
-	if(href_list["set_description_balls"])
-		var/mob/living/carbon/human/M = usr
-		M.insideflavour[2] = input(M, "Input a few flavour text!", "Balls flavour text", M.insideflavour[2])
+	if (href_list["toggle_digestion"])
+		var/datum/belly/B = locate(href_list["toggle_digestion"])
+		B.toggle_digestion()
+		return 1 // TODO Will this make it refresh the ui?
 
-	if(href_list["set_description_womb"])
-		var/mob/living/carbon/human/M = usr
-		M.insideflavour[3] = input(M, "Input a few flavour text!", "Womb flavour text", M.insideflavour[3])
-
-	if(href_list["set_description_boobs"])
-		var/mob/living/carbon/human/M = usr
-		M.insideflavour[4] = input(M, "Input a few flavour text!", "Breasts flavour text", M.insideflavour[4])
+	if (href_list["close"])
+		del(src)  // Cleanup
 
 /mob/living/carbon/human/proc/I_am_not_mad()
 	set name = "Toggle digestability"

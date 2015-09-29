@@ -162,6 +162,8 @@
 	var/jchat_url = ""	// Url to the JChat installation to send announcements to. ex: http://chat.blah.com/jchat
 	var/jchat_api_key = ""  // The API key configured in JChat's settings
 
+	var/items_survive_digestion = 0 // If turned on, some items will survive being digested.
+
 	var/list/station_levels = list(1)				// Defines which Z-levels the station exists on.
 	var/list/admin_levels= list(2)					// Defines which Z-levels which are for admin functionality, for example including such areas as Central Command and the Syndicate Shuttle
 	var/list/contact_levels = list(1, 5)			// Defines which Z-levels which, for example, a Code Red announcement may affect
@@ -487,6 +489,9 @@
 
 				if ("jchat_api_key")
 					jchat_api_key = trim(value)
+
+				if ("items_survive_digestion")
+					items_survive_digestion = 1
 
 				if("ticklag")
 					Ticklag = text2num(value)

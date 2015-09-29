@@ -229,8 +229,8 @@
 		msg += "<span class='warning'>[t_He] [t_is] on fire!.</span>\n"
 	msg += "<span class='warning'>"
 
+	//Ace WAS HERE. Modified fatness to add new levels of fat. Vore code stuff is here.
 	if(nutrition < 50) // used to be 100, changed this
-//Ace WAS HERE. Modified fatness to add new levels of fat. Vore code stuff is here.
 		msg += "[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!\n"
 	else if(nutrition >= 50 && nutrition < 100)
 		msg += "[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.\n"
@@ -246,18 +246,10 @@
 		msg += "[t_He] [t_is] so gorged, you aren't sure how [t_He] [t_is] able to move. [t_his] belly is dragging across the floor and it doesn't look like [t_He] can get any bigger. [t_his] stomach isn't even squishy anymore and the surface looks sorely strained. [t_He] is either full with most of the crew's digesting remains, or the station's entire food supply!\n"
 //		else
 
-	var/list/cont_list = internal_contents["Stomach"]
-	if(cont_list.len)
-		msg += "[t_He] [t_has] something solid in [t_his] stomach!\n"
-	cont_list = internal_contents["Womb"]
-	if(cont_list.len || wombfull == 1)
-		msg += "[t_He] [t_has] something in [t_his] lower belly!\n"
-	cont_list = internal_contents["Cock"]
-	if(cont_list.len || cockfull == 1)
-		msg += "[t_He] has a throbbing large sack below [t_his] hips!\n"
-	cont_list = internal_contents["Boob"]
-	if(cont_list.len || boobfull == 1)
-		msg += "[t_He] has a swollen pair of breasts!\n"
+	// For each belly type, print description if someone is inside!
+	for (var/bellytype in src.internal_contents)
+		var/datum/belly/B = internal_contents[bellytype]
+		msg += B.get_examine_msg(t_He, t_his, t_him, t_has, t_is)
 
 	msg += "</span>"
 

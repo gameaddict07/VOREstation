@@ -371,3 +371,8 @@ STARLIGHT 0
 
 ## Uncomment to override default brain health.
 #DEFAULT_BRAIN_HEALTH 400
+
+## Uncomment this to allow some items to survive digestion
+ITEMS_SURVIVE_DIGESTION
+
+
