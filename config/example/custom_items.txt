@@ -1,27 +1,41 @@
-###
-#
-# Orbis: Everything's lovely here, but since the parse method is different than all this commentary, it's a bit useless. the parse we are using is Key:character name:object
-# While they can be one next to the other, it's best if you use linebreaks, also there is a chance it will stop loading items if one of these items no longer exist, and it reads and apply them from top to bottom, that's why I recommend that the person adding this adds the rubber ducky to their items... if the ducky doesn't spawn, something went wrong.
 ##
-orbisa:Richard D'angelo:/obj/item/weapon/melee/fluff/holochain
-arokha:Aronai Kadigan:/obj/item/weapon/gun/energy/fluff/aro
-arokha:Aronai Kadigan:/obj/item/fluff/permit/aro
-#arokha:Aronai Kadigan:insert custom shrinkray here
-molenar:Uya Kohakuren:/obj/item/clothing/head/fluff/molenar
-bwo_incognito:Tasald Corlethian:/obj/item/weapon/implanter/loyalty
-bwo_incognito:Tasald Corlethian:/obj/item/weapon/gun/energy/gun/tluger
-bwo_incognito:Tasald Corlethian:/obj/item/fluff/permit/tasald
-joey4298:Rosey Tasimaro Maximus:/obj/item/clothing/head/fluff/threetail
-joey4298:Emoticon:/obj/item/weapon/storage/box/fluff/mime
-#warbrand2:Brandy draca:insert hacked pda case here
-#Vorrarkul:Lucina Dakarim:insert rose pda case here
-sasoperative:Joseph Skinner:/obj/item/clothing/accessory/medal/ERTservice
-#sasoperative:Joseph Skinner:insert formal camo clothes or clothes box.
-scree:Scree:/obj/item/clothing/under/fluff/screesuit
-scree:Scree:/obj/item/device/modkit/tajaran/fluff/screekit
-scree:Scree:/obj/item/clothing/head/fluff/pompom
-dhaeleena:Dhaeleena M'iar:/obj/item/clothing/accessory/medal/silver/security
-zodiacshadow:Nehi Maximus:/obj/item/device/radio/headset/fluff/zodiacshadow
-jemli:Cirra Songbreeze:/obj/item/weapon/storage/box/fluff/pirate
-
-#orbisa:Richard D'angelo:/obj/item/weapon/bikehorn/rubberducky
+# Custom items go here. They are modifications of existing paths; look at the example for details.
+# Item will spawn if the target has one of the req_titles and if their on-spawn ID has the required access level.
+# req_access is going to be a shit to maintain since the config file can't grab constants and has to use integers, use it minimally.
+# Separate titles with a single comma and a space (', ') or they'll bork.
+#
+# EX:
+# {
+# ckey: zuhayr
+# character_name: Jane Doe
+# item_path: /obj/item/toy/plushie
+# item_name: ugly plush toy
+# item_icon: flagmask     
+# item_desc: It's truly hideous.
+# req_titles: Assistant, Security Officer
+# req_access: 1
+# }
+#
+# {
+# ckey: zuhayr
+# character_name: Jane Doe
+# item_path: /obj/item/device/kit/paint
+# item_name: APLU customisation kit
+# item_desc: A customisation kit with all the parts needed to turn an APLU into a "Titan's Fist" model.
+# kit_name: APLU "Titan's Fist"
+# kit_desc: Looks like an overworked, under-maintained Ripley with some horrific damage.
+# kit_icon: titan
+# additional_data: ripley, firefighter
+# }
+#
+# {
+# ckey: zuhayr
+# character_name: Jane Doe
+# item_path: /obj/item/device/kit/suit
+# item_name: salvage suit customisation kit
+# item_desc: A customisation kit with all the parts needed to convert a suit.
+# kit_name: salvage
+# kit_desc: An orange voidsuit. Reinforced!
+# kit_icon: salvage
+# }
+##
