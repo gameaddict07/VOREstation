@@ -7,3 +7,6 @@
 *.backup
 data/
 cfg/
+config/*.txt
+config/*.bak
+/config/rules.html
