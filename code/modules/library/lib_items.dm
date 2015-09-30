@@ -17,7 +17,7 @@
 	icon_state = "book-0"
 	anchored = 1
 	density = 1
-	opacity = 1
+	//opacity = 1 // Annoying
 
 /obj/structure/bookcase/initialize()
 	for(var/obj/item/I in loc)
