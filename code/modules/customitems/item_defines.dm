@@ -2137,7 +2137,7 @@
 	icon_state = "rig0-scree"
 	item_state = "rig0-scree"
 	item_color = "scree"
-	species_restricted = list("Tajaran")
+	species_restricted = list("Tajara")
 
 /obj/item/clothing/suit/space/rig/tajara/fluff/screespess
 	name = "Modified Winged Suit"
@@ -2146,7 +2146,7 @@
 	icon_state = "wingedsuit"
 	item_state = "wingedsuit"
 	item_color = "wingedsuit"
-	species_restricted = list("Tajaran")
+	species_restricted = list("Tajara")
 
 /obj/item/clothing/under/fluff/screesuit
 	name = "Scree's feathers"
