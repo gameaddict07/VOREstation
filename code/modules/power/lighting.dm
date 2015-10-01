@@ -192,7 +192,7 @@
 	icon_state = "tube1"
 	desc = "A lighting fixture."
 	anchored = 1
-	layer = 5  					// They were appearing under mobs which is a little weird - Ostaf
+	layer = 4  					// They were appearing under mobs which is a little weird - Ostaf // I want them under mobs because otherwise it looks more weird. Set to 4 instead of 5. -Spades
 	use_power = 2
 	idle_power_usage = 2
 	active_power_usage = 20
