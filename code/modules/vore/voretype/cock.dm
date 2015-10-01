@@ -19,8 +19,8 @@
 	return perform_the_nom(user, user, pred, attempt_msg, success_msg, 'sound/vore/gulp.ogg')
 
 /datum/voretype/cock/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
-	var/attempt_msg = "<span class='danger'>[user] is attempting to slide [prey] into \his[user] cock!</span>"
-	var/success_msg = "<span class='danger'>[user] swallows [prey] with \his[user] cock!</span>"
+	var/attempt_msg = "<span class='danger'>[user] is attempting to slide ["[prey]"] into \his cock!</span>"
+	var/success_msg = "<span class='danger'>[user] swallows ["[prey]"] with \his cock!</span>"
 
 	return perform_the_nom(user, prey, user, attempt_msg, success_msg, 'sound/vore/gulp.ogg')
 

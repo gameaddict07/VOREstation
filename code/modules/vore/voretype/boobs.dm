@@ -19,8 +19,8 @@
 	return perform_the_nom(user, user, pred, attempt_msg, success_msg, 'sound/vore/insert.ogg')
 
 /datum/voretype/boobs/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
-	var/attempt_msg = "<span class='danger'>[user] is attempting to stuff [prey] into \his[user] breasts!</span>"
-	var/success_msg = "<span class='danger'>[user] sucks [prey] into \his[user] tits!</span>"
+	var/attempt_msg = "<span class='danger'>[user] is attempting to stuff ["[prey]"] into \his breasts!</span>"
+	var/success_msg = "<span class='danger'>[user] sucks ["[prey]"] into \his tits!</span>"
 
 	return perform_the_nom(user, prey, user, attempt_msg, success_msg, 'sound/vore/insert.ogg')
 

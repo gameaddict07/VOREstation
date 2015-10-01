@@ -20,7 +20,7 @@
 
 /datum/voretype/unbirth/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
 	var/attempt_msg = "<span class='danger'>[user] is attempting to unbirth [prey]!</span>"
-	var/success_msg = "<span class='danger'>[user] squelches [prey] into \his[user] womb!</span>"
+	var/success_msg = "<span class='danger'>[user] squelches ["[prey]"] into \his womb!</span>"
 
 	return perform_the_nom(user, prey, user, attempt_msg, success_msg, 'sound/vore/schlorp.ogg')
 
