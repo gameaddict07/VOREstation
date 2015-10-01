@@ -1,9 +1,12 @@
 /obj/machinery/portable_atmospherics/powered/scrubber
-	name = "Portable Air Scrubber"
+	name = "\improper Portable Air Scrubber"
 
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = 1
+
+	var/locked = 1  // Start locked so people can't mess with scrubbing settings.
+	req_access = list(access_atmospherics)
 
 	var/on = 0
 	var/volume_rate = 800
@@ -77,16 +80,30 @@
 			update_icon()
 
 	//src.update_icon()
-	src.updateDialog()
+	src.updateUsrDialog()
 
 /obj/machinery/portable_atmospherics/powered/scrubber/return_air()
 	return air_contents
 
-/obj/machinery/portable_atmospherics/powered/scrubber/attack_ai(var/mob/user as mob)
-	return src.attack_hand(user)
+/**
+** Allow the scrubber's advanced controls to be unlocked.
+*/
+/obj/machinery/portable_atmospherics/powered/scrubber/attackby(var/obj/item/I as obj, var/mob/user as mob)
+	if (istype(I, /obj/item/weapon/card/id) || istype(I, /obj/item/device/pda))
+		if (src.allowed(usr))
+			src.locked = !src.locked
+			user << "<span class='notice'>You [ src.locked ? "lock" : "unlock"] \the [src] advanced controls.</span>"
+			src.updateUsrDialog()
+		else
+			user << "<span class='notice'>This [src] doesn't seem to respect your authority.</span>"
+	else
+		return ..()
 
 /obj/machinery/portable_atmospherics/powered/scrubber/attack_hand(var/mob/user as mob)
-
+	// Let default implementation determine if user can use it or not
+	if (..())
+		usr << browse(null, "window=scrubber")
+		return 1;
 	user.set_machine(src)
 	var/holding_text
 
@@ -94,7 +111,7 @@
 		holding_text = {"<BR><B>Tank Pressure</B>: [round(holding.air_contents.return_pressure(), 0.01)] kPa<BR>
 <A href='?src=\ref[src];remove_tank=1'>Remove Tank</A>
 "}
-	var/output_text = {"<TT><B>[name]</B><BR>
+	var/output_text = {"<B>Settings</B><BR>
 Pressure: [round(air_contents.return_pressure(), 0.01)] kPa<BR>
 Flow Rate: [round(last_flow_rate, 0.1)] L/s<BR>
 Port Status: [(connected_port)?("Connected"):("Disconnected")]
@@ -103,23 +120,31 @@ Port Status: [(connected_port)?("Connected"):("Disconnected")]
 Cell Charge: [cell? "[round(cell.percent())]%" : "N/A"] | Load: [round(last_power_draw)] W<BR>
 Power Switch: <A href='?src=\ref[src];power=1'>[on?("On"):("Off")]</A><BR>
 Flow Rate Regulator: <A href='?src=\ref[src];volume_adj=-1000'>-</A> <A href='?src=\ref[src];volume_adj=-100'>-</A> <A href='?src=\ref[src];volume_adj=-10'>-</A> <A href='?src=\ref[src];volume_adj=-1'>-</A> [volume_rate] L/s <A href='?src=\ref[src];volume_adj=1'>+</A> <A href='?src=\ref[src];volume_adj=10'>+</A> <A href='?src=\ref[src];volume_adj=100'>+</A> <A href='?src=\ref[src];volume_adj=1000'>+</A><BR>
-
 <HR>
+"}
+	if (locked)
+		output_text += "(Swipe ID card to unlock interface.)"
+	else
+		output_text += "Scrubbing: "
+		for (var/gas_id in gas_data.gases)
+			var/is_on = (gas_id in scrubbing_gas)
+			output_text += "<a href='?src=\ref[src];toggle_scrub=[gas_id]' class='[is_on ? "linkOn" : "linkOff"]'>[gas_data.name[gas_id]]</a> "
+
+	output_text += {"<HR>
 <A href='?src=\ref[user];mach_close=scrubber'>Close</A><BR>
 "}
 
-	user << browse(output_text, "window=scrubber;size=600x300")
-	onclose(user, "scrubber")
+	var/datum/browser/popup = new(user, "scrubber", name, 600, 300)
+	popup.set_content(output_text)
+	popup.open()
 	return
 
 /obj/machinery/portable_atmospherics/powered/scrubber/Topic(href, href_list)
-	..()
-	if (usr.stat || usr.restrained())
-		return
-
-	if (((get_dist(src, usr) <= 1) && istype(src.loc, /turf)))
-		usr.set_machine(src)
-
+	// Delegate checks to parent method, which calls CanUseTopic().  If success, parent automatically sets machine too.
+	if (..())
+		usr << browse(null, "window=scrubber")
+		return 1;
+	else
 		if(href_list["power"])
 			on = !on
 
@@ -132,18 +157,23 @@ Flow Rate Regulator: <A href='?src=\ref[src];volume_adj=-1000'>-</A> <A href='?s
 			var/diff = text2num(href_list["volume_adj"])
 			volume_rate = min(initial(volume_rate), max(0, volume_rate+diff))
 
+		if (href_list["toggle_scrub"])
+			var gas_id = href_list["toggle_scrub"]
+			if (locked)
+				usr << "The advanced scrubbing controls are locked. Swipe your ID to unlock."
+			else if (gas_id in scrubbing_gas)
+				scrubbing_gas -= gas_id
+			else
+				scrubbing_gas += gas_id
+
 		src.updateUsrDialog()
 		src.add_fingerprint(usr)
 		update_icon()
-	else
-		usr << browse(null, "window=scrubber")
-		return
-	return
 
 
 //Huge scrubber
 /obj/machinery/portable_atmospherics/powered/scrubber/huge
-	name = "Huge Air Scrubber"
+	name = "\improper Huge Air Scrubber"
 	icon_state = "scrubber:0"
 	anchored = 1
 	volume = 50000
@@ -223,6 +253,10 @@ Flow Rate Regulator: <A href='?src=\ref[src];volume_adj=-1000'>-</A> <A href='?s
 	if (istype(I, /obj/item/weapon/screwdriver))
 		return
 
+	//doesn't have advanced controls
+	if (istype(I, /obj/item/weapon/card/id) || istype(I, /obj/item/device/pda))
+		return
+
 	//doesn't hold tanks
 	if(istype(I, /obj/item/weapon/tank))
 		return
@@ -231,7 +265,7 @@ Flow Rate Regulator: <A href='?src=\ref[src];volume_adj=-1000'>-</A> <A href='?s
 
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary
-	name = "Stationary Air Scrubber"
+	name = "\improper Stationary Air Scrubber"
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(var/obj/item/I as obj, var/mob/user as mob)
 	if(istype(I, /obj/item/weapon/wrench))
