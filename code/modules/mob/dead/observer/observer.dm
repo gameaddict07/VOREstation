@@ -620,6 +620,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return 1
 
 mob/dead/observer/MayRespawn(var/feedback = 0)
+	if(started_as_observer && client)
+		return 1
 	if(!client || !mind)
 		return 0
 	if(mind.current && mind.current.stat != DEAD)
