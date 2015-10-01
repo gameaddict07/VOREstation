@@ -17,6 +17,7 @@
 	circuit = "/obj/item/weapon/circuitboard/cryopodcontrol"
 	density = 0
 	interact_offline = 1
+	req_one_access = list(access_heads, access_armory)
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.
@@ -93,6 +94,9 @@
 		user << browse(dat, "window=cryoitems")
 
 	else if(href_list["item"])
+		if(!allowed(user))
+			user << "<span class='warning'>Access Denied.</span>"
+			return
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
@@ -113,6 +117,9 @@
 		frozen_items -= I
 
 	else if(href_list["allitems"])
+		if(!allowed(user))
+			user << "<span class='warning'>Access Denied.</span>"
+			return
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
