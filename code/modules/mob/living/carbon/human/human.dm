@@ -44,8 +44,8 @@
 	// Setup the types of bellies present.
 	internal_contents["Stomach"] = new /datum/belly/stomach(src)
 	internal_contents["Cock"] = new /datum/belly/cock(src)
-	internal_contents["Womb"] = new /datum/belly/boob(src)
-	internal_contents["Boob"] = new /datum/belly/womb(src)
+	internal_contents["Womb"] = new /datum/belly/womb(src)
+	internal_contents["Boob"] = new /datum/belly/boob(src)
 	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
 	// Vore Code End
 

@@ -19,8 +19,9 @@
 	return perform_the_nom(user, user, pred, attempt_msg, success_msg, 'sound/vore/schlorp.ogg')
 
 /datum/voretype/anal/feed_grabbed_to_self(var/mob/living/carbon/human/user, var/mob/prey)
-	var/attempt_msg = "<span class='danger'>[user] is attempting to push [prey] up \his[user] rear!</span>"
-	var/success_msg = "<span class='danger'>[user] schlorps [prey] into \his[user] rump!</span>"
+	// Leshana; See docs for explanation of this wackohack.
+	var/attempt_msg = "<span class='danger'>[user] is attempting to push ["[prey]"] up \his rear!</span>"
+	var/success_msg = "<span class='danger'>[user] schlorps ["[prey]"] into \his rump!</span>"
 
 	return perform_the_nom(user, prey, user, attempt_msg, success_msg, 'sound/vore/schlorp.ogg')
 
