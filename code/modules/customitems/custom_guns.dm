@@ -109,6 +109,7 @@
 /obj/item/ammo_magazine/stg
 	name = "box mag (7.92x33mm Kurz)"
 	icon_state = "stg_30rnd"
+	caliber = "kurz"
 	ammo_type = /obj/item/ammo_casing/stg
 	max_ammo = 30
 	mag_type = MAGAZINE
@@ -125,6 +126,7 @@
 /obj/item/ammo_magazine/battlerifle
 	name = "box mag (9.5x40mm)"
 	icon_state = "battlerifle"
+	caliber = "battlerifle"
 	ammo_type = /obj/item/ammo_casing/a95mm
 	max_ammo = 36
 	mag_type = MAGAZINE
