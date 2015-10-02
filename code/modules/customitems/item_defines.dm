@@ -1752,6 +1752,8 @@
 
 // Guns
 
+// Why is this here? These shouldn't be in this file. Move them to custom_guns or appropriate DM files if they aren't exclusive to one player.
+
 #define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
 #define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
 #define MAGAZINE 		4	//The magazine item itself goes inside the gun
@@ -1833,23 +1835,18 @@
 
 	toggle_scope(2.0)
 
-/obj/item/weapon/gun/energy/fluff/dominator
+/obj/item/weapon/gun/energy/gun/fluff/dominator
 	name = "MWPSB Dominator"
 	desc = "A MWPSB's Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "dominatorstun100"
-	item_state = null
+	item_state = null // So it inherits the icon_state.
 	fire_sound = 'sound/weapons/Taser.ogg'
-	charge_cost = 100 //How much energy is needed to fire.
-	projectile_type = /obj/item/projectile/energy/electrode_strong/dominator
+	projectile_type = /obj/item/projectile/beam/stun
 	origin_tech = "combat=3;magnets=2"
 	modifystate = "dominatorstun"
-	charge_meter = 1
 
-	var/mode = 0 //0 = stun, 1 = kill
-
-
-/obj/item/weapon/gun/energy/fluff/dominator/attack_self(mob/living/user as mob)
+/obj/item/weapon/gun/energy/gun/fluff/dominator/attack_self(mob/living/user as mob) // Uses some custom sounds and custom projectiles, so we need this.
 	switch(mode)
 		if(0)
 			mode = 1
@@ -1857,65 +1854,32 @@
 			fire_sound = 'sound/weapons/gauss_shoot.ogg'
 			user << "\red [src.name] is now in Eliminator Mode. Target will be harmed. Please aim carefully."
 			user.visible_message("\red [src.name] changes into a very intimidating looking energy gun.")
-			projectile_type = /obj/item/projectile/beam/heavylaser/dominator
+			projectile_type = /obj/item/projectile/beam/dominator
 			modifystate = "dominatorkill"
 		if(1)
 			mode = 0
-			charge_cost = 100
+			charge_cost = 200
 			fire_sound = 'sound/weapons/Taser.ogg'
 			user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
 			user.visible_message("\red [src.name] is set to Paralyzer Mode.")
-			projectile_type = /obj/item/projectile/energy/electrode_strong/dominator
+			projectile_type = /obj/item/projectile/beam/stun
 			modifystate = "dominatorstun"
 	update_icon()
 	update_held_icon()
 
-/obj/item/projectile/beam/heavylaser/dominator
-	name = "Lethal Beam"
-	icon_state = "omnilaser"
-	damage = 60
+/obj/item/projectile/beam/dominator
+	name = "dominator lethal beam"
+	icon_state = "omnilaser" // looks cool
 
-/obj/item/projectile/energy/electrode_strong/dominator
-	name = "stun beam"
-	icon_state = "stun"
-	taser_effect = 1
-	nodamage = 1
-	agony = 120
-	damage_type = HALLOSS
-
-/obj/item/weapon/gun/energy/fluff/aro
+/obj/item/weapon/gun/energy/gun/fluff/aro
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon = 'icons/obj/gun.dmi'
+	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "Kraystun100"
-	item_state = null	//so the human update icon uses the icon_state instead.
-	fire_sound = 'sound/weapons/Taser.ogg'
-
-	charge_cost = 200 //How much energy is needed to fire.
-	projectile_type = /obj/item/projectile/energy/electrode
-	origin_tech = "combat=3;magnets=2"
+	item_state = null // So it inherits the icon_state.
 	modifystate = "Kraystun"
-
-	var/mode = 0 //0 = stun, 1 = kill
-
-/obj/item/weapon/gun/energy/fluff/aro/attack_self(mob/living/user as mob)
-	switch(mode)
-		if(0)
-			mode = 1
-			charge_cost = 100
-			fire_sound = 'sound/weapons/blaster_pistol.ogg'
-			user << "<span class='warning'>[src.name] is now set to kill.</span>"
-			projectile_type = /obj/item/projectile/beam
-			modifystate = "Kraykill"
-		if(1)
-			mode = 0
-			charge_cost = 100
-			fire_sound = 'sound/weapons/Taser.ogg'
-			user << "<span class='warning'>[src.name] is now set to stun.</span>"
-			projectile_type = /obj/item/projectile/beam/stun
-			modifystate = "Kraystun"
-	update_icon()
-	update_held_icon()
+	stunstate = "Kraystun"
+	killstate = "Kraykill"
 
 /obj/item/weapon/gun/projectile/automatic/crestrose
 	name = "Crescent Rose"
@@ -1954,47 +1918,6 @@
 			modifystate = "crestrose"
 	update_icon()
 	update_held_icon()
-
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver
-	name = "Ryan's 'Devilgun'"
-	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red wooden grip. Uses .357 ammo."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "ryan_winz"
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption
-	name = "Ryan's 'Redeemer'"
-	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-/*
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
-	name = "\"The Judge\""
-	desc = "A breach-loading weapon produced by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
-	icon_state = "judge"
-	item_state = "gun"
-	max_shells = 5
-	w_class = 3
-	recoil = 2 // Kicks like a mule.
-	slot_flags = null // You can't wear this on your back.
-	origin_tech = "combat=4;materials=3;syndicate=4"
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-/* Maybe...
-	isHandgun()
-		return 1
-*/
-
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge/jury
-	name = "\"The Jury\""
-	desc = "A variant of the \"The Judge\" revolver sold by Cybersun Industries to the mercenary group Skinner's Legion."
-	icon_state = "jury"
-	load_method = SINGLE_CASING | SPEEDLOADER
-*/
-
-// TO DO: Change Judge and Jury to revolvers with CYCLE_CASINGS load method. Hacky fix is no longer required.
 
 // End guns.
 
@@ -2535,8 +2458,8 @@
 	storage_slots = 2
 
 /obj/item/weapon/storage/briefcase/fluff/ryan_winz/New()
-	new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver(src)
-	new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption(src)
+	new /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver(src)
+	new /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver/redemption(src)
 	..()
 	return
 
