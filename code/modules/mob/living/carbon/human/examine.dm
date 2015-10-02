@@ -241,7 +241,7 @@
 	else if(nutrition >= 1000 && nutrition < 3000)
 		msg += "[t_He] [t_is] stuffed with a huge gurgling stomach! You're almost certain [t_He] [t_is] digesting a whole person inside--maybe two! Either that or [t_He] ate a whole pantry worth of food.\n"
 	else if(nutrition >= 3000 && nutrition < 6000)
-		msg += "[t_his] stomach is firmly packed with loudly churning food. They must have eaten several people, or a whole truckload of food!\n"
+		msg += "[t_He] stomach is firmly packed with loudly churning food. They must have eaten several people, or a whole truckload of food!\n"
 	else if(nutrition >= 6000)
 		msg += "[t_He] [t_is] so gorged, you aren't sure how [t_He] [t_is] able to move. [t_his] belly is dragging across the floor and it doesn't look like [t_He] can get any bigger. [t_his] stomach isn't even squishy anymore and the surface looks sorely strained. [t_He] is either full with most of the crew's digesting remains, or the station's entire food supply!\n"
 //		else
