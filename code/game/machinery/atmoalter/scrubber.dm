@@ -103,7 +103,7 @@
 	// Let default implementation determine if user can use it or not
 	if (..())
 		usr << browse(null, "window=scrubber")
-		return 1;
+		return 1
 	user.set_machine(src)
 	var/holding_text
 
@@ -143,7 +143,7 @@ Flow Rate Regulator: <A href='?src=\ref[src];volume_adj=-1000'>-</A> <A href='?s
 	// Delegate checks to parent method, which calls CanUseTopic().  If success, parent automatically sets machine too.
 	if (..())
 		usr << browse(null, "window=scrubber")
-		return 1;
+		return 1
 	else
 		if(href_list["power"])
 			on = !on
