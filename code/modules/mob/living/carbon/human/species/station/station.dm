@@ -212,7 +212,6 @@
 	relationships with other sentient beings. They have free will just as any other crew, limited only by their own judgement of law and morality."
 
 	eyes = "blank_eyes"
-	brute_mod = 0.5
 	burn_mod = 1
 
 	warning_low_pressure = 50
@@ -240,7 +239,6 @@
 		"You don't even have to run your cooling fan above 5% speed."
 		)
 
-	synth_temp_gain = 10 //this should cause IPCs to stabilize at ~80 C in a 20 C environment.
 
 	flags = CAN_JOIN | NO_BREATHE | NO_SCAN | NO_BLOOD | NO_PAIN | IS_SYNTHETIC
 
