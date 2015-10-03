@@ -2422,6 +2422,13 @@
 
 // SASoperative : Joseph Skinner
 
+/obj/item/clothing/under/rank/security/fluff/formalsec //admins chipped in for this item to had normal values
+	name = "Formal Camo Fatigues"
+	desc = "A formal set of fatigues with red and black camo to resemble the colors of Nanotresen Security"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "formalsec"
+	item_state = "formalsec"
+
 /obj/item/clothing/head/beret/navywarden/fluff/blueshield
 	name = "\improper Blue Shield Guard beret"
 	desc = "A beret with a two-colored Blue Shield Guard insignia emblazoned on it."
@@ -2551,3 +2558,12 @@
 	new /obj/item/clothing/under/det/fluff/talsald(src)
 	..()
 	return
+
+/obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar //Molenar:Giliana Gamish
+	name = "Gili Custom Labcoat"
+	desc = " Custom made, lengthened labcoat with water resistant, durable material. And a custom set of holes inserted for Deathclaw anatomy. A tag inside has 'G.G.' monogram on it"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "molenar"
+	icon_open = "molenar_open"
+	icon_closed = "molenar"
+	item_state = "molenar"
