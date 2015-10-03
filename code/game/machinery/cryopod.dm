@@ -197,6 +197,7 @@
 	// These items are preserved when the process() despawn proc occurs.
 	var/list/preserve_items = list(
 		/obj/item/weapon/hand_tele,
+		/obj/item/weapon/card/id, //this will make all id's do be stored. Orbis
 		/obj/item/weapon/card/id/captains_spare,
 		/obj/item/device/aicard,
 		/obj/item/device/mmi,

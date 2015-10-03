@@ -136,9 +136,14 @@
 	icon_state = "threetail"
 
 /obj/item/clothing/head/fluff/molenar // Molenar, Uya Kohakuren
-	name = "Quintail "
+	name = "Quintail"
 	desc = "Set of ears and five fluffy tails in silver and gold fur."
 	icon_state = "Molenar"
+
+/obj/item/clothing/head/fluff/molenar2 // Molenar, Giliana Gamish
+	name = "Deathclaw Accessories"
+	desc = "Everything you need to look like a radioactive chameleon, Camouflage not included."
+	icon_state = "molenar2"
 
 /obj/machinery/vending/fluffstuff // Moved this here from vending.dm so it's easier to keep track of.
 	name = "Demi Accessories"

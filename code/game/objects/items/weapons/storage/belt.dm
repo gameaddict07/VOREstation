@@ -107,15 +107,30 @@
 		/obj/item/weapon/reagent_containers/food/snacks/donut/jelly,
 		/obj/item/weapon/melee/baton,
 		/obj/item/weapon/gun/energy/taser,
+		/obj/item/weapon/gun/energy/stunrevolver,
 		/obj/item/weapon/flame/lighter/zippo,
+		/obj/item/weapon/storage/fancy/cigarettes,
 		/obj/item/clothing/glasses/hud/security,
 		/obj/item/device/flashlight,
 		/obj/item/device/pda,
 		/obj/item/device/radio/headset,
 		/obj/item/weapon/melee,
 		/obj/item/weapon/gun/projectile/sec,
-		/obj/item/taperoll/police
+		/obj/item/taperoll/police,
+		/obj/item/weapon/twohanded/dualsaber,
+		/obj/item/weapon/melee/energy/sword,
+		/obj/item/weapon/shield/energy
 		)
+
+/obj/item/weapon/storage/belt/security/syndicate/New()
+	..()
+	new /obj/item/ammo_magazine/a12mm(src)
+	new /obj/item/ammo_magazine/a12mm(src)
+	new /obj/item/ammo_magazine/a12mm(src)
+	new /obj/item/ammo_magazine/a12mm(src)
+	new /obj/item/ammo_magazine/a12mm(src)
+	new /obj/item/weapon/grenade/flashbang(src)
+	new /obj/item/weapon/grenade/chem_grenade/incendiary(src)
 
 /obj/item/weapon/storage/belt/soulstone
 	name = "soul stone belt"

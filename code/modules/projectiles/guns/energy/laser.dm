@@ -8,6 +8,7 @@
 	w_class = 3
 	force = 10
 	matter = list("metal" = 2000)
+	charge_cost = 50 // So there's a benefit to using carbines as opposed to eguns.
 	origin_tech = "combat=3;magnets=2"
 	projectile_type = /obj/item/projectile/beam
 	fire_delay = 1 //rapid fire
@@ -55,6 +56,7 @@ obj/item/weapon/gun/energy/retro
 	origin_tech = "combat=4;materials=3;powerstorage=3"
 	slot_flags = SLOT_BELT|SLOT_BACK
 	projectile_type = /obj/item/projectile/beam/heavylaser
+	charge_cost = 100 // 50% more damage, so 50% less shots.
 	charge_cost = 250
 	fire_delay = 20
 

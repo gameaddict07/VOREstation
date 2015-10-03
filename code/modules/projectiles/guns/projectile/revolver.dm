@@ -11,9 +11,27 @@
 
 /obj/item/weapon/gun/projectile/revolver/mateba
 	name = "mateba"
-	desc = "When you absolutely, positively need a 10mm hole in the other guy. Uses .357 ammo."	//>10mm hole >.357
+	desc = "When you absolutely, positively need a big hole in the other guy. Uses .357 ammo."
 	icon_state = "mateba"
 	origin_tech = "combat=2;materials=2"
+
+/obj/item/weapon/gun/projectile/revolver/shotgun // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
+	name = "\"The Judge\""
+	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
+	icon_state = "judge"
+	caliber = "shotgun"
+	max_shells = 5
+	w_class = 3
+	recoil = 2 // Kicks like a mule.
+	origin_tech = "combat=4;materials=3;syndicate=4"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	load_method = CYCLE_CASINGS
+
+/obj/item/weapon/gun/projectile/revolver/shotgun/sasoperative
+	name = "\"The Jury\""
+	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner."
+	icon_state = "jury"
+	load_method = CYCLE_CASINGS
 
 /obj/item/weapon/gun/projectile/revolver/detective
 	name = "revolver"

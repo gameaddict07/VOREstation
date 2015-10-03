@@ -175,6 +175,8 @@
 	switch(job)
 		if("VIP Guest")
 			return list(access_cent_general)
+		if("Human Affairs Representative")
+			return list(access_cent_general, access_cent_thunder, access_cent_living, access_cent_storage, access_cent_captain)
 		if("Custodian")
 			return list(access_cent_general, access_cent_living, access_cent_storage)
 		if("Thunderdome Overseer")
