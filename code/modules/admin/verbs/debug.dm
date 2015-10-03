@@ -982,7 +982,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
 			M.equip_if_possible(new /obj/item/clothing/gloves/combat(M), slot_gloves)
 			M.equip_if_possible(new /obj/item/device/radio/headset/ert(M), slot_l_ear)
-			M.equip_if_possible(new /obj/item/clothing/head/caphat/centhat(M), slot_head)
+			M.equip_if_possible(new /obj/item/clothing/head/centhat(M), slot_head)
 
 			var/obj/item/device/pda/clear/pda = new(M)
 			pda.owner = M.real_name
