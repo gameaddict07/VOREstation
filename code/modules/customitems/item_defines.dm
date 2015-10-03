@@ -1694,11 +1694,31 @@
 	item_state = "dg_suit"
 	item_color = "harmcaptain"
 
+/obj/item/device/modkit2/fluff/harmonyspace
+	name = "Harmony's captain space suit modkit"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "harm_kit"
+	desc = "A kit containing all the needed tools and parts to modify a Captain's hardsuit. It has green and yellow parts inside."
+	from_helmet = /obj/item/clothing/head/helmet/space/capspace
+	from_suit = /obj/item/clothing/suit/armor/captain
+	to_helmet = /obj/item/clothing/head/helmet/space/capspace/fluff/harmhelm
+	to_suit = /obj/item/clothing/suit/armor/captain/fluff/harmsuit
+
+/obj/item/device/modkit2/fluff/harmonysuit
+	name = "Harmony's captain suit modkit"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "harm_kit"
+	desc = "A sewing kit containing all the needed tools and fabric to modify a Captain's suit and hat. It has green and yellow fabrics inside."
+	from_helmet = /obj/item/clothing/head/caphat
+	from_suit = /obj/item/clothing/under/rank/captain
+	to_helmet = /obj/item/clothing/head/centhat/fluff/harmhat
+	to_suit = /obj/item/clothing/under/rank/captain/fluff/harmuniform
+
 /obj/item/clothing/under/rank/captain/fluff/harmuniform/centcom
 	name = "\improper CentCom administrator's uniform"
 	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Administrator\"."
 
-/obj/item/clothing/head/caphat/centhat/fluff/harmhat
+/obj/item/clothing/head/centhat/fluff/harmhat
 	name = "Harmony's CentCom hat"
 	desc = "It's good to be queen."
 
