@@ -532,21 +532,35 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		"tournament chef",
 		"tournament janitor",
 		"pirate",
-		"space pirate",
+		"pirate captain",
 		"soviet admiral",
+/* // Required items and void suits are not back in the code yet.
+		"space nazi commander",
+		"space nazi officer",
+		"space nazi soldier",
+		"space nazi stormtrooper",
+*/
 		"tunnel clown",
+		"normal clown",
 		"masked killer",
 		"assassin",
 		"death commando",
 		"syndicate commando",
+		"syndicate shocktrooper",
+		"syndicate soldier",
 		"special ops officer",
 		"blue wizard",
 		"red wizard",
 		"marisa wizard",
+//		"federation officer", // Required items not back in the code yet.
 		"emergency response team",
-		"nanotrasen representative",
-		"nanotrasen officer",
-		"nanotrasen captain"
+		"nanotrasen navy representative",
+		"nanotrasen navy officer",
+		"nanotrasen navy captain",
+		"centcom administrator",
+		"centcom representative",
+		"centcom inspector",
+		"centcom observer"
 		)
 	var/dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in dresspacks
 	if (isnull(dresscode))
@@ -558,7 +572,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		del(I)
 	switch(dresscode)
 		if ("strip")
-			//do nothing
+			M.faction = "neutral" // Reset their faction.
+			//do nothing else, delete clothes
 		if ("standard space gear")
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(M), slot_shoes)
 
@@ -639,7 +654,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(M), slot_glasses)
 			M.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword/pirate(M), slot_r_hand)
 
-		if ("space pirate")
+		if ("pirate captain")
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(M), slot_w_uniform)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(M), slot_shoes)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/space/pirate(M), slot_wear_suit)
@@ -673,6 +688,23 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			var/obj/item/weapon/twohanded/fireaxe/fire_axe = new(M)
 			M.equip_to_slot_or_del(fire_axe, slot_r_hand)
+
+		if("normal clown")//HONK!
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(M), slot_w_uniform)
+			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(M), slot_shoes)
+			M.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(M), slot_wear_mask)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset(M), slot_l_ear)
+			M.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/clown, slot_back)
+//			M.equip_to_slot_or_del(new /obj/item/weapon/reagent_containers/food/snacks/grown/banana(M), slot_l_store) // Don't tell me Bay removed bananas from the code...
+			M.equip_to_slot_or_del(new /obj/item/weapon/bananapeel(M), slot_l_store)
+			M.equip_to_slot_or_del(new /obj/item/weapon/bikehorn(M), slot_r_store)
+
+			var/obj/item/weapon/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = access_clown
+			W.assignment = "Clown"
+			W.registered_name = M.real_name
+			M.equip_to_slot_or_del(W, slot_wear_id)
 
 		if("masked killer")
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(M), slot_w_uniform)
@@ -714,17 +746,19 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			sec_briefcase.contents += new /obj/item/weapon/plastique
 			M.equip_to_slot_or_del(sec_briefcase, slot_l_hand)
 
-			var/obj/item/device/pda/heads/pda = new(M)
+			var/obj/item/device/pda/pda = new(M)
 			pda.owner = M.real_name
-			pda.ownjob = "Reaper"
+			pda.ownjob = "Contractor"
 			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
+			pda.icon_state = "pda-syn"
+			pda.hidden = 1 // Don't need the crew metagaming this.
 
 			M.equip_to_slot_or_del(pda, slot_belt)
 
 			var/obj/item/weapon/card/id/syndicate/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
 			W.access = get_all_accesses()
-			W.assignment = "Reaper"
+			W.assignment = "Contractor"
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, slot_wear_id)
 
@@ -734,13 +768,52 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		if("syndicate commando")
 			M.equip_syndicate_commando()
 
-		if("nanotrasen representative")
+		if("syndicate shocktrooper")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(M), slot_w_uniform)
+			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat(M), slot_shoes)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/syndicate(M), slot_l_ear)
+			M.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/security/syndicate(M), slot_belt)
+			M.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/syndicate(M), slot_wear_mask)
+			M.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword(M), slot_r_store)
+			M.equip_to_slot_or_del(new /obj/item/weapon/shield/energy(M), slot_l_store)
+			M.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/automatic/c20r(M), slot_r_hand)
+			M.equip_to_slot_or_del(new /obj/item/weapon/rig/merc(M), slot_back)
+
+			var/obj/item/weapon/card/id/syndicate/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(access_syndicate)
+			W.assignment = "Syndicate Shocktrooper"
+			W.registered_name = M.real_name
+			M.equip_to_slot_or_del(W, slot_wear_id)
+
+		if("syndicate soldier")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate(M), slot_w_uniform)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(M), slot_wear_suit)
+			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat(M), slot_shoes)
+			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(M), slot_gloves)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/syndicate(M), slot_l_ear)
+			M.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/security/syndicate(M), slot_belt)
+			M.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(M), slot_wear_mask)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(M), slot_head)
+			M.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword(M), slot_r_store)
+			M.equip_to_slot_or_del(new /obj/item/weapon/shield/energy(M), slot_l_store)
+			M.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/automatic/c20r(M), slot_r_hand)
+			M.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack, slot_back)
+
+			var/obj/item/weapon/card/id/syndicate/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(access_syndicate)
+			W.assignment = "Syndicate Soldier"
+			W.registered_name = M.real_name
+			M.equip_to_slot_or_del(W, slot_wear_id)
+
+		if("nanotrasen navy representative")
 			M.equip_if_possible(new /obj/item/clothing/under/rank/centcom(M), slot_w_uniform)
 			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
 			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), slot_gloves)
 			M.equip_if_possible(new /obj/item/device/radio/headset/heads/hop(M), slot_l_ear)
 
-			var/obj/item/device/pda/heads/pda = new(M)
+			var/obj/item/device/pda/clear/pda = new(M)
 			pda.owner = M.real_name
 			pda.ownjob = "NanoTrasen Navy Representative"
 			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
@@ -759,14 +832,14 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			W.registered_name = M.real_name
 			M.equip_if_possible(W, slot_wear_id)
 
-		if("nanotrasen officer")
+		if("nanotrasen navy officer")
 			M.equip_if_possible(new /obj/item/clothing/under/rank/centcom_officer(M), slot_w_uniform)
 			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
 			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), slot_gloves)
 			M.equip_if_possible(new /obj/item/device/radio/headset/heads/captain(M), slot_l_ear)
 			M.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(M), slot_head)
 
-			var/obj/item/device/pda/heads/pda = new(M)
+			var/obj/item/device/pda/clear/pda = new(M)
 			pda.owner = M.real_name
 			pda.ownjob = "NanoTrasen Navy Officer"
 			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
@@ -784,14 +857,14 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_if_possible(W, slot_wear_id)
 
 
-		if("nanotrasen captain")
+		if("nanotrasen navy captain")
 			M.equip_if_possible(new /obj/item/clothing/under/rank/centcom_captain(M), slot_w_uniform)
 			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
 			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), slot_gloves)
 			M.equip_if_possible(new /obj/item/device/radio/headset/heads/captain(M), slot_l_ear)
 			M.equip_if_possible(new /obj/item/clothing/head/beret/centcom/captain(M), slot_head)
 
-			var/obj/item/device/pda/heads/pda = new(M)
+			var/obj/item/device/pda/clear/pda = new(M)
 			pda.owner = M.real_name
 			pda.ownjob = "NanoTrasen Navy Captain"
 			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
@@ -883,6 +956,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_to_slot_or_del(new /obj/item/weapon/staff(M), slot_l_hand)
 			M.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(M), slot_back)
 			M.equip_to_slot_or_del(new /obj/item/weapon/storage/box(M), slot_in_backpack)
+
 		if("soviet admiral")
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/hgpiratecap(M), slot_head)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(M), slot_shoes)
@@ -901,6 +975,110 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			W.assignment = "Admiral"
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, slot_wear_id)
+
+		if("centcom administrator")
+			M.equip_if_possible(new /obj/item/clothing/under/rank/captain/fluff/harmuniform/centcom(M), slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/suit/armor/captain/CentCom(M), slot_wear_suit)
+			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/combat(M), slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/ert(M), slot_l_ear)
+			M.equip_if_possible(new /obj/item/clothing/head/caphat/centhat(M), slot_head)
+
+			var/obj/item/device/pda/clear/pda = new(M)
+			pda.owner = M.real_name
+			pda.ownjob = "CentCom Chief Administrative Officer"
+			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
+
+			M.equip_if_possible(pda, slot_r_store)
+			M.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(M), slot_glasses)
+			M.equip_if_possible(new /obj/item/weapon/gun/energy/gun/nuclear(M), slot_belt)
+
+			var/obj/item/weapon/card/id/centcom/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = get_all_accesses()
+			W.access += get_all_centcom_access()
+			W.assignment = "CentCom Chief Administrative Officer"
+			W.registered_name = M.real_name
+			W.icon_state = "lifetime"
+			M.equip_if_possible(W, slot_wear_id)
+
+		if("centcom representative")
+			M.equip_if_possible(new /obj/item/clothing/under/rank/centcom_officer(M), slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/ert(M), slot_l_ear)
+
+			var/obj/item/device/pda/clear/pda = new(M)
+			pda.owner = M.real_name
+			pda.ownjob = "CentCom Representative"
+			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
+
+			M.equip_if_possible(pda, slot_r_store)
+			M.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(M), slot_l_store)
+			M.equip_if_possible(new /obj/item/weapon/clipboard(M), slot_belt)
+
+			var/obj/item/weapon/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.icon_state = "centcom"
+			W.item_state = "id_inv"
+			W.access = get_all_accesses()
+			W.access += get_centcom_access("Human Affairs Representative")
+			W.assignment = "CentCom Representative"
+			W.registered_name = M.real_name
+			M.equip_if_possible(W, slot_wear_id)
+
+		if("centcom inspector")
+			M.equip_if_possible(new /obj/item/clothing/under/rank/centcom_officer(M), slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/ert(M), slot_l_ear)
+			M.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(M), slot_head)
+			M.equip_if_possible(new /obj/item/weapon/pen/blue(M), slot_r_store)
+			M.equip_if_possible(new /obj/item/weapon/pen/red(M), slot_l_store)
+			M.equip_if_possible(new /obj/item/weapon/paper(M), slot_r_hand)
+			M.equip_if_possible(new /obj/item/weapon/clipboard(M), slot_l_hand)
+
+			var/obj/item/device/pda/clear/pda = new(M)
+			pda.owner = M.real_name
+			pda.ownjob = "Nanotrasen Quality Assurance Officer"
+			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
+
+			M.equip_if_possible(pda, slot_belt)
+
+			var/obj/item/weapon/card/id/centcom/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = get_all_accesses()
+			W.access += get_centcom_access("Human Affairs Representative")
+			W.assignment = "Nanotrasen Quality Assurance Officer"
+			W.registered_name = M.real_name
+			M.equip_if_possible(W, slot_wear_id)
+
+		if("centcom observer")
+			M.equip_if_possible(new /obj/item/clothing/under/rank/centcom_officer(M), slot_w_uniform)
+			M.equip_if_possible(new /obj/item/clothing/shoes/laceup(M), slot_shoes)
+			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), slot_gloves)
+			M.equip_if_possible(new /obj/item/device/radio/headset/ert(M), slot_l_ear)
+			M.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(M), slot_head)
+			M.equip_if_possible(new /obj/item/weapon/pen/blue(M), slot_r_store)
+			M.equip_if_possible(new /obj/item/weapon/pen/red(M), slot_l_store)
+			M.equip_if_possible(new /obj/item/weapon/paper(M), slot_r_hand)
+			M.equip_if_possible(new /obj/item/weapon/clipboard(M), slot_l_hand)
+			M.equip_if_possible(new /obj/item/weapon/storage/backpack/satchel(M), slot_back)
+
+			var/obj/item/device/pda/clear/pda = new(M)
+			pda.owner = M.real_name
+			pda.ownjob = "Nanotrasen Impartial Observer"
+			pda.name = "PDA-[M.real_name] ([pda.ownjob])"
+
+			M.equip_if_possible(pda, slot_belt)
+
+			var/obj/item/weapon/card/id/centcom/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = get_all_accesses()
+			W.access += get_centcom_access("Human Affairs Representative")
+			W.assignment = "Nanotrasen Impartial Observer"
+			W.registered_name = M.real_name
+			M.equip_if_possible(W, slot_wear_id)
 
 	M.regenerate_icons()
 

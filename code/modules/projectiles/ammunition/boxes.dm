@@ -3,11 +3,11 @@
 	//desc = "A box of .357 ammo"
 	//icon_state = "357"
 	name = "speed loader (.357)"
-	icon_state = "T38"
+	icon_state = "38"
 	caliber = "357"
 	ammo_type = /obj/item/ammo_casing/a357
-	matter = list("metal" = 1260)
-	max_ammo = 7
+	matter = list("metal" = 1080) // 1 .357 casing = 180 metal
+	max_ammo = 6
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/c38

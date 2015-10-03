@@ -555,6 +555,7 @@ datum/design/circuit/mecha/durand_targ
 	req_tech = list("programming" = 4, "combat" = 2)
 	build_path = /obj/item/weapon/circuitboard/mecha/durand/targeting
 
+/*
 datum/design/circuit/mecha/honker_main
 	name = "'H.O.N.K' central control"
 	id = "honker_main"
@@ -569,6 +570,7 @@ datum/design/circuit/mecha/honker_targ
 	name = "'H.O.N.K' weapon control and targeting"
 	id = "honker_targ"
 	build_path = /obj/item/weapon/circuitboard/mecha/honker/targeting
+*/
 
 ////////////////////////////////////////
 /////////// Mecha Equpment /////////////
