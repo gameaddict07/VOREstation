@@ -89,6 +89,7 @@
 	item_color = "hosred"
 	force = 3
 	siemens_coefficient = 0.7
+	species_restricted = null // By popular demand.
 
 /obj/item/clothing/shoes/cult
 	name = "boots"
