@@ -9,6 +9,8 @@
 	projectile_type = /obj/item/projectile/beam/stun
 	origin_tech = "combat=3;magnets=2"
 	modifystate = "oldenergystun"
+	var/killstate = "oldenergykill" // So we don't have to individually code each custom e-gun.
+	var/stunstate = "oldenergystun"
 
 	var/mode = 0 //0 = stun, 1 = kill
 
@@ -20,14 +22,14 @@
 			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
-			modifystate = "oldenergykill"
+			modifystate = killstate
 		if(1)
 			mode = 0
-			charge_cost = 100
+			charge_cost = 200 // So there's a benefit to using normal tasers.
 			fire_sound = 'sound/weapons/Taser.ogg'
 			user << "<span class='warning'>[src.name] is now set to stun.</span>"
 			projectile_type = /obj/item/projectile/beam/stun
-			modifystate = "oldenergystun"
+			modifystate = stunstate
 	update_icon()
 	update_held_icon()
 

@@ -418,7 +418,7 @@
 	w_class = 3.0
 	max_shells = 7
 	caliber = ".45"
-	origin_tech = "combat=2;materials=2;syndicate=8"
+	origin_tech = "syndicate=3"
 	ammo_type = "/obj/item/ammo_casing/chameleon"
 	matter = list()
 	var/list/gun_choices = list()

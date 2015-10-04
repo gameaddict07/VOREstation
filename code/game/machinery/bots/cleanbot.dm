@@ -53,8 +53,8 @@
 	src.botcard = new /obj/item/weapon/card/id(src)
 	var/datum/job/janitor/J = new/datum/job/janitor
 	src.botcard.access = J.get_access()
-	
-	src.locked = 0 // Start unlocked so roboticist can set them to patrol.	
+
+	src.locked = 0 // Start unlocked so roboticist can set them to patrol.
 
 	if(radio_controller)
 		radio_controller.add_object(src, beacon_freq, filter = RADIO_NAVBEACONS)
@@ -362,3 +362,13 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		if (!in_range(src, usr) && src.loc != usr)
 			return
 		src.created_name = t
+
+
+
+/obj/effect/spawner/cleanbot // So the station isn't *hideously* dirty without a janitor.
+	icon = 'icons/obj/aibots.dmi'
+	icon_state = "cleanbot0"
+
+/obj/effect/spawner/cleanbot/initialize()
+	new /obj/machinery/bot/cleanbot(get_turf(src)) // ToDo: Make it rename the bot to Bubbles.
+	del(src)
