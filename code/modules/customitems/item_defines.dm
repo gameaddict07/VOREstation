@@ -2073,7 +2073,7 @@
 // End Joan's stuff.
 
 // Scree's custom stuff
-/obj/item/clothing/head/helmet/space/rig/tajara/fluff/screehelm
+/obj/item/clothing/head/helmet/space/void/engineering/fluff/screehelm
 	name = "Modified Tajara Helmet"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding. This one doesn't look like it was made for humans. Its been modified to include headlights."
 	icon = 'icons/obj/custom_items.dmi'
@@ -2082,7 +2082,7 @@
 	item_color = "scree"
 	species_restricted = list("Tajara")
 
-/obj/item/clothing/suit/space/rig/tajara/fluff/screespess
+/obj/item/clothing/suit/space/void/engineering/fluff/screespess
 	name = "Modified Winged Suit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding. This one doesn't look like it was made for humans. This one was made with a special personal shielding for someone's wings."
 	icon = 'icons/obj/custom_items.dmi'
@@ -2099,10 +2099,13 @@
 	item_state = "screesuit"
 	item_color = "screesuit"
 
-/obj/item/device/modkit/tajaran/fluff/screekit
+/obj/item/device/modkit2/fluff/screekit
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
-
+	from_helmet = /obj/item/clothing/head/helmet/space/void/engineering
+	from_suit = /obj/item/clothing/suit/space/void/engineering
+	to_helmet = /obj/item/clothing/head/helmet/space/void/engineering/fluff/screehelm
+	to_suit = /obj/item/clothing/suit/space/void/engineering/fluff/screespess
 
 /obj/item/clothing/head/fluff/pompom
 	name = "Pom-Pom"
@@ -2307,7 +2310,7 @@
 	desc = "A pair of old-fashioned purple headphones for listening to music that also double as an NT-approved headset; they connect nicely to any standard PDA. One side is engraved with the letters NEHI, the other having an elaborate inscription of the words \"My voice is my weapon of choice\" in a fancy font. A modern polymer allows switching between modes to either allow one to hear one's surroundings or to completely block them out."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "headphones"
-	item_state = "headset"
+	item_state = "headphones"
 
 // OrbisA Items
 
@@ -2448,6 +2451,7 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "formalsec"
 	item_state = "formalsec"
+	item_color = "formalsec"
 
 /obj/item/clothing/head/beret/navywarden/fluff/blueshield
 	name = "\improper Blue Shield Guard beret"
