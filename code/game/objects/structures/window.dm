@@ -484,8 +484,6 @@
 		animate(src, color="#222222", time=5)
 		SetOpacity(1)
 
-
-
 /obj/machinery/button/windowtint
 	name = "window tint control"
 	icon = 'icons/obj/power.dmi'
@@ -506,6 +504,11 @@
 	update_icon()
 
 	for(var/obj/structure/window/reinforced/polarized/W in range(src,range))
+		if (W.id == src.id || !W.id)
+			spawn(0)
+				W.toggle()
+				return
+	for(var/obj/machinery/door/window/brigdoor/polarized/W in range(src,range))
 		if (W.id == src.id || !W.id)
 			spawn(0)
 				W.toggle()
