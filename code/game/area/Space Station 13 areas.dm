@@ -899,6 +899,10 @@ area/space/atmosalert()
 	name = "\improper Courtroom"
 	icon_state = "courtroom"
 
+/area/crew_quarters/liasonoffice
+	name = "\improper Liason Office"
+	icon_state = "head_quarters"
+
 /area/mint
 	name = "\improper Mint"
 	icon_state = "green"
@@ -1445,10 +1449,6 @@ area/space/atmosalert()
 /area/security/checkpoint/science
 	name = "Security Post - Science"
 	icon_state = "checkpoint1"
-
-/area/security/vacantoffice
-	name = "\improper Vacant Office"
-	icon_state = "security"
 
 /area/security/vacantoffice2
 	name = "\improper Vacant Office"
