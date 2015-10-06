@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/revolver
 	name = "revolver"
-	desc = "A classic revolver. Uses .357 ammo"
+	desc = "A classic revolver. Uses .357 ammo."
 	icon_state = "revolver"
 	item_state = "revolver"
 	caliber = "357"
@@ -10,8 +10,8 @@
 	ammo_type = /obj/item/ammo_casing/a357
 
 /obj/item/weapon/gun/projectile/revolver/mateba
-	name = "mateba"
-	desc = "When you absolutely, positively need a big hole in the other guy. Uses .357 ammo."
+	name = "\improper Mateba Autorevolver"
+	desc = "This unique looking handgun used to be produced by an Italian company famous for the manufacture of revolvers, and pasta kneading machines. Uses .357 ammo."
 	icon_state = "mateba"
 	origin_tech = "combat=2;materials=2"
 
@@ -35,7 +35,7 @@
 
 /obj/item/weapon/gun/projectile/revolver/detective
 	name = "revolver"
-	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special rounds."
+	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special ammo."
 	icon_state = "detective"
 	max_shells = 6
 	caliber = "38"

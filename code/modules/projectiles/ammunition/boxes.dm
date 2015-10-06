@@ -1,7 +1,4 @@
 /obj/item/ammo_magazine/a357
-	//name = "ammo box (.357)"
-	//desc = "A box of .357 ammo"
-	//icon_state = "357"
 	name = "speed loader (.357)"
 	icon_state = "38"
 	caliber = "357"
@@ -52,7 +49,7 @@
 	matter = list("metal" = 600)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/c9mm
-	max_ammo = 10
+	max_ammo = 8
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/mc9mm/empty
@@ -192,6 +189,52 @@
 
 /obj/item/ammo_magazine/chameleon/empty
 	initial_ammo = 0
+
+/obj/item/ammo_magazine/c28mm
+	name = "pistol magazine (5.7×28mm)"
+	icon_state = "45"
+	ammo_type = /obj/item/ammo_casing/c28mm
+	max_ammo = 10
+	multiple_sprites = 1
+	mag_type = MAGAZINE
+	caliber = "5.7×28mm"
+
+/obj/item/ammo_magazine/c28mm/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m14
+	name = "10-round magazine (7.62mm)"
+	icon_state = "75"
+	ammo_type = /obj/item/ammo_casing/a762
+	mag_type = MAGAZINE
+	multiple_sprites = 1
+	max_ammo = 10
+	caliber = "a762"
+
+/obj/item/ammo_magazine/m14/large
+	name = "20-round magazine (7.62mm)"
+	max_ammo = 20
+
+/obj/item/ammo_magazine/m14/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/rifle_clip
+	name = "clip (7.62mm)"
+	desc = "A clip of 7.62mm rifle rounds."
+	icon_state = "riflestrip"
+	ammo_type = /obj/item/ammo_casing/a762
+	mag_type = SPEEDLOADER
+	max_ammo = 5
+	caliber = "a762"
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/rifle_clip/chalk
+	desc = "A clip of 7.62mm rifle rounds with chalk bullets."
+	ammo_type = /obj/item/ammo_casing/a762/chalk
+
+/obj/item/ammo_magazine/rifle_clip/blank
+	desc = "A clip of 7.62mm rifle rounds with no bullets."
+	ammo_type = /obj/item/ammo_casing/a762/blank
 
 /*
 //unused garbage
