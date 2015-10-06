@@ -11,7 +11,7 @@
 
 /obj/item/weapon/gun/projectile/revolver/mateba
 	name = "\improper Mateba Autorevolver"
-	desc = "This unique looking handgun used to be produced by an Italian company famous for the manufacture of revolvers, and pasta kneading machines. Uses .357 ammo."
+	desc = "This unique looking handgun is named after an Italian company famous for the manufacture of these revolvers, and pasta kneading machines. Uses .357 ammo."
 	icon_state = "mateba"
 	origin_tech = "combat=2;materials=2"
 
