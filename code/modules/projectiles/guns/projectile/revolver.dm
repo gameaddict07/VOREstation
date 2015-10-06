@@ -24,14 +24,12 @@
 	w_class = 3
 	recoil = 2 // Kicks like a mule.
 	origin_tech = "combat=4;materials=3;syndicate=4"
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	load_method = CYCLE_CASINGS
 
 /obj/item/weapon/gun/projectile/revolver/shotgun/sasoperative
 	name = "\"The Jury\""
 	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner."
 	icon_state = "jury"
-	load_method = CYCLE_CASINGS
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 
 /obj/item/weapon/gun/projectile/revolver/detective
 	name = "revolver"
