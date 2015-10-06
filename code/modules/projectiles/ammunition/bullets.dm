@@ -13,6 +13,11 @@
 	caliber = "75"
 	projectile_type = /obj/item/projectile/bullet/gyro
 
+/obj/item/ammo_casing/c28mm
+	desc = "A 5.7×28mm bullet casing."
+	caliber = "5.7×28mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+
 /obj/item/ammo_casing/c38
 	desc = "A .38 bullet casing."
 	caliber = "38"
@@ -116,6 +121,16 @@
 	caliber = "a762"
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
+/obj/item/ammo_casing/a762/blank
+	name = "A 7.62mm blank round casing"
+	desc = "A blank casing for rifles."
+	projectile_type = /obj/item/projectile/bullet/blank
+
+/obj/item/ammo_casing/a762/chalk
+	name = "A 7.62mm chalk bullet casing"
+	desc = "A round with a chalk bullet instead of metal. Good for target practice and warning shots."
+	projectile_type = /obj/item/projectile/bullet/rifle/chalk
+
 /obj/item/ammo_casing/a145
 	name = "shell casing"
 	desc = "A 14.5mm shell."
@@ -131,7 +146,7 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a556
 
 /obj/item/ammo_casing/rocket
-	name = "rocket shell"
+	name = "rocket propelled grenade"
 	desc = "A high explosive designed to be fired from a launcher."
 	icon_state = "rocketshell"
 	projectile_type = /obj/item/missile

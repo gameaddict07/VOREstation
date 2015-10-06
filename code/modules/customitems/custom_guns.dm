@@ -3,15 +3,17 @@
 #define MAGAZINE 		4	//The magazine item itself goes inside the gun
 
 // The M41A from the Xeno station mission is not yet here. Need to include ASAP.
+// Caseless ammo is now handled by ammunition.dm
 
 /obj/item/weapon/gun/projectile/automatic/battlerifle
 	name = "\improper BR55 Service Rifle"
-	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I brought this motivational device!"
+	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I brought this motivational device! Uses unique 9.5x40mm ammo."
 	icon_state = "battlerifle"
 	item_state = "battlerifle"
 	w_class = 4
+	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 36
-	caliber = "battlerifle"
+	caliber = "9.5x40mm"
 	origin_tech = "combat=2;materials=2;"
 	ammo_type = /obj/item/ammo_casing/a95mm
 	magazine_type = /obj/item/ammo_magazine/battlerifle
@@ -26,37 +28,59 @@
 	item_state = "haloshotgun"
 	ammo_type = /obj/item/ammo_casing/shotgun
 	max_shells = 12
-	load_method = SINGLE_CASING
 
+// jertheace : Jeremiah 'Ace' Acacius
+/obj/item/weapon/gun/projectile/shotgun/pump/unsc/fluff/ace
+	name = "Ace's M45D Tactical Shotgun" // D-model holds half as many shells as the normal version so as not to be OP as shit. Better than shotgun, worse than combat shotgun.
+	desc = "Owned by the respected (or feared?) veteran Captain of VORE Station. Inscribed on the barrel are the words \"Speak softly, and carry a big stick.\" It has a folding stock so it can fit into bags."
+	w_class = 3 // Because collapsable stock so it fits in backpacks.
+	ammo_type = /obj/item/ammo_casing/shotgun/stunshell
+	max_shells = 6
+
+// roaper : Callum Leamas
+/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas
+	name = "Deckard .38"
+	desc = "A custom built revolver, based off the semi-popular Detective Special model."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "leamas-empty"
+	ammo_type = /obj/item/ammo_magazine/c38/rubber
+
+/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas/update_icon()
+	..()
+	if(loaded.len)
+		icon_state = "leamas-loaded"
+	else
+		icon_state = "leamas-empty"
+
+/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas/load_ammo(var/obj/item/A, mob/user)
+	if(istype(A, /obj/item/ammo_magazine))
+		flick("leamas-reloading",src)
+	..()
 
 // wankersonofjerkin : Ryan Winz
-// ---------------
 /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver
 	name = "Ryan's 'Devilgun'"
-	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red wooden grip. Uses .357 ammo."
+	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red rosewood grip. Uses .357 ammo."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "ryan_winz"
 
 /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver/redemption
 	name = "Ryan's 'Redeemer'"
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
-// ---------------
 
+// sasoperative : Joseph Skinner
+/obj/item/weapon/gun/projectile/revolver/shotgun/fluff/sasoperative
+	name = "\"The Jury\""
+	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner."
+	icon_state = "jury"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 
-// jertheace : Jeremiah 'Ace' Acacius
-/obj/item/weapon/gun/projectile/shotgun/pump/unsc/fluff/ace
-	name = "Ace's M45D Tactical Shotgun" // D-model holds half as many shells as the normal version so as not to be OP as shit. Better than shotgun, worse than cshotgun.
-	desc = "Owned by the respected (or feared?) veteran Captain of VORE Station. Inscribed on the barrel are the words \"Speak softly, and carry a big stick.\" It has a folding stock so it can fit into bags."
-	w_class = 3 // Because collapsable stock so it fits in backpacks.
-	ammo_type = /obj/item/ammo_casing/shotgun/stunshell
-	max_shells = 6
-	load_method = SINGLE_CASING
 
 /obj/item/weapon/gun/projectile/automatic/stg
 	name = "\improper StG-650"
-	desc = "Experience the terror of the Siegfried line, redone for the 26th century! With a fire rate of over 1,400 rounds, the Kaiser would be proud. Uses 7.92x33mm Kurz rounds."
+	desc = "Experience the terror of the Siegfried line, redone for the 26th century! With a fire rate of over 1,400 rounds per minute, the Kaiser would be proud. Uses unique 7.92x33mm Kurz ammo."
 	icon_state = "stg60"
-	w_class = 3.0
+	w_class = 4
 	max_shells = 30
 	caliber = "kurz"
 	origin_tech = "combat=5;materials=2;syndicate=8"
@@ -64,6 +88,181 @@
 	magazine_type = /obj/item/ammo_magazine/stg
 	load_method = MAGAZINE
 
+/obj/item/weapon/gun/projectile/luger
+	name = "\improper Luger P08"
+	desc = "This gun looks like it belongs in a museum. Still popular among Space Nazis and collectors. Uses 9mm ammo."
+	icon_state = "p08"
+	w_class = 3
+	max_shells = 8
+	caliber = "9mm"
+	origin_tech = "combat=2;materials=2;syndicate=2"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/mc9mm
+	allowed_magazines = list(/obj/item/ammo_magazine/mc9mm)
+
+/obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
+	name = "\improper FN Five Seven"
+	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real. Uses 5.7×28mm ammo."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "fnseven"
+	magazine_type = /obj/item/ammo_magazine/c28mm
+	allowed_magazines = list(/obj/item/ammo_magazine/c28mm)
+	max_shells = 10
+	caliber = "5.7×28mm"
+	load_method = MAGAZINE
+
+/obj/item/weapon/gun/projectile/automatic/m14
+	name = "\improper M14 Battle Rifle"
+	desc = "Famous for killing commies back in 'Nam. This robust rifle is still produced across the galaxy for both sporting and military use, despite its antique design. Uses 7.62mm ammo."
+	icon = 'icons/obj/custom_items.dmi'
+	item_state = "boltaction" // Placeholder
+	icon_state = "m14"
+	w_class = 4
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	//slot_flags = SLOT_BACK
+	origin_tech = "combat=2"
+	magazine_type = /obj/item/ammo_magazine/m14
+	allowed_magazines = list(/obj/item/ammo_magazine/m14)
+	ammo_type = /obj/item/ammo_casing/a762
+	load_method = MAGAZINE
+	max_shells = 10
+	caliber = "a762"
+
+/obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
+	name = "\improper Gallian 4 Rifle"
+	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military. Uses 7.62mm ammo."
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle
+	name = "bolt action rifle"
+	desc = "A reproduction of an almost ancient weapon design from the early 20th century. Popular among hunters and collectors. Uses 7.62mm ammo."
+	icon = 'icons/obj/custom_items.dmi'
+	item_state = "boltaction"
+	icon_state = "boltaction"
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	max_shells = 5
+	caliber = "a762"
+	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
+	ammo_type = /obj/item/ammo_casing/a762
+	load_method = SINGLE_CASING | SPEEDLOADER
+	cocksound = 'sound/weapons/riflebolt.ogg'
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
+	name = "\improper ZM Kar 1"
+	desc = "A reproduction of an old ZM Kar 1 Rifle from the Autocratic East Europan Imperial Alliance of Gaia. Popular among imperials and collectors within the Federation and its allies. Uses 7.62mm ammo."
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For target practice
+	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm ammo."
+	ammo_type = /obj/item/ammo_casing/a762/chalk
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
+	name = "ceremonial bolt-action rifle"
+	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen. Uses 7.62mm ammo."
+	ammo_type = /obj/item/ammo_casing/a762/blank
+
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
+	name = "Wicked Butterfly"
+	desc = "A customized bolt-action sniper rifle that was carried by one of the most revered snipers in the Federation. The stock has a small butterfly engraved on it. Uses 7.62mm ammo."
+	icon_state = "wickedbutterfly"
+	item_state = "boltaction"
+	recoil = 2 //extra kickback
+	accuracy = -1
+	scoped_accuracy = 2
+	load_method = SINGLE_CASING
+
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)
+
+
+/obj/item/weapon/gun/projectile/automatic/crestrose
+	name = "Crescent Rose"
+	desc = "Can you match my resolve? If so then you will succeed. I believe that the human spirit is indomitable. Keep Moving Forward."
+	origin_tech = "materials=7"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "crestrose"
+	item_state = "crestrose"
+	w_class = 4
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	force = 40
+	throwforce = 10
+	max_shells = 10
+	magazine_type = /obj/item/ammo_magazine/m14
+	allowed_magazines = list(magazine_type = /obj/item/ammo_magazine/m14)
+	load_method = MAGAZINE
+	caliber = "a762"
+
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	var/modifystate = "crestrose"
+	var/mode = 0 //0 = stun, 1 = kill
+
+/obj/item/weapon/gun/projectile/automatic/crestrose/attack_self(mob/living/user as mob)
+	switch(mode)
+		if(0)
+			mode = 1
+			user.visible_message("\red [src.name] folds up into a cool looking rifle.")
+			force = 5
+			throwforce = 2
+			modifystate = "crestrose_fold"
+		if(1)
+			mode = 0 // I feel like this mode should prevent it from shooting. Otherwise, what's the point? -Spades
+			user.visible_message("\red [src.name] changes into a very intimidating looking weapon.")
+			force = 40
+			throwforce = 10
+			modifystate = "crestrose"
+	update_icon()
+	update_held_icon()
+
+
+// Energy Weapons
+
+/obj/item/weapon/gun/energy/gun/fluff/aro
+	name = "KIN-H21"
+	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "Kraystun100"
+	item_state = null // So it inherits the icon_state.
+	modifystate = "Kraystun"
+	stunstate = "Kraystun"
+	killstate = "Kraykill"
+
+// -------------- Dominator -------------
+/obj/item/weapon/gun/energy/gun/fluff/dominator
+	name = "MWPSB Dominator"
+	desc = "A MWPSB's Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "dominatorstun100"
+	item_state = null // So it inherits the icon_state.
+	fire_sound = 'sound/weapons/Taser.ogg'
+	projectile_type = /obj/item/projectile/beam/stun
+	origin_tech = "combat=3;magnets=2"
+	modifystate = "dominatorstun"
+
+/obj/item/weapon/gun/energy/gun/fluff/dominator/attack_self(mob/living/user as mob) // Uses some custom sounds and custom projectiles, so we need this.
+	switch(mode)
+		if(0)
+			mode = 1
+			charge_cost = 100
+			fire_sound = 'sound/weapons/gauss_shoot.ogg'
+			user << "\red [src.name] is now in Eliminator Mode. Target will be harmed. Please aim carefully."
+			user.visible_message("\red [src.name] changes into a very intimidating looking energy gun.")
+			projectile_type = /obj/item/projectile/beam/dominator
+			modifystate = "dominatorkill"
+		if(1)
+			mode = 0
+			charge_cost = 200
+			fire_sound = 'sound/weapons/Taser.ogg'
+			user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
+			user.visible_message("\red [src.name] is set to Paralyzer Mode.")
+			projectile_type = /obj/item/projectile/beam/stun
+			modifystate = "dominatorstun"
+	update_icon()
+	update_held_icon()
+
+// ------------ Energy Luger ------------
 /obj/item/weapon/gun/energy/gun/eluger
 	name = "energy Luger"
 	desc = "The finest sidearm produced by RauMauser, this pistol can punch a hole through inch thick steel plating. This ain't your great-grand-daddy's Luger! Can switch between stun and kill."
@@ -93,18 +292,22 @@
 	update_icon()
 	update_held_icon()
 
+//Custom Ammo//
 
-//Ammo//
-
+//---------------- Beams ----------------
 /obj/item/projectile/beam/eluger
-	name = "Laser Beam"
+	name = "laser beam"
 	icon_state = "emitter"
 
+/obj/item/projectile/beam/dominator
+	name = "dominator lethal beam"
+	icon_state = "omnilaser" // looks cool
+
+//--------------- StG-60 ----------------
 /obj/item/ammo_casing/stg
 	desc = "A 7.92×33mm Kurz casing."
 	caliber = "kurz"
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
-
 
 /obj/item/ammo_magazine/stg
 	name = "box mag (7.92x33mm Kurz)"
@@ -114,23 +317,27 @@
 	max_ammo = 30
 	mag_type = MAGAZINE
 
-
 /obj/item/ammo_magazine/stg/empty
-	max_ammo = 0
+	initial_ammo = 0
 
-/obj/item/ammo_casing/a95mm
-	desc = "A 9.5x40mm bullet casing."
-	caliber = "battlerifle"
-	projectile_type = /obj/item/projectile/bullet/rifle/a762
-
+//------------- Battlerifle -------------
 /obj/item/ammo_magazine/battlerifle
 	name = "box mag (9.5x40mm)"
 	icon_state = "battlerifle"
-	caliber = "battlerifle"
+	caliber = "9.5x40mm"
 	ammo_type = /obj/item/ammo_casing/a95mm
 	max_ammo = 36
 	mag_type = MAGAZINE
+	multiple_sprites = 1
 
+/obj/item/ammo_casing/a95mm
+	desc = "A 9.5x40mm bullet casing."
+	caliber = "9.5x40mm"
+	projectile_type = /obj/item/projectile/bullet/rifle/a95mm
+
+/obj/item/projectile/bullet/rifle/a95mm
+	damage = 40
+	penetrating = 2 // Better penetration than the 7.62mm
 
 /obj/item/ammo_magazine/battlerifle/empty
-	max_ammo = 0
+	initial_ammo = 0
