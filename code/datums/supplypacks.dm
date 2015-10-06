@@ -1169,6 +1169,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containername = "Formalwear for the best occasions."
 	group = "Miscellaneous"
 
+/* // Doesn't work anymore.
 /datum/supply_packs/rust_injector
 	contains = list(/obj/machinery/power/rust_fuel_injector)
 	name = "RUST fuel injector"
@@ -1204,6 +1205,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containername = "RUST tokamak crate"
 	group = "Engineering"
 	access = access_engine
+*/
 
 /datum/supply_packs/shield_gen
 	contains = list(/obj/item/weapon/circuitboard/shield_gen)
@@ -1512,7 +1514,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 /datum/supply_packs/MilitaryWeapons/UNSC
 	name = "Surplus Military-grade Weapons (UNSC)"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/battlerifle,
-					/obj/item/weapon/gun/projectile/automatic/battlerifle)
+					/obj/item/weapon/gun/projectile/shotgun/pump/unsc)
 	cost = 70
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "surplus military weapons crate"
@@ -1522,9 +1524,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 /datum/supply_packs/MilitaryAmmo/UNSC
 	name = "Surplus Military-grade Ammunition (UNSC)"
 	contains = list(/obj/item/ammo_magazine/battlerifle,
-					/obj/item/ammo_magazine/battlerifle,
-					/obj/item/ammo_magazine/battlerifle,
-					/obj/item/ammo_magazine/battlerifle)
+					/obj/item/weapon/storage/box/shotgunpellets)
 	cost = 40
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "surplus military ammunition crate"
@@ -1847,7 +1847,6 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	group = "Miscellaneous"
 */
 
-/*
 /datum/supply_packs/rifles
 	name = "Competition shooting rifles"
 	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk,
@@ -1880,4 +1879,3 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containername = "competition rifle ammo"
 	access = access_armory
 	group = "Security"
-*/

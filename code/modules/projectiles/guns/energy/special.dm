@@ -102,8 +102,8 @@
 	fire_sound = 'sound/weapons/marauder.ogg' // Something exotic.
 
 /obj/item/weapon/gun/energy/toxgun
-	name = "phoron pistol"
-	desc = "A specialized firearm designed to fire lethal bolts of phoron."
+	name = "plasma pistol" // Yes, I know it's phoron now. Well this is a *plasma* pistol. Fuck you. Don't change it.
+	desc = "A specialized firearm designed to fire lethal bolts of charged plasma."
 	icon_state = "toxgun"
 	fire_sound = 'sound/weapons/plasmapistol.ogg'
 	w_class = 3.0

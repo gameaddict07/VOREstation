@@ -58,7 +58,6 @@
 	..()
 
 // wankersonofjerkin : Ryan Winz
-// ---------------
 /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver
 	name = "Ryan's 'Devilgun'"
 	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red rosewood grip. Uses .357 ammo."
@@ -68,7 +67,14 @@
 /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver/redemption
 	name = "Ryan's 'Redeemer'"
 	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
-// ---------------
+
+// sasoperative : Joseph Skinner
+/obj/item/weapon/gun/projectile/revolver/shotgun/fluff/sasoperative
+	name = "\"The Jury\""
+	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner."
+	icon_state = "jury"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+
 
 /obj/item/weapon/gun/projectile/automatic/stg
 	name = "\improper StG-650"

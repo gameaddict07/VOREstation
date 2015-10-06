@@ -2215,13 +2215,34 @@
 	return
 
 /obj/item/device/fluff/id_kit_mime // joey4298:Emoticon
-	name = "Mime ID replacer"
+	name = "Mime ID reprinter"
 	desc = "Stick your ID in one end and it'll print a new ID out the other!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
 /obj/item/device/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
 	var/new_icon = "mime"
+	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
+		//O.icon = src.icon // just in case we're using custom sprite paths with fluff items.
+		O.icon_state = new_icon // Changes the icon without changing the access.
+		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
+		user.visible_message("\red [user] reprints their ID.")
+		del(src)
+	else if(O.icon_state == new_icon)
+		user << "<span class='notice'>[O] already has been reprinted.</span>"
+		return
+	else
+		user << "<span class='warning'>This isn't even an ID card you idiot.</span>"
+		return
+
+/obj/item/device/fluff/id_kit_clown // ToDo: Move to better location for more universal code.
+	name = "Clown ID reprinter"
+	desc = "Stick your ID in one end and it'll print a new ID out the other!"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "labeler1"
+
+/obj/item/device/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+	var/new_icon = "clown"
 	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
 		//O.icon = src.icon // just in case we're using custom sprite paths with fluff items.
 		O.icon_state = new_icon // Changes the icon without changing the access.

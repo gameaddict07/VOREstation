@@ -26,12 +26,6 @@
 	origin_tech = "combat=4;materials=3;syndicate=4"
 	ammo_type = /obj/item/ammo_casing/shotgun
 
-/obj/item/weapon/gun/projectile/revolver/shotgun/sasoperative
-	name = "\"The Jury\""
-	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner."
-	icon_state = "jury"
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-
 /obj/item/weapon/gun/projectile/revolver/detective
 	name = "revolver"
 	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special ammo."
