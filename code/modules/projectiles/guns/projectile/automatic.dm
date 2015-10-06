@@ -23,6 +23,11 @@
 	origin_tech = "combat=5;materials=2;syndicate=8"
 	ammo_type = /obj/item/ammo_casing/c45
 
+/obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "mini-uzi" : "mini-uzi-empty"
+	update_held_icon()
+
 /obj/item/weapon/gun/projectile/automatic/c20r
 	name = "\improper C-20r SMG"
 	desc = "A lightweight, fast firing gun, for when you REALLY need someone dead. Uses 12mm pistol ammo. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp"

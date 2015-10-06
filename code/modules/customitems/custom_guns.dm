@@ -11,6 +11,7 @@
 	icon_state = "battlerifle"
 	item_state = "battlerifle"
 	w_class = 4
+	recoil = 2 // The battlerifle was known for its nasty recoil.
 	max_shells = 36
 	caliber = "9.5x40mm"
 	origin_tech = "combat=2;materials=2;"
@@ -321,6 +322,7 @@
 	ammo_type = /obj/item/ammo_casing/a95mm
 	max_ammo = 36
 	mag_type = MAGAZINE
+	multiple_sprites = 1
 
 /obj/item/ammo_casing/a95mm
 	desc = "A 9.5x40mm bullet casing."
