@@ -735,10 +735,6 @@ area/space/atmosalert()
 	name = "\improper Incinerator"
 	icon_state = "disposal"
 
-/area/maintenance/minibar
-	name = "\improper Minibar"
-	icon_state = "maint_bar"
-
 /area/maintenance/library
 	name = "Library Maintenance"
 	icon_state = "maint_library"
