@@ -7,7 +7,6 @@
 	slot_flags = SLOT_BELT
 	throwforce = 1
 	w_class = 1
-	var/icon_original = "s-casing"		//Used to prevent invalid icons when spent.
 	var/caliber = ""					//Which kind of guns it can be loaded into
 	var/caseless						//Does the ammo casing disappear after fired?
 	var/projectile_type					//The bullet type to create when New() is called
@@ -27,7 +26,7 @@
 	BB = null
 	if(caseless) // I honestly wasn't sure where to stick this part.
 		del(src)
-	icon_state = "[icon_original]-spent"
+	icon_state = "[initial(icon_state)]-spent"
 	set_dir(pick(cardinal)) //spin spent casings
 	update_icon()
 
