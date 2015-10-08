@@ -1143,9 +1143,9 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/under/kilt)
 	name = "Costumes crate"
 	cost = 10
-	containertype = /obj/structure/closet/crate/secure
+	containertype = /obj/structure/closet/crate//secure
 	containername = "Actor Costumes"
-	access = access_theatre
+//	access = access_theatre
 	group = "Miscellaneous"
 
 /datum/supply_packs/formal_wear
