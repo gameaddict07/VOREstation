@@ -113,8 +113,9 @@
 /obj/item/ammo_magazine/a12mm/empty
 	initial_ammo = 0
 
+// Small capacity.
 /obj/item/ammo_magazine/a556
-	name = "magazine (5.56mm)"
+	name = "10 round STANAG magazine (5.56mm)"
 	icon_state = "5.56"
 	origin_tech = "combat=2"
 	mag_type = MAGAZINE
@@ -126,6 +127,38 @@
 
 /obj/item/ammo_magazine/a556/empty
 	initial_ammo = 0
+
+// Medium capacity.
+/obj/item/ammo_magazine/a556/mid
+	name = "20 round STANAG magazine (5.56mm)"
+	icon_state = "5.56mid"
+	origin_tech = "combat=2"
+	mag_type = MAGAZINE
+	caliber = "a556"
+	matter = list("metal" = 3600)
+	ammo_type = /obj/item/ammo_casing/a556
+	max_ammo = 20
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/a556/high/empty
+	initial_ammo = 0
+
+/* // Can't make a good sprite.
+// High capacity
+/obj/item/ammo_magazine/a556/high
+	name = "30 round STANAG magazine (5.56mm)"
+	icon_state = "5.56high"
+	origin_tech = "combat=3"
+	mag_type = MAGAZINE
+	caliber = "a556"
+	matter = list("metal" = 5400)
+	ammo_type = /obj/item/ammo_casing/a556
+	max_ammo = 30
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/a556/mid/empty
+	initial_ammo = 0
+*/
 
 /obj/item/ammo_magazine/a50
 	name = "magazine (.50)"
