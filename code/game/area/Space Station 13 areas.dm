@@ -2049,7 +2049,7 @@ area/space/atmosalert()
 	requires_power = 0
 	var/sound/mysound = null
 
-	New()
+/*	New() // Disabled because infinite loop bug.
 		..()
 		var/sound/S = new/sound()
 		mysound = S
@@ -2074,7 +2074,7 @@ area/space/atmosalert()
 			if(Obj:client)
 				mysound.status = SOUND_PAUSED | SOUND_UPDATE
 				Obj << mysound
-
+*/
 	proc/process()
 		set background = 1
 
@@ -2088,7 +2088,7 @@ area/space/atmosalert()
 		//	if(H.s_tone > -55)
 		//		H.s_tone--
 		//		H.update_body()
-		//Goodbye Skintone, Orbis
+		//Goodbye Skintone -Orbis
 			if(H.client)
 				mysound.status = SOUND_UPDATE
 				H << mysound
