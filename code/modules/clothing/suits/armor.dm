@@ -65,7 +65,7 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/armor/swat
-	name = "swat suit"
+	name = "\improper SWAT suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
 	icon_state = "deathsquad"
 	item_state = "swat_suit"
