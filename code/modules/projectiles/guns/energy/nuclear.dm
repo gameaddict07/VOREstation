@@ -38,6 +38,39 @@
 	self_recharge = 1
 	use_external_power = 1
 
+/obj/item/weapon/gun/energy/sizegun
+	name = "shrink ray"
+	desc = "A highly advanced ray gun with two settings: Shrink and Grow. Warning: Do not insert into mouth."
+	icon_state = "energykill100"
+	item_state = null	//so the human update icon uses the icon_state instead.
+	fire_sound = 'sound/weapons/wave.ogg'
+	charge_cost = 20 //How much energy is needed to fire.
+	projectile_type = /obj/item/projectile/beam/shrinklaser
+	origin_tech = "redspace=1;bluespace=4"
+	modifystate = "energykill"
+	self_recharge = 1
+
+	var/mode = 0 //0 = shrink, 1 = grow
+
+	attack_self(mob/living/user as mob)
+		switch(mode)
+			if(0)
+				mode = 1
+				charge_cost = 100
+				fire_sound = 'sound/weapons/pulse3.ogg'
+				user << "\red [src.name] is now set to grow."
+				projectile_type = /obj/item/projectile/beam/growlaser
+				modifystate = "energystun"
+			if(1)
+				mode = 0
+				charge_cost = 100
+				fire_sound = 'sound/weapons/wave.ogg'
+				user << "\red [src.name] is now set to shrink."
+				projectile_type = /obj/item/projectile/beam/shrinklaser
+				modifystate = "energykill"
+		update_icon()
+
+
 /obj/item/weapon/gun/energy/gun/nuclear
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized reactor."

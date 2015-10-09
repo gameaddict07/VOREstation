@@ -1585,3 +1585,12 @@ datum/design/item/chameleon
 	req_tech = list("syndicate" = 2)
 	materials = list("$metal" = 500)
 	build_path = /obj/item/weapon/storage/box/syndie_kit/chameleon
+
+datum/design/sizegun
+	name = "Shrink Ray"
+	desc = "A ray gun that shoots bolts of energy which changes a target's size by warping the local space around them."
+	id = "sizegun"
+	req_tech = list("redspace" = 1)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 2000, "$glass" = 500, "$uranium" = 500)
+	build_path = "/obj/item/weapon/gun/energy/sizegun"
