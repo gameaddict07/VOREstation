@@ -1,5 +1,5 @@
 /obj/mecha/combat/gygax
-	desc = "A lightweight, security exosuit. Popular among private and corporate security."
+	desc = "A lightweight security exosuit. Popular among private and corporate security."
 	name = "Gygax"
 	icon_state = "gygax"
 	initial_icon = "gygax"
@@ -17,7 +17,7 @@
 	max_equip = 3
 
 /obj/mecha/combat/gygax/dark
-	desc = "A lightweight exosuit used by Nanotrasen Death Squads. A significantly upgraded Gygax security mech."
+	desc = "Nicknamed 'Dark Gygax', this is a significantly upgraded prototype model of the Gygax security mech."
 	name = "Dark Gygax"
 	icon_state = "darkgygax"
 	initial_icon = "darkgygax"

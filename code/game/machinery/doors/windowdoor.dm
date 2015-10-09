@@ -321,3 +321,16 @@
 	dir = SOUTH
 	icon_state = "rightsecure"
 	base_state = "rightsecure"
+
+
+/obj/machinery/door/window/brigdoor/polarized
+	name = "electrochromic door"
+	desc = "Adjusts its tint with voltage. Might take a few good hits to shatter it."
+
+/obj/machinery/door/window/brigdoor/polarized/proc/toggle()
+	if (opacity)
+		animate(src, color="#FFFFFF", time=5)
+		SetOpacity(0)
+	else
+		animate(src, color="#222222", time=5)
+		SetOpacity(1)

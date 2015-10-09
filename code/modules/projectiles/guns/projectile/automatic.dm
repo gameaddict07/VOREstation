@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/automatic //Hopefully someone will find a way to make these fire in bursts or something. --Superxpdude
 	name = "submachine gun"
-	desc = "A lightweight, fast firing gun. Uses 9mm rounds."
+	desc = "A lightweight, fast firing gun. Uses 9mm ammo."
 	icon_state = "saber"	//ugly
 	w_class = 3
 	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it. // We HAVE a magazine sprite! Ugh. Lazy Bay. I'll fix this when I have time. -Ace
@@ -14,18 +14,23 @@
 
 /obj/item/weapon/gun/projectile/automatic/mini_uzi
 	name = "\improper Uzi"
-	desc = "A lightweight, fast firing gun, for when you want someone dead. Uses .45 rounds."
+	desc = "A lightweight, fast firing gun, for when you want someone dead. Uses .45 caliber ammo."
 	icon_state = "mini-uzi"
 	w_class = 3
-	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it. // We have a magazine for this too! -_-
+	load_method = SPEEDLOADER //yup. until someone sprites a magazine for it. // We have a magazine for this too! -_- // I have all of this. ToDo. -Spades
 	max_shells = 15
 	caliber = ".45"
 	origin_tech = "combat=5;materials=2;syndicate=8"
 	ammo_type = /obj/item/ammo_casing/c45
 
+/obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "mini-uzi" : "mini-uzi-empty"
+	update_held_icon()
+
 /obj/item/weapon/gun/projectile/automatic/c20r
 	name = "\improper C-20r SMG"
-	desc = "A lightweight, fast firing gun, for when you REALLY need someone dead. Uses 12mm pistol rounds. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp"
+	desc = "A lightweight, fast firing gun, for when you REALLY need someone dead. Uses 12mm pistol ammo. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp"
 	icon_state = "c20r"
 	item_state = "c20r"
 	w_class = 3
@@ -36,6 +41,7 @@
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a12mm
+	allowed_magazines = list(/obj/item/ammo_magazine/a12mm)
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -49,7 +55,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/sts35
 	name = "\improper STS-35 automatic rifle"
-	desc = "A durable, rugged looking automatic weapon of a make popular on the frontier worlds. Uses 7.62mm rounds. It is unmarked."
+	desc = "A durable, rugged looking automatic weapon of a make popular on the frontier worlds. Uses 7.62mm ammo."
 	icon_state = "arifle"
 	item_state = null
 	w_class = 4
@@ -59,6 +65,7 @@
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/c762
+	allowed_magazines = list(/obj/item/ammo_magazine/c762)
 
 /obj/item/weapon/gun/projectile/automatic/sts35/update_icon()
 	..()
@@ -67,7 +74,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/wt550
 	name = "\improper W-T 550 Saber"
-	desc = "A cheap, mass produced Ward-Takahashi PDW. Uses 9mm rounds."
+	desc = "A cheap, mass produced Ward-Takahashi PDW. Uses 9mm ammo."
 	icon_state = "wt550"
 	item_state = "wt550"
 	w_class = 3
@@ -78,6 +85,7 @@
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mc9mmt/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/mc9mmt)
 
 /obj/item/weapon/gun/projectile/automatic/wt550/update_icon()
 	..()
@@ -89,7 +97,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/z8
 	name = "\improper Z8 Bulldog"
-	desc = "An older model bullpup carbine, designed by the now defunct Zendai Foundries. Uses armor piercing 5.56mm rounds. Makes you feel like a space marine when you hold it."
+	desc = "An older model bullpup carbine, designed by the now defunct Zendai Foundries. Makes you feel like a space marine when you hold it. Uses armor piercing 5.56mm ammo."
 	icon_state = "carbine"
 	item_state = "z8carbine"
 	w_class = 4
@@ -101,6 +109,7 @@
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a556
+	allowed_magazines = list(/obj/item/ammo_magazine/a556)
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -152,7 +161,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw
 	name = "\improper L6 SAW"
-	desc = "A rather traditionally made light machine gun with a pleasantly lacquered wooden pistol grip. Has 'Aussec Armoury- 2531' engraved on the reciever"
+	desc = "A rather traditionally made light machine gun with a pleasantly lacquered wooden pistol grip. Has 'Aussec Armoury- 2531' engraved on the reciever. Uses 7.62mm ammo."
 	icon_state = "l6closed100"
 	item_state = "l6closedmag"
 	w_class = 4
@@ -166,6 +175,7 @@
 	fire_sound = 'sound/weapons/machinegun.ogg'
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a762
+	allowed_magazines = list(/obj/item/ammo_magazine/a762)
 	var/cover_open = 0
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user as mob)

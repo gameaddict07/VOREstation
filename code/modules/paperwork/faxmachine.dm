@@ -216,3 +216,4 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	for(var/client/C in admins)
 		if(R_ADMIN & C.holder.rights)
 			C << msg
+			C << 'sound/effects/printer.ogg'

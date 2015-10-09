@@ -237,6 +237,8 @@
 			if (istype(C)||istype(C, /obj/item/device/pda))
 				if(src.check_access(C))
 					src.records.Remove(src.active_record)
+					message_admins("[key_name_admin(usr)] deleted [active_record] from the cloning database.") // Anti griff
+					log_game("[key_name_admin(usr)] deleted [active_record] from the cloning database.")
 					del(src.active_record)
 					src.temp = "Record deleted."
 					src.menu = 2

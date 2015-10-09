@@ -9,7 +9,7 @@
 	fire_sound = 'sound/weapons/semiauto.ogg'
 
 /obj/item/weapon/gun/projectile/colt/detective
-	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
+	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 caliber ammo."
 	magazine_type = /obj/item/ammo_magazine/c45m/rubber
 
 /obj/item/weapon/gun/projectile/colt/detective/verb/rename_gun()
@@ -31,10 +31,11 @@
 		return 1
 
 /obj/item/weapon/gun/projectile/sec
-	desc = "A NanoTrasen designed sidearm, found pretty much everywhere humans are. Uses .45 rounds."
+	desc = "A NanoTrasen designed sidearm, found pretty much everywhere humans are. Uses .45 caliber ammo."
 	name = "\improper NT Mk58"
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/c45m/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/c45m)
 	caliber = ".45"
 	origin_tech = "combat=2;materials=2"
 	load_method = MAGAZINE
@@ -45,13 +46,13 @@
 	magazine_type = /obj/item/ammo_magazine/c45m/flash
 
 /obj/item/weapon/gun/projectile/sec/wood
-	desc = "A Nanotrasen designed sidearm, this one has a sweet wooden grip. Uses .45 rounds."
+	desc = "A Nanotrasen designed sidearm. This one has a sweet wooden grip. Uses .45 caliber ammo."
 	name = "\improper Custom NT Mk58"
 	icon_state = "secgundark"
 
 /obj/item/weapon/gun/projectile/silenced
 	name = "silenced pistol"
-	desc = "A small, quiet,  easily concealable gun. Uses .45 rounds."
+	desc = "A small, quiet,  easily concealable gun. Uses .45 caliber ammo."
 	icon_state = "silenced_pistol"
 	w_class = 3
 	caliber = ".45"
@@ -59,6 +60,7 @@
 	origin_tech = "combat=2;materials=2;syndicate=8"
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/c45m
+	allowed_magazines = list(/obj/item/ammo_magazine/c45m)
 
 /obj/item/weapon/gun/projectile/deagle
 	name = "desert eagle"
@@ -70,6 +72,7 @@
 	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/deagle.ogg'
 	magazine_type = /obj/item/ammo_magazine/a50
+	allowed_magazines = list(/obj/item/ammo_magazine/a50)
 	auto_eject = 1
 
 /obj/item/weapon/gun/projectile/deagle/gold
@@ -95,6 +98,7 @@
 	ammo_type = "/obj/item/ammo_casing/a75"
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a75
+	allowed_magazines = list(/obj/item/ammo_magazine/a75)
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -107,7 +111,7 @@
 
 /obj/item/weapon/gun/projectile/pistol
 	name = "\improper Stechtkin pistol"
-	desc = "A small, easily concealable gun. Uses 9mm rounds."
+	desc = "A small, easily concealable gun. Uses 9mm ammo."
 	icon_state = "pistol"
 	item_state = null
 	w_class = 2
@@ -116,10 +120,10 @@
 	origin_tech = "combat=2;materials=2;syndicate=2"
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mc9mm
+	allowed_magazines = list(/obj/item/ammo_magazine/mc9mm)
 
 /obj/item/weapon/gun/projectile/pistol/flash
 	name = "\improper Stechtkin signal pistol"
-	desc = "A small, easily concealable gun. Uses 9mm rounds."
 	magazine_type = /obj/item/ammo_magazine/mc9mm/flash
 
 /obj/item/weapon/gun/projectile/pistol/attack_hand(mob/user as mob)
