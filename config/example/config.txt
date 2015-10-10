@@ -220,10 +220,6 @@ BANAPPEALS http://forum.vore-station.net/viewforum.php?f=37
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
 ALLOW_HOLIDAYS
 
-## Defines the number of character save slots allowed. It is not recommended to be lowered after first
-## server start, because it could break profiles for anyone with more character slots than what is allowed.
-CHARACTER_SLOTS 20
-
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.6
 
