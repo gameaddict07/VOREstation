@@ -21,11 +21,13 @@
 /datum/ore/glass
 	smelts_to = /obj/item/stack/sheet/glass
 	compresses_to = /obj/item/stack/sheet/mineral/sandstone
+	alloy = 1
 	oretag = "sand"
 
 /datum/ore/phoron
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
 	compresses_to = /obj/item/stack/sheet/mineral/phoron
+	alloy = 1
 	oretag = "phoron"
 
 /datum/ore/silver
