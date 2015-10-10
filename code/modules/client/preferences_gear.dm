@@ -43,6 +43,104 @@ var/global/list/gear_datums = list()
 		sort_category = "[slot]"
 
 // This is sorted both by slot and alphabetically! Don't fuck it up!
+//demi ears begin here!
+
+/datum/gear/fbatblack
+	display_name = "Bat Wings, Black"
+	path = /obj/item/clothing/head/fluff/succubus/black
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbatred
+	display_name = "Bat Wings, Red"
+	path = /obj/item/clothing/head/fluff/succubus/red
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbear
+	display_name = "Bear Ears"
+	path = /obj/item/clothing/head/accessory/bear
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbee
+	display_name = "Bee Accesories"
+	path = /obj/item/clothing/head/fluff/bee
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbunny
+	display_name = "Bunny Ears"
+	path = /obj/item/clothing/head/accessory/bunny
+	cost = 1
+	slot = slot_head
+
+/datum/gear/ffox
+	display_name = "Fox Ears"
+	path = /obj/item/clothing/head/accessory/fox
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fkitty
+	display_name = "Kitty Ears"
+	path = /obj/item/clothing/head/accessory/kitty
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fkittycol
+	display_name = "Kitty Ears, Collectable"
+	path = /obj/item/clothing/head/collectable/kitty
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fmouse
+	display_name = "Mouse Ears"
+	path = /obj/item/clothing/head/accessory/mouse
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsuccrim
+	display_name = "Succubus Crimson"
+	path = /obj/item/clothing/head/fluff/succubus/crimson
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsucdark
+	display_name = "Succubus Dark"
+	path = /obj/item/clothing/head/fluff/succubus/dark
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsucpurp
+	display_name = "Succubus Purple"
+	path = /obj/item/clothing/head/fluff/succubus
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsquir
+	display_name = "Squirrel Ears"
+	path = /obj/item/clothing/head/accessory/squirrel
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsquirred
+	display_name = "Squirrel Ears, Red"
+	path = /obj/item/clothing/head/fluff/squirrel/redsquirrel
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fwisewolf
+	display_name = "Wisewolf Ears"
+	path = /obj/item/clothing/head/fluff/wisewolf
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fwolf
+	display_name = "Wolf Ears"
+	path = /obj/item/clothing/head/accessory/wolf
+	cost = 1
+	slot = slot_head
+
 // Headslot items
 
 /datum/gear/gbandana
