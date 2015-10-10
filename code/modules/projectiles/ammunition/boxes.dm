@@ -1,7 +1,4 @@
 /obj/item/ammo_magazine/a357
-	//name = "ammo box (.357)"
-	//desc = "A box of .357 ammo"
-	//icon_state = "357"
 	name = "speed loader (.357)"
 	icon_state = "38"
 	caliber = "357"
@@ -44,6 +41,28 @@
 	name = "magazine (.45 flash)"
 	ammo_type = "/obj/item/ammo_casing/c45f"
 
+
+/obj/item/ammo_magazine/c45uzi
+	name = "uzi magazine (.45)"
+	icon_state = "uzi45"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/c45
+	matter = list("metal" = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
+	caliber = ".45"
+	max_ammo = 16
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/c45uzi/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/c45uzi/rubber
+	name = "uzi magazine (.45 rubber)"
+	ammo_type = /obj/item/ammo_casing/c45r
+
+/obj/item/ammo_magazine/c45uzi/flash
+	name = "uzi magazine (.45 flash)"
+	ammo_type = "/obj/item/ammo_casing/c45f"
+
 /obj/item/ammo_magazine/mc9mm
 	name = "magazine (9mm)"
 	icon_state = "9x19p"
@@ -52,7 +71,7 @@
 	matter = list("metal" = 600)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/c9mm
-	max_ammo = 10
+	max_ammo = 8
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/mc9mm/empty
@@ -116,8 +135,9 @@
 /obj/item/ammo_magazine/a12mm/empty
 	initial_ammo = 0
 
+// Small capacity.
 /obj/item/ammo_magazine/a556
-	name = "magazine (5.56mm)"
+	name = "10 round STANAG magazine (5.56mm)"
 	icon_state = "5.56"
 	origin_tech = "combat=2"
 	mag_type = MAGAZINE
@@ -129,6 +149,38 @@
 
 /obj/item/ammo_magazine/a556/empty
 	initial_ammo = 0
+
+// Medium capacity.
+/obj/item/ammo_magazine/a556/mid
+	name = "20 round STANAG magazine (5.56mm)"
+	icon_state = "5.56mid"
+	origin_tech = "combat=2"
+	mag_type = MAGAZINE
+	caliber = "a556"
+	matter = list("metal" = 3600)
+	ammo_type = /obj/item/ammo_casing/a556
+	max_ammo = 20
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/a556/high/empty
+	initial_ammo = 0
+
+/* // Can't make a good sprite.
+// High capacity
+/obj/item/ammo_magazine/a556/high
+	name = "30 round STANAG magazine (5.56mm)"
+	icon_state = "5.56high"
+	origin_tech = "combat=3"
+	mag_type = MAGAZINE
+	caliber = "a556"
+	matter = list("metal" = 5400)
+	ammo_type = /obj/item/ammo_casing/a556
+	max_ammo = 30
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/a556/mid/empty
+	initial_ammo = 0
+*/
 
 /obj/item/ammo_magazine/a50
 	name = "magazine (.50)"
@@ -191,6 +243,67 @@
 	matter = list()
 
 /obj/item/ammo_magazine/chameleon/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/c28mm
+	name = "pistol magazine (5.7×28mm)"
+	icon_state = "45"
+	ammo_type = /obj/item/ammo_casing/c28mm
+	max_ammo = 10
+	multiple_sprites = 1
+	mag_type = MAGAZINE
+	caliber = "5.7×28mm"
+
+/obj/item/ammo_magazine/c28mm/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m14
+	name = "10-round magazine (7.62mm)"
+	icon_state = "75"
+	ammo_type = /obj/item/ammo_casing/a762
+	mag_type = MAGAZINE
+	multiple_sprites = 1
+	max_ammo = 10
+	caliber = "a762"
+
+/obj/item/ammo_magazine/m14/large
+	name = "20-round magazine (7.62mm)"
+	max_ammo = 20
+
+/obj/item/ammo_magazine/m14/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/rifle_clip
+	name = "clip (7.62mm)"
+	desc = "A clip of 7.62mm rifle rounds."
+	icon_state = "riflestrip"
+	ammo_type = /obj/item/ammo_casing/a762
+	mag_type = MAGAZINE|SPEEDLOADER
+	max_ammo = 5
+	caliber = "a762"
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/rifle_clip/chalk
+	desc = "A clip of 7.62mm rifle rounds with chalk bullets."
+	ammo_type = /obj/item/ammo_casing/a762/chalk
+
+/obj/item/ammo_magazine/rifle_clip/blank
+	desc = "A clip of 7.62mm rifle rounds with no bullets."
+	ammo_type = /obj/item/ammo_casing/a762/blank
+
+/obj/item/ammo_magazine/rifle_clip/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/a10mmc
+	name = "magazine (10mm caseless)"
+	icon_state = "M41A_Mag"
+	ammo_type = /obj/item/ammo_casing/a10mmc
+	mag_type = MAGAZINE
+	multiple_sprites = 1
+	max_ammo = 40
+	caliber = "10mmCaseless"
+
+/obj/item/ammo_magazine/a10mmc/empty
 	initial_ammo = 0
 
 /*

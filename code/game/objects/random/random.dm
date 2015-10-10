@@ -169,6 +169,17 @@
 					prob(1);/obj/item/weapon/butterfly/switchblade,\
 					prob(1);/obj/item/weapon/reagent_containers/syringe/drugs)
 
+// Not done
+/obj/random/weapon // For Gateway maps and Syndicate. Can possibly spawn almost any gun in the game.
+	name = "Random Illegal Weapon"
+	desc = "This is a random illegal weapon."
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "p08"
+	spawn_nothing_percentage = 50
+	item_to_spawn()
+		return pick(prob(2);/obj/item/weapon/gun/energy/laser,\
+					prob(2);/obj/item/weapon/gun/energy/gun,\
+					prob(1);/obj/item/weapon/gun/energy/stunrevolver)
 
 /obj/random/energy
 	name = "Random Energy Weapon"

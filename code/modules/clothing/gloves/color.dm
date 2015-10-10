@@ -8,7 +8,7 @@
 	item_color="yellow"
 
 /obj/item/clothing/gloves/fyellow                             //Cheap Chinese Crap
-	desc = "These gloves are cheap copies of the coveted gloves, no way this can end badly."
+	desc = "These gloves are cheap copies of the coveted insulated gloves, no way this can end badly."
 	name = "budget insulated gloves"
 	icon_state = "yellow"
 	item_state = "ygloves"
@@ -18,7 +18,7 @@
 	item_color="yellow"
 
 	New()
-		siemens_coefficient = pick(0,0.5,0.5,0.5,0.5,0.75,1.5)
+		siemens_coefficient = pick(0,0.5,0.5,0.5,0.5,0.75,0.75,1,1)
 
 /obj/item/clothing/gloves/black
 	desc = "These gloves are fire-resistant."

@@ -34,7 +34,7 @@
 
 //Deathsquad suit
 /obj/item/clothing/head/helmet/space/deathsquad
-	name = "deathsquad helmet"
+	name = "\improper SWAT helmet"
 	desc = "That's not red paint. That's real blood."
 	icon_state = "deathsquad"
 	item_state = "deathsquad"

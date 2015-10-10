@@ -73,6 +73,15 @@
 	then click where you want to fire.  The gun's chamber can be opened or closed by using it in your hand.  To reload, open the chamber, add a new bullet \
 	then close it.  To use the scope, use the appropriate verb in the object tab."
 
+/obj/item/weapon/gun/projectile/automatic/m41a
+	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  The gun's ammunition burns off the casing when fired, eliminating the need to clean up spent shells to \
+	cover your tracks after a fight."
+
+/obj/item/weapon/gun/projectile/automatic/z8
+	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  The gun possesses an under-barrel grenade launcher. You can switch to it by using the gun in your hand."
+
 //*******
 //*Melee*
 //*******
