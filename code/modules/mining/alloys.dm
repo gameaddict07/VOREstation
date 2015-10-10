@@ -25,3 +25,12 @@
 		"hematite" = 1
 		)
 	product = /obj/item/stack/sheet/metal
+
+/datum/alloy/phoronglass
+	metaltag = "phoronglass"
+	requires = list(
+		"phoron" = 1,
+		"sand" = 2
+		)
+	product_mod = 0.3  //  produce ~one phoronglass out per phoron in.
+	product = /obj/item/stack/sheet/glass/phoronglass
