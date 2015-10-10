@@ -111,23 +111,6 @@
 	caliber = "5.7×28mm"
 	load_method = MAGAZINE
 
-/obj/item/weapon/gun/projectile/automatic/m14
-	name = "\improper M14 Battle Rifle"
-	desc = "Famous for killing commies back in 'Nam. This robust rifle is still produced across the galaxy for both sporting and military use, despite its antique design. Uses 7.62mm ammo."
-	icon = 'icons/obj/custom_items.dmi'
-	item_state = "boltaction" // Placeholder
-	icon_state = "m14"
-	w_class = 4
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	//slot_flags = SLOT_BACK
-	origin_tech = "combat=2"
-	magazine_type = /obj/item/ammo_magazine/m14
-	allowed_magazines = list(/obj/item/ammo_magazine/m14)
-	ammo_type = /obj/item/ammo_casing/a762
-	load_method = MAGAZINE
-	max_shells = 10
-	caliber = "a762"
-
 /obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
 	name = "\improper Gallian 4 Rifle"
 	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military. Uses 7.62mm ammo."
@@ -161,8 +144,8 @@
 
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
-	name = "Wicked Butterfly"
-	desc = "A customized bolt-action sniper rifle that was carried by one of the most revered snipers in the Federation. The stock has a small butterfly engraved on it. Uses 7.62mm ammo."
+	name = "'Wicked Butterfly' ZM Kar 1"
+	desc = "A customized bolt-action sniper rifle that was carried by some of the most revered snipers in the Federation. The stock has a small butterfly engraved on it. Uses 7.62mm ammo."
 	icon_state = "wickedbutterfly"
 	item_state = "boltaction"
 	recoil = 2 //extra kickback

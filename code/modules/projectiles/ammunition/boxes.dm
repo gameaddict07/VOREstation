@@ -41,6 +41,28 @@
 	name = "magazine (.45 flash)"
 	ammo_type = "/obj/item/ammo_casing/c45f"
 
+
+/obj/item/ammo_magazine/c45uzi
+	name = "uzi magazine (.45)"
+	icon_state = "uzi45"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/c45
+	matter = list("metal" = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
+	caliber = ".45"
+	max_ammo = 16
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/c45uzi/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/c45uzi/rubber
+	name = "uzi magazine (.45 rubber)"
+	ammo_type = /obj/item/ammo_casing/c45r
+
+/obj/item/ammo_magazine/c45uzi/flash
+	name = "uzi magazine (.45 flash)"
+	ammo_type = "/obj/item/ammo_casing/c45f"
+
 /obj/item/ammo_magazine/mc9mm
 	name = "magazine (9mm)"
 	icon_state = "9x19p"
@@ -256,7 +278,7 @@
 	desc = "A clip of 7.62mm rifle rounds."
 	icon_state = "riflestrip"
 	ammo_type = /obj/item/ammo_casing/a762
-	mag_type = SPEEDLOADER
+	mag_type = MAGAZINE|SPEEDLOADER
 	max_ammo = 5
 	caliber = "a762"
 	multiple_sprites = 1
@@ -268,6 +290,21 @@
 /obj/item/ammo_magazine/rifle_clip/blank
 	desc = "A clip of 7.62mm rifle rounds with no bullets."
 	ammo_type = /obj/item/ammo_casing/a762/blank
+
+/obj/item/ammo_magazine/rifle_clip/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/a10mmc
+	name = "magazine (10mm caseless)"
+	icon_state = "M41A_Mag"
+	ammo_type = /obj/item/ammo_casing/a10mmc
+	mag_type = MAGAZINE
+	multiple_sprites = 1
+	max_ammo = 40
+	caliber = "10mmCaseless"
+
+/obj/item/ammo_magazine/a10mmc/empty
+	initial_ammo = 0
 
 /*
 //unused garbage

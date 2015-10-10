@@ -158,6 +158,12 @@
 	projectile_type = /obj/item/projectile/bullet/chameleon
 	caliber = ".45"
 
+/obj/item/ammo_casing/a10mmc
+	desc = "A 10mm bullet enclosed in a block of solid propellant."
+	caliber = "10mmCaseless"
+	caseless = 1
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+
 /*
 /obj/item/ammo_casing/a418
 	desc = "A .418 bullet casing."
