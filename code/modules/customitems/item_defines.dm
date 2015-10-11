@@ -2304,3 +2304,17 @@
 	icon_open = "molenar_open"
 	icon_closed = "molenar"
 	item_state = "molenar"
+
+////// Kisuke nerd glasses
+/obj/item/clothing/glasses/sunglasses/fluff/nerdglasses
+	name = "Kamina Glasses"
+	desc = "Some shades from an anime that aired long ago. They seem to encourage a type of manliness that no one but the wearer understands."
+	icon = 'icons/obj/custom_items.dmi'
+	prescription = 1
+	icon_state = "nerdglasses"
+	item_state = "nerdglasses"
+	item_color = "nerdglasses"
+
+/obj/item/weapon/melee/fluff/holochain/Zippy
+	name = "Mistress Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and a message on the silver base. 'To Zippy, with love, R.D.'"
