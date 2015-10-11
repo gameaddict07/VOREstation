@@ -31,8 +31,8 @@
 /obj/item/pipe/attackby(var/obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/weapon/circular_saw))
-		var/obj/item/weapon/pipegun_assembly/assembly = new /obj/item/weapon/pipegun_assembly
-		user.put_in_hands(assembly)
+		// ToDo: Prevent building assembly with non-simple or non-straight pipes.
+		new /obj/item/weapon/pipegun_assembly(get_turf(src))
 		user << "<span class='notice'>You cut a section of the pipe to fit an igniter.</span>"
 		playsound(src.loc, 'sound/weapons/circsawhit.ogg', 25, -3)
 		del(src)
@@ -43,7 +43,7 @@ obj/item/weapon/pipegun_assembly
 	desc = "A makeshift firearm that will be able to fire shotgun shells once it's finished. It needs something to ignite the ammo."
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "pipegun0"
-	item_state = "rods"
+	item_state = "buildpipe"
 	flags = CONDUCT
 	force = 8
 	throwforce = 10
