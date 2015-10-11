@@ -90,6 +90,8 @@
 	var/list/ammo_states = list()	//values
 
 /obj/item/ammo_magazine/New()
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
 	if(multiple_sprites)
 		initialize_magazine_icondata(src)
 
