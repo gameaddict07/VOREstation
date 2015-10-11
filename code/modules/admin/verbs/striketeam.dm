@@ -158,7 +158,7 @@ var/global/sent_strike_team = 0
 	equip_to_slot_or_del(new /obj/item/weapon/gun/energy/pulse_rifle(src), slot_r_hand)
 
 
-	implant_loyalty(src)
+	implant_loyalty()
 
 
 
