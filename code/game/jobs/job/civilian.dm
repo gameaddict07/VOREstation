@@ -362,7 +362,7 @@
 		else
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(H.back), slot_in_backpack)
 
-		H.implant_loyalty(H)
+		H.implant_loyalty()
 
 
 		return 1

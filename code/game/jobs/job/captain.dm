@@ -38,7 +38,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 		var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
 		captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
 
-		H.implant_loyalty(src)
+		H.implant_loyalty()
 
 		return 1
 
@@ -93,4 +93,4 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 		var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
 		captain_announcement.Announce("All hands, [H.real_name] is the Head of Personnel!", new_sound=announce_sound)
 
-		H.implant_loyalty(src)
+		H.implant_loyalty()
