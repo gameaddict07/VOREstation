@@ -23,7 +23,7 @@
 	..()
 
 /obj/item/weapon/gun/projectile/pipegun/proc/explode(var/mob/living/user)
-	user.adjustBruteLoss(rand(20,100)) // If this blows someone's hand off, I will smile.
+	user.adjustBruteLoss(rand(10,70))
 	user.Weaken(5)
 	user.eye_blurry = 10
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1, 5)
@@ -75,21 +75,20 @@ obj/item/weapon/pipegun_assembly
 				user << "<span class='notice'>You attach an igniter to the pipe. It needs tape to secure it.</span>"
 				buildstate++
 				update_icon()
+				del(W)
 			else
 				user << "<span class='notice'>The igniter cannot be attached.</span>"
 			return
-	else if(istype(W,/obj/item/weapon/ducttape))
+	else if(istype(W,/obj/item/weapon/tape_roll))
 		if(buildstate == 1)
 			playsound(src.loc, 'sound/items/zip.ogg', 25, -3)
 			user << "<span class='notice'>You tape the igniter into place. Now it needs a wooden frame.</span>"
 			buildstate++
 			update_icon()
-			del(W)
 		else if(buildstate == 3)
 			playsound(src.loc, 'sound/items/zip.ogg', 25, -3)
 			user << "<span class='notice'>You tape the wooden frame firmly to the pipe gun. It's now ready to shoot.</span>"
 			new /obj/item/weapon/gun/projectile/pipegun(get_turf(src))
-			del(W)
 			del(src)
 		return
 	else if(istype(W,/obj/item/weapon/crossbowframe))
