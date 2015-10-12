@@ -1059,7 +1059,8 @@ datum
 			required_other = 1
 			on_reaction(var/datum/reagents/holder)
 
-				/*var/blocked = list(/mob/living/simple_animal/hostile,
+				var/blocked = list(
+					/mob/living/simple_animal/hostile,
 					/mob/living/simple_animal/hostile/pirate,
 					/mob/living/simple_animal/hostile/pirate/ranged,
 					/mob/living/simple_animal/hostile/russian,
@@ -1070,11 +1071,32 @@ datum
 					/mob/living/simple_animal/hostile/syndicate/ranged,
 					/mob/living/simple_animal/hostile/syndicate/ranged/space,
 					/mob/living/simple_animal/hostile/alien/queen/large,
-					/mob/living/simple_animal/hostile/faithless,
-					/mob/living/simple_animal/hostile/panther,
-					/mob/living/simple_animal/hostile/snake,
 					/mob/living/simple_animal/hostile/retaliate,
-					/mob/living/simple_animal/hostile/retaliate/clown
+					/mob/living/simple_animal/hostile/retaliate/clown,
+					/mob/living/simple_animal/hostile/retaliate/malf_drone,
+					/mob/living/simple_animal/hostile/bear, // bugged
+					/mob/living/simple_animal/hostile/bear/Hudson, // bugged
+					/mob/living/simple_animal/hostile/hivebot/tele, // bugged
+					/mob/living/simple_animal/hostile/carp/holodeck,
+					/mob/living/simple_animal/hostile/viscerator,
+					/*/mob/living/simple_animal/hostile/wizard, // None of these are re-added yet.
+					/mob/living/simple_animal/hostile/wizard/red,
+					/mob/living/simple_animal/hostile/wizard/marisa,
+					/mob/living/simple_animal/hostile/tribesman, // bugged
+					/mob/living/simple_animal/hostile/retaliate/defense_drone,
+					/mob/living/simple_animal/hostile/nazi,
+					/mob/living/simple_animal/hostile/nazi/ranged,
+					/mob/living/simple_animal/hostile/nazi/ranged/soldier,
+					/mob/living/simple_animal/hostile/nazi/ranged/soldier/eluger,
+					/mob/living/simple_animal/hostile/nazi/ranged/soldier/rifle,
+					/mob/living/simple_animal/hostile/nazi/stormtrooper,
+					/mob/living/simple_animal/hostile/nazi/stormtrooper/heavy,
+					/mob/living/simple_animal/hostile/nazi/melee,*/
+					/mob/living/simple_animal/hostile/giant_spider/nurse, // because fuck that shit
+					/mob/living/simple_animal/hostile/tree, // Holiday events only.
+					/mob/living/simple_animal/hostile/mimic,
+					/mob/living/simple_animal/hostile/mimic/copy,
+					/mob/living/simple_animal/hostile/mimic/crate
 					)//exclusion list for things you don't want the reaction to create.
 				var/list/critters = typesof(/mob/living/simple_animal/hostile) - blocked // list of possible hostile mobs
 
@@ -1091,9 +1113,99 @@ datum
 					C.loc = get_turf(holder.my_atom)
 					if(prob(50))
 						for(var/j = 1, j <= rand(1, 3), j++)
-							step(C, pick(NORTH,SOUTH,EAST,WEST))*/
-				for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-					O.show_message(text("\red The slime core fizzles disappointingly,"), 1)
+							step(C, pick(NORTH,SOUTH,EAST,WEST))
+				/*for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+					O.show_message(text("\red The slime core fizzles disappointingly,"), 1)*/
+
+		slimenoncrit
+			name = "Slime Non-Crit"
+			id = "m_tele"
+			result = null
+			required_reagents = list("blood" = 5)
+			result_amount = 1
+			required_container = /obj/item/slime_extract/gold
+			required_other = 1
+			on_reaction(var/datum/reagents/holder)
+
+				var/blocked = list(
+					/mob/living/simple_animal,
+					/mob/living/simple_animal/hostile,
+					/mob/living/simple_animal/hostile/pirate,
+					/mob/living/simple_animal/hostile/pirate/ranged,
+					/mob/living/simple_animal/hostile/russian,
+					/mob/living/simple_animal/hostile/russian/ranged,
+					/mob/living/simple_animal/hostile/syndicate,
+					/mob/living/simple_animal/hostile/syndicate/melee,
+					/mob/living/simple_animal/hostile/syndicate/melee/space,
+					/mob/living/simple_animal/hostile/syndicate/ranged,
+					/mob/living/simple_animal/hostile/syndicate/ranged/space,
+					/mob/living/simple_animal/hostile/alien/queen/large,
+					/mob/living/simple_animal/hostile/retaliate,
+					/mob/living/simple_animal/hostile/retaliate/clown,
+					/mob/living/simple_animal/hostile/retaliate/malf_drone,
+					/mob/living/simple_animal/hostile/bear, // bugged
+					/mob/living/simple_animal/hostile/bear/Hudson, // bugged
+					/mob/living/simple_animal/hostile/hivebot/tele, // bugged
+					/mob/living/simple_animal/hostile/carp/holodeck,
+					/mob/living/simple_animal/hostile/viscerator,
+					/*/mob/living/simple_animal/hostile/wizard, // None of these are re-added yet.
+					/mob/living/simple_animal/hostile/wizard/red,
+					/mob/living/simple_animal/hostile/wizard/marisa,
+					/mob/living/simple_animal/hostile/tribesman, // bugged
+					/mob/living/simple_animal/hostile/retaliate/defense_drone,
+					/mob/living/simple_animal/hostile/nazi,
+					/mob/living/simple_animal/hostile/nazi/ranged,
+					/mob/living/simple_animal/hostile/nazi/ranged/soldier,
+					/mob/living/simple_animal/hostile/nazi/ranged/soldier/eluger,
+					/mob/living/simple_animal/hostile/nazi/ranged/soldier/rifle,
+					/mob/living/simple_animal/hostile/nazi/stormtrooper,
+					/mob/living/simple_animal/hostile/nazi/stormtrooper/heavy,
+					/mob/living/simple_animal/hostile/nazi/melee,*/
+					/mob/living/simple_animal/hostile/giant_spider/nurse, // because fuck that shit
+					/mob/living/simple_animal/hostile/tree,
+					/mob/living/simple_animal/hostile/mimic,
+					/mob/living/simple_animal/hostile/mimic/copy,
+					/mob/living/simple_animal/hostile/mimic/crate,
+					/mob/living/simple_animal/bee,
+					/mob/living/simple_animal/borer,
+					/mob/living/simple_animal/borer/roundstart,
+					/mob/living/simple_animal/cat/fluff/bones,
+					/mob/living/simple_animal/cat/fluff/Runtime,
+					/mob/living/simple_animal/cat/fluff,
+					/mob/living/simple_animal/construct,
+					/mob/living/simple_animal/construct/armoured,
+					/mob/living/simple_animal/construct/behemoth,
+					/mob/living/simple_animal/construct/builder,
+					/mob/living/simple_animal/construct/wraith,
+					/mob/living/simple_animal/corgi/Ian,
+					/mob/living/simple_animal/corgi/Lisa,
+					/mob/living/simple_animal/crab/Coffee,
+					/mob/living/simple_animal/parrot/Poly,
+					/mob/living/simple_animal/mouse/brown/Tom,
+					/mob/living/simple_animal/snake/Noodle,
+					/mob/living/simple_animal/shade,
+					/mob/living/simple_animal/space_worm,
+					/mob/living/simple_animal/space_worm/head,
+					/mob/living/simple_animal/spiderbot
+					)
+				var/list/critters = typesof(/mob/living/simple_animal) - blocked // list of possible hostile mobs
+
+				playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
+
+				for(var/mob/living/carbon/human/M in viewers(get_turf(holder.my_atom), null))
+					if(M:eyecheck() <= 0)
+						flick("e_flash", M.flash)
+
+				for(var/i = 1, i <= 5, i++)
+					var/chosen = pick(critters)
+					var/mob/living/simple_animal/hostile/C = new chosen
+					C.faction = "neutral"  // So they don't fucking murder everyone. Xenopets!
+					C.loc = get_turf(holder.my_atom)
+					if(prob(50))
+						for(var/j = 1, j <= rand(1, 3), j++)
+							step(C, pick(NORTH,SOUTH,EAST,WEST))
+				/*for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+					O.show_message(text("\red The slime core fizzles disappointingly,"), 1)*/
 
 //Silver
 		slimebork
