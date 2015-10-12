@@ -177,3 +177,45 @@ var/list/beam_master = list()
 	taser_effect = 1
 	agony = 40
 	damage_type = HALLOSS
+
+/obj/item/projectile/beam/shrinklaser
+	name = "shrink beam"
+	icon_state = "laser"
+	nodamage = 1
+	check_armour = "laser"
+
+	on_hit(var/atom/target, var/blocked = 0)
+		if(istype(target, /mob/living))
+			var/mob/living/M = target
+			switch(M.playerscale)
+				if(RESIZE_HUGE to INFINITY)
+					M.resize(RESIZE_BIG)
+				if(RESIZE_BIG to RESIZE_HUGE)
+					M.resize(RESIZE_NORMAL)
+				if(RESIZE_NORMAL to RESIZE_BIG)
+					M.resize(RESIZE_SMALL)
+				if((0 - INFINITY) to RESIZE_NORMAL)
+					M.resize(RESIZE_TINY)
+			M.update_icons()
+		return 1
+
+/obj/item/projectile/beam/growlaser
+	name = "growth beam"
+	icon_state = "bluelaser"
+	nodamage = 1
+	check_armour = "laser"
+
+	on_hit(var/atom/target, var/blocked = 0)
+		if(istype(target, /mob))
+			var/mob/M = target
+			switch(M.playerscale)
+				if(RESIZE_BIG to RESIZE_HUGE)
+					M.resize(RESIZE_HUGE)
+				if(RESIZE_NORMAL to RESIZE_BIG)
+					M.resize(RESIZE_BIG)
+				if(RESIZE_SMALL to RESIZE_NORMAL)
+					M.resize(RESIZE_NORMAL)
+				if((0 - INFINITY) to RESIZE_TINY)
+					M.resize(RESIZE_SMALL)
+			M.update_icons()
+		return 1

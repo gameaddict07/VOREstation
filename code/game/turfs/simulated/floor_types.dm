@@ -217,3 +217,19 @@
 
 /turf/simulated/floor/plating/snow/ex_act(severity)
 	return
+
+// NIGHT WAS HERE
+/turf/simulated/floor/stomach
+	name = "stomach"
+	icon = 'icons/turf/stomach.dmi'
+	icon_state = "normal"
+
+/turf/simulated/floor/stomach_blue
+	name = "stomach"
+	icon = 'icons/turf/stomach.dmi'
+	icon_state = "blue"
+
+/turf/simulated/floor/stomach_xenomorph
+	name = "stomach"
+	icon = 'icons/turf/stomach.dmi'
+	icon_state = "xenomorph"
