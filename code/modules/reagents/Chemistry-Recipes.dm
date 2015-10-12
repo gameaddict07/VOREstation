@@ -1071,13 +1071,13 @@ datum
 					/mob/living/simple_animal/hostile/syndicate/ranged,
 					/mob/living/simple_animal/hostile/syndicate/ranged/space,
 					/mob/living/simple_animal/hostile/alien/queen/large,
+					/mob/living/simple_animal/hostile/carp/holodeck,
 					/mob/living/simple_animal/hostile/retaliate,
 					/mob/living/simple_animal/hostile/retaliate/clown,
 					/mob/living/simple_animal/hostile/retaliate/malf_drone,
 					/mob/living/simple_animal/hostile/bear, // bugged
 					/mob/living/simple_animal/hostile/bear/Hudson, // bugged
 					/mob/living/simple_animal/hostile/hivebot/tele, // bugged
-					/mob/living/simple_animal/hostile/carp/holodeck,
 					/mob/living/simple_animal/hostile/viscerator,
 					/*/mob/living/simple_animal/hostile/wizard, // None of these are re-added yet.
 					/mob/living/simple_animal/hostile/wizard/red,
@@ -1106,7 +1106,8 @@ datum
 					if(M:eyecheck() <= 0)
 						flick("e_flash", M.flash)
 
-				for(var/i = 1, i <= 5, i++)
+				var/spawn_count = rand(1,3)
+				for(var/i = 1, i <= spawn_count, i++)
 					var/chosen = pick(critters)
 					var/mob/living/simple_animal/hostile/C = new chosen
 					C.faction = "slimesummon"
@@ -1139,14 +1140,19 @@ datum
 					/mob/living/simple_animal/hostile/syndicate/melee/space,
 					/mob/living/simple_animal/hostile/syndicate/ranged,
 					/mob/living/simple_animal/hostile/syndicate/ranged/space,
+					/mob/living/simple_animal/hostile/alien,
+					/mob/living/simple_animal/hostile/alien/drone,
+					/mob/living/simple_animal/hostile/alien/sentinel,
+					/mob/living/simple_animal/hostile/alien/queen,
 					/mob/living/simple_animal/hostile/alien/queen/large,
+					/mob/living/simple_animal/hostile/carp/holodeck,
+					/mob/living/simple_animal/hostile/carp,
 					/mob/living/simple_animal/hostile/retaliate,
 					/mob/living/simple_animal/hostile/retaliate/clown,
 					/mob/living/simple_animal/hostile/retaliate/malf_drone,
 					/mob/living/simple_animal/hostile/bear, // bugged
 					/mob/living/simple_animal/hostile/bear/Hudson, // bugged
 					/mob/living/simple_animal/hostile/hivebot/tele, // bugged
-					/mob/living/simple_animal/hostile/carp/holodeck,
 					/mob/living/simple_animal/hostile/viscerator,
 					/*/mob/living/simple_animal/hostile/wizard, // None of these are re-added yet.
 					/mob/living/simple_animal/hostile/wizard/red,
@@ -1196,7 +1202,8 @@ datum
 					if(M:eyecheck() <= 0)
 						flick("e_flash", M.flash)
 
-				for(var/i = 1, i <= 5, i++)
+				var/spawn_count = rand(1,3)
+				for(var/i = 1, i <= spawn_count, i++)
 					var/chosen = pick(critters)
 					var/mob/living/simple_animal/hostile/C = new chosen
 					C.faction = "neutral"  // So they don't fucking murder everyone. Xenopets!
