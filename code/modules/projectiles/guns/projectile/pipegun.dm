@@ -20,6 +20,7 @@
 	..()
 
 /obj/item/weapon/gun/projectile/pipegun/proc/explode(var/mob/living/user)
+	flick("e_flash", user.flash)
 	user.adjustBruteLoss(rand(10,70))
 	user.Weaken(5)
 	user.eye_blurry = 10
