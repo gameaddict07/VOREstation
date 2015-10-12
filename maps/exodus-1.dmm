@@ -2729,7 +2729,7 @@
 "bay" = (/obj/structure/table,/obj/item/weapon/reagent_containers/food/condiment/enzyme{layer = 5},/obj/item/weapon/packageWrap,/obj/structure/cable/green{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor{icon_state = "cafeteria"; dir = 2},/area/crew_quarters/kitchen)
 "baz" = (/obj/structure/table,/obj/item/weapon/storage/box/donkpockets{pixel_x = 3; pixel_y = 3},/obj/item/weapon/reagent_containers/glass/beaker{pixel_x = 5},/turf/simulated/floor{icon_state = "cafeteria"; dir = 2},/area/crew_quarters/kitchen)
 "baA" = (/obj/structure/table,/obj/item/weapon/reagent_containers/food/condiment/saltshaker{pixel_x = -3; pixel_y = 0},/obj/item/weapon/reagent_containers/food/condiment/peppermill{pixel_x = 3},/turf/simulated/floor{icon_state = "cafeteria"; dir = 2},/area/crew_quarters/kitchen)
-"baB" = (/obj/structure/table,/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/crew_quarters/kitchen)
+"baB" = (/obj/structure/table,/obj/item/weapon/butch,/turf/simulated/floor{icon_state = "cafeteria"; dir = 5},/area/crew_quarters/kitchen)
 "baC" = (/turf/simulated/floor{icon_state = "cafeteria"; dir = 2},/area/crew_quarters/kitchen)
 "baD" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/hydroponics/garden)
 "baE" = (/obj/machinery/portable_atmospherics/hydroponics/soil,/obj/effect/landmark{name = "blobstart"},/turf/simulated/floor/grass,/area/hydroponics/garden)
