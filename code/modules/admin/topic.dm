@@ -1793,6 +1793,10 @@
 					break
 		return
 
+	else if(href_list["showsecrets"])
+		if (!check_rights(0))	return
+		show_secrets_panel(href_list["showsecrets"])
+
 	else if(href_list["secretsfun"])
 		if(!check_rights(R_FUN))	return
 
