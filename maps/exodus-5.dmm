@@ -1006,7 +1006,7 @@
 "tr" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/machinery/door/firedoor/border_only{dir = 2},/turf/simulated/floor/plating,/area/mine/west_outpost)
 "ts" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 1},/turf/simulated/floor/wood,/area/mine/living_quarters)
 "tt" = (/obj/machinery/vending/cigarette,/obj/machinery/light{dir = 1},/turf/simulated/floor/wood,/area/mine/living_quarters)
-"tu" = (/obj/machinery/vending/snack,/turf/simulated/floor/wood,/area/mine/living_quarters)
+"tu" = (/obj/machinery/vending/snack,/obj/machinery/camera{c_tag = "Crew Area Breakroom"; network = list("MINE")},/turf/simulated/floor/wood,/area/mine/living_quarters)
 "tv" = (/obj/structure/table/woodentable,/obj/machinery/atmospherics/unary/vent_pump/on,/obj/item/ashtray/bronze,/obj/item/weapon/deck{pixel_x = -5; pixel_y = 8},/turf/simulated/floor/wood,/area/mine/living_quarters)
 "tw" = (/obj/structure/bed/chair/comfy/green,/turf/simulated/floor/wood,/area/mine/living_quarters)
 "tx" = (/obj/machinery/alarm{pixel_y = 24},/obj/structure/bed/chair/comfy/green,/turf/simulated/floor/wood,/area/mine/living_quarters)
