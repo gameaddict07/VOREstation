@@ -1379,7 +1379,7 @@ datum/design/item/weapon/judge
 	build_path = /obj/item/weapon/gun/projectile/revolver/shotgun
 	locked = 1
 
-/* // Old VOREstation stuff. Needs to be redone to fit current materials. Some items are missing, like the sizegun, and redspace tech.
+/* // Old VOREstation stuff. Needs to be redone to fit current materials. Some things are missing, like redspace tech.
 datum/design/energysword
 	name = "Energy Sword"
 	desc = "A blade of pure plasma emitted from a metalic hilt and suspended in an electromagnetic containment field."
@@ -1398,15 +1398,6 @@ datum/design/energyshield
 	build_type = PROTOLATHE
 	materials = list("$metal" = 1250, "$plasma" = 1250, "$silver" = 625, "$gold" = 625, "$diamond" = 625, "$mythril" = 1250)
 	build_path = "/obj/item/weapon/shield/energy"
-
-datum/design/sizegun
-	name = "Shrink Ray"
-	desc = "A ray gun that shoots bolts of energy which changes a target's size by warping the local space around them."
-	id = "sizegun"
-	req_tech = list("redspace" = 1)
-	build_type = PROTOLATHE
-	materials = list("$metal" = 2000, "$glass" = 500, "$uranium" = 500)
-	build_path = "/obj/item/weapon/gun/energy/sizegun"
 
 datum/design/change_staff
 	name = "Staff of Change"
