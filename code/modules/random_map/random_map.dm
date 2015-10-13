@@ -20,6 +20,18 @@ var/global/list/random_maps = list()
 	var/limit_y = 256               // Maximum y bound.
 	var/iterate_before_fail = 120   // Infinite loop safeguard.
 
+	// Define how many turfs of each ore type we want. Remember that MineralSpread() will increase these!
+	var/desired_minerals = list(
+		/turf/simulated/mineral/specific/uranium	= 40,
+		/turf/simulated/mineral/specific/platinum	= 75,
+		/turf/simulated/mineral/specific/iron		= 110,
+		/turf/simulated/mineral/specific/coal		= 125,
+		/turf/simulated/mineral/specific/diamond	= 20,
+		/turf/simulated/mineral/specific/gold		= 30,
+		/turf/simulated/mineral/specific/silver		= 40,
+		/turf/simulated/mineral/specific/phoron		= 100
+	)
+
 /datum/random_map/proc/get_map_cell(var/x,var/y)
 	return ((y-1)*real_size)+x
 
@@ -99,6 +111,7 @@ var/global/list/random_maps = list()
 	return 0
 
 /datum/random_map/proc/iterate(var/iteration)
+	// Stage 1 - Walls and Floors
 	var/list/next_map[raw_map_size]
 	for(var/x = 1, x <= real_size, x++)
 		for(var/y = 1, y <= real_size, y++)
@@ -119,6 +132,22 @@ var/global/list/random_maps = list()
 				next_map[current_cell] = 1 // becomes a floor
 	map = next_map
 
+	// Stage 2 - Mineral Turfs
+	for (var/type in desired_minerals)
+		sleep(-1)
+		var/wanted = desired_minerals[type]
+		while (wanted > 0)
+			var/x = rand(1,real_size)
+			var/y = rand(1,real_size)
+			var/check_cell = get_map_cell(x, y)
+			if(!(within_bounds(check_cell)) || map[check_cell] != 2)
+				continue // Try again
+			var/turf/T = locate(x, y, origin_z)
+			if(!T || !istype(T,/turf/unsimulated/mask))
+				continue // Try again
+			map[check_cell] = type
+			wanted--
+
 /datum/random_map/proc/check_map_sanity()
 	return 1
 
@@ -129,6 +158,8 @@ var/global/list/random_maps = list()
 			if((origin_y + y) > limit_y) continue
 			sleep(-1)
 			apply_to_turf(origin_x+x,origin_y+y)
+	spawn(300)
+		print_map_minerals()
 
 /datum/random_map/proc/apply_to_turf(var/x,var/y)
 	var/current_cell = get_map_cell(x,y)
@@ -142,26 +173,27 @@ var/global/list/random_maps = list()
 			T.ChangeTurf(/turf/simulated/floor/plating/airless/asteroid)
 		if(2)
 			T.ChangeTurf(/turf/simulated/mineral)
-		if(3)
-			T.ChangeTurf(/turf/simulated/mineral/random)
-		if(4)
-			T.ChangeTurf(/turf/simulated/mineral/random/high_chance)
+		else if (ispath(map[current_cell]))
+			T.ChangeTurf(map[current_cell])
+
+/datum/random_map/proc/print_map_minerals()
+	var/list/counts = list()
+	for (var/mineral in name_to_mineral)
+		counts[mineral] = 0
+
+	for(var/x = 0, x < real_size, x++)
+		if((origin_x + x) > limit_x) continue
+		for(var/y = 0, y < real_size, y++)
+			if((origin_y + y) > limit_y) continue
+			var/turf/simulated/mineral/T = locate(x,y,origin_z)
+			if (!istype(T)) continue
+			if (T.mineral)
+				counts[T.mineral.name] += 1
+
+	for (var/mineral in counts)
+		world.log << "Asteroid Ore Count: [mineral]=[counts[mineral]]"
 
 /datum/random_map/proc/cleanup()
-
-	sleep(-1)
-	// Create ore.
-	var/ore_count = ORE_COUNT
-	while(ore_count)
-		var/check_cell = get_map_cell(rand(1,real_size),rand(1,real_size))
-		if(!(within_bounds(check_cell)) || map[check_cell] != 2)
-			continue
-		if(prob(25))
-			map[check_cell] = 4
-		else
-			map[check_cell] = 3
-		ore_count--
-
 	sleep(-1)
 
 	// Place random asteroid rooms.

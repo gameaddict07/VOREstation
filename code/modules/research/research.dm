@@ -234,8 +234,16 @@ datum/tech/arcane
 	desc = "Research into the occult and arcane field for use in practical science"
 	id = "arcane"
 	level = 0 //It didn't become "secret" as advertised.
+*/
 
 //Branch Techs
+datum/tech/redspace
+	name = "Redspace Research"
+	desc = "The study into the mysterious realm of newly discovered Redspace."
+	id = "redspace"
+	req_tech = list("bluespace" = 4)
+/*
+
 datum/tech/explosives
 	name = "Explosives Research"
 	desc = "The creation and application of explosive materials."

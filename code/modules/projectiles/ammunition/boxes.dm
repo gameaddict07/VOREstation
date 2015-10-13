@@ -232,6 +232,9 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/c762
+	initial_ammo = 0
+
 /obj/item/ammo_magazine/chameleon
 	name = "magazine (.45)"
 	icon_state = "45"
@@ -257,6 +260,18 @@
 /obj/item/ammo_magazine/c28mm/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/p90
+	name = "\improper P90 magazine (5.7×28mm)"
+	icon_state = "p90"
+	ammo_type = /obj/item/ammo_casing/c28mm
+	max_ammo = 35
+	multiple_sprites = 1
+	mag_type = MAGAZINE
+	caliber = "5.7×28mm"
+
+/obj/item/ammo_magazine/p90/empty
+	initial_ammo = 0
+
 /obj/item/ammo_magazine/m14
 	name = "10-round magazine (7.62mm)"
 	icon_state = "75"
@@ -273,25 +288,25 @@
 /obj/item/ammo_magazine/m14/empty
 	initial_ammo = 0
 
-/obj/item/ammo_magazine/rifle_clip
+/obj/item/ammo_magazine/a762_clip
 	name = "clip (7.62mm)"
 	desc = "A clip of 7.62mm rifle rounds."
-	icon_state = "riflestrip"
+	icon_state = "762"
 	ammo_type = /obj/item/ammo_casing/a762
 	mag_type = MAGAZINE|SPEEDLOADER
 	max_ammo = 5
 	caliber = "a762"
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/rifle_clip/chalk
+/obj/item/ammo_magazine/a762_clip/chalk
 	desc = "A clip of 7.62mm rifle rounds with chalk bullets."
 	ammo_type = /obj/item/ammo_casing/a762/chalk
 
-/obj/item/ammo_magazine/rifle_clip/blank
+/obj/item/ammo_magazine/a762_clip/blank
 	desc = "A clip of 7.62mm rifle rounds with no bullets."
 	ammo_type = /obj/item/ammo_casing/a762/blank
 
-/obj/item/ammo_magazine/rifle_clip/empty
+/obj/item/ammo_magazine/a762_clip/empty
 	initial_ammo = 0
 
 /obj/item/ammo_magazine/a10mmc
@@ -304,6 +319,19 @@
 	caliber = "10mmCaseless"
 
 /obj/item/ammo_magazine/a10mmc/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/SVD
+	name = "magazine (7.62mm)"
+	icon_state = "SVD"
+	mag_type = MAGAZINE
+	caliber = "a762"
+	matter = list("metal" = 900)
+	ammo_type = /obj/item/ammo_casing/a762
+	max_ammo = 10
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/SVD
 	initial_ammo = 0
 
 /*

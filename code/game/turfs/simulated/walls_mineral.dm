@@ -52,6 +52,10 @@
 				L.apply_effect(12,IRRADIATE,0)
 			for(var/turf/simulated/wall/mineral/uranium/T in range(3,src))
 				T.radiate()
+			for(var/obj/machinery/power/rad_collector/R in rad_collectors)
+				var/distance = get_dist(R, src)
+				if(distance <= 3)
+					R.receive_pulse(120)
 			last_event = world.time
 			active = null
 			return
@@ -67,6 +71,11 @@
 
 /turf/simulated/wall/mineral/uranium/Bumped(AM as mob|obj)
 	radiate()
+	..()
+
+/turf/simulated/wall/mineral/uranium/bullet_act(var/obj/item/projectile/Proj)
+	if(istype(Proj, /obj/item/projectile/beam/emitter))
+		radiate()
 	..()
 
 /turf/simulated/wall/mineral/phoron

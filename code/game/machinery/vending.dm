@@ -982,3 +982,181 @@
 					/obj/item/weapon/screwdriver = 5,/obj/item/weapon/crowbar = 5)
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 
+
+//VORE Station stuff.
+
+// This is here in vending.dm because the toyvend needs it to work. Kind of a hacky fix, but it works.
+/obj/item/weapon/paper/toycatalog
+	name = "Toy Catalog"
+	info = {"
+			<h2>ToyVent Catalog</h2>
+			<ul>
+			<li>Capgun</li>
+			<li>Capgun Ammo</li>
+			<li>Basketball</li>
+			<li>Beach Ball</li>
+			<li>Water Balloon</li>
+			<li>Electronic Blink Toy</li>
+			<li>Toy Crossbow</li>
+			<li>Replica Katana</li>
+			<li>Toy Sword</li>
+			<li>Water Flower</li>
+			<li>Spinning Toy</li>
+			<li>Boxes of Crayon</li>
+			<li>Multicolor Pen</li>
+			<li>Snap-pop</li>
+			<li>6 sided dice</li>
+			<li>20 sided dice</li>
+			<li>Soviet Flask</li>
+			<li>Shiny Flask</li>
+			<li>Green Glasses</li>
+			<li>Safety Goggle</li>
+			<li>Blue Goggle</li>
+			<li>Yellow Goggle</li>
+			<li>Heart Pin</li>
+			<li>Smiley Pin</li>
+			<li>Tacticool Costume</li>
+			<li>Rainbow Jumpsuit</li>
+			<li>Rainbow Hat</li>
+			<li>Collectable Poster</li>
+			<li>Collectable Ripley</li>
+			<li>Collectable Fire Ripley</li>
+			<li>Collectable Soviet Ripley</li>
+			<li>Collectable Gygax</li>
+			<li>Collectable Durand</li>
+			<li>Collectable Maurader</li>
+			<li>Collectable Seraph</li>
+			<li>Collectable Mauler</li>
+			<li>Collectable Odysseus</li>
+			<li>Collectable Phazon</li>
+			<li>Limited Edition Clear PDA Case</li>
+			<li>Limited Edition Gonzo Fist Zippo</li>
+			<li>Limited Edition Blue Zippo</li>
+			<li>Limited Edition Golden Zippo</li>
+			<li>Limited Edition Engraved Zippo</li>
+			</ul>
+			"}
+
+/obj/machinery/vending/toyvend
+	name = "Toy-Vend"
+	desc = "An old coin-operated machine that sells cheap toys. Made in Space China."
+	products = list(/obj/item/weapon/paper/toycatalog = 10) // The only reason this is here is because the code breaks if no products are loaded.
+	contraband = list(/obj/item/clothing/mask/muzzle = 1) // Adult "toys".
+	premium = list(
+				/obj/item/toy/gun = 5,
+				/obj/item/toy/ammo/gun = 10,
+				/obj/item/weapon/beach_ball/basketball = 5,
+				/obj/item/weapon/beach_ball = 5,
+				/obj/item/toy/balloon = 5,
+				/obj/item/toy/blink = 5,
+				/obj/item/toy/crossbow = 5,
+				/obj/item/toy/katana = 5,
+				/obj/item/toy/sword = 5,
+				/obj/item/toy/waterflower = 5,
+				/obj/item/toy/spinningtoy = 5,
+				/obj/item/weapon/storage/fancy/crayons = 5,
+				/obj/item/weapon/pen/fluff/multi = 5,
+				/obj/item/weapon/storage/box/snappops = 5,
+				/obj/item/weapon/dice = 5,
+				/obj/item/weapon/dice/d20 = 5,
+				/obj/item/weapon/reagent_containers/food/drinks/flask/fluff/shinyflask = 5,
+				/obj/item/clothing/glasses/gglasses = 5,
+				/obj/item/clothing/glasses/fluff/arjun_chopra_1 = 5,
+				/obj/item/clothing/glasses/fluff/yellow/blue = 5,
+				/obj/item/clothing/glasses/fluff/yellow = 5,
+				/obj/item/clothing/tie/fluff/heartpin = 5,
+				/obj/item/clothing/tie/fluff/smilepin = 5,
+				/obj/item/clothing/under/syndicate/tacticool = 3,
+				/obj/item/clothing/under/rainbow = 3,
+				/obj/item/clothing/head/soft/rainbow = 3,
+				/obj/item/weapon/contraband/poster = 2,
+				/obj/item/toy/prize/ripley = 2,
+				/obj/item/toy/prize/fireripley = 2,
+				/obj/item/toy/prize/deathripley = 2,
+				/obj/item/toy/prize/gygax = 2,
+				/obj/item/toy/prize/durand = 2,
+				/obj/item/toy/prize/marauder = 2,
+				/obj/item/toy/prize/seraph = 2,
+				/obj/item/toy/prize/mauler = 2,
+				/obj/item/toy/prize/odysseus = 2,
+				/obj/item/toy/prize/phazon = 2,
+				/obj/item/device/pda_mod/clear = 1,
+			)
+
+/obj/machinery/vending/clothes
+	name = "UniVend"
+	desc = "A uniform vending machine, so you can stand out instead of being washed away by the grey tide."
+//	icon_state = ""
+	products = list(/obj/item/clothing/under/aqua = 5,
+					/obj/item/clothing/under/color/black = 5,
+					/obj/item/clothing/under/color/blackf = 5,
+					/obj/item/clothing/under/lightblue = 5,
+					/obj/item/clothing/under/color/blue = 5,
+					/obj/item/clothing/under/darkblue = 5,
+					/obj/item/clothing/under/lightbrown = 5,
+					/obj/item/clothing/under/brown = 5,
+					/obj/item/clothing/under/lightgreen = 5,
+					/obj/item/clothing/under/color/green = 5,
+					/obj/item/clothing/under/color/grey = 5,
+					/obj/item/clothing/under/color/pink = 5,
+					/obj/item/clothing/under/lightpurple = 5,
+					/obj/item/clothing/under/purple = 5,
+					/obj/item/clothing/under/color/red = 5,
+					/obj/item/clothing/under/darkred = 5,
+					/obj/item/clothing/under/color/yellow = 5,
+					/obj/item/clothing/under/yellowgreen = 5,
+					/obj/item/clothing/under/blackskirt = 5,
+					/obj/item/clothing/under/fluff/lillian_amsel_1 = 5,
+					/obj/item/clothing/under/dress/dress_fire = 5,
+					/obj/item/clothing/under/dress/dress_green = 5,
+					/obj/item/clothing/under/dress/dress_orange = 5,
+					/obj/item/clothing/under/dress/dress_pink = 5,
+					/obj/item/clothing/under/fluff/tian_dress = 5,
+					/obj/item/clothing/under/dress/dress_saloon = 5,
+					/obj/item/clothing/under/dress/dress_yellow = 5,
+					/obj/item/clothing/under/dress/plaid_blue = 5,
+					/obj/item/clothing/under/dress/plaid_purple = 5,
+					/obj/item/clothing/under/dress/plaid_red = 5,
+					/obj/item/clothing/under/overalls = 5,
+					/obj/item/clothing/under/suit_jacket = 5,
+					/obj/item/clothing/under/suit_jacket/really_black = 5,
+					/obj/item/clothing/under/suit_jacket/female = 5,
+					/obj/item/clothing/under/suit_jacket/red = 5,
+					/obj/item/clothing/under/sundress = 5,
+					/obj/item/clothing/under/wedding/bride_white = 5,
+					/obj/item/clothing/shoes/black = 5,
+					/*
+					/obj/item/clothing/shoes/blue = 5,
+					/obj/item/clothing/shoes/brown = 5,
+					/obj/item/clothing/shoes/green = 5,
+					/obj/item/clothing/shoes/orange = 5,
+					/obj/item/clothing/shoes/purple = 5,
+					/obj/item/clothing/shoes/red = 5,
+					/obj/item/clothing/shoes/white = 5,
+					/obj/item/clothing/shoes/yellow = 5,
+					/obj/item/clothing/shoes/laceup = 5,
+					*/
+					/obj/item/clothing/shoes/leather = 5,
+					/obj/item/clothing/shoes/sandal = 5,
+					/obj/item/clothing/suit/apron/overalls = 3,
+					/obj/item/clothing/suit/wcoat = 3
+					)
+	contraband = list(/obj/item/clothing/under/color/orange = 3,
+					/obj/item/clothing/under/overalls = 3,
+					/obj/item/clothing/under/stripper/mankini= 3,
+					/obj/item/clothing/under/fluff/nightgown = 3,
+					/obj/item/clothing/suit/stripper/stripper_pink = 2,
+					/obj/item/clothing/under/stripper/stripper_pink = 2,
+					/obj/item/clothing/suit/stripper/stripper_green = 2,
+					/obj/item/clothing/under/stripper/stripper_green = 2,
+					/obj/item/clothing/under/captain_fly = 1,
+					)
+	premium = list(/obj/item/clothing/under/det/fluff/retpoluniform = 1,
+					/obj/item/clothing/under/schoolgirl = 1,
+					/obj/item/clothing/under/kilt = 1,
+					/obj/item/clothing/suit/ianshirt = 1,
+					/obj/item/clothing/shoes/jackboots = 1,
+					/obj/item/clothing/under/fluff/callum_suit = 1,
+					/obj/item/clothing/under/fluff/sakura_hokkaido_kimono = 1,
+					/obj/item/clothing/under/fluff/jumpsuitdown = 1
+					)

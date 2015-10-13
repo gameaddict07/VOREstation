@@ -23,6 +23,7 @@
 	max_shells = 5
 	w_class = 3
 	recoil = 2 // Kicks like a mule.
+	accuracy = -1 // You know damn well why.
 	origin_tech = "combat=4;materials=3;syndicate=4"
 	ammo_type = /obj/item/ammo_casing/shotgun
 

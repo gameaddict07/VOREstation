@@ -65,3 +65,30 @@
 
 	toggle_scope(2.0)
 
+/obj/item/weapon/gun/projectile/SVD
+	name = "\improper SVD"
+	desc = "Mass produced with an Optical Sniper Sight so simple that even Ivan can figure out how it works. Too bad for you that it's in Russian. Uses 7.62mm ammo."
+	item_state = "SVD"
+	icon_state = "SVD"
+	w_class = 4
+	accuracy = -2 //Firing from the hip.
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	slot_flags = null // ToDo: Back sprite.
+	origin_tech = "combat=2;syndicate=2"
+	magazine_type = /obj/item/ammo_magazine/SVD
+	allowed_magazines = list(/obj/item/ammo_magazine/SVD, /obj/item/ammo_magazine/c762)
+	ammo_type = /obj/item/ammo_casing/a762
+	load_method = MAGAZINE
+	caliber = "a762"
+
+/obj/item/weapon/gun/projectile/SVD/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "SVD" : "SVD-empty"
+	update_held_icon()
+
+/obj/item/weapon/gun/projectile/SVD/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)

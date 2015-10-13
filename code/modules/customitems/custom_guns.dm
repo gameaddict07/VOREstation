@@ -73,6 +73,7 @@
 	name = "\"The Jury\""
 	desc = "A customized variant of the \"The Judge\" revolver sold by Cybersun Industries, built specifically for Joseph Skinner."
 	icon_state = "jury"
+	accuracy = 0 // Because I know you're not an idiot who needs to be nerfed. -Ace
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 
 
@@ -115,20 +116,6 @@
 	name = "\improper Gallian 4 Rifle"
 	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military. Uses 7.62mm ammo."
 
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle
-	name = "bolt action rifle"
-	desc = "A reproduction of an almost ancient weapon design from the early 20th century. Popular among hunters and collectors. Uses 7.62mm ammo."
-	icon = 'icons/obj/custom_items.dmi'
-	item_state = "boltaction"
-	icon_state = "boltaction"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	max_shells = 5
-	caliber = "a762"
-	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
-	ammo_type = /obj/item/ammo_casing/a762
-	load_method = SINGLE_CASING | SPEEDLOADER
-	cocksound = 'sound/weapons/riflebolt.ogg'
-
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
 	name = "\improper ZM Kar 1"
 	desc = "A reproduction of an old ZM Kar 1 Rifle from the Autocratic East Europan Imperial Alliance of Gaia. Popular among imperials and collectors within the Federation and its allies. Uses 7.62mm ammo."
@@ -146,8 +133,8 @@
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
 	name = "'Wicked Butterfly' ZM Kar 1"
 	desc = "A customized bolt-action sniper rifle that was carried by some of the most revered snipers in the Federation. The stock has a small butterfly engraved on it. Uses 7.62mm ammo."
+	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "wickedbutterfly"
-	item_state = "boltaction"
 	recoil = 2 //extra kickback
 	accuracy = -1
 	scoped_accuracy = 2
@@ -289,6 +276,7 @@
 //--------------- StG-60 ----------------
 /obj/item/ammo_casing/stg
 	desc = "A 7.92×33mm Kurz casing."
+	icon_state = "762-casing"
 	caliber = "kurz"
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
@@ -315,6 +303,7 @@
 
 /obj/item/ammo_casing/a95mm
 	desc = "A 9.5x40mm bullet casing."
+	icon_state = "762-casing"
 	caliber = "9.5x40mm"
 	projectile_type = /obj/item/projectile/bullet/rifle/a95mm
 

@@ -98,9 +98,9 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/beanbagammo
 	name = "Beanbag shells"
-	contains = list(/obj/item/weapon/storage/box/shotgunbeanbags,
-					/obj/item/weapon/storage/box/shotgunbeanbags,
-					/obj/item/weapon/storage/box/shotgunbeanbags)
+	contains = list(/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag)
 	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Beanbag shells"
@@ -747,7 +747,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	contains = list(/obj/item/weapon/gun/projectile/sec/flash,
 					/obj/item/ammo_magazine/c45m/flash,
 					/obj/item/weapon/gun/projectile/shotgun/doublebarrel/flare,
-					/obj/item/weapon/storage/box/shotgunflashshells)
+					/obj/item/weapon/storage/fancy/shotgun_ammo/flash)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Flare gun crate"
@@ -809,7 +809,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/head/helmet/riot,
 					/obj/item/clothing/suit/armor/riot,
 					/obj/item/weapon/storage/box/flashbangs,
-					/obj/item/weapon/storage/box/shotgunbeanbags,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag,
 					/obj/item/weapon/storage/box/handcuffs)
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure
@@ -821,8 +821,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	name = "Riot shotgun crate"
 	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump,
 					/obj/item/weapon/gun/projectile/shotgun/pump,
-					/obj/item/weapon/storage/box/shotgunbeanbags,
-					/obj/item/weapon/storage/box/shotgunbeanbags)
+					/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Shotgun crate"
@@ -833,8 +833,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	name = "Combat shotgun crate"
 	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/combat,
 					/obj/item/weapon/gun/projectile/shotgun/pump/combat,
-					/obj/item/weapon/storage/box/shotgunslugs,
-					/obj/item/weapon/storage/box/shotgunpellets)
+					/obj/item/weapon/storage/fancy/shotgun_ammo/slug,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/pellet)
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Shotgun crate"
@@ -855,8 +855,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/shotgunpellets
 	name = "Buckshot crate"
-	contains = list(/obj/item/weapon/storage/box/shotgunpellets,
-					/obj/item/weapon/storage/box/shotgunpellets)
+	contains = list(/obj/item/weapon/storage/fancy/shotgun_ammo/pellet,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/pellet)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure
 	containername = "ballistic ammunition crate"
@@ -865,8 +865,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/shotgunslugs
 	name = "Slugs crate"
-	contains = list(/obj/item/weapon/storage/box/shotgunslugs,
-					/obj/item/weapon/storage/box/shotgunslugs)
+	contains = list(/obj/item/weapon/storage/fancy/shotgun_ammo/slug,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/slug)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure
 	containername = "ballistic ammunition crate"
@@ -1507,8 +1507,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 /datum/supply_packs/MilitaryAmmo/UNSC
 	name = "Surplus Military-grade Ammunition (UNSC)"
 	contains = list(/obj/item/ammo_magazine/battlerifle,
-					/obj/item/weapon/storage/box/shotgunpellets,
-					/obj/item/weapon/storage/box/shotgunslugs)
+					/obj/item/weapon/storage/fancy/shotgun_ammo/pellet,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/slug)
 /*
 /datum/supply_packs/MilitaryArmor/UNSC
 	name = "Surplus Military-grade Armor (UNSC)"
@@ -1818,8 +1818,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	name = "Competition shooting rifles"
 	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk,
 					/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
 					/obj/item/target,
 					/obj/item/target,
 					/obj/item/target/alien,
@@ -1835,12 +1835,12 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/rifles_ammo
 	name = "Competition shooting ammo"
-	contains = list(/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk)
+	contains = list(/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "competition rifle ammo"
