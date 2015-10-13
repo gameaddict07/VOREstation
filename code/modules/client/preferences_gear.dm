@@ -1220,6 +1220,12 @@ var/global/list/gear_datums = list()
 	sort_category = "misc"
 	cost = 1
 
+/datum/gear/electriccig
+	display_name = "electronic cigarette"
+	path = /obj/item/clothing/mask/fluff/electriccig
+	sort_category = "misc"
+	cost = 1
+
 /*/datum/gear/combitool
 	display_name = "combi-tool"
 	path = /obj/item/weapon/combitool
