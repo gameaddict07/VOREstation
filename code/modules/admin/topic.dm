@@ -1529,7 +1529,7 @@
 		var/mob/sender = locate(href_list["CentComFaxReply"])
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CentCom", "") as message|null
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(sender)] via secure connection. NOTE: BBCode works here, but HTML does not.", "Outgoing message from CentCom", "") as message|null
 		if(!input)	return
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
@@ -1538,6 +1538,9 @@
 		var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( null ) //hopefully the null loc won't cause trouble for us
 		P.name = "[command_name()]- [customname]"
 		P.info = input
+		P.info = html_encode(P.info)
+		P.info = replacetext(P.info, "\n", "<BR>")
+		P.info = P.parsepencode(P.info)
 		P.update_icon()
 
 		// Stamps

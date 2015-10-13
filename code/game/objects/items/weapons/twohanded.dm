@@ -147,6 +147,7 @@
 /*
  * Double-Bladed Energy Swords - Cheridan
  */
+// ToDo: Make this code not absolute fucking unusable shit. -Ace
 /obj/item/weapon/twohanded/dualsaber
 	icon_state = "dualsaber0"
 	base_icon = "dualsaber"

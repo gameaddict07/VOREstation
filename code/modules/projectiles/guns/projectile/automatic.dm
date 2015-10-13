@@ -141,10 +141,12 @@
 		icon_state = "wt550"
 	return
 
+/obj/item/weapon/gun/projectile/automatic/wt550/syndicate
+	magazine_type = /obj/item/ammo_magazine/mc9mmt // Spawns with lethal rounds.
 
 /obj/item/weapon/gun/projectile/automatic/p90
 	name = "\improper FN P90"
-	desc = "This SMG is popular with tank drivers. Why? Well, if you drive a tank, and you need a gun, you're probably not in your tank anymore, and you're probably very much in trouble and in need of many bullets. Despite that, it still feels like a toy... Uses 5.7×28mm ammo."
+	desc = "Despite its fierce reputation, it still manages to feel like a toy. Uses 5.7×28mm ammo."
 	icon_state = "p90"
 	item_state = "p90"
 	w_class = 3
@@ -180,6 +182,8 @@
 	slot_flags = SLOT_BACK
 	magazine_type = /obj/item/ammo_magazine/a10mmc
 	allowed_magazines = list(/obj/item/ammo_magazine/a10mmc)
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/m41a/update_icon()
 	..()

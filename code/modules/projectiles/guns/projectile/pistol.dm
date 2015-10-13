@@ -1,15 +1,15 @@
 /obj/item/weapon/gun/projectile/colt
 	name = "\improper Colt M1911"
-	desc = "A cheap Martian knock-off of a Colt M1911."
-	magazine_type = /obj/item/ammo_magazine/c45m
+	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 caliber ammo."
 	icon_state = "colt"
 	caliber = ".45"
 	origin_tech = "combat=2;materials=2"
 	load_method = MAGAZINE
 	fire_sound = 'sound/weapons/semiauto.ogg'
+	magazine_type = /obj/item/ammo_magazine/c45m
+	allowed_magazines = list(/obj/item/ammo_magazine/c45m)
 
 /obj/item/weapon/gun/projectile/colt/detective
-	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 caliber ammo."
 	magazine_type = /obj/item/ammo_magazine/c45m/rubber
 
 /obj/item/weapon/gun/projectile/colt/detective/verb/rename_gun()
@@ -50,21 +50,9 @@
 	name = "\improper Custom NT Mk58"
 	icon_state = "secgundark"
 
-/obj/item/weapon/gun/projectile/silenced
-	name = "silenced pistol"
-	desc = "A small, quiet,  easily concealable gun. Uses .45 caliber ammo."
-	icon_state = "silenced_pistol"
-	w_class = 3
-	caliber = ".45"
-	silenced = 1
-	origin_tech = "combat=2;materials=2;syndicate=8"
-	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/c45m
-	allowed_magazines = list(/obj/item/ammo_magazine/c45m)
-
 /obj/item/weapon/gun/projectile/deagle
 	name = "desert eagle"
-	desc = "A robust handgun that uses .50 AE ammo"
+	desc = "A robust handgun that uses .50 AE ammo."
 	icon_state = "deagle"
 	item_state = "deagle"
 	force = 14.0
@@ -89,7 +77,7 @@
 
 /obj/item/weapon/gun/projectile/gyropistol
 	name = "gyrojet pistol"
-	desc = "A bulky pistol designed to fire self propelled rounds"
+	desc = "Walk softly, and carry a big gun. Fires rare .75 caliber self-propelled exploding bolts. Because fuck you and everything around you."
 	icon_state = "gyropistol"
 	max_shells = 8
 	caliber = "75"
@@ -161,9 +149,98 @@
 	else
 		icon_state = "pistol"
 
+/*
+/obj/item/weapon/gun/projectile/silenced // ToDo: Make silencer detachable.
+	name = "silenced pistol"
+	desc = "A small, quiet,  easily concealable gun. Uses .45 caliber ammo."
+	icon_state = "silenced_pistol"
+	w_class = 3
+	caliber = ".45"
+	silenced = 1
+	origin_tech = "combat=2;materials=2;syndicate=8"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/c45m
+	allowed_magazines = list(/obj/item/ammo_magazine/c45m)
+*/
+
+/obj/item/weapon/gun/projectile/hl2_pistol
+	name = "\improper USP Match"
+	desc = "Still better than a crowbar. Uses .45 caliber ammo."
+	icon_state = "USP"
+	item_state = null
+	caliber = "9mm"
+	silenced = 0
+	origin_tech = "combat=2;materials=2;syndicate=4"
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/c45m
+	allowed_magazines = list(/obj/item/ammo_magazine/c45m)
+
+/obj/item/weapon/gun/projectile/hl2_pistol/silenced
+	icon_state = "USP-silencer"
+	silenced = 1
+
+/obj/item/weapon/gun/projectile/hl2_pistol/attack_hand(mob/user as mob)
+	if(user.get_inactive_hand() == src)
+		if(silenced)
+			if(user.l_hand != src && user.r_hand != src)
+				..()
+				return
+			user << "<span class='notice'>You unscrew [silenced] from [src].</span>"
+			user.put_in_hands(silenced)
+			silenced = 0
+			update_icon()
+			return
+	..()
+
+/obj/item/weapon/gun/projectile/hl2_pistol/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/weapon/silencer))
+		if(user.l_hand != src && user.r_hand != src)	//if we're not in his hands
+			user << "<span class='notice'>You'll need [src] in your hands to do that.</span>"
+			return
+		user.drop_item()
+		user << "<span class='notice'>You screw [I] onto [src].</span>"
+		silenced = I	//dodgy?
+		I.loc = src
+		update_icon()
+		return
+	..()
+
+/obj/item/weapon/gun/projectile/hl2_pistol/update_icon()
+	..()
+	if(silenced)
+		icon_state = "USP-silencer"
+	else
+		icon_state = "USP"
+
 /obj/item/weapon/silencer
 	name = "silencer"
 	desc = "a silencer"
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "silencer"
 	w_class = 2
+
+/obj/item/weapon/gun/projectile/fiveseven
+	name = "\improper FN Five Seven"
+	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real. Uses 5.7×28mm ammo."
+	icon_state = "fnseven"
+	origin_tech = "combat=2;materials=2"
+	max_shells = 10
+	caliber = "5.7×28mm"
+	load_method = MAGAZINE
+	fire_sound = 'sound/weapons/semiauto.ogg'
+	magazine_type = /obj/item/ammo_magazine/c28mm
+	allowed_magazines = list(/obj/item/ammo_magazine/c28mm)
+
+/obj/item/weapon/gun/projectile/derringer
+	name = "\improper Derringer"
+	desc = "It's not size that matters. Just the caliber of your load. Uses .357 ammo."
+	icon_state = "derringer"
+	item_state = "concealed" // A deliberately blank icon for extra stealthy.
+	caliber = ".357"
+	load_method = SINGLE_CASING
+	handle_casings = HOLD_CASINGS
+	max_shells = 2
+	w_class = 2
+	accuracy = -2
+	origin_tech = "combat=2;syndicate=2"
+	ammo_type = /obj/item/ammo_casing/c45

@@ -149,7 +149,7 @@
 	icon_state = "harpoon"
 	item_state = "harpoon"
 	force = 20
-	throwforce = 15
+	throwforce = 40 // It's a harpoon! It better do more damage when thrown!
 	w_class = 3
 	attack_verb = list("jabbed","stabbed","ripped")
 
