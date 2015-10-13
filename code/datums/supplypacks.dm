@@ -1818,8 +1818,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	name = "Competition shooting rifles"
 	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk,
 					/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
 					/obj/item/target,
 					/obj/item/target,
 					/obj/item/target/alien,
@@ -1835,12 +1835,12 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/rifles_ammo
 	name = "Competition shooting ammo"
-	contains = list(/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk,
-					/obj/item/ammo_magazine/rifle_clip/chalk)
+	contains = list(/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk,
+					/obj/item/ammo_magazine/a762_clip/chalk)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "competition rifle ammo"

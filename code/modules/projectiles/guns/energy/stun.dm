@@ -54,6 +54,9 @@
 /obj/item/weapon/gun/energy/crossbow/largecrossbow
 	name = "energy crossbow"
 	desc = "A weapon favored by mercenary infiltration teams."
+	icon_state = "crossbowlarge"
+	fire_sound = 'sound/weapons/eLuger.ogg' // I like this sound better.
+	silenced = 0 // No stealth cuz huge.
 	w_class = 4
 	force = 10
 	matter = list("metal" = 200000)

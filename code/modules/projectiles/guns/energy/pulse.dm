@@ -1,34 +1,38 @@
 /obj/item/weapon/gun/energy/pulse_rifle
 	name = "pulse rifle"
-	desc = "A weapon that uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
+	desc = "A military weapon that uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
 	icon_state = "pulse"
 	item_state = null	//so the human update icon uses the icon_state instead.
-	slot_flags = SLOT_BELT|SLOT_BACK
+	slot_flags = SLOT_BACK
 	force = 10
+	w_class = 4
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	charge_cost = 200
-	projectile_type = /obj/item/projectile/beam/pulse
+	charge_cost = 100
+	projectile_type = /obj/item/projectile/beam
 	cell_type = /obj/item/weapon/cell/super
-	var/mode = 2
-	fire_delay = 25
+	var/mode = 1
+	fire_delay = 0
 
 /obj/item/weapon/gun/energy/pulse_rifle/attack_self(mob/living/user as mob)
 	switch(mode)
 		if(2)
 			mode = 0
-			charge_cost = 100
+			fire_delay = 0
+			charge_cost = 200
 			fire_sound = 'sound/weapons/Taser.ogg'
 			user << "<span class='warning'>[src.name] is now set to stun.</span>"
 			projectile_type = /obj/item/projectile/beam/stun
 		if(0)
 			mode = 1
+			fire_delay = 0
 			charge_cost = 100
 			fire_sound = 'sound/weapons/blaster_pistol.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
 		if(1)
 			mode = 2
-			charge_cost = 200
+			fire_delay = 25
+			charge_cost = 2000
 			fire_sound = 'sound/weapons/gauss_shoot.ogg'
 			user << "<span class='warning'>[src.name] is now set to DESTROY.</span>"
 			projectile_type = /obj/item/projectile/beam/pulse

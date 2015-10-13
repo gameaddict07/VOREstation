@@ -4,9 +4,9 @@
 	icon_state = "pipegun4"
 	item_state = "dshotgun"
 	caliber = "shotgun"
-	origin_tech = "combat=2;materials=2;illegal=2"
+	origin_tech = "combat=2;materials=2;syndicate=2"
 	w_class = 4
-	slot_flags = null
+	slot_flags = SLOT_BACK
 	handle_casings = CYCLE_CASINGS // Because you need to eject the shells as they are used.
 	max_shells = 1
 	ammo_type = null // So it starts with no ammunition inside of it.

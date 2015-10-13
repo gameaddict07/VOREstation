@@ -11,7 +11,6 @@
 	var/caseless						//Does the ammo casing disappear after fired?
 	var/projectile_type					//The bullet type to create when New() is called
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
-	var/spent_icon = null
 
 /obj/item/ammo_casing/New()
 	..()
@@ -26,7 +25,6 @@
 	BB = null
 	if(caseless) // I honestly wasn't sure where to stick this part.
 		del(src)
-	icon_state = "[initial(icon_state)]-spent"
 	set_dir(pick(cardinal)) //spin spent casings
 	update_icon()
 
@@ -48,8 +46,8 @@
 			BB.name = "[initial(BB.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/update_icon()
-	if(spent_icon && !BB)
-		icon_state = spent_icon
+	if(!BB)
+		icon_state = "[initial(icon_state)]-spent"
 
 /obj/item/ammo_casing/examine(mob/user)
 	..()
