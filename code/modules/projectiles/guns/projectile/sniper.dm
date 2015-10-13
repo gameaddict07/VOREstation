@@ -72,7 +72,7 @@
 	icon_state = "SVD"
 	w_class = 4
 	accuracy = -2 //Firing from the hip.
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/svd_shot.ogg'
 	slot_flags = null // ToDo: Back sprite.
 	origin_tech = "combat=2;syndicate=2"
 	magazine_type = /obj/item/ammo_magazine/SVD

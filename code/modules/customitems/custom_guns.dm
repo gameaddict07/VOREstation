@@ -101,17 +101,6 @@
 	magazine_type = /obj/item/ammo_magazine/mc9mm
 	allowed_magazines = list(/obj/item/ammo_magazine/mc9mm)
 
-/obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
-	name = "\improper FN Five Seven"
-	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real. Uses 5.7×28mm ammo."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "fnseven"
-	magazine_type = /obj/item/ammo_magazine/c28mm
-	allowed_magazines = list(/obj/item/ammo_magazine/c28mm)
-	max_shells = 10
-	caliber = "5.7×28mm"
-	load_method = MAGAZINE
-
 /obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
 	name = "\improper Gallian 4 Rifle"
 	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military. Uses 7.62mm ammo."

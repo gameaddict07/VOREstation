@@ -17,7 +17,7 @@
 
 /obj/item/weapon/gun/projectile/revolver/shotgun
 	name = "\"The Judge\""
-	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
+	desc = "A revolving hand-shotgun by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner. Uses shotgun ammo."
 	icon_state = "judge"
 	caliber = "shotgun"
 	max_shells = 5

@@ -162,9 +162,6 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/a556/high/empty
-	initial_ammo = 0
-
 /* // Can't make a good sprite.
 // High capacity
 /obj/item/ammo_magazine/a556/high
@@ -177,9 +174,6 @@
 	ammo_type = /obj/item/ammo_casing/a556
 	max_ammo = 30
 	multiple_sprites = 1
-
-/obj/item/ammo_magazine/a556/mid/empty
-	initial_ammo = 0
 */
 
 /obj/item/ammo_magazine/a50
@@ -232,7 +226,7 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/c762
+/obj/item/ammo_magazine/c762/empty
 	initial_ammo = 0
 
 /obj/item/ammo_magazine/chameleon
@@ -331,7 +325,7 @@
 	max_ammo = 10
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/SVD
+/obj/item/ammo_magazine/SVD/empty
 	initial_ammo = 0
 
 /*

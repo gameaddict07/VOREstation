@@ -7,7 +7,7 @@
 	w_class = 4
 
 	attack_self(mob/user as mob)
-		// Another way of doing this. Commented out because the other method is better.
+		// Another way of doing this. Commented out because the other method is better for this application.
 		/*var/spawn_chance = rand(1,100)
 		switch(spawn_chance)
 			if(0 to 49)
@@ -15,11 +15,11 @@
 				usr << "You got a thing!"
 			if(50 to 99)
 				new /obj/item/weapon/bikehorn/rubberducky(usr.loc)
-				new /obj/item/weapon/bikehorn(usr.loc) // Can I spawn more than one?
+				new /obj/item/weapon/bikehorn(usr.loc)
 				usr << "You got two things!"
 			if(100)
 				usr << "The box contained nothing!"
-				return // Do I need this return? I looked at abandonedcrates.dm which also spawns random loot.
+				return
 		*/
 		var/loot = pick(/obj/item/weapon/book/manual/engineering_hacking,
 						/obj/item/weapon/cloaking_device,
@@ -48,7 +48,8 @@
 						/obj/item/weapon/scythe,
 						/obj/item/weapon/weldpack,
 						/obj/item/weapon/silencer,
-						/obj/item/weapon/hatchet/unathiknife,
+						/obj/item/weapon/kitchenknife/tacknife,
+						/obj/item/weapon/kitchenknife/tacknife/unathiknife,
 						/obj/item/weapon/kitchenknife/ritual,
 						/obj/item/weapon/grenade/flashbang/clusterbang,
 						/obj/item/weapon/storage/pill_bottle/zoom,

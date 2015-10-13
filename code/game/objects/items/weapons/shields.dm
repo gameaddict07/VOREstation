@@ -1,10 +1,11 @@
 /obj/item/weapon/shield
-	name = "shield"
+	name = "shitty shield"
+	icon = 'icons/obj/weapons.dmi'
+	desc = "This isn't supposed to even appear in the game. Submit an issue on Github if you find it."
 
 /obj/item/weapon/shield/riot
 	name = "riot shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
-	icon = 'icons/obj/weapons.dmi'
 	icon_state = "riot"
 	flags = CONDUCT
 	slot_flags = SLOT_BACK
@@ -30,6 +31,13 @@
 		else
 			..()
 
+/obj/item/weapon/shield/riot/wood
+	name = "buckler"
+	desc = "You scullion! I'll tickle your catastrophe!"
+	icon_state = "buckler"
+	matter = null
+	origin_tech = "materials=1"
+
 /*
  * Energy Shield
  */
@@ -37,7 +45,6 @@
 /obj/item/weapon/shield/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
-	icon = 'icons/obj/weapons.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
 	flags = CONDUCT
 	force = 3.0
@@ -82,6 +89,7 @@
 	add_fingerprint(user)
 	return
 
+// why are these in this file?
 /obj/item/weapon/cloaking_device
 	name = "cloaking device"
 	desc = "Use this to become invisible to the human eyesocket."
