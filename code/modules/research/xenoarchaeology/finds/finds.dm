@@ -242,7 +242,7 @@
 			possible_spawns += /obj/item/stack/sheet/mineral/phoron
 			possible_spawns += /obj/item/stack/sheet/mineral/gold
 			possible_spawns += /obj/item/stack/sheet/mineral/silver
-			possible_spawns += /obj/item/stack/sheet/mineral/enruranium
+			possible_spawns += /obj/item/stack/sheet/mineral/mhydrogen
 			possible_spawns += /obj/item/stack/sheet/mineral/sandstone
 			possible_spawns += /obj/item/stack/sheet/mineral/silver
 

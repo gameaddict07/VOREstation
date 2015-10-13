@@ -349,7 +349,7 @@ datum
 						human.set_species("Slime")
 				..()
 				return
-
+/*	// Black slime. Disabled due to shitloads of griefing.
 		aslimetoxin
 			name = "Advanced Mutation Toxin"
 			id = "amutationtoxin"
@@ -385,7 +385,7 @@ datum
 					del(M)
 				..()
 				return
-
+*/
 		inaprovaline
 			name = "Inaprovaline"
 			id = "inaprovaline"

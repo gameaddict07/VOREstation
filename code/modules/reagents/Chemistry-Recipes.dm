@@ -1426,6 +1426,12 @@ datum
 			required_other = 1
 			required_container = /obj/item/slime_extract/black
 
+			// ----- Temporary until we decide what to do with black slimes. ----- //
+			on_reaction(var/datum/reagents/holder)
+				for(var/mob/O in viewers(get_turf(holder.my_atom), null))
+					O.show_message(text("\red The slime core fizzles disappointingly,"), 1)
+			// ------------------------------------------------------------------- //
+
 //Oil
 		slimeexplosion
 			name = "Slime Explosion"
