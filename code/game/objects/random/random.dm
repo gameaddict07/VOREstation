@@ -209,7 +209,7 @@
 					prob(10);/obj/item/weapon/twohanded/baseballbat,\
 					prob(10);/obj/item/weapon/twohanded/baseballbat/metal,\
 					prob(9);/obj/item/weapon/gun/projectile/automatic/wt550/syndicate,\
-					prob(9);/obj/item/weapon/gun/projectile/derringer,\
+					prob(9);/obj/item/weapon/gun/projectile/revolver/derringer,\
 					prob(9);/obj/item/weapon/gun/energy/crossbow/largecrossbow,\
 					prob(9);/obj/item/weapon/gun/projectile/automatic/mini_uzi,\
 					prob(9);/obj/item/weapon/gun/projectile/fiveseven,\

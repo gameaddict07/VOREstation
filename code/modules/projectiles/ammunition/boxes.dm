@@ -226,9 +226,6 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/c762/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/chameleon
 	name = "magazine (.45)"
 	icon_state = "45"
@@ -251,9 +248,6 @@
 	mag_type = MAGAZINE
 	caliber = "5.7×28mm"
 
-/obj/item/ammo_magazine/c28mm/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/p90
 	name = "\improper P90 magazine (5.7×28mm)"
 	icon_state = "p90"
@@ -262,9 +256,6 @@
 	multiple_sprites = 1
 	mag_type = MAGAZINE
 	caliber = "5.7×28mm"
-
-/obj/item/ammo_magazine/p90/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/m14
 	name = "10-round magazine (7.62mm)"

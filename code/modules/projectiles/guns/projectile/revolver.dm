@@ -53,3 +53,14 @@
 		name = input
 		M << "You name the gun [input]. Say hello to your new friend."
 		return 1
+
+/obj/item/weapon/gun/projectile/revolver/derringer
+	name = "\improper Derringer"
+	desc = "It's not size that matters. Just the caliber of your load. Uses .357 ammo."
+	icon_state = "derringer"
+	item_state = "concealed" // A deliberately blank icon for extra stealthy.
+	max_shells = 2
+	w_class = 2
+	accuracy = -2
+	origin_tech = "combat=2;syndicate=2"
+	ammo_type = /obj/item/ammo_casing/a357
