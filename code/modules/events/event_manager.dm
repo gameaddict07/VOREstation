@@ -88,7 +88,7 @@
 		html += "<div class='block'>"
 		html += "<h2>Available [severity_to_string[selected_event_container.severity]] Events (queued & running events will not be displayed)</h2>"
 		html += "<table[table_options]>"
-		html += "<tr><td[row_options2]>Name </td><td>Weight </td><td>MinWeight </td><td>MaxWeight </td><td>OneShot </td><td>Enabled </td><td><span class='alert'>CurrWeight </span></td><td>Remove</td></tr>"
+		html += "<tr><td[row_options2]>Name </td><td>Weight </td><td>MinWeight </td><td>MaxWeight </td><td>OneShot </td><td>Enabled </td><td><span class='alert'>CurrWeight </span></td><td>Remove</td><td>Fire</td></tr>"
 		var/list/active_with_role = number_active_with_role()
 		for(var/datum/event_meta/EM in selected_event_container.available_events)
 			html += "<tr>"
@@ -100,6 +100,7 @@
 			html += "<td><A align='right' href='?src=\ref[src];toggle_enabled=\ref[EM]'>[EM.enabled]</A></td>"
 			html += "<td><span class='alert'>[selected_event_container.get_weight(EM, active_with_role)]</span></td>"
 			html += "<td><A align='right' href='?src=\ref[src];remove=\ref[EM];EC=\ref[selected_event_container]'>Remove</A></td>"
+			html += "<td><A align='right' href='?src=\ref[src];fireevent=\ref[EM];EC=\ref[selected_event_container]'>Fire</A></td>"
 			html += "</tr>"
 		html += "</table>"
 		html += "</div>"
@@ -150,7 +151,7 @@
 		html += "<div class='block'>"
 		html += "<h2>Next Event</h2>"
 		html += "<table[table_options]>"
-		html += "<tr><td[row_options1]>Severity</td><td[row_options2]>Name</td><td[row_options3]>Event Rotation</td><td>Clear</td></tr>"
+		html += "<tr><td[row_options1]>Severity</td><td[row_options2]>Name</td><td[row_options3]>Event Rotation</td><td>Clear</td><td>Start Now</td></tr>"
 		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
 			var/datum/event_container/EC = event_containers[severity]
 			var/datum/event_meta/EM = EC.next_event
@@ -159,6 +160,7 @@
 			html += "<td><A align='right' href='?src=\ref[src];select_event=\ref[EC]'>[EM ? EM.name : "Random"]</A></td>"
 			html += "<td><A align='right' href='?src=\ref[src];view_events=\ref[EC]'>View</A></td>"
 			html += "<td><A align='right' href='?src=\ref[src];clear=\ref[EC]'>Clear</A></td>"
+			html += "<td><A align='right' href='?src=\ref[src];start_next_event=\ref[EC]'>Now!</A></td>"
 			html += "</tr>"
 		html += "</table>"
 		html += "</div>"
@@ -209,6 +211,10 @@
 		var/datum/event_meta/EM = EC.SelectEvent()
 		if(EM)
 			admin_log_and_message_admins("has queued the [severity_to_string[EC.severity]] event '[EM.name]'.")
+	else if(href_list["start_next_event"])
+		var/datum/event_container/EC = locate(href_list["start_next_event"])
+		EC.start_event()
+		admin_log_and_message_admins("has manually started the next [severity_to_string[EC.severity]].")
 	else if(href_list["pause"])
 		var/datum/event_container/EC = locate(href_list["pause"])
 		EC.delayed = !EC.delayed
@@ -266,6 +272,15 @@
 		var/datum/event_container/EC = locate(href_list["EC"])
 		EC.available_events -= EM
 		admin_log_and_message_admins("has removed the [severity_to_string[EM.severity]] event '[EM.name]'.")
+	else if(href_list["fireevent"])
+		if(alert("This will manually fire the event without affecting the rotation. Continue?","Firing Event!","Yes","No") != "Yes")
+			return
+		var/datum/event_meta/EM = locate(href_list["fire"])
+		var/event_type = EM.event_type
+		if (ispath(event_type, /datum/event))
+			new event_type(EM)
+
+		admin_log_and_message_admins("has manually fired the [severity_to_string[EM.severity]] event '[EM.name]'.")
 	else if(href_list["add"])
 		if(!new_event.name || !new_event.event_type)
 			return

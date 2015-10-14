@@ -230,20 +230,22 @@
 	msg += "<span class='warning'>"
 
 	//Ace WAS HERE. Modified fatness to add new levels of fat. Vore code stuff is here.
+	// 1 same size person is worth ~1070 nutriment.
+	// Starting nutriment is 330.
 	if(nutrition < 50) // used to be 100, changed this
 		msg += "[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!\n"
 	else if(nutrition >= 50 && nutrition < 100)
 		msg += "[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.\n"
-	else if(nutrition >= 500 && nutrition < 650)
-		msg += "[t_He] [t_is] bloated with a slightly distended gut.\n"
-	else if(nutrition >= 650 && nutrition < 1000)
-		msg += "[t_He] [t_is] swollen with a big churning belly. You wonder if [t_He] [t_is] digesting someone, or if [t_He] raided a fridge.\n"
-	else if(nutrition >= 1000 && nutrition < 3000)
-		msg += "[t_He] [t_is] stuffed with a huge gurgling stomach! You're almost certain [t_He] [t_is] digesting a whole person inside--maybe two! Either that or [t_He] ate a whole pantry worth of food.\n"
-	else if(nutrition >= 3000 && nutrition < 6000)
-		msg += "[t_He] stomach is firmly packed with loudly churning food. They must have eaten several people, or a whole truckload of food!\n"
-	else if(nutrition >= 6000)
-		msg += "[t_He] [t_is] so gorged, you aren't sure how [t_He] [t_is] able to move. [t_his] belly is dragging across the floor and it doesn't look like [t_He] can get any bigger. [t_his] stomach isn't even squishy anymore and the surface looks sorely strained. [t_He] is either full with most of the crew's digesting remains, or the station's entire food supply!\n"
+	else if(nutrition >= 500 && nutrition < 865) // Fat.
+		msg += "[t_He] has a stuffed belly, bloated fat and round from eating too much.\n"
+	else if(nutrition >= 1200 && nutrition < 1935) // One person fully digested.
+		msg += "[t_He] [t_is] sporting a large, round, sagging stomach. It's contains at least their body weight worth of glorping slush.\n"
+	else if(nutrition >= 1935 && nutrition < 3005) // Two people.
+		msg += "[t_He] [t_is] engorged with a huge stomach that sags and wobbles as they move. They must have consumed at least twice their body weight. It looks incredibly soft.\n"
+	else if(nutrition >= 3005 && nutrition < 4075) // Three people.
+		msg += "[t_He] stomach is firmly packed with digesting slop. They must have eaten at least a few times worth their body weight! It looks hard for them to stand, and [t_his] gut jiggles when they move.\n"
+	else if(nutrition >= 4075) // Four or more people.
+		msg += "[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to get any bigger. The surface of [t_his] belly looks sorely strained!\n"
 //		else
 
 	// For each belly type, print description if someone is inside!
@@ -258,7 +260,7 @@
 
 	if((!species.has_organ["brain"] || has_brain()) && stat != DEAD)
 		if(!key)
-			msg += "<span class='deadsay'>[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.</span>\n"
+			msg += "<span class='deadsay'>[t_He] [t_is] sleeping too deeply to be woken up by any means.</span>\n"
 		else if(!client)
 			msg += "[t_He] [t_has] suddenly fallen asleep. (( Player is not connected. ))\n"
 

@@ -153,6 +153,7 @@
 		// Keep IDs around, but destroy them!
 		var/obj/item/weapon/card/id/ID = W
 		ID.desc = "A partially digested card that has seen better days.  Much of it's data has been destroyed."
+		ID.icon_state = "digested"
 		ID.access = list() // No access
 		ID.loc = src.owner
 		internal_contents += ID

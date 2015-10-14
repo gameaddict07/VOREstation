@@ -1222,7 +1222,7 @@ This was changed due to an compatibility problem with our wiki's format.
 		</head>
 
 		<body>
-		<iframe width='100%' height='100%' src="https://wiki.vore-station.net/Chain_of_Command&printable=yes" frameborder="0" id="main_frame"></iframe>		</body>
+		<iframe width='100%' height='100%' src="https://wiki.vore-station.net/index.php?title=Chain_of_Command&printable=yes" frameborder="0" id="main_frame"></iframe>		</body>
 
 		</html>
 

@@ -1,6 +1,14 @@
 
 /obj/item/clothing/suit/armor
-	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs)
+	allowed = list(
+				/obj/item/weapon/gun/energy,
+				/obj/item/weapon/reagent_containers/spray/pepper,
+				/obj/item/weapon/gun/projectile,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	flags = THICKMATERIAL
 
@@ -65,7 +73,7 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/armor/swat
-	name = "swat suit"
+	name = "\improper SWAT suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
 	icon_state = "deathsquad"
 	item_state = "swat_suit"
@@ -73,7 +81,15 @@
 	permeability_coefficient = 0.01
 	flags = STOPPRESSUREDAMAGE | THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency_oxygen)
+	allowed = list(
+				/obj/item/weapon/gun,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs,
+				/obj/item/weapon/tank/emergency_oxygen
+				)
 	slowdown = 1
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 100)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
@@ -214,7 +230,14 @@
 	icon_state = "kvest"
 	item_state = "kvest"
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs)
+	allowed = list(
+				/obj/item/weapon/gun,
+				/obj/item/weapon/reagent_containers/spray/pepper,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs)
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"

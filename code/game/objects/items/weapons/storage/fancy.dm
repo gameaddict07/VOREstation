@@ -282,3 +282,54 @@
 /obj/item/weapon/storage/lockbox/vials/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	update_icon()
+
+// Why is this an actual storage item instead of being treated as an ammo box? Because shotguns use a variety of exotic ammo, and aren't usually possible to speed-load.
+/obj/item/weapon/storage/fancy/shotgun_ammo
+	name = "box of shotgun ammo"
+	desc = "A small box that holds individual shotgun shell casings."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "shotgunbox0"
+	icon_type = "shotgun"
+	item_state = "syringe_kit"
+	w_class = 2 // All other ammo boxes can fit in pockets, so why not this too? Suddenly shotguns are a lot more useable.
+	foldable = /obj/item/stack/sheet/cardboard
+	slot_flags = SLOT_BELT
+	storage_slots = 7
+	can_hold = list(/obj/item/ammo_casing/shotgun)
+	use_to_pickup = 1
+
+/obj/item/weapon/storage/fancy/shotgun_ammo/blank/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		new /obj/item/ammo_casing/shotgun/blank(src)
+	return
+
+/obj/item/weapon/storage/fancy/shotgun_ammo/beanbag/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		new /obj/item/ammo_casing/shotgun/beanbag(src)
+	return
+
+/obj/item/weapon/storage/fancy/shotgun_ammo/slug/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		new /obj/item/ammo_casing/shotgun(src)
+	return
+
+/obj/item/weapon/storage/fancy/shotgun_ammo/pellet/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		new /obj/item/ammo_casing/shotgun/pellet(src)
+	return
+
+/obj/item/weapon/storage/fancy/shotgun_ammo/flash/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		new /obj/item/ammo_casing/shotgun/flash(src)
+	return
+
+/obj/item/weapon/storage/fancy/shotgun_ammo/stunshell/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		new /obj/item/ammo_casing/shotgun/stunshell(src)
+	return

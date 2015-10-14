@@ -93,6 +93,8 @@
 	stack_paths["metal"] = /obj/item/stack/sheet/metal
 	stack_storage["plasteel"] = 0
 	stack_paths["plasteel"] = /obj/item/stack/sheet/plasteel
+	stack_storage["phoron glass"] = 0
+	stack_paths["phoron glass"] = /obj/item/stack/sheet/glass/phoronglass
 
 	spawn( 5 )
 		for (var/dir in cardinal)

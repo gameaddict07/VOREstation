@@ -24,7 +24,11 @@
 	var/obj/item/inventory_back
 	var/facehugger
 
-/*
+// It's a fucking video game, Bay. It's not animal abuse. Stop whining.
+// We're going to have fucking corgis with fucking hats and there's nothing you can do to stop it.
+// I don't care how buggy this is. Ian is adorable when he wears a hat.
+
+// ToDo: Add more hats to the icons.
 /mob/living/simple_animal/corgi/Life()
 	..()
 	regenerate_icons()
@@ -69,7 +73,7 @@
 
 	//Removing from inventory
 	if(href_list["remove_inv"])
-		if(!Adjacent(usr) || !(ishuman(usr) || ismonkey(usr) || isrobot(usr) ||  isalienadult(usr)))
+		if(!Adjacent(usr) || !(ishuman(usr) || ismonkey(usr) || isrobot(usr) ||  isalien(usr)))
 			return
 		var/remove_from = href_list["remove_inv"]
 		switch(remove_from)
@@ -100,7 +104,7 @@
 
 	//Adding things to inventory
 	else if(href_list["add_inv"])
-		if(!Adjacent(usr) || !(ishuman(usr) || ismonkey(usr) || isrobot(usr) ||  isalienadult(usr)))
+		if(!Adjacent(usr) || !(ishuman(usr) || ismonkey(usr) || isrobot(usr) ||  isalien(usr)))
 			return
 		var/add_to = href_list["add_inv"]
 		if(!usr.get_active_hand())
@@ -256,7 +260,7 @@
 		if(/obj/item/clothing/head/soft)
 			name = "Corgi Tech [real_name]"
 			desc = "The reason your yellow gloves have chew-marks."
-*/
+
 
 
 //IAN! SQUEEEEEEEEE~

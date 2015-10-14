@@ -1351,26 +1351,6 @@
 	name = "well-used stun baton"
 	desc = "A stun baton used for incapacitating targets; there seems to be a bunch of tally marks set into the handle."
 
-///// Deckard .44 - Callum Leamas - Roaper
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas
-	name = "Deckard .44"
-	desc = "A custom built revolver, based off the semi-popular Detective Special model."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "leamas-empty"
-	ammo_type = /obj/item/ammo_magazine/c38/rubber
-
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas/update_icon()
-	..()
-	if(loaded.len)
-		icon_state = "leamas-loaded"
-	else
-		icon_state = "leamas-empty"
-
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas/load_ammo(var/obj/item/A, mob/user)
-	if(istype(A, /obj/item/ammo_magazine))
-		flick("leamas-reloading",src)
-	..()
-
 /obj/item/weapon/reagent_containers/food/drinks/flask/fluff/yuri_kornienkovich_flask
 	name = "Yuri's Flask"
 	desc = "An old gold plated flask. Nothing noteworthy about it besides it being gold and the red star on the worn out leather around it. There is also an engraving on the cap that is rather hard to see but it looks like \"Kornienkovich\" "
@@ -1563,7 +1543,18 @@
 	item_color = "fedcoat"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
+	allowed = list(
+				/obj/item/weapon/tank/emergency_oxygen,
+				/obj/item/device/flashlight,
+				/obj/item/weapon/gun/energy,
+				/obj/item/weapon/gun/projectile,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs,
+				/obj/item/device/detective_scanner,
+				/obj/item/device/taperecorder)
 	armor = list(melee = 50, bullet = 15, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 	verb/toggle()
@@ -1750,8 +1741,6 @@
 	item_state = "talvest"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
-	armor = list(melee = 30, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 
 /obj/item/clothing/head/squirrel/joan //Because I hate the ears matching hair color -Joan
@@ -1760,297 +1749,7 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "squirrel_old"
 
-
-/*/obj/item/weapon/claymore/fluff/scisword
-	name = "Scissor Sword"
-	desc = "You have this urge to search for whoever killed your dad. Don't Lose your Way."
-	icon = 'icons/obj/custom_items.dmi'
-//	origin_tech = "materials=7"
-	icon_state = "scisword"
-	item_state = "scisword"
-*/
-
-// Guns
-
-// Why is this here? These shouldn't be in this file. Move them to custom_guns or appropriate DM files if they aren't exclusive to one player.
-
-#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
-#define MAGAZINE 		4	//The magazine item itself goes inside the gun
-
-/obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
-	name = "FN Five Seven"
-	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "fnseven"
-	magazine_type = /obj/item/ammo_magazine/c28mm
-	max_shells = 10
-	caliber = "5.7×28mm"
-	load_method = MAGAZINE
-
-/obj/item/weapon/gun/projectile/automatic/m14
-	name = "M14 Battle Rifle"
-	desc = "Famous for killing commies back in 'Nam. This robust rifle is still produced across the galaxy for both sporting and military use, despite its antique design."
-	icon = 'icons/obj/custom_items.dmi'
-	item_state = "boltaction" // Placeholder
-	icon_state = "m14"
-	w_class = 4
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	//slot_flags = SLOT_BACK
-	origin_tech = "combat=2"
-	magazine_type = /obj/item/ammo_magazine/a51mm
-	ammo_type = /obj/item/ammo_casing/a51mm
-	load_method = MAGAZINE
-	max_shells = 10
-	caliber = "7.62x51mm"
-
-
-/obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
-	name = "Gallian 4 Rifle"
-	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military."
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle
-	name = "bolt action rifle"
-	desc = "A reproduction of an almost ancient weapon design from the early 20th century. Popular among hunters and collectors."
-	icon = 'icons/obj/custom_items.dmi'
-	item_state = "boltaction"
-	icon_state = "boltaction"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	max_shells = 5
-	caliber = "rifle" // Prevents loading shotgun shells into the rifle.
-	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
-	magazine_type = /obj/item/ammo_magazine/rifle_clip
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle
-	load_method = SINGLE_CASING | SPEEDLOADER
-	cocksound = 'sound/weapons/riflebolt.ogg' // This var is so we can change sounds for bolt-action rifles.
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
-	name = "ZM Kar 1"
-	desc = "A reproduction of an old ZM Kar 1 Rifle from the Autocratic East Europan Imperial Alliance of Gaia. Popular among imperials and collectors within the Federation and its allies."
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For Cargonia
-	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen."
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
-	name = "ceremonial bolt-action rifle"
-	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen."
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle/blank
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
-	name = "Wicked Butterfly"
-	desc = "A customized bolt-action sniper rifle that was carried by one of the most revered snipers in the Federation. The stock has a small butterfly engraved on it."
-	icon_state = "wickedbutterfly"
-	item_state = "boltaction"
-	recoil = 2 //extra kickback
-	accuracy = -1
-	scoped_accuracy = 2
-	load_method = SINGLE_CASING
-
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked/verb/scope()
-	set category = "Object"
-	set name = "Use Scope"
-	set popup_menu = 1
-
-	toggle_scope(2.0)
-
-/obj/item/weapon/gun/energy/gun/fluff/dominator
-	name = "MWPSB Dominator"
-	desc = "A MWPSB's Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "dominatorstun100"
-	item_state = null // So it inherits the icon_state.
-	fire_sound = 'sound/weapons/Taser.ogg'
-	projectile_type = /obj/item/projectile/beam/stun
-	origin_tech = "combat=3;magnets=2"
-	modifystate = "dominatorstun"
-
-/obj/item/weapon/gun/energy/gun/fluff/dominator/attack_self(mob/living/user as mob) // Uses some custom sounds and custom projectiles, so we need this.
-	switch(mode)
-		if(0)
-			mode = 1
-			charge_cost = 100
-			fire_sound = 'sound/weapons/gauss_shoot.ogg'
-			user << "\red [src.name] is now in Eliminator Mode. Target will be harmed. Please aim carefully."
-			user.visible_message("\red [src.name] changes into a very intimidating looking energy gun.")
-			projectile_type = /obj/item/projectile/beam/dominator
-			modifystate = "dominatorkill"
-		if(1)
-			mode = 0
-			charge_cost = 200
-			fire_sound = 'sound/weapons/Taser.ogg'
-			user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
-			user.visible_message("\red [src.name] is set to Paralyzer Mode.")
-			projectile_type = /obj/item/projectile/beam/stun
-			modifystate = "dominatorstun"
-	update_icon()
-	update_held_icon()
-
-/obj/item/projectile/beam/dominator
-	name = "dominator lethal beam"
-	icon_state = "omnilaser" // looks cool
-
-/obj/item/weapon/gun/energy/gun/fluff/aro
-	name = "KIN-H21"
-	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "Kraystun100"
-	item_state = null // So it inherits the icon_state.
-	modifystate = "Kraystun"
-	stunstate = "Kraystun"
-	killstate = "Kraykill"
-
-/obj/item/weapon/gun/projectile/automatic/crestrose
-	name = "Crescent Rose"
-	desc = "Can you match my resolve? If so then you will succeed. I believe that the human spirit is indomitable. Keep Moving Forward."
-	origin_tech = "materials=7"
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "crestrose"
-	item_state = "crestrose"
-	w_class = 4
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	force = 40
-	throwforce = 10
-	max_shells = 10
-	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = MAGAZINE
-	caliber = "7.62x51mm"
-
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	var/modifystate = "crestrose"
-	var/mode = 0 //0 = stun, 1 = kill
-
-
-/obj/item/weapon/gun/projectile/automatic/crestrose/attack_self(mob/living/user as mob)
-	switch(mode)
-		if(0)
-			mode = 1
-			user.visible_message("\red [src.name] folds up into a cool looking rifle.")
-			force = 5
-			throwforce = 2
-			modifystate = "crestrose_fold"
-		if(1)
-			mode = 0
-			user.visible_message("\red [src.name] changes into a very intimidating looking weapon.")
-			force = 40
-			throwforce = 10
-			modifystate = "crestrose"
-	update_icon()
-	update_held_icon()
-
-// End guns.
-
-// Ammo
-
-/obj/item/ammo_magazine/c28mm // FN ammo.
-	name = "magazine (5.7×28mm)"
-	icon_state = "45"
-	ammo_type = /obj/item/ammo_casing/c28mm
-	max_ammo = 10
-	multiple_sprites = 1
-	mag_type = MAGAZINE
-	caliber = "5.7×28mm"
-
-/obj/item/ammo_magazine/c28mm/empty
-	max_ammo = 0
-
-/obj/item/ammo_casing/c28mm
-	desc = "A 5.7×28mm bullet casing."
-	caliber = "5.7×28mm"
-	projectile_type = /obj/item/projectile/bullet/pistol/medium/fn
-
-/obj/item/projectile/bullet/pistol/medium/fn
-	damage = 35
-
-/obj/item/ammo_magazine/a51mm // M14 ammo.
-	name = "ammo magazine (M14)"
-	icon_state = "75"
-	ammo_type = /obj/item/ammo_casing/a51mm
-	mag_type = MAGAZINE
-	multiple_sprites = 1
-	max_ammo = 10
-	caliber = "7.62x51mm"
-
-/obj/item/ammo_magazine/a51mm/empty
-	name = "ammo magazine (M14)"
-	icon_state = "75"
-	ammo_type = /obj/item/ammo_casing/a51mm
-	max_ammo = 0
-
-/obj/item/ammo_casing/shotgun/rifle
-	name = "rifle round"
-	desc = "A round from a rifle."
-	icon_state = "s-casing"
-	caliber = "rifle"
-	projectile_type = /obj/item/projectile/bullet
-
-/obj/item/ammo_casing/shotgun/rifle/chalk // For target shooting.
-	name = "chalk rifle round"
-	desc = "A round from a rifle, which uses a chalk bullet."
-	caliber = "rifle"
-	projectile_type = /obj/item/projectile/bullet/weakbullet/chalk
-
-/obj/item/ammo_casing/shotgun/rifle/blank // For ceremonies.
-	name = "practice rifle round"
-	desc = "There's no bullet. Just a cartrige with a crimped top end."
-	caliber = "rifle"
-	projectile_type = /obj/item/projectile/energy/blank // Because anything else shatters windows.
-
-/obj/item/ammo_magazine/rifle_clip
-	name = "rifle clip"
-	desc = "A clip of rifle rounds"
-	icon_state = "riflestrip"
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle
-	mag_type = SPEEDLOADER
-	max_ammo = 5
-	caliber = "rifle"
-	multiple_sprites = 1
-	/* // Breaks things.
-	New() // So they scatter on the floor.
-		src.pixel_x = rand(-6.0, 6)
-		src.pixel_y = rand(-6.0, 6)
-	*/
-
-/obj/item/ammo_magazine/rifle_clip/chalk
-	name = "rifle clip of chalk rounds"
-	desc = "A clip of rifle rounds with chalk bullets."
-	caliber = "rifle"
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
-
-
-/obj/item/ammo_magazine/rifle_clip/blank
-	name = "rifle clip of blank rounds"
-	desc = "A clip of rifle rounds with chalk bullets."
-	caliber = "rifle"
-	ammo_type = /obj/item/projectile/energy/blank
-
-
-// End ammo magazines.
-
-// Bullets
-
-/obj/item/ammo_casing/a51mm
-	desc = "A 7.62x51mm bullet casing"
-	caliber = "7.62x51mm"
-	projectile_type = /obj/item/projectile/bullet/rifle/a762 // Because it uses 7.62 rounds, like the SAW. Should do the same damage.
-
-
-/obj/item/projectile/bullet/weakbullet/chalk // For the station to purchase rifles for competition shooting, loaded with chalk bullets.
-	damage = 10
-	stun = 0
-	weaken = 5 // They still hurt like a motherfucker.
-
-/obj/item/projectile/energy/blank
-	name = "electrode"
-	icon_state = null
-	nodamage = 1
-	taser_effect = 0
-	agony = 0
-	damage_type = HALLOSS
-	//Damage will be handled on the MOB side, to prevent window shattering.
-
-// End bullets.
+// Custom guns now go in custom_guns.dm so don't put them here.
 
 //Cult research book
 /obj/item/weapon/tome/prettycultbook
@@ -2153,6 +1852,7 @@
 	item_state = "snag"
 	item_color = "snag"
 
+/* Intentionally removed until replacement sprites are made. Maker of this sprite didn't want this to be open source.
 /obj/item/clothing/head/fluff/caso
 	name = "Deathclaw Accessories"
 	desc = "Big! Big! The size of three men! Claws as long as my forearm! Ripped apart! Ripped apart!"
@@ -2160,6 +1860,7 @@
 	icon_state = "caso"
 	item_state = "caso"
 	item_color = "caso"
+*/
 
 /obj/item/clothing/head/helmet/fluff/freddy
 	name = "animatronic suit helmet"
@@ -2523,13 +2224,34 @@
 	return
 
 /obj/item/device/fluff/id_kit_mime // joey4298:Emoticon
-	name = "Mime ID replacer"
+	name = "Mime ID reprinter"
 	desc = "Stick your ID in one end and it'll print a new ID out the other!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
 /obj/item/device/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
 	var/new_icon = "mime"
+	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
+		//O.icon = src.icon // just in case we're using custom sprite paths with fluff items.
+		O.icon_state = new_icon // Changes the icon without changing the access.
+		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
+		user.visible_message("\red [user] reprints their ID.")
+		del(src)
+	else if(O.icon_state == new_icon)
+		user << "<span class='notice'>[O] already has been reprinted.</span>"
+		return
+	else
+		user << "<span class='warning'>This isn't even an ID card you idiot.</span>"
+		return
+
+/obj/item/device/fluff/id_kit_clown // ToDo: Move to better location for more universal code.
+	name = "Clown ID reprinter"
+	desc = "Stick your ID in one end and it'll print a new ID out the other!"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "labeler1"
+
+/obj/item/device/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+	var/new_icon = "clown"
 	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
 		//O.icon = src.icon // just in case we're using custom sprite paths with fluff items.
 		O.icon_state = new_icon // Changes the icon without changing the access.
@@ -2591,3 +2313,17 @@
 	icon_open = "molenar_open"
 	icon_closed = "molenar"
 	item_state = "molenar"
+
+////// Kisuke nerd glasses
+/obj/item/clothing/glasses/sunglasses/fluff/nerdglasses
+	name = "Kamina Glasses"
+	desc = "Some shades from an anime that aired long ago. They seem to encourage a type of manliness that no one but the wearer understands."
+	icon = 'icons/obj/custom_items.dmi'
+	prescription = 1
+	icon_state = "nerdglasses"
+	item_state = "nerdglasses"
+	item_color = "nerdglasses"
+
+/obj/item/weapon/melee/fluff/holochain/Zippy
+	name = "Mistress Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and a message on the silver base. 'To Zippy, with love, R.D.'"

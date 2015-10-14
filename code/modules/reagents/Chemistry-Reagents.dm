@@ -349,7 +349,7 @@ datum
 						human.set_species("Slime")
 				..()
 				return
-
+/*	// Black slime. Disabled due to shitloads of griefing.
 		aslimetoxin
 			name = "Advanced Mutation Toxin"
 			id = "amutationtoxin"
@@ -385,7 +385,7 @@ datum
 					del(M)
 				..()
 				return
-
+*/
 		inaprovaline
 			name = "Inaprovaline"
 			id = "inaprovaline"
@@ -1460,25 +1460,22 @@ datum
 				src = null
 				if((prob(20)) && (method == TOUCH || method == INGEST))
 					switch(M.playerscale)
-						if(1.5 to 1)
-							M.resize(2)
+						if(RESIZE_BIG to RESIZE_HUGE)
+							M.resize(RESIZE_HUGE)
 							M << "<font color='green'>You grow!</font>"
-						if(1 to 1.5)
-							M.resize(1.5)
+						if(RESIZE_NORMAL to RESIZE_BIG)
+							M.resize(RESIZE_BIG)
 							M << "<font color='green'>You grow!</font>"
-						if(0.5 to 1)
-							M.resize(1)
+						if(RESIZE_SMALL to RESIZE_NORMAL)
+							M.resize(RESIZE_NORMAL)
 							M << "<font color='green'>You grow!</font>"
-						if(0.01 to 0.25)
-							M.resize(0.5)
+						if(RESIZE_TINY to RESIZE_SMALL)
+							M.resize(RESIZE_SMALL)
 							M << "<font color='green'>You grow!</font>"
-						if(-1)
-							M.resize(0.25)
-							M << "<font color='green'>You grow!</font>"
-						if(2 to INFINITY)
+						if(RESIZE_HUGE to INFINITY)
 							M << "<span class='alert'>Your body can't grow any larger!</span>"
 						else
-							M.resize(0.25)
+							M.resize(RESIZE_TINY)
 							M << "<font color='green'>You grow!</font><span class='alert'> And you broke something in the code. Congrats on reaching a size that shouldn't have been possible.</span>"
 
 		microcillin
@@ -1492,23 +1489,23 @@ datum
 				src = null
 				if((prob(20)) && (method == TOUCH || method == INGEST))
 					switch(M.playerscale)
-						if(2 to INFINITY)
-							M.resize(1.5)
+						if(RESIZE_HUGE to INFINITY)
+							M.resize(RESIZE_BIG)
 							M << "<span class='alert'>You shrink!</span>"
-						if(1.5 to 2)
-							M.resize(1)
+						if(RESIZE_BIG to RESIZE_HUGE)
+							M.resize(RESIZE_NORMAL)
 							M << "<span class='alert'>You shrink!</span>"
-						if(1 to 1.5)
-							M.resize(0.5)
+						if(RESIZE_NORMAL to RESIZE_BIG)
+							M.resize(RESIZE_SMALL)
 							M << "<span class='alert'>You shrink!</span>"
-						if(0.25 to 1)
-							M.resize(0.25)
+						if(RESIZE_SMALL to RESIZE_NORMAL)
+							M.resize(RESIZE_TINY)
+							M << "<span class='alert'>You shrink!</span>"
+						if((0 - INFINITY) to RESIZE_TINY)
+							M.resize(RESIZE_TINY)
 							M << "<span class='alert'>You can't shrink any further.</span>"
-						if(-1)
-							M.resize(0.25)
-							M << "<span class='alert'>You shrink!</span>"
 						else
-							M.resize(0.25)
+							M.resize(RESIZE_TINY)
 							M << "<span class='alert'>You shrink! <b>And you broke something in the code.</b> Congrats on reaching a size that shouldn't have been possible.</span>"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////

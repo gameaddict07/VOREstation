@@ -24,6 +24,7 @@
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				security_announcement_down.Announce("[config.alert_desc_green]", "Attention! Security level lowered to green")
+				world << sound('sound/AI/downtogreen.ogg')
 				security_level = SEC_LEVEL_GREEN
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z in config.contact_levels)
@@ -32,8 +33,10 @@
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
 					security_announcement_up.Announce("[config.alert_desc_blue_upto]", "Attention! Security level elevated to blue")
+					world << sound('sound/AI/uptoblue.ogg')
 				else
 					security_announcement_down.Announce("[config.alert_desc_blue_downto]", "Attention! Security level lowered to blue")
+					world << sound('sound/AI/downtoblue.ogg')
 				security_level = SEC_LEVEL_BLUE
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z in config.contact_levels)
@@ -42,8 +45,10 @@
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
 					security_announcement_up.Announce("[config.alert_desc_red_upto]", "Attention! Code red!")
+					world << sound('sound/AI/uptored.ogg')
 				else
 					security_announcement_down.Announce("[config.alert_desc_red_downto]", "Attention! Code red!")
+					world << sound('sound/AI/downtored.ogg')
 				security_level = SEC_LEVEL_RED
 
 				/*	- At the time of commit, setting status displays didn't work properly
@@ -58,6 +63,7 @@
 
 			if(SEC_LEVEL_DELTA)
 				security_announcement_up.Announce("[config.alert_desc_delta]", "Attention! Delta security level reached!")
+				world << sound('sound/AI/uptodelta.ogg')
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z in config.contact_levels)

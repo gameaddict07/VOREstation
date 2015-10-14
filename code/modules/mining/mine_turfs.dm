@@ -384,6 +384,44 @@
 	mineralSpawnChanceList = list("Uranium" = 10, "Platinum" = 10, "Iron" = 20, "Coal" = 20, "Diamond" = 2, "Gold" = 10, "Silver" = 10, "Phoron" = 20)
 
 
+/**********************MapGen**************************/
+
+/turf/simulated/mineral/specific
+	var/mineral_name = ""
+
+/turf/simulated/mineral/specific/New()
+	if (!name_to_mineral)
+		SetupMinerals() // Make sure the map of singletons is initialized
+	if (mineral_name && mineral_name in name_to_mineral)
+		mineral = name_to_mineral[mineral_name]
+		UpdateMineral()
+	. = ..()
+
+// Declare one for each type of mineral
+/turf/simulated/mineral/specific/uranium
+	mineral_name = "Uranium"
+
+/turf/simulated/mineral/specific/platinum
+	mineral_name = "Platinum"
+
+/turf/simulated/mineral/specific/iron
+	mineral_name = "Iron"
+
+/turf/simulated/mineral/specific/coal
+	mineral_name = "Coal"
+
+/turf/simulated/mineral/specific/diamond
+	mineral_name = "Diamond"
+
+/turf/simulated/mineral/specific/gold
+	mineral_name = "Gold"
+
+/turf/simulated/mineral/specific/silver
+	mineral_name = "Silver"
+
+/turf/simulated/mineral/specific/phoron
+	mineral_name = "Phoron"
+
 /**********************Asteroid**************************/
 
 

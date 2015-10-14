@@ -26,14 +26,6 @@
 	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To switch between stun and lethal, click the weapon \
 	in your hand.  To recharge this weapon, use a weapon recharger."
 
-/obj/item/weapon/gun/energy/gun/taser
-	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-	then click where you want to fire.  Most energy weapons can fire through windows harmlessly. To recharge this weapon, use a weapon recharger."
-
-/obj/item/weapon/gun/energy/gun/stunrevolver
-	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
-	then click where you want to fire.  Most energy weapons can fire through windows harmlessly. To recharge this weapon, use a weapon recharger."
-
 /obj/item/weapon/gun/energy/gun/nuclear
 	description_info = "This is an energy weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To switch between stun and lethal, click the weapon \
@@ -72,6 +64,15 @@
 	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  The gun's chamber can be opened or closed by using it in your hand.  To reload, open the chamber, add a new bullet \
 	then close it.  To use the scope, use the appropriate verb in the object tab."
+
+/obj/item/weapon/gun/projectile/automatic/m41a
+	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  The gun's ammunition burns off the casing when fired, eliminating the need to clean up spent shells to \
+	cover your tracks after a fight."
+
+/obj/item/weapon/gun/projectile/automatic/z8
+	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
+	then click where you want to fire.  The gun possesses an under-barrel grenade launcher. You can switch to it by using the gun in your hand."
 
 //*******
 //*Melee*

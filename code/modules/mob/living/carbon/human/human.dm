@@ -205,20 +205,20 @@
 		updatehealth()
 	return
 
-/mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
+/mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
 	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
 
-	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(M)
-	L.imp_in = M
+	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(src)
+	L.imp_in = src
 	L.implanted = 1
-	var/datum/organ/external/affected = M.organs_by_name["head"]
+	var/datum/organ/external/affected = organs_by_name["head"]
 	affected.implants += L
 	L.part = affected
 
 /mob/living/carbon/human/proc/is_loyalty_implanted(mob/living/carbon/human/M)
-	for(var/L in M.contents)
+	for(var/L in src.contents)
 		if(istype(L, /obj/item/weapon/implant/loyalty))
-			for(var/datum/organ/external/O in M.organs)
+			for(var/datum/organ/external/O in src.organs)
 				if(L in O.implants)
 					return 1
 	return 0

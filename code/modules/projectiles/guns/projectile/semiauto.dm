@@ -1,0 +1,1 @@
+// I want to make a Garand here with auto_eject = 1 and auto_eject_sound = 'sound/weapons/garand_ping.ogg'

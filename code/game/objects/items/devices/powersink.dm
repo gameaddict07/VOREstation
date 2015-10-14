@@ -112,10 +112,10 @@
 	power_drained -= min(dissipation_rate, power_drained)
 	if(power_drained > max_power * 0.95)
 		playsound(src, 'sound/effects/screech.ogg', 100, 1, 1)
-	if(power_drained >= max_power)
+/*	if(power_drained >= max_power)
 		processing_objects.Remove(src)
-		explosion(src.loc, 3,6,9,12)
-		del(src)
+		explosion(src.loc, 3,6,9,12)			// HOW ABOUT FUCKING NO. Now they drain power forever instead.
+		del(src)*/
 	if(attached && attached.powernet)
 		PN = attached.powernet
 	else

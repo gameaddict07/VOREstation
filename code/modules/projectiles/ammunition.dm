@@ -8,9 +8,9 @@
 	throwforce = 1
 	w_class = 1
 	var/caliber = ""					//Which kind of guns it can be loaded into
+	var/caseless						//Does the ammo casing disappear after fired?
 	var/projectile_type					//The bullet type to create when New() is called
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
-	var/spent_icon = null
 
 /obj/item/ammo_casing/New()
 	..()
@@ -23,6 +23,8 @@
 /obj/item/ammo_casing/proc/expend()
 	. = BB
 	BB = null
+	if(caseless) // I honestly wasn't sure where to stick this part.
+		del(src)
 	set_dir(pick(cardinal)) //spin spent casings
 	update_icon()
 
@@ -31,7 +33,7 @@
 		if(!BB)
 			user << "\blue There is no bullet in the casing to inscribe anything into."
 			return
-		
+
 		var/tmp_label = ""
 		var/label_text = sanitize(copytext(input(user, "Inscribe some text into \the [initial(BB.name)]","Inscription",tmp_label), 1, MAX_NAME_LEN))
 		if(length(label_text) > 20)
@@ -44,8 +46,8 @@
 			BB.name = "[initial(BB.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/update_icon()
-	if(spent_icon && !BB)
-		icon_state = spent_icon
+	if(!BB)
+		icon_state = "[initial(icon_state)]-spent"
 
 /obj/item/ammo_casing/examine(mob/user)
 	..()
@@ -54,7 +56,7 @@
 
 //Gun loading types
 #define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used. 
+#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
 #define MAGAZINE 		4	//The magazine item itself goes inside the gun
 
 //An item that holds casings and can be used to put them inside guns
@@ -71,21 +73,23 @@
 	w_class = 2
 	throw_speed = 4
 	throw_range = 10
-	
+
 	var/list/stored_ammo = list()
 	var/mag_type = SPEEDLOADER //ammo_magazines can only be used with compatible guns. This is not a bitflag, the load_method var on guns is.
 	var/caliber = "357"
 	var/max_ammo = 7
-	
+
 	var/ammo_type = /obj/item/ammo_casing //ammo type that is initially loaded
 	var/initial_ammo = null
-	
+
 	var/multiple_sprites = 0
 	//because BYOND doesn't support numbers as keys in associative lists
 	var/list/icon_keys = list()		//keys
 	var/list/ammo_states = list()	//values
 
 /obj/item/ammo_magazine/New()
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
 	if(multiple_sprites)
 		initialize_magazine_icondata(src)
 
@@ -145,10 +149,10 @@
 	var/typestr = "[M.type]"
 	if(!(typestr in magazine_icondata_keys) || !(typestr in magazine_icondata_states))
 		magazine_icondata_cache_add(M)
-	
+
 	M.icon_keys = magazine_icondata_keys[typestr]
 	M.ammo_states = magazine_icondata_states[typestr]
-	
+
 /proc/magazine_icondata_cache_add(var/obj/item/ammo_magazine/M)
 	var/list/icon_keys = list()
 	var/list/ammo_states = list()

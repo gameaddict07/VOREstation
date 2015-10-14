@@ -185,6 +185,22 @@
 	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
 	return ..()
 
+// These are knives so fuck it they go here too.
+/obj/item/weapon/kitchenknife/tacknife
+	name = "tactical knife"
+	desc = "Even when the world is at peace, a gentleman still keeps a blade by his side."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "tacknife"
+	force = 20
+	item_state = "knife"
+	attack_verb = list("stabbed", "chopped", "cut")
+
+/obj/item/weapon/kitchenknife/tacknife/unathiknife
+	name = "traditional Unathi duelling knife"
+	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	icon_state = "unathiknife"
+	attack_verb = list("ripped", "tore", "slashed")
+
 /*
  * Rolling Pins
  */

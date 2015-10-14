@@ -274,16 +274,30 @@
 	matter = list("metal" = 100)
 	origin_tech = "magnets=1"
 
+/obj/item/weapon/staff_fake // Made this for costumes.
+	name = "wizards staff"
+	desc = "Apparently a staff used by the wizard. The orb on the end is made from cheap plastic."
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "staff"
+	force = 3
+	throwforce = 5
+	throw_speed = 1
+	throw_range = 5
+	w_class = 3
+	flags = NOSHIELD
+	attack_verb = list("bludgeoned", "whacked", "disciplined")
+
 /obj/item/weapon/staff
 	name = "wizards staff"
 	desc = "Apparently a staff used by the wizard."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "staff"
-	force = 3.0
-	throwforce = 5.0
+	origin_tech = "materials=6;bluespace=4;magnets=4;"
+	force = 3
+	throwforce = 5
 	throw_speed = 1
 	throw_range = 5
-	w_class = 2.0
+	w_class = 2
 	flags = NOSHIELD
 	attack_verb = list("bludgeoned", "whacked", "disciplined")
 
