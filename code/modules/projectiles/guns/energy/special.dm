@@ -217,16 +217,16 @@ obj/item/weapon/gun/energy/staff/focus
 /obj/item/weapon/gun/energy/sizegun
 	name = "shrink ray"
 	desc = "A highly advanced ray gun with two settings: Shrink and Grow. Warning: Do not insert into mouth."
-	icon_state = "energykill100" // Placeholder.
-	item_state = null	//so the human update icon uses the icon_state instead.
+	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
+	item_state = null	//so the human update icon uses the icon_state instead
 	fire_sound = 'sound/weapons/wave.ogg'
 	charge_cost = 100
 	projectile_type = /obj/item/projectile/beam/shrinklaser
 	origin_tech = "redspace=1;bluespace=4"
-	modifystate = "energykill"
+	modifystate = "sizegun-shrink"
 	self_recharge = 1
 
-	var/mode = 0 //0 = shrink, 1 = grow
+	var/mode = 0
 
 	attack_self(mob/living/user as mob)
 		switch(mode)
@@ -236,12 +236,12 @@ obj/item/weapon/gun/energy/staff/focus
 				fire_sound = 'sound/weapons/pulse3.ogg'
 				user << "\red [src.name] is now set to grow."
 				projectile_type = /obj/item/projectile/beam/growlaser
-				modifystate = "energystun"
+				modifystate = "sizegun-grow"
 			if(1)
 				mode = 0
 				charge_cost = 100
 				fire_sound = 'sound/weapons/wave.ogg'
 				user << "\red [src.name] is now set to shrink."
 				projectile_type = /obj/item/projectile/beam/shrinklaser
-				modifystate = "energykill"
+				modifystate = "sizegun-shrink"
 		update_icon()
