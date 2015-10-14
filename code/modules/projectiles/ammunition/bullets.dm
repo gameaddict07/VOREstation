@@ -141,6 +141,7 @@
 	desc = "A 14.5mm shell."
 	icon_state = "lcasing"
 	caliber = "14.5mm"
+	w_class = 2
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
 	matter = list("metal" = 1250)
 
