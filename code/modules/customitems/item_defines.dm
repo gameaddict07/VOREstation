@@ -1508,18 +1508,18 @@
 	item_color = "nightgown"
 
 
-/obj/item/clothing/head/helmet/space/rig/security/fluff/hos
-	name = "HoS Hardsuit Helmet"
-	desc = "A customized security hardsuit helmet customized to include the Head of Security's signature hat. Has additional composite armor."
+/obj/item/clothing/head/helmet/space/void/security/fluff/hos // ToDo: Rig version.
+	name = "\improper prototype voidsuit helmet"
+	desc = "A customized security voidsuit helmet customized to include the Head of Security's signature hat. Has additional composite armor."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "rig0-hos"
 	item_state = "rig0-hos"
 	armor = list(melee = 65, bullet = 30, laser = 50, energy = 10, bomb = 45, bio = 100, rad = 10)
 	item_color = "hos"
 
-/obj/item/clothing/suit/space/rig/security/fluff/hos
-	name = "HoS Hardsuit"
-	desc = "A customized security hardsuit made to match the Head of Security's obession with black. Has additional composite armor."
+/obj/item/clothing/suit/space/void/security/fluff/hos // ToDo: Rig version.
+	name = "\improper prototype voidsuit"
+	desc = "A customized security voidsuit made to match the Head of Security's obession with black. Has additional composite armor."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "rig-hos"
 	item_state = "rig-hos"
@@ -1685,7 +1685,7 @@
 	item_state = "dg_suit"
 	item_color = "harmcaptain"
 
-/obj/item/device/modkit2/fluff/harmonyspace
+/obj/item/device/modkit_conversion/fluff/harmonyspace
 	name = "Harmony's captain space suit modkit"
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "harm_kit"
@@ -1695,7 +1695,7 @@
 	to_helmet = /obj/item/clothing/head/helmet/space/capspace/fluff/harmhelm
 	to_suit = /obj/item/clothing/suit/armor/captain/fluff/harmsuit
 
-/obj/item/device/modkit2/fluff/harmonysuit
+/obj/item/device/modkit_conversion/fluff/harmonysuit
 	name = "Harmony's captain suit modkit"
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "harm_kit"
@@ -1798,7 +1798,7 @@
 	item_state = "screesuit"
 	item_color = "screesuit"
 
-/obj/item/device/modkit2/fluff/screekit
+/obj/item/device/modkit_conversion/fluff/screekit
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
 	from_helmet = /obj/item/clothing/head/helmet/space/void/engineering
@@ -1950,6 +1950,7 @@
 	name = "officer jacket"
 	desc = "An armored jacket used in special operations--or by special snowflake Captains. Fuck off, I like my coat."
 	icon_state = "detective2"
+	slowdown = 0
 
 // JerTheAce : Jeremiah 'Ace' Acacius
 /obj/item/weapon/storage/box/fluff/ace
@@ -2154,6 +2155,7 @@
 	item_state = "formalsec"
 	item_color = "formalsec"
 
+/*
 /obj/item/clothing/head/beret/navywarden/fluff/blueshield
 	name = "\improper Blue Shield Guard beret"
 	desc = "A beret with a two-colored Blue Shield Guard insignia emblazoned on it."
@@ -2167,6 +2169,7 @@
 	name = "\improper Blue Shield Guard uniform"
 	desc = "A uniform with Blue Shield Guard insignias on the shoulders."
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
 
 /obj/item/clothing/suit/armor/vest/blueshield
 	name = "blue shield security armor"
@@ -2182,6 +2185,7 @@
 	name = "blueshield tactical headset"
 	desc = "A Tactical Radio Headset. It's basically a security headset with a camera. To access the security channel, use :s. For command, use :c."
 	keyslot2 = new /obj/item/device/encryptionkey/heads/hos
+*/
 
 // wankersonofjerkin:Ryan Winz
 /obj/item/weapon/storage/briefcase/fluff/ryan_winz
