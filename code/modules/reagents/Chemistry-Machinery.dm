@@ -146,6 +146,12 @@
 			R.add_reagent(href_list["dispense"], added_amount)
 			energy = max(energy - added_amount * CHEM_DISPENSER_ENERGY_COST, 0)
 
+	if(href_list["emptyBeaker"])
+		if (beaker != null && beaker.is_open_container())
+			var/obj/item/weapon/reagent_containers/B = src.beaker
+			var/datum/reagents/R = B.reagents
+			R.clear_reagents()
+
 	if(href_list["ejectBeaker"])
 		if(beaker)
 			var/obj/item/weapon/reagent_containers/B = beaker
