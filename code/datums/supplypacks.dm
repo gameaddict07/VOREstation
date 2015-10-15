@@ -843,15 +843,20 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/erifle
 	name = "Laser Sharpshooter crate"
-	contains = list(/obj/item/clothing/suit/armor/laserproof,
-					/obj/item/clothing/suit/armor/laserproof,
-					/obj/item/weapon/gun/energy/sniperrifle,
+	contains = list(/obj/item/weapon/gun/energy/sniperrifle,
 					/obj/item/weapon/gun/energy/sniperrifle)
 	cost = 90
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Energy marksman crate"
 	access = access_armory
 	group = "Security"
+
+/datum/supply_packs/SVD
+	name = "Ballistic Sharpshooter Crate"
+	contains = list(/obj/item/weapon/gun/projectile/SVD,
+					/obj/item/weapon/gun/projectile/SVD,
+					/obj/item/ammo_magazine/SVD,
+					/obj/item/ammo_magazine/SVD)
 
 /datum/supply_packs/shotgunpellets
 	name = "Buckshot crate"
@@ -1302,7 +1307,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	contains = list(/obj/item/beezeez,
 					/obj/item/weapon/bee_net,
 					/obj/item/apiary,
-					/obj/item/queen_bee)
+					/obj/item/queen_bee,
+					/obj/item/weapon/book/manual/hydroponics_beekeeping)
 	cost = 40
 	contraband = 1
 	containertype = /obj/structure/closet/crate/hydroponics
@@ -1370,8 +1376,9 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 // -------- Nanotrasen Military Stuff -------- //
 
+// Most things below inherit these values.
 /datum/supply_packs/MilitaryWeapons
-	name = "Surplus Military-grade Weapons (Nanotrasen Navy)"
+	name = "Surplus Military Weapons (Nanotrasen Navy)"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/z8,
 					/obj/item/weapon/gun/projectile/automatic/l6_saw)
 	cost = 80
@@ -1381,18 +1388,18 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	group = "Security"
 
 /datum/supply_packs/MilitaryAmmo
-	name = "Surplus Military-grade Ammunition (Nanotrasen Navy)"
+	name = "Surplus Military Ammunition (Nanotrasen Navy)"
 	contains = list(/obj/item/ammo_magazine/a556,
 					/obj/item/ammo_magazine/a556,
 					/obj/item/ammo_magazine/a762)
-	cost = 40
+	cost = 60
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "surplus military ammunition crate"
 	access = access_hos
 	group = "Security"
 
 /datum/supply_packs/MilitaryArmor
-	name = "Surplus Military-grade Armor (Nanotrasen Navy)"
+	name = "Surplus Military Armor (Nanotrasen Navy)"
 	contains = list(/obj/item/clothing/suit/armor/tactical,
 					/obj/item/clothing/mask/balaclava/tactical,
 					/obj/item/clothing/head/helmet/tactical)
@@ -1408,7 +1415,6 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/under/tactical,
 					/obj/item/clothing/head/beret/sec,
 					/obj/item/clothing/gloves/black)
-	// Most things below inherit these values.
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "surplus military gear crate"
@@ -1418,18 +1424,18 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 // ----------- UNSC Stuff ----------- //
 
 /datum/supply_packs/MilitaryWeapons/UNSC
-	name = "Surplus Military-grade Weapons (UNSC)"
+	name = "Surplus Military Weapons (UNSC)"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/battlerifle,
 					/obj/item/weapon/gun/projectile/shotgun/pump/unsc)
 
 /datum/supply_packs/MilitaryAmmo/UNSC
-	name = "Surplus Military-grade Ammunition (UNSC)"
+	name = "Surplus Military Ammunition (UNSC)"
 	contains = list(/obj/item/ammo_magazine/battlerifle,
 					/obj/item/weapon/storage/fancy/shotgun_ammo/pellet,
 					/obj/item/weapon/storage/fancy/shotgun_ammo/slug)
 
 /datum/supply_packs/MilitaryArmor/UNSC
-	name = "Surplus Military-grade Armor (UNSC)"
+	name = "Surplus Military Armor (UNSC)"
 	contains = list(/obj/item/clothing/suit/armor/tactical/unsc,
 					/obj/item/clothing/suit/armor/tactical/unsc,
 					/obj/item/clothing/head/helmet/tactical/unsc,
@@ -1439,19 +1445,19 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 // ----------- USCM Stuff ----------- //
 
 /datum/supply_packs/MilitaryWeapons/USCM
-	name = "Surplus Military-grade Weapons (Colonial Marines)"
+	name = "Surplus Military Weapons (Colonial Marines)"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/m41a,
 					/obj/item/weapon/gun/projectile/automatic/m41a)
 
 /datum/supply_packs/MilitaryAmmo/USCM
-	name = "Surplus Military-grade Ammunition (Colonial Marines)"
+	name = "Surplus Military Ammunition (Colonial Marines)"
 	contains = list(/obj/item/ammo_magazine/a10mmc,
 					/obj/item/ammo_magazine/a10mmc,
 					/obj/item/ammo_magazine/a10mmc,
 					/obj/item/ammo_magazine/a10mmc)
 
 /datum/supply_packs/MilitaryArmor/USCM
-	name = "Surplus Military-grade Armor (Colonial Marines)"
+	name = "Surplus Military Armor (Colonial Marines)"
 	contains = list(/obj/item/clothing/suit/armor/tactical/m3,
 					/obj/item/clothing/suit/armor/tactical/m3,
 					/obj/item/weapon/storage/helmet/m10,
@@ -1508,6 +1514,39 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/head/soviet,
 					/obj/item/clothing/suit/soviet,
 					/obj/item/clothing/gloves/black)
+
+/datum/supply_packs/MilitaryWeapons/Soviet
+	name = "Surplus Military Weapons (3rd Soviet Union)"
+	contains = list(/obj/item/weapon/gun/projectile/automatic/sts35,
+					/obj/item/weapon/gun/projectile/automatic/sts35)
+
+/datum/supply_packs/MilitaryAmmo/Soviet
+	name = "Surplus Military Ammunition (3rd Soviet Union)"
+	contains = list(/obj/item/ammo_magazine/c762,
+					/obj/item/ammo_magazine/c762,
+					/obj/item/ammo_magazine/c762,
+					/obj/item/ammo_magazine/c762)
+
+/datum/supply_packs/MilitaryWeapons/SovietCheap
+	name = "Surplus Conscript Weapons (3rd Soviet Union)"
+	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin,
+					/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin,
+					/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin,
+					/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin,
+					/obj/item/weapon/gun/projectile/shotgun/pump/rifle/mosin)
+
+/datum/supply_packs/MilitaryAmmo/SovietCheap
+	name = "Surplus Conscript Ammunition (3rd Soviet Union)"
+	contains = list(/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip,
+					/obj/item/ammo_magazine/a762_clip)
 
 /datum/supply_packs/MilitaryUniform/Nazi
 	name = "Surplus Military Uniform (Nazi Soldier)"
@@ -1740,28 +1779,6 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containername = "crate"
 	group = "Miscellaneous"
 
-/*
-/datum/supply_packs/ripleystandard
-	name = "APLU Ripley standard paint kits"
-	contains = list(/obj/item/weapon/paintkit/standard,
-					/obj/item/weapon/paintkit/standard,
-					/obj/item/weapon/paintkit/standard)
-	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "APLU Ripley standard paint kits"
-	group = "Science"
-
-/datum/supply_packs/ripleyutility
-	name = "APLU Ripley utility paint kits"
-	contains = list(/obj/item/weapon/paintkit/utility,
-					/obj/item/weapon/paintkit/utility,
-					/obj/item/weapon/paintkit/utility)
-	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "APLU Ripley utility paint kits"
-	group = "Science"
-*/
-
 /datum/supply_packs/medals
 	name = "Assorted medals"
 	contains = list(/obj/item/weapon/storage/lockbox/medals_low,
@@ -1772,7 +1789,6 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	access = access_captain
 	group = "Miscellaneous"
 
-/*
 /datum/supply_packs/laser_tag
 	name = "Laser Tag Supplies"
 	cost = 30
@@ -1805,7 +1821,6 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containertype = /obj/structure/closet/crate
 	containername = "locker"
 	group = "Miscellaneous"
-*/
 
 /datum/supply_packs/rifles
 	name = "Competition shooting rifles"
@@ -1826,7 +1841,7 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	access = access_armory
 	group = "Security"
 
-/datum/supply_packs/rifles_ammo
+/datum/supply_packs/rifle_ammo
 	name = "Competition shooting ammo"
 	contains = list(/obj/item/ammo_magazine/a762_clip/chalk,
 					/obj/item/ammo_magazine/a762_clip/chalk,
