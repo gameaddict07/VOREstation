@@ -28,7 +28,6 @@
 		new /obj/item/clothing/suit/armor/captain(src)
 		new /obj/item/weapon/melee/telebaton(src)
 		new /obj/item/clothing/under/dress/dress_cap(src)
-		new /obj/item/clothing/head/helmet/formalcaptain(src)
 		new /obj/item/clothing/under/captainformal(src)
 		return
 

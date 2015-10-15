@@ -164,7 +164,6 @@
 	..()
 	holster.attackby(W, user)
 
-
 /obj/item/clothing/suit/armor/tactical/verb/holster()
 	set name = "Holster"
 	set category = "Object"
@@ -187,6 +186,34 @@
 	icon_state = "detective"
 	item_state = "det_suit"
 	blood_overlay_type = "coat"
+
+//United States Colonial Marines
+/obj/item/clothing/suit/armor/tactical/m3
+	name = "\improper M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century."
+	icon_state = "m3_ppa"
+
+/obj/item/clothing/suit/armor/tactical/m3/nco
+	name = "\improper M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century. This variant is worn by a non-commissioned officer such as a sargeant."
+	icon_state = "m3_ppa_nco"
+
+/obj/item/clothing/suit/armor/tactical/m3/medic
+	name = "\improper Medic M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century. This variant is worn by a medic."
+	icon_state = "m3_ppa_medic"
+
+/obj/item/clothing/suit/armor/tactical/m3/engineer
+	name = "\improper Combat Engineer M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century. This variant is worn by a combat engineer."
+	icon_state = "m3_ppa_enge"
+
+//United Nations Space Command
+/obj/item/clothing/suit/armor/tactical/unsc
+	name = "\improper M52B Body Armor"
+	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon--and we had to share the rock!"
+	icon_state = "unsc_armor"
+
 
 //Non-hardsuit ERT armor.
 /obj/item/clothing/suit/armor/vest/ert

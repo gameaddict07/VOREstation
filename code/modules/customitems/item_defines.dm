@@ -717,13 +717,6 @@
 
 //////////// Hats ////////////
 
-/obj/item/clothing/head/secsoft/fluff/swatcap //deusdactyl: James Girard
-	name = "\improper SWAT hat"
-	desc = "A black hat.  The inside has the words, \"Lieutenant James Girard, LPD SWAT Team Four.\""
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "swatcap"
-	body_parts_covered = 0
-
 /obj/item/clothing/head/welding/fluff/alice_mccrea_1 //madmalicemccrea: Alice McCrea
 	name = "flame decal welding helmet"
 	desc = "A welding helmet adorned with flame decals, and several cryptic slogans of varying degrees of legibility. \"Fly the Friendly Skies\" is clearly visible, written above the visor, for some reason."
@@ -1534,6 +1527,13 @@
 	item_state = "brittrenchcoat"
 	item_color = "brittrenchcoat"
 
+/obj/item/clothing/suit/armor/hos/nazi_greatcoat
+	name = "great coat"
+	desc = "Perfect attire for kicking down the doors of suspected dissidents; this coat gives off an imposing look, while offering a luxuriously plush fur liner."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "greatcoat"
+	item_state = "greatcoat"
+
 /obj/item/clothing/suit/storage/fluff/fedcoat
 	name = "Federation Uniform Jacket"
 	desc = "A uniform jacket from the United Federation. Starfleet still uses this uniform and there are variations of it. Set phasers to awesome."
@@ -2248,13 +2248,13 @@
 		user << "<span class='warning'>This isn't even an ID card you idiot.</span>"
 		return
 
-/obj/item/device/fluff/id_kit_clown // ToDo: Move to better location for more universal code.
+/obj/item/device/fluff/id_kit_clown // ToDo: Move these to a better location for more reusable code.
 	name = "Clown ID reprinter"
 	desc = "Stick your ID in one end and it'll print a new ID out the other!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/device/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+/obj/item/device/fluff/id_kit_clown/afterattack(obj/O, mob/user as mob)
 	var/new_icon = "clown"
 	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
 		//O.icon = src.icon // just in case we're using custom sprite paths with fluff items.

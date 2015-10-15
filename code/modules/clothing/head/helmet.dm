@@ -27,12 +27,15 @@
 	flags_inv = 0
 	body_parts_covered = 0
 
+/*  Looks like the Nazi hat. Commented out until a better icon is made. Apparently Bay added this. It doesn't even match the Captain's parade outfit.
+	Furthermore, why the fuck is this a helmet? -Ace
 /obj/item/clothing/head/helmet/formalcaptain
 	name = "parade hat"
 	desc = "No one in a commanding position should be without a perfect, white hat of ultimate authority."
 	icon_state = "officercap"
 	flags_inv = 0
 	body_parts_covered = 0
+*/
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
@@ -80,18 +83,78 @@
 	name = "tactical helmet"
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
 	icon_state = "swathelm"
-	item_state = "helmet"
+	item_state = "swat_hel"
 	flags = HEADCOVERSEYES
-	sprite_sheets = list(
+	sprite_sheets = list( // These are here because these species have faces which wouldn't normally fit in these.
 		"Tajara" = 'icons/mob/species/tajaran/helmet.dmi',
 		"Unathi" = 'icons/mob/species/unathi/helmet.dmi',
 		"Sergal" = 'icons/mob/species/sergal/helmet.dmi',
 		"Akula" = 'icons/mob/species/akula/helmet.dmi',
 		)
-
 	armor = list(melee = 62, bullet = 50, laser = 50,energy = 35, bomb = 10, bio = 2, rad = 0)
 	flags_inv = HIDEEARS
 	siemens_coefficient = 0.7
+
+//UNSC
+/obj/item/clothing/head/helmet/tactical/unsc
+	name = "\improper CH252 helmet"
+	desc = "If you wanna to keep your brain inside your head, you'd best put this on!"
+	icon_state = "unsc_helm"
+	sprite_sheets = null
+
+//Nazi
+/obj/item/clothing/head/helmet/nazi
+	name = "\improper Stalhelm"
+	desc = "The archetypical symbol for miltary tyranny; this humble-looking steel pot protects against everything from bullets and shrapnel to the occasional loosed Bierglas. Unterseiten oben!"
+	icon_state = "stalhelm"
+	item_state = "helmet"
+	armor = list(melee = 10, bullet = 50, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 10)
+
+// USCM
+// Tecnhically these don't belong here in this file but they don't make sense elsewhere.
+/obj/item/weapon/storage/helmet/m10 // I had to put it in this directory because otherwise it's a lot of needless code. -Ace
+	name = "\improper M10 Ballistic Helmet"
+	desc = "A ballistic helmet used primarily by the United States Colonial Marine Corps. It has a mounted camera. You could probably carry a pack of cigarettes in the strap."
+	icon = 'icons/obj/clothing/hats.dmi'
+	item_color = "m10_pbh"
+	icon_state = "m10_pbh"
+	item_state = "helmet"
+	body_parts_covered = HEAD
+	slot_flags = SLOT_HEAD
+	storage_slots = 1
+	armor = list(melee = 50, bullet = 50, laser = 50, energy = 35, bomb = 10, bio = 2, rad = 0)
+	flags_inv = HIDEEARS
+	siemens_coefficient = 0.7
+	can_hold = list("/obj/item/weapon/storage/fancy/cigarettes")
+	var/obj/machinery/camera/camera
+
+	attack_self(mob/user)
+		if(camera)
+			..(user)
+		else
+			camera = new /obj/machinery/camera(src)
+			camera.network = list("SS13")
+			cameranet.removeCamera(camera)
+			camera.c_tag = "TacCam M10 - [user.name]"
+			user << "\blue User scanned as [camera.c_tag]. Camera activated."
+
+	update_icon()
+		if(contents.len)
+			if (icon_state == "m10_pbh")
+				icon_state = "m10_pbh_cig"
+			if (icon_state == "m10_pbh_d_camo")
+				icon_state = "m10_pbh_d_camo_cig"
+		else
+			if (icon_state == "m10_pbh_cig")
+				icon_state = "m10_pbh"
+			if (icon_state == "m10_pbh_d_camo_cig")
+				icon_state = "m10_pbh_d_camo"
+		usr.update_inv_head()
+
+
+/obj/item/weapon/storage/helmet/m10/camo
+	item_color = "m10_pbh_d_camo"
+	icon_state = "m10_pbh_d_camo"
 
 /obj/item/clothing/head/helmet/augment
 	name = "Augment Array"

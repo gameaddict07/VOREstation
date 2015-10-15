@@ -50,6 +50,7 @@
 	name = "beret"
 	desc = "A beret, an artists favorite headwear."
 	icon_state = "beret"
+	w_class = 2
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
 
@@ -58,30 +59,37 @@
 	name = "security beret"
 	desc = "A beret with the security insignia emblazoned on it. For officers that are more inclined towards style than safety."
 	icon_state = "beret_badge"
+
 /obj/item/clothing/head/beret/sec/alt
 	name = "officer beret"
 	desc = "A navy blue beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "officerberet"
+
 /obj/item/clothing/head/beret/sec/hos
 	name = "officer beret"
 	desc = "A navy blue beret with a commander's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "hosberet"
+
 /obj/item/clothing/head/beret/sec/warden
 	name = "warden beret"
 	desc = "A navy blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
 	icon_state = "wardenberet"
+
 /obj/item/clothing/head/beret/eng
 	name = "engineering beret"
 	desc = "A beret with the engineering insignia emblazoned on it. For engineers that are more inclined towards style than safety."
 	icon_state = "e_beret_badge"
+
 /obj/item/clothing/head/beret/jan
 	name = "purple beret"
 	desc = "A stylish, if purple, beret."
 	icon_state = "purpleberet"
+
 /obj/item/clothing/head/beret/centcom/officer
 	name = "officers beret"
 	desc = "A black beret adorned with the shield—a silver kite shield with an engraved sword—of the NanoTrasen security forces."
 	icon_state = "centcomofficerberet"
+
 /obj/item/clothing/head/beret/centcom/captain
 	name = "captains beret"
 	desc = "A white beret adorned with the shield—a silver kite shield with an engraved sword—of the NanoTrasen security forces."

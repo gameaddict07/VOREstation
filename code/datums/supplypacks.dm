@@ -1414,7 +1414,57 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containername = "surplus military gear crate"
 	access = access_armory
 	group = "Security"
-/*
+
+// ----------- UNSC Stuff ----------- //
+
+/datum/supply_packs/MilitaryWeapons/UNSC
+	name = "Surplus Military-grade Weapons (UNSC)"
+	contains = list(/obj/item/weapon/gun/projectile/automatic/battlerifle,
+					/obj/item/weapon/gun/projectile/shotgun/pump/unsc)
+
+/datum/supply_packs/MilitaryAmmo/UNSC
+	name = "Surplus Military-grade Ammunition (UNSC)"
+	contains = list(/obj/item/ammo_magazine/battlerifle,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/pellet,
+					/obj/item/weapon/storage/fancy/shotgun_ammo/slug)
+
+/datum/supply_packs/MilitaryArmor/UNSC
+	name = "Surplus Military-grade Armor (UNSC)"
+	contains = list(/obj/item/clothing/suit/armor/tactical/unsc,
+					/obj/item/clothing/suit/armor/tactical/unsc,
+					/obj/item/clothing/head/helmet/tactical/unsc,
+					/obj/item/clothing/head/helmet/tactical/unsc,
+					/obj/item/clothing/head/soft/unsc)
+
+// ----------- USCM Stuff ----------- //
+
+/datum/supply_packs/MilitaryWeapons/USCM
+	name = "Surplus Military-grade Weapons (Colonial Marines)"
+	contains = list(/obj/item/weapon/gun/projectile/automatic/m41a,
+					/obj/item/weapon/gun/projectile/automatic/m41a)
+
+/datum/supply_packs/MilitaryAmmo/USCM
+	name = "Surplus Military-grade Ammunition (Colonial Marines)"
+	contains = list(/obj/item/ammo_magazine/a10mmc,
+					/obj/item/ammo_magazine/a10mmc,
+					/obj/item/ammo_magazine/a10mmc,
+					/obj/item/ammo_magazine/a10mmc)
+
+/datum/supply_packs/MilitaryArmor/USCM
+	name = "Surplus Military-grade Armor (Colonial Marines)"
+	contains = list(/obj/item/clothing/suit/armor/tactical/m3,
+					/obj/item/clothing/suit/armor/tactical/m3,
+					/obj/item/weapon/storage/helmet/m10,
+					/obj/item/weapon/storage/helmet/m10,
+					/obj/item/device/modkit_single/uscm/helmet,
+					/obj/item/device/modkit_single/uscm/helmet/camo,
+					/obj/item/device/modkit_single/uscm/m3,
+					/obj/item/device/modkit_single/uscm/m3/nco,
+					/obj/item/device/modkit_single/uscm/m3/medic,
+					/obj/item/device/modkit_single/uscm/m3/engineer)
+
+// ------ Various Military Stuff ----- //
+
 /datum/supply_packs/MilitaryUniform/bdu
 	name = "Surplus Military Uniform (Green BDU)"
 	contains = list(/obj/item/clothing/shoes/jackboots,
@@ -1466,7 +1516,6 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/suit/storage/nazi,
 					/obj/item/clothing/gloves/black)
 	contraband = 1
-	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "banned military gear crate"
 	access = null
@@ -1480,12 +1529,12 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 					/obj/item/clothing/head/nazicap/officer,
 					/obj/item/clothing/gloves/black)
 	contraband = 1
-	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "banned military gear crate"
 	access = null
 	group = "Security"
 
+/*
 /datum/supply_packs/fedcoats
 	name = "Surplus United Federation Uniforms"
 	contains = list(/obj/item/clothing/suit/storage/fluff/fedcoat/fedblue,
@@ -1497,64 +1546,8 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	group = "Miscellaneous"
 */
 
-// ----------- UNSC Stuff ----------- //
 
-/datum/supply_packs/MilitaryWeapons/UNSC
-	name = "Surplus Military-grade Weapons (UNSC)"
-	contains = list(/obj/item/weapon/gun/projectile/automatic/battlerifle,
-					/obj/item/weapon/gun/projectile/shotgun/pump/unsc)
 
-/datum/supply_packs/MilitaryAmmo/UNSC
-	name = "Surplus Military-grade Ammunition (UNSC)"
-	contains = list(/obj/item/ammo_magazine/battlerifle,
-					/obj/item/weapon/storage/fancy/shotgun_ammo/pellet,
-					/obj/item/weapon/storage/fancy/shotgun_ammo/slug)
-/*
-/datum/supply_packs/MilitaryArmor/UNSC
-	name = "Surplus Military-grade Armor (UNSC)"
-	contains = list(/obj/item/clothing/suit/armor/tactical/unsc,
-					/obj/item/clothing/suit/armor/tactical/unsc,
-					/obj/item/clothing/head/helmet/tactical/unsc,
-					/obj/item/clothing/head/helmet/tactical/unsc,
-					/obj/item/clothing/head/soft/unsc)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "surplus military gear crate"
-	access = access_hos
-	group = "Security"
-*/
-// ----------- USCM Stuff ----------- //
-
-/datum/supply_packs/MilitaryWeapons/USCM
-	name = "Surplus Military-grade Weapons (Colonial Marines)"
-	contains = list(/obj/item/weapon/gun/projectile/automatic/m41a,
-					/obj/item/weapon/gun/projectile/automatic/m41a)
-
-/datum/supply_packs/MilitaryAmmo/USCM
-	name = "Surplus Military-grade Ammunition (Colonial Marines)"
-	contains = list(/obj/item/ammo_magazine/a10mmc,
-					/obj/item/ammo_magazine/a10mmc,
-					/obj/item/ammo_magazine/a10mmc,
-					/obj/item/ammo_magazine/a10mmc)
-/*
-/datum/supply_packs/MilitaryArmor/USCM
-	name = "Surplus Military-grade Armor (Colonial Marines)"
-	contains = list(/obj/item/clothing/suit/armor/tactical/m3,
-					/obj/item/clothing/suit/armor/tactical/m3,
-					/obj/item/weapon/storage/helmet/m10,
-					/obj/item/weapon/storage/helmet/m10,
-					/obj/item/device/modkit_single/uscm/helmet,
-					/obj/item/device/modkit_single/uscm/helmet/camo,
-					/obj/item/device/modkit_single/uscm/m3,
-					/obj/item/device/modkit_single/uscm/m3/nco,
-					/obj/item/device/modkit_single/uscm/m3/medic,
-					/obj/item/device/modkit_single/uscm/m3/engineer)
-	cost = 60
-	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "surplus military gear crate"
-	access = access_hos
-	group = "Security"
-*/
 
 /datum/supply_packs/carpet
 	name = "Imported carpet"

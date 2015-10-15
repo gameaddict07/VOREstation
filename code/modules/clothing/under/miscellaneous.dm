@@ -493,7 +493,25 @@
 
 /obj/item/clothing/under/blazer
 	name = "blue blazer"
-	desc = "A bold but yet conservative outfit, red corduroys, navy blazer and a tie." 
+	desc = "A bold but yet conservative outfit, red corduroys, navy blazer and a tie."
 	icon_state = "blue_blazer"
 	item_state = "blue_blazer"
 	item_color = "blue_blazer"
+
+/obj/item/clothing/under/nazi
+	name = "\improper Feldanzug"
+	desc = "When participating in die Blitzkrieg it is important for your uniform to be professional and functional, as well as devilishly dapper."
+	icon_state = "soldieruniform"
+	item_state = "gy_suit"
+	item_color = "soldieruniform"
+
+/obj/item/clothing/under/nazi/officer
+	icon_state = "officeruniform"
+	item_state = "gy_suit"
+	item_color = "officeruniform"
+
+/obj/item/clothing/under/soviet/spetsnaz
+	name = "\improper Spetsnaz uniform"
+	desc = "When Spetznaz on scene, objective no longer save hostage."
+	icon_state = "russobluecamo"
+	item_color = "russobluecamo"

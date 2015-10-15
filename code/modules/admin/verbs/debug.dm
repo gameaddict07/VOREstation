@@ -535,12 +535,11 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		"pirate captain",
 		"soviet admiral",
 		"soviet soldier",
-/* // Required items and void suits are not back in the code yet.
+		//"spetznas", // ToDo
 		"space nazi commander",
 		"space nazi officer",
 		"space nazi soldier",
-		"space nazi stormtrooper",
-*/
+//		"space nazi stormtrooper", // Required void suit not back in the code yet.
 		"tunnel clown",
 		"normal clown",
 		"masked killer",
@@ -908,7 +907,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/captain(M), slot_l_ear)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/eyepatch(M), slot_glasses)
 			M.equip_to_slot_or_del(new /obj/item/clothing/mask/smokable/cigarette/cigar/havana(M), slot_wear_mask)
-			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/deathsquad/beret(M), slot_head)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/beret/deathsquad(M), slot_head)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/pulse_rifle/M1911(M), slot_belt)
 			M.equip_to_slot_or_del(new /obj/item/weapon/flame/lighter/zippo(M), slot_r_store)
 			M.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(M), slot_back)
