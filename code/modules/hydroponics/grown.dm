@@ -100,6 +100,8 @@
 			descriptors |= "slippery"
 		if(reagents.has_reagent("pacid") || reagents.has_reagent("sacid"))
 			descriptors |= "acidic"
+		if(reagents.has_reagent("macrocillin") || reagents.has_reagent("microcillin"))
+			descriptors |= "strange"
 		if(seed.get_trait(TRAIT_JUICY))
 			descriptors |= "juicy"
 		if(seed.get_trait(TRAIT_STINGS))
