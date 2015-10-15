@@ -46,97 +46,97 @@ var/global/list/gear_datums = list()
 //demi ears begin here!
 
 /datum/gear/fbatblack
-	display_name = "Bat Wings, Black"
+	display_name = "demi accessory, bat wings black"
 	path = /obj/item/clothing/head/fluff/succubus/black
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fbatred
-	display_name = "Bat Wings, Red"
+	display_name = "demi accessory, bat wings red"
 	path = /obj/item/clothing/head/fluff/succubus/red
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fbear
-	display_name = "Bear Ears"
+	display_name = "demi accessory, bear"
 	path = /obj/item/clothing/head/accessory/bear
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fbee
-	display_name = "Bee Accesories"
+	display_name = "demi accessory, bee"
 	path = /obj/item/clothing/head/fluff/bee
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fbunny
-	display_name = "Bunny Ears"
+	display_name = "demi accessory, bunny"
 	path = /obj/item/clothing/head/accessory/bunny
 	cost = 1
 	slot = slot_head
 
 /datum/gear/ffox
-	display_name = "Fox Ears"
+	display_name = "demi accessory, fox"
 	path = /obj/item/clothing/head/accessory/fox
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fkitty
-	display_name = "Kitty Ears"
+	display_name = "demi accessory, kitty"
 	path = /obj/item/clothing/head/accessory/kitty
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fkittycol
-	display_name = "Kitty Ears, Collectable"
+	display_name = "demi accessory, kitty black"
 	path = /obj/item/clothing/head/collectable/kitty
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fmouse
-	display_name = "Mouse Ears"
+	display_name = "demi accessory, mouse"
 	path = /obj/item/clothing/head/accessory/mouse
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fsuccrim
-	display_name = "Succubus Crimson"
+	display_name = "demi accessory, succubus crimson"
 	path = /obj/item/clothing/head/fluff/succubus/crimson
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fsucdark
-	display_name = "Succubus Dark"
+	display_name = "demi accessory, succubus dark"
 	path = /obj/item/clothing/head/fluff/succubus/dark
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fsucpurp
-	display_name = "Succubus Purple"
+	display_name = "demi accessory, succubus purple"
 	path = /obj/item/clothing/head/fluff/succubus
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fsquir
-	display_name = "Squirrel Ears"
+	display_name = "demi accessory, squirrel"
 	path = /obj/item/clothing/head/accessory/squirrel
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fsquirred
-	display_name = "Squirrel Ears, Red"
+	display_name = "demi accessory, squirrel red"
 	path = /obj/item/clothing/head/fluff/squirrel/redsquirrel
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fwisewolf
-	display_name = "Wisewolf Ears"
+	display_name = "demi accessory, Wisewolf"
 	path = /obj/item/clothing/head/fluff/wisewolf
 	cost = 1
 	slot = slot_head
 
 /datum/gear/fwolf
-	display_name = "Wolf Ears"
+	display_name = "demi accessory, wolf"
 	path = /obj/item/clothing/head/accessory/wolf
 	cost = 1
 	slot = slot_head
@@ -1126,6 +1126,12 @@ var/global/list/gear_datums = list()
 /datum/gear/paicard
 	display_name = "personal AI device"
 	path = /obj/item/device/paicard
+	sort_category = "utility"
+	cost = 2
+
+/datum/gear/wallet
+	display_name = "wallet"
+	path = /obj/item/weapon/storage/wallet
 	sort_category = "utility"
 	cost = 2
 
