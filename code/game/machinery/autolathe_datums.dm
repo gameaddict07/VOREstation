@@ -236,6 +236,16 @@
 	path = /obj/item/ammo_magazine/mc9mmt/rubber
 	category = "Arms and Ammunition"
 
+/datum/autolathe/recipe/rifle_clip
+	name = "ammunition clip (7.62mm chalk)"
+	path = /obj/item/ammo_magazine/a762_clip/chalk
+	category = "Arms and Ammunition"
+
+/datum/autolathe/recipe/rifle_clip
+	name = "ammunition clip (7.62mm blank)"
+	path = /obj/item/ammo_magazine/a762_clip/blank
+	category = "Arms and Ammunition"
+
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
 	path = /obj/item/weapon/stock_parts/console_screen
@@ -323,8 +333,14 @@
 	category = "Arms and Ammunition"
 
 /datum/autolathe/recipe/magazine_arifle
-	name = "ammunition (7.62mm)"
+	name = "ammunition magazine (7.62mm)"
 	path = /obj/item/ammo_magazine/c762
+	hidden = 1
+	category = "Arms and Ammunition"
+
+/datum/autolathe/recipe/rifle_clip
+	name = "ammunition clip (7.62mm)"
+	path = /obj/item/ammo_magazine/a762_clip
 	hidden = 1
 	category = "Arms and Ammunition"
 
