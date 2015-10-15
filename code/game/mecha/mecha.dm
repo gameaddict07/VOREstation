@@ -13,7 +13,6 @@
 	desc = "Exosuit"
 	icon = 'icons/mecha/mecha.dmi'
 	density = 1 //Dense. To raise the heat.
-	opacity = 1 ///opaque. Menacing.
 	anchored = 1 //no pulling around.
 	unacidable = 1 //and no deleting hoomans inside
 	layer = MOB_LAYER //icon draw layer
@@ -284,7 +283,7 @@
 			src.log_message("Interfaced with [src_object].")
 			return STATUS_INTERACTIVE
 		if(src_object in view(2, src))
-			return STATUS_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever. 
+			return STATUS_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
 
 /obj/mecha/proc/melee_action(atom/target)
 	return

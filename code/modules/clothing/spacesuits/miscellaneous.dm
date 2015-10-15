@@ -51,13 +51,10 @@
 	flags = HEADCOVERSEYES | BLOCKHAIR | HEADCOVERSMOUTH | STOPPRESSUREDAMAGE | THICKMATERIAL
 	siemens_coefficient = 0.6
 
-/obj/item/clothing/head/helmet/space/deathsquad/beret
-	name = "officer's beret"
-	desc = "An armored beret commonly used by special operations officers."
+/obj/item/clothing/head/beret/deathsquad
+	name = "\improper SWAT officer's beret"
+	desc = "A beret commonly used by special operations officers."
 	icon_state = "beret_badge"
-	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 30, rad = 30)
-	flags = HEADCOVERSEYES | BLOCKHAIR | STOPPRESSUREDAMAGE
-	siemens_coefficient = 0.9
 
 //Space santa outfit suit
 /obj/item/clothing/head/helmet/space/santahat

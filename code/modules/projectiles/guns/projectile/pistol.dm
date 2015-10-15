@@ -168,7 +168,7 @@
 	desc = "Still better than a crowbar. Uses .45 caliber ammo."
 	icon_state = "USP"
 	item_state = null
-	caliber = "9mm"
+	caliber = ".45"
 	silenced = 0
 	origin_tech = "combat=2;materials=2;syndicate=4"
 	load_method = MAGAZINE
@@ -177,7 +177,7 @@
 
 /obj/item/weapon/gun/projectile/hl2_pistol/silenced
 	icon_state = "USP-silencer"
-	silenced = 1
+	silenced = new/obj/item/weapon/silencer // Feels hacky.
 
 /obj/item/weapon/gun/projectile/hl2_pistol/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
@@ -199,7 +199,7 @@
 			return
 		user.drop_item()
 		user << "<span class='notice'>You screw [I] onto [src].</span>"
-		silenced = I	//dodgy?
+		silenced = I
 		I.loc = src
 		update_icon()
 		return
@@ -230,17 +230,3 @@
 	fire_sound = 'sound/weapons/semiauto.ogg'
 	magazine_type = /obj/item/ammo_magazine/c28mm
 	allowed_magazines = list(/obj/item/ammo_magazine/c28mm)
-
-/obj/item/weapon/gun/projectile/derringer
-	name = "\improper Derringer"
-	desc = "It's not size that matters. Just the caliber of your load. Uses .357 ammo."
-	icon_state = "derringer"
-	item_state = "concealed" // A deliberately blank icon for extra stealthy.
-	caliber = ".357"
-	load_method = SINGLE_CASING
-	handle_casings = HOLD_CASINGS
-	max_shells = 2
-	w_class = 2
-	accuracy = -2
-	origin_tech = "combat=2;syndicate=2"
-	ammo_type = /obj/item/ammo_casing/c45

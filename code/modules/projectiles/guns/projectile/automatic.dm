@@ -150,7 +150,7 @@
 	icon_state = "p90"
 	item_state = "p90"
 	w_class = 3
-	caliber = "9mm"
+	caliber = "5.7×28mm"
 	origin_tech = "combat=5;materials=2"
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	ammo_type = "/obj/item/ammo_casing/p90"
@@ -164,7 +164,7 @@
 	if(ammo_magazine)
 		icon_state = "p90-[round(ammo_magazine.stored_ammo.len,4)]"
 	else
-		icon_state = "p90"
+		icon_state = "p90-empty"
 	return
 
 

@@ -141,6 +141,7 @@
 	desc = "A 14.5mm shell."
 	icon_state = "lcasing"
 	caliber = "14.5mm"
+	w_class = 2
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
 	matter = list("metal" = 1250)
 
@@ -153,6 +154,7 @@
 	name = "rocket propelled grenade"
 	desc = "A high explosive designed to be fired from a launcher."
 	icon_state = "rocketshell"
+	w_class = 3 // YOU SEE IVAN, ROCKET SHOULD NOT FIT BEHIND EARS. -Ace
 	projectile_type = /obj/item/missile
 	caliber = "rocket"
 

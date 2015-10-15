@@ -655,4 +655,4 @@
 	desc = "Instant research tool. For testing purposes only."
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "smes_coil"
-	origin_tech = "materials=19;programming=19;magnets=19;powerstorage=19;bluespace=19;combat=19;biotech=19;syndicate=19;phorontech=19;engineering=19"
+	origin_tech = "materials=19;programming=19;magnets=19;powerstorage=19;bluespace=19;redspace=19;combat=19;biotech=19;syndicate=19;phorontech=19;engineering=19"

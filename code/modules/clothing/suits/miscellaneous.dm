@@ -40,8 +40,8 @@
 
 
 /obj/item/clothing/suit/hgpirate
-	name = "pirate captain coat"
-	desc = "Yarr."
+	name = "\improper Soviet officer's coat"
+	desc = "A Soviet Army officer's coat. It doesn't mean you know what you're doing, but it does mean you have friends in high places!"
 	icon_state = "hgpirate"
 	item_state = "hgpirate"
 	flags_inv = HIDEJUMPSUIT
@@ -172,6 +172,58 @@
 	item_state = "cardborg"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	flags_inv = HIDEJUMPSUIT
+
+
+/obj/item/clothing/suit/storage/nazi
+	name = "\improper Waffenrock"
+	desc = "This coat might not stop the bite of Soviet bullets, nor the sting of Siberian winds, but God be damned, if it isn't stylish!"
+	icon_state = "soldiersuit"
+	item_state = "greatcoat"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/weapon/gun/energy,
+					/obj/item/weapon/reagent_containers/spray/pepper,
+					/obj/item/weapon/gun/projectile,
+					/obj/item/ammo_magazine,
+					/obj/item/ammo_casing,
+					/obj/item/weapon/melee/baton,
+					/obj/item/weapon/handcuffs)
+
+	verb/toggle()
+		set name = "Toggle Coat Buttons"
+		set category = "Object"
+		set src in usr
+
+		if(!usr.canmove || usr.stat || usr.restrained())
+			return 0
+
+		switch(icon_state)
+			if("officersuit_open")
+				src.icon_state = "officersuit"
+				usr << "You button up the coat."
+			if("officersuit")
+				src.icon_state = "officersuit_open"
+				usr << "You unbutton the coat."
+			if("soldiersuit_open")
+				src.icon_state = "soldiersuit"
+				usr << "You button up the coat."
+			if("soldiersuit")
+				src.icon_state = "soldiersuit_open"
+				usr << "You unbutton the coat."
+			else
+				usr << "There's no buttons on this."
+				return
+		usr.update_inv_wear_suit()	//so our overlays update
+
+
+/obj/item/clothing/suit/storage/nazi/officer
+	icon_state = "officersuit"
+
+
+/obj/item/clothing/suit/soviet
+	name = "\improper Soviet fur coat"
+	desc = "In order to survive in cold of Moskva, one must live like bear. Or at least make coat from bear. That is not as unpleasant."
+	icon_state = "russofurcoat"
+	item_state = "russofurcoat"
 
 /*
  * Misc

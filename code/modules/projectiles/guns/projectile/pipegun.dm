@@ -10,22 +10,26 @@
 	handle_casings = CYCLE_CASINGS // Because you need to eject the shells as they are used.
 	max_shells = 1
 	ammo_type = null // So it starts with no ammunition inside of it.
-	var/explode_probability = 5
+	var/explode_probability = 0
 
 /obj/item/weapon/gun/projectile/pipegun/handle_post_fire()
 	if(prob(explode_probability))
 		explode(usr)
 	if(prob(50)) // I forgot, gun can get damaged and explode even with no ammo. Need to fix this.
-		explode_probability += 5
+		explode_probability += 2
 	..()
 
 /obj/item/weapon/gun/projectile/pipegun/proc/explode(var/mob/living/user)
 	flick("e_flash", user.flash)
-	user.adjustBruteLoss(rand(10,70))
-	user.Weaken(5)
+	user.adjustBruteLoss(rand(30,70))
+	user.Weaken(10)
 	user.eye_blurry = 10
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1, 5)
-	usr << "\red <font size=3><B>BANG!</B></font>"
+	usr << "\red <font size=5><B>OH SHIT!</B></font>"
+	new/obj/item/weapon/shard/shrapnel(user.loc) // ToDo: Figure out how to riddle the poor sod with shrapnel.
+	new/obj/item/weapon/shard/shrapnel(user.loc)
+	new/obj/item/weapon/shard/shrapnel(user.loc)
+	new/obj/item/weapon/shard/shrapnel(user.loc)
 	del(src)
 
 // Didn't seem right to put this in construction.dm, so I put it here.
