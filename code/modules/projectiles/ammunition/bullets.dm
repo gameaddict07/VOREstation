@@ -154,6 +154,7 @@
 	name = "rocket propelled grenade"
 	desc = "A high explosive designed to be fired from a launcher."
 	icon_state = "rocketshell"
+	w_class = 3 // YOU SEE IVAN, ROCKET SHOULD NOT FIT BEHIND EARS. -Ace
 	projectile_type = /obj/item/missile
 	caliber = "rocket"
 
