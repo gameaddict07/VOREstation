@@ -252,6 +252,9 @@
 					prob(1);/obj/item/weapon/gun/projectile/heavysniper,\
 					prob(1);/obj/item/weapon/plastique)
 
+/obj/random/weapon/guarenteed
+	spawn_nothing_percentage = 0
+
 
 /obj/random/energy
 	name = "Random Energy Weapon"

@@ -81,7 +81,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mmf
 
 /obj/item/ammo_magazine/c9mm
-	name = "ammunition Box (9mm)"
+	name = "ammunition box (9mm)"
 	icon_state = "9mm"
 	origin_tech = "combat=2"
 	matter = list("metal" = 1800)
@@ -111,7 +111,7 @@
 
 /obj/item/ammo_magazine/c45
 	name = "ammunition Box (.45)"
-	icon_state = "9mm"
+	icon_state = "45box"
 	origin_tech = "combat=2"
 	caliber = ".45"
 	matter = list("metal" = 2250)

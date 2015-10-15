@@ -97,17 +97,6 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
 
-
-/obj/item/clothing/suit/armor/swat/officer
-	name = "officer jacket"
-	desc = "An armored jacket used in special operations."
-	icon_state = "detective"
-	item_state = "det_suit"
-	blood_overlay_type = "coat"
-	flags_inv = 0
-	body_parts_covered = UPPER_TORSO|ARMS
-
-
 /obj/item/clothing/suit/armor/det_suit
 	name = "armor"
 	desc = "An armored vest with a detective's badge on it."
@@ -175,6 +164,7 @@
 	..()
 	holster.attackby(W, user)
 
+
 /obj/item/clothing/suit/armor/tactical/verb/holster()
 	set name = "Holster"
 	set category = "Object"
@@ -190,6 +180,13 @@
 		holster.holster(W, usr)
 	else
 		holster.unholster(usr)
+
+/obj/item/clothing/suit/armor/tactical/officer
+	name = "officer jacket"
+	desc = "An armored jacket used in special operations."
+	icon_state = "detective"
+	item_state = "det_suit"
+	blood_overlay_type = "coat"
 
 //Non-hardsuit ERT armor.
 /obj/item/clothing/suit/armor/vest/ert

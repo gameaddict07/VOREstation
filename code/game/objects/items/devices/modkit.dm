@@ -73,7 +73,7 @@
 
 
 
-/obj/item/device/modkit2 //this is the old one, wich allows you to change from one object to another, instead of just changing races allowed.
+/obj/item/device/modkit_conversion //this is the old one, wich allows you to change from one object to another, instead of just changing races allowed.
 	name = "Orbis modification kit"
 	desc = "A kit containing all the needed tools and parts to modify an object into another."
 	icon_state = "modkit"
@@ -83,7 +83,7 @@
 	var/to_helmet = /obj/item/clothing/head/cardborg
 	var/to_suit = /obj/item/clothing/suit/cardborg
 
-/obj/item/device/modkit2/afterattack(obj/O, mob/user as mob)
+/obj/item/device/modkit_conversion/afterattack(obj/O, mob/user as mob)
 	var/flag
 	var/to_type
 	if(istype(O,from_helmet))
