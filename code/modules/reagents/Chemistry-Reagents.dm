@@ -1487,7 +1487,7 @@ datum
 
 			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
 				src = null
-				if((prob(20)) && (method == TOUCH || method == INGEST))
+				if( ( (method == TOUCH) && (prob(20) ) ) || (method == INGEST) )
 					switch(M.playerscale)
 						if(RESIZE_HUGE to INFINITY)
 							M.resize(RESIZE_BIG)
