@@ -331,3 +331,9 @@
 	desc = "A wall with sandstone plating."
 	icon_state = ""
 	mineral = "sandstone"
+
+/obj/structure/falsewall/cult
+	name = "loose wall"
+	desc = "This wall tile seems loose. Try pushing on it."
+	icon_state = ""
+	mineral = "cult"
