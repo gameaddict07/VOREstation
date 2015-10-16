@@ -1,16 +1,12 @@
 /area/awaymission/labyrinth
-	name = "\improper Unknown Area"
-	icon_state = "outline"
+	icon_state = "away"
 	requires_power = 0
-	lighting_use_dynamic = 0 // Debug. Change before release.
-	ambience = list('sound/ambience/ambicha1.ogg',
-					'sound/ambience/ambicha2.ogg',
-					'sound/ambience/ambicha3.ogg',
-					'sound/ambience/ambicha4.ogg',
-					'sound/ambience/ambispace.ogg',
-					'sound/music/traitor.ogg',
-					'sound/music/main.ogg',
-					'sound/music/TheClownChild.ogg')
+	lighting_use_dynamic = 0
+
+/area/awaymission/labyrinth/temple
+	icon_state = "yellow"
+	lighting_use_dynamic = 1
+	ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg','sound/ambience/ambispace.ogg','sound/music/traitor.ogg','sound/music/main.ogg','sound/music/TheClownChild.ogg')
 
 /turf/unsimulated/wall/exterior
 	opacity = 0
