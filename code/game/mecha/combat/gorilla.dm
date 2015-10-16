@@ -32,7 +32,7 @@ HONK Blaster and a pulse cannon protected by projectile armor and powered by a b
 	projectile = /obj/item/projectile/bullet/rifle/a762
 	fire_sound = 'sound/weapons/mg42.ogg'
 	projectiles = 1000
-	projectiles_per_shot = 5
+	projectiles_per_shot = 3
 	deviation = 0.3
 	projectile_energy_cost = 20
 	fire_cooldown = 1
@@ -222,23 +222,4 @@ HONK Blaster and a pulse cannon protected by projectile armor and powered by a b
 		src.smoke()
 	if (href_list["toggle_zoom"])
 		src.zoom()
-	return
-
-
-/obj/mecha/combat/marauder/mauler/nazi
-	desc = "Heavy-duty, combat exosuit, developed off of the existing Marauder model, and stolen by the Nazis."
-	name = "Nazi Mauler"
-
-/obj/mecha/combat/marauder/mauler/nazi/New()
-	..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mg42
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster(src)
-	ME.attach(src)
-	src.smoke_system.set_up(3, 0, src)
-	src.smoke_system.attach(src)
 	return
