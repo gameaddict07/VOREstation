@@ -332,8 +332,10 @@
 	icon_state = ""
 	mineral = "sandstone"
 
-/obj/structure/falsewall/cult
+/obj/structure/falsewall/cultspecial
 	name = "loose wall"
 	desc = "This wall tile seems loose. Try pushing on it."
 	icon_state = ""
-	mineral = "cult"
+	mineral = "cultspecial"
+	density = 1
+	opacity = 1
