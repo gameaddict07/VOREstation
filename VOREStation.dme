@@ -504,6 +504,7 @@
 #include "code\game\objects\effects\gibs.dm"
 #include "code\game\objects\effects\glowshroom.dm"
 #include "code\game\objects\effects\landmarks.dm"
+#include "code\game\objects\effects\loot_spawner.dm"
 #include "code\game\objects\effects\manifest.dm"
 #include "code\game\objects\effects\mines.dm"
 #include "code\game\objects\effects\misc.dm"
@@ -1610,4 +1611,6 @@
 #include "maps\exodus-4.dmm"
 #include "maps\exodus-5.dmm"
 #include "maps\exodus-6.dmm"
+#include "maps\RandomZLevels\labyrinth.dm"
+#include "maps\RandomZLevels\labyrinth.dmm"
 // END_INCLUDE
