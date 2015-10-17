@@ -7,14 +7,17 @@
 	requires_power = 1
 	lighting_use_dynamic = 0
 
+/area/awaymission/labyrinth/cave
+	icon_state = "blue"
+
 /area/awaymission/labyrinth/temple
 	icon_state = "yellow"
-	lighting_use_dynamic = 1
-	ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg','sound/ambience/ambispace.ogg','sound/music/traitor.ogg','sound/music/main.ogg','sound/music/TheClownChild.ogg')
+//	lighting_use_dynamic = 1
+	ambience = list('sound/music/TheClownChild.ogg')
 
 /area/awaymission/labyrinth/boss
 	icon_state = "red"
-	lighting_use_dynamic = 1
+//	lighting_use_dynamic = 1
 
 /turf/unsimulated/wall/exterior
 	opacity = 0
