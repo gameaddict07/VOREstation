@@ -228,4 +228,4 @@ datum/track/New(var/title_name, var/audio)
 /obj/machinery/media/jukebox/clowntemple
 	idle_power_usage = 0
 	active_power_usage = 0
-	tracks = new/datum/track("Mad Jack", 'sound/music/jukebox/madjack.ogg')
+	tracks = list(new/datum/track("Mad Jack", 'sound/music/jukebox/madjack.ogg'))
