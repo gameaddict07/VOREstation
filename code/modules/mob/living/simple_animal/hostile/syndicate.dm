@@ -94,7 +94,7 @@
 	minbodytemp = 0
 	icon_state = "syndicatemeleespace"
 	icon_living = "syndicatemeleespace"
-	name = "Syndicate Commando"
+	name = "Syndicate Shocktrooper"
 	corpse = /obj/effect/landmark/mobcorpse/syndicatecommando
 	speed = 0
 

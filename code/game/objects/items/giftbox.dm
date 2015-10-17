@@ -48,9 +48,6 @@
 						/obj/item/weapon/scythe,
 						/obj/item/weapon/weldpack,
 						/obj/item/weapon/silencer,
-						/obj/item/weapon/kitchenknife/tacknife,
-						/obj/item/weapon/kitchenknife/tacknife/unathiknife,
-						/obj/item/weapon/kitchenknife/ritual,
 						/obj/item/weapon/grenade/flashbang/clusterbang,
 						/obj/item/weapon/storage/pill_bottle/zoom,
 						/obj/item/weapon/storage/pill_bottle/happy,
@@ -61,7 +58,6 @@
 						/obj/item/weapon/grenade/spawnergrenade/spesscarp,
 						/obj/item/weapon/card/emag,
 						/obj/item/weapon/card/emag_broken,
-						/obj/item/device/encryptionkey/syndicate,
 						/obj/item/device/pda/syndicate,
 						/obj/item/weapon/shield/energy,
 						/obj/item/weapon/melee/energy/sword,
@@ -71,9 +67,15 @@
 						/obj/item/clothing/suit/armor/heavy,
 						/obj/item/clothing/suit/armor/vest,
 						/obj/item/clothing/suit/armor/laserproof,
-						// /obj/random/gun/guarenteed,
-						/obj/effect/landmark/costume) // Need to add random melee weapon spawns too.
-						// I should add phazon parts to this...
+						/obj/random/weapon/guarenteed,
+						/obj/effect/landmark/costume,
+						/obj/item/mecha_parts/chassis/phazon,
+						/obj/item/mecha_parts/part/phazon_torso,
+						/obj/item/mecha_parts/part/phazon_head,
+						/obj/item/mecha_parts/part/phazon_left_arm,
+						/obj/item/mecha_parts/part/phazon_right_arm,
+						/obj/item/mecha_parts/part/phazon_left_leg,
+						/obj/item/mecha_parts/part/phazon_right_leg)
 		new loot(usr.loc)
 		usr << "You unwrap the box."
 		del(src)

@@ -681,8 +681,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			var/obj/item/weapon/card/id/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
-			W.access = get_all_accesses()
-			W.assignment = "Tunnel Clown!"
+			W.access = list(access_clown) //get_all_accesses()
+			W.assignment = "Tunnel Clown"
+			W.icon_state = "clown"
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, slot_wear_id)
 
@@ -701,8 +702,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			var/obj/item/weapon/card/id/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
-			W.access = access_clown
+			W.access = list(access_clown)
 			W.assignment = "Clown"
+			W.icon_state = "clown"
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, slot_wear_id)
 

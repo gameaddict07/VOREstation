@@ -388,23 +388,23 @@
 /proc/get_centcom_access_desc(A)
 	switch(A)
 		if(access_cent_general)
-			return "Code Grey"
+			return "General Access"
 		if(access_cent_thunder)
-			return "Code Yellow"
+			return "Thunderdome"
 		if(access_cent_storage)
-			return "Code Orange"
+			return "Storage"
 		if(access_cent_living)
-			return "Code Green"
+			return "Living Quarters"
 		if(access_cent_medical)
-			return "Code White"
+			return "Medical"
 		if(access_cent_teleporter)
-			return "Code Blue"
+			return "Teleporter"
 		if(access_cent_specops)
-			return "Code Black"
+			return "Emergency Response Team"
 		if(access_cent_creed)
-			return "Code Silver"
+			return "Chief of Security"
 		if(access_cent_captain)
-			return "Code Gold"
+			return "Administrator's Office"
 
 /proc/get_all_jobs()
 	var/list/all_jobs = list()

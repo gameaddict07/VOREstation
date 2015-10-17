@@ -1,4 +1,4 @@
-// ARISE, HONK! ARISE! DEATH TO BAYSTATION! LONG LIVE THE HONK!
+// ARISE, HONK! ARISE! DEATH TO BAYDEVS! LONG LIVE THE HONK!
 
 /*
 All of the objects and datums that go with this mech are deliberately kept here in honker.dm because
