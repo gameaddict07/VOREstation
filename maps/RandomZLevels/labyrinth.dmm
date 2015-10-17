@@ -111,7 +111,7 @@
 "cg" = (/obj/machinery/artifact_analyser,/turf/unsimulated/floor{tag = "icon-gcircuit"; icon_state = "gcircuit"},/area/awaymission/labyrinth)
 "ch" = (/obj/machinery/artifact_scanpad,/turf/unsimulated/floor{tag = "icon-gcircuit"; icon_state = "gcircuit"},/area/awaymission/labyrinth)
 "ci" = (/obj/item/weapon/stool,/turf/unsimulated/floor{tag = "icon-white"; icon_state = "white"},/area/awaymission/labyrinth)
-"cj" = (/obj/structure/table,/obj/item/weapon/pen,/turf/unsimulated/floor{tag = "icon-white"; icon_state = "white"},/area/awaymission/labyrinth)
+"cj" = (/obj/structure/table,/obj/item/weapon/pen,/obj/item/weapon/paper{info = "<i>... the key lies beneath the tears of our mother...</i>"; name = "cryptic riddle"},/turf/unsimulated/floor{tag = "icon-white"; icon_state = "white"},/area/awaymission/labyrinth)
 "ck" = (/obj/structure/toilet{dir = 4},/turf/unsimulated/floor{tag = "icon-freezerfloor"; icon_state = "freezerfloor"},/area/awaymission/labyrinth)
 "cl" = (/obj/machinery/shower{icon_state = "shower"; dir = 8},/obj/structure/curtain/open/shower,/obj/machinery/door/window/northright,/obj/structure/window/basic{dir = 8},/turf/unsimulated/floor{tag = "icon-freezerfloor"; icon_state = "freezerfloor"},/area/awaymission/labyrinth)
 "cm" = (/turf/unsimulated/floor{tag = "icon-warnwhite (NORTH)"; icon_state = "warnwhite"; dir = 1},/area/awaymission/labyrinth)
