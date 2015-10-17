@@ -188,3 +188,14 @@
 	heat_damage_per_tick = 15	//amount of damage applied if animal's body temperature is higher than maxbodytemp
 	cold_damage_per_tick = 10	//same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
 	unsuitable_atoms_damage = 10
+
+/obj/random/mob/clown
+	name = "Random Clown Mob"
+	desc = "This is a random clown spawn. You aren't supposed to see this. Call an admin because reality has broken into the meta."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "clown"
+	spawn_nothing_percentage = 50
+	item_to_spawn()
+		return pick(prob(3);/mob/living/simple_animal/hostile/cluwne,
+					prob(2);/mob/living/simple_animal/hostile/tunnelclown/sentinel,
+					prob(1);/mob/living/simple_animal/hostile/tunnelclown)

@@ -220,3 +220,12 @@ datum/track/New(var/title_name, var/audio)
 	playing = 1
 	update_use_power(2)
 	update_icon()
+
+///////////////////////////////////////////
+// Event-specific jukeboxes go below here
+///////////////////////////////////////////
+
+/obj/machinery/media/jukebox/clowntemple
+	idle_power_usage = 0
+	active_power_usage = 0
+	tracks = new/datum/track("Mad Jack", 'sound/music/jukebox/madjack.ogg')
