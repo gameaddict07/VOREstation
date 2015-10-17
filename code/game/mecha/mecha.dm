@@ -33,7 +33,7 @@
 	var/last_message = 0
 	var/add_req_access = 1
 	var/maint_access = 1
-	var/dna	//dna-locking the mech
+//	var/dna	//dna-locking the mech
 	var/list/proc_res = list() //stores proc owners, like proc_res["functionname"] = owner reference
 	var/datum/effect/effect/system/spark_spread/spark_system = new
 	var/lights = 0
@@ -1355,6 +1355,8 @@
 						[src.dna?"<b>DNA-locked:</b><br> <span style='font-size:10px;letter-spacing:-1px;'>[src.dna]</span> \[<a href='?src=\ref[src];reset_dna=1'>Reset</a>\]<br>":null]
 					"}
 	return output
+// [src.dna?"<b>DNA-locked:</b><br> <span style='font-size:10px;letter-spacing:-1px;'>[src.dna]</span> \[<a href='?src=\ref[src];reset_dna=1'>Reset</a>\]<br>":null]
+// The above commented code previously went on the last line of that output. People abused DNA locks so I disabled it. Put it back if you want it enabled. -Ace
 
 /obj/mecha/proc/get_commands()
 	var/output = {"<div class='wr'>
