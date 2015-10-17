@@ -100,7 +100,7 @@
 	speak_chance = 1
 	a_intent = "harm"
 	var/corpse = /obj/effect/landmark/mobcorpse/tunnelclown
-	var/weapon1 = /obj/item/weapon/twohanded/fireaxe // /obj/item/weapon/twohanded/spear 22
+	var/weapon1 = /obj/item/weapon/twohanded/fireaxe
 	stop_automated_movement_when_pulled = 0
 	maxHealth = 100
 	health = 100
@@ -110,8 +110,6 @@
 	melee_damage_upper = 40
 	attacktext = "cleaved"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-//	attack_sound = 'sound/items/bikehorn.ogg'
-//	status_flags = CANPUSH
 	min_oxy = 5
 	max_oxy = 0
 	min_tox = 0
@@ -122,8 +120,8 @@
 	max_n2 = 0
 	minbodytemp = 270
 	maxbodytemp = 370
-	heat_damage_per_tick = 15	//amount of damage applied if animal's body temperature is higher than maxbodytemp
-	cold_damage_per_tick = 10	//same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
+	heat_damage_per_tick = 15
+	cold_damage_per_tick = 10
 	unsuitable_atoms_damage = 10
 
 /mob/living/simple_animal/hostile/tunnelclown/sentinel
@@ -152,7 +150,7 @@
 /mob/living/simple_animal/hostile/cluwne
 	name = "cluwne"
 	desc = "A mutated clown alleged to have been cursed by the Honk Mother and permanently banished to these catacombs for once being an unfunny shitter who brought grief instead of laughter."
-	faction = "clown"
+	faction = "tunnelclown"
 	icon_state = "cluwne"
 	icon_living = "cluwne"
 	icon_dead = "cluwne_dead"
@@ -170,8 +168,8 @@
 	health = 10
 	speed = 1
 	harm_intent_damage = 8
-	melee_damage_lower = 0 // Pathetic creatures.
-	melee_damage_upper = 0
+	melee_damage_lower = 1 // Pathetic creatures.
+	melee_damage_upper = 1
 	attacktext = "honked"
 	attack_sound = 'sound/items/bikehorn.ogg'
 	status_flags = CANPUSH
@@ -185,8 +183,8 @@
 	max_n2 = 0
 	minbodytemp = 270
 	maxbodytemp = 370
-	heat_damage_per_tick = 15	//amount of damage applied if animal's body temperature is higher than maxbodytemp
-	cold_damage_per_tick = 10	//same as heat_damage_per_tick, only if the bodytemperature it's lower than minbodytemp
+	heat_damage_per_tick = 15
+	cold_damage_per_tick = 10
 	unsuitable_atoms_damage = 10
 
 /obj/random/mob/clown
