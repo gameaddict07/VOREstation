@@ -12,12 +12,12 @@
 
 /area/awaymission/labyrinth/temple
 	icon_state = "yellow"
-//	lighting_use_dynamic = 1
+	lighting_use_dynamic = 1
 	ambience = list('sound/music/TheClownChild.ogg')
 
 /area/awaymission/labyrinth/boss
 	icon_state = "red"
-//	lighting_use_dynamic = 1
+	lighting_use_dynamic = 1
 
 /turf/unsimulated/wall/exterior
 	opacity = 0
