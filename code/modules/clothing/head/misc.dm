@@ -144,8 +144,8 @@
 	body_parts_covered = 0
 
 /obj/item/clothing/head/hgpiratecap
-	name = "pirate hat"
-	desc = "Yarr."
+	name = "\improper Soviet officer's hat"
+	desc = "A Soviet Army officer's cap. It doesn't mean you know what you're doing, but it does mean you have friends in high places!"
 	icon_state = "hgpiratecap"
 	item_state = "hgpiratecap"
 	body_parts_covered = 0
@@ -254,3 +254,27 @@
 	icon_state = "orange_bandana"
 	item_state = "orange_bandana"
 	body_parts_covered = 0
+
+// Nazi
+/obj/item/clothing/head/nazicap
+	name = "\improper Feldmütze"
+	desc = "Despite being designed for use in an armoured vehicle, this cap sports a remarkable lack of armor of any sort. Mind your Kopf."
+	icon_state = "panzercap"
+	item_state = "syringe_kit" // Just a generic item to be held.
+
+/obj/item/clothing/head/nazicap/officer
+	name = "\improper Einheitsfeldmütze"
+	desc = "A great leader has many things. Honor, conviction, determination, a nerve of steel. And above all, a hat of the utmost quality."
+	icon_state = "officercap"
+
+// Soviet
+/obj/item/clothing/head/soviet
+	name = "\improper Red Guard ushanka"
+	desc = "When wounded, Redguard does not bleed blood of common man, but blood of bear! That and some vodka. Okay fine, mostly vodka."
+	icon_state = "russofurhat"
+	item_state = "syringe_kit" // Just a generic item to be held.
+
+/obj/item/clothing/head/beret/spetsnaz
+	name = "\improper Spetsnaz beret"
+	desc = "Five terrorists, forty hostages. Forty five body bags. Mission accomplished."
+	icon_state = "russobluecamohat"

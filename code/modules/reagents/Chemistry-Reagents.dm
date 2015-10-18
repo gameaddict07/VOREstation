@@ -1458,7 +1458,7 @@ datum
 
 			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
 				src = null
-				if((prob(20)) && (method == TOUCH || method == INGEST))
+				if( ( (method == TOUCH) && (prob(20) ) ) || (method == INGEST) )
 					switch(M.playerscale)
 						if(RESIZE_BIG to RESIZE_HUGE)
 							M.resize(RESIZE_HUGE)
@@ -1475,7 +1475,7 @@ datum
 						if(RESIZE_HUGE to INFINITY)
 							M << "<span class='alert'>Your body can't grow any larger!</span>"
 						else
-							M.resize(RESIZE_TINY)
+							M.resize(RESIZE_HUGE)
 							M << "<font color='green'>You grow!</font><span class='alert'> And you broke something in the code. Congrats on reaching a size that shouldn't have been possible.</span>"
 
 		microcillin
@@ -1487,7 +1487,7 @@ datum
 
 			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
 				src = null
-				if((prob(20)) && (method == TOUCH || method == INGEST))
+				if( ( (method == TOUCH) && (prob(20) ) ) || (method == INGEST) )
 					switch(M.playerscale)
 						if(RESIZE_HUGE to INFINITY)
 							M.resize(RESIZE_BIG)

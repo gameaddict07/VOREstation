@@ -30,9 +30,6 @@
 	max_ammo = 7
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/c45m/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/c45m/rubber
 	name = "magazine (.45 rubber)"
 	ammo_type = /obj/item/ammo_casing/c45r
@@ -51,9 +48,6 @@
 	caliber = ".45"
 	max_ammo = 16
 	multiple_sprites = 1
-
-/obj/item/ammo_magazine/c45uzi/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/c45uzi/rubber
 	name = "uzi magazine (.45 rubber)"
@@ -74,23 +68,17 @@
 	max_ammo = 8
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/mc9mm/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/mc9mm/flash
 	ammo_type = /obj/item/ammo_casing/c9mmf
 
 /obj/item/ammo_magazine/c9mm
-	name = "ammunition Box (9mm)"
+	name = "ammunition box (9mm)"
 	icon_state = "9mm"
 	origin_tech = "combat=2"
 	matter = list("metal" = 1800)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 30
-
-/obj/item/ammo_magazine/c9mm/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/mc9mmt
 	name = "top mounted magazine (9mm)"
@@ -102,24 +90,18 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/mc9mmt/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/mc9mmt/rubber
 	name = "top mounted magazine (9mm rubber)"
 	ammo_type = /obj/item/ammo_casing/c9mmr
 
 /obj/item/ammo_magazine/c45
 	name = "ammunition Box (.45)"
-	icon_state = "9mm"
+	icon_state = "45box"
 	origin_tech = "combat=2"
 	caliber = ".45"
 	matter = list("metal" = 2250)
 	ammo_type = /obj/item/ammo_casing/c45
 	max_ammo = 30
-
-/obj/item/ammo_magazine/c9mm/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/a12mm
 	name = "magazine (12mm)"
@@ -132,9 +114,6 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/a12mm/empty
-	initial_ammo = 0
-
 // Small capacity.
 /obj/item/ammo_magazine/a556
 	name = "10 round STANAG magazine (5.56mm)"
@@ -146,9 +125,6 @@
 	ammo_type = /obj/item/ammo_casing/a556
 	max_ammo = 10
 	multiple_sprites = 1
-
-/obj/item/ammo_magazine/a556/empty
-	initial_ammo = 0
 
 // Medium capacity.
 /obj/item/ammo_magazine/a556/mid
@@ -187,9 +163,6 @@
 	max_ammo = 7
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/a50/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/a75
 	name = "ammo magazine (20mm)"
 	icon_state = "75"
@@ -198,9 +171,6 @@
 	ammo_type = /obj/item/ammo_casing/a75
 	multiple_sprites = 1
 	max_ammo = 4
-
-/obj/item/ammo_magazine/a75/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/a762
 	name = "magazine box (7.62mm)"
@@ -212,9 +182,6 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 50
 	multiple_sprites = 1
-
-/obj/item/ammo_magazine/a762/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/c762
 	name = "magazine (7.62mm)"
@@ -235,9 +202,6 @@
 	max_ammo = 7
 	multiple_sprites = 1
 	matter = list()
-
-/obj/item/ammo_magazine/chameleon/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/c28mm
 	name = "pistol magazine (5.7×28mm)"
@@ -269,9 +233,6 @@
 /obj/item/ammo_magazine/m14/large
 	name = "20-round magazine (7.62mm)"
 	max_ammo = 20
-
-/obj/item/ammo_magazine/m14/empty
-	initial_ammo = 0
 
 /obj/item/ammo_magazine/a762_clip
 	name = "clip (7.62mm)"
@@ -315,9 +276,6 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 10
 	multiple_sprites = 1
-
-/obj/item/ammo_magazine/SVD/empty
-	initial_ammo = 0
 
 /*
 //unused garbage

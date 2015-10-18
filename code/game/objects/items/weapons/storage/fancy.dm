@@ -288,7 +288,7 @@
 	name = "box of shotgun ammo"
 	desc = "A small box that holds individual shotgun shell casings."
 	icon = 'icons/obj/ammo.dmi'
-	icon_state = "shotgunbox0"
+	icon_state = "shotgunbox"
 	icon_type = "shotgun"
 	item_state = "syringe_kit"
 	w_class = 2 // All other ammo boxes can fit in pockets, so why not this too? Suddenly shotguns are a lot more useable.

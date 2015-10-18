@@ -5,6 +5,7 @@
 	item_state = "revolver"
 	caliber = "357"
 	origin_tech = "combat=2;materials=2"
+	fire_sound = 'sound/weapons/pistol.ogg'
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a357

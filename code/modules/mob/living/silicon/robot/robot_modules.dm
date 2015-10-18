@@ -358,6 +358,7 @@
 	src.modules += new /obj/item/weapon/pen/robopen(src)
 	src.modules += new /obj/item/weapon/form_printer(src)
 	src.modules += new /obj/item/weapon/gripper/paperwork(src)
+	src.modules += new /obj/item/device/destTagger(src)
 	src.emag = new /obj/item/weapon/stamp/denied(src)
 
 /obj/item/weapon/robot_module/clerical/add_languages(var/mob/living/silicon/robot/R)

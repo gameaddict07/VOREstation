@@ -22,7 +22,7 @@
 	icon_state = "mouse"
 
 /obj/effect/decal/remains/lizard
-	desc = "They look like the remains of a small rodent."
+	desc = "They look like the remains of a small reptile."
 	icon_state = "lizard"
 
 /obj/effect/decal/remains/attack_hand(mob/user as mob)

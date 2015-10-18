@@ -109,6 +109,8 @@
 		/obj/item/weapon/melee/baton,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/weapon/gun/energy/stunrevolver,
+		/obj/item/weapon/gun/projectile/sec,
+		/obj/item/weapon/gun/projectile/colt,
 		/obj/item/weapon/flame/lighter/zippo,
 		/obj/item/weapon/storage/fancy/cigarettes,
 		/obj/item/clothing/glasses/hud/security,
@@ -116,14 +118,13 @@
 		/obj/item/device/pda,
 		/obj/item/device/radio/headset,
 		/obj/item/weapon/melee,
-		/obj/item/weapon/gun/projectile/sec,
 		/obj/item/taperoll/police,
 		/obj/item/weapon/twohanded/dualsaber,
 		/obj/item/weapon/melee/energy/sword,
 		/obj/item/weapon/shield/energy
 		)
 
-/obj/item/weapon/storage/belt/security/syndicate/New()
+/obj/item/weapon/storage/belt/security/syndicate/New() // For admin spawning only.
 	..()
 	new /obj/item/ammo_magazine/a12mm(src)
 	new /obj/item/ammo_magazine/a12mm(src)
@@ -132,6 +133,22 @@
 	new /obj/item/ammo_magazine/a12mm(src)
 	new /obj/item/weapon/grenade/flashbang(src)
 	new /obj/item/weapon/grenade/chem_grenade/incendiary(src)
+
+/obj/item/weapon/storage/belt/security/uscm
+	name = "light combat belt"
+	desc = "Can hold military gear like ammo and pistols without restricting mobility."
+	icon_state = "swatbelt"
+	item_state = "swatbelt"
+
+/obj/item/weapon/storage/belt/security/uscm/full/New()
+		..()
+		new /obj/item/ammo_magazine/a10mmc(src)
+		new /obj/item/ammo_magazine/a10mmc(src)
+		new /obj/item/ammo_magazine/a10mmc(src)
+		new /obj/item/weapon/gun/projectile/colt(src)
+		new /obj/item/ammo_magazine/c45m(src)
+		new /obj/item/ammo_magazine/c45m(src)
+		new /obj/item/device/flashlight(src)
 
 /obj/item/weapon/storage/belt/soulstone
 	name = "soul stone belt"

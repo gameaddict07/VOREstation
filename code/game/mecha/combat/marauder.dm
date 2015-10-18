@@ -22,6 +22,7 @@
 	force = 45
 	max_equip = 4
 
+
 /obj/mecha/combat/marauder/seraph
 	desc = "Heavy-duty, command-type exosuit. This is a custom model with an extra pylon, utilized only by high-ranking military personnel."
 	name = "Seraph"
@@ -42,6 +43,10 @@
 	initial_icon = "mauler"
 //	operation_req_access = list(access_syndicate)
 	wreckage = /obj/effect/decal/mecha_wreckage/mauler
+
+/obj/mecha/combat/marauder/mauler/nazi
+	desc = "Heavy-duty, combat exosuit, developed off of the existing Marauder model, and stolen by the Nazis."
+	name = "Nazi Mauler"
 
 /obj/mecha/combat/marauder/New()
 	..()
@@ -75,6 +80,21 @@
 	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster(src)
 	ME.attach(src)
 	return
+
+/obj/mecha/combat/marauder/mauler/nazi/New()
+	..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mg42
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster(src)
+	ME.attach(src)
+	src.smoke_system.set_up(3, 0, src)
+	src.smoke_system.attach(src)
+	return
+
 
 /obj/mecha/combat/marauder/relaymove(mob/user,direction)
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.

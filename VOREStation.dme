@@ -649,6 +649,7 @@
 #include "code\game\objects\items\weapons\grenades\emgrenade.dm"
 #include "code\game\objects\items\weapons\grenades\flashbang.dm"
 #include "code\game\objects\items\weapons\grenades\grenade.dm"
+#include "code\game\objects\items\weapons\grenades\singulo.dm"
 #include "code\game\objects\items\weapons\grenades\smokebomb.dm"
 #include "code\game\objects\items\weapons\grenades\spawnergrenade.dm"
 #include "code\game\objects\items\weapons\implants\implant.dm"
@@ -890,6 +891,7 @@
 #include "code\modules\clothing\spacesuits\rig\modules\utility.dm"
 #include "code\modules\clothing\spacesuits\rig\modules\vision.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\alien.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\centcom.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\combat.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\ert.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\light.dm"
@@ -1609,4 +1611,6 @@
 #include "maps\exodus-4.dmm"
 #include "maps\exodus-5.dmm"
 #include "maps\exodus-6.dmm"
+#include "maps\RandomZLevels\labyrinth.dm"
+#include "maps\RandomZLevels\labyrinth.dmm"
 // END_INCLUDE

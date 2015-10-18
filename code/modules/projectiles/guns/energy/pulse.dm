@@ -6,7 +6,7 @@
 	slot_flags = SLOT_BACK
 	force = 10
 	w_class = 4
-	fire_sound = 'sound/weapons/gauss_shoot.ogg'
+	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	charge_cost = 100
 	projectile_type = /obj/item/projectile/beam
 	cell_type = /obj/item/weapon/cell/super
@@ -26,7 +26,7 @@
 			mode = 1
 			fire_delay = 0
 			charge_cost = 100
-			fire_sound = 'sound/weapons/blaster_pistol.ogg'
+			fire_sound = 'sound/weapons/lasercannonfire.ogg'
 			user << "<span class='warning'>[src.name] is now set to kill.</span>"
 			projectile_type = /obj/item/projectile/beam
 		if(1)

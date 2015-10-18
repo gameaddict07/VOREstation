@@ -107,6 +107,16 @@
 	icon_state = "medicalpack"
 	item_state = "medicalpack"
 
+/obj/item/weapon/storage/backpack/medic/full/New()
+	..()
+	new /obj/item/weapon/storage/firstaid/regular(src)
+	new /obj/item/weapon/storage/firstaid/adv(src)
+	new /obj/item/weapon/storage/firstaid/toxin(src)
+	new /obj/item/weapon/storage/firstaid/o2(src)
+	new /obj/item/weapon/storage/box/survival(src)
+	new /obj/item/ammo_magazine/c45m(src)
+	new /obj/item/roller(src)
+
 /obj/item/weapon/storage/backpack/security
 	name = "security backpack"
 	desc = "It's a very robust backpack."
