@@ -285,7 +285,7 @@ AI MODULES
 /obj/item/weapon/aiModule/reset
 	name = "\improper 'Reset' AI module"
 	var/targetName = "name"
-	desc = "A 'reset' AI module: 'Clears all laws except for the core four.'"
+	desc = "A 'reset' AI module: 'Removes any supplementary laws, leaving only core laws.'"
 	origin_tech = "programming=3;materials=4"
 
 /obj/item/weapon/aiModule/reset/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
