@@ -171,7 +171,8 @@ Please contact me on #coderbus IRC. ~Carn x
 	else
 		var/matrix/M = matrix()
 		M.Scale(playerscale)
-		M.Translate(0, 16*(playerscale-1))
+		if(playerscale >= 1) //If the player is large, align them with the bottom of the tile, otherwise, don't.
+			M.Translate(0, 16*(playerscale-1))
 		src.transform = M
 
 var/global/list/damage_icon_parts = list()

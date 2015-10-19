@@ -21,7 +21,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 	resize.Scale(size_mod * basesize) //Change the size of the matrix
 
-	resize.Translate(0, -1 * (1 - size_mod) * basesize * 16) //Move the player down or up in the tile so their feet align with the bottom
+	if(size_mod >= 1)
+		resize.Translate(0, -1 * (1 - size_mod) * basesize * 16) //Move the player up in the tile so their feet align with the bottom
 
 	animate(src,transform = resize, time = 5) //Animate the player resizing
 	playerscale = size_mod //Change playerscale so that other items can interact with them
