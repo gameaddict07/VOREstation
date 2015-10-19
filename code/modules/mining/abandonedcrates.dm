@@ -63,6 +63,7 @@
 			new newitem(src)
 		if(57 to 58)
 			new/obj/item/toy/syndicateballoon(src)
+			new/obj/item/weapon/aiModule/predator(src)
 		if(59 to 60)
 			new/obj/item/weapon/rig(src)
 		if(61 to 62)
