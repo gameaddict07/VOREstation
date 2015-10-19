@@ -2047,9 +2047,11 @@ area/space/atmosalert()
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
-	var/sound/mysound = null
 
-/*	New() // Disabled because infinite loop bug.
+// Disabled because infinite loop bug.
+/*	var/sound/mysound = null
+
+	New()
 		..()
 		var/sound/S = new/sound()
 		mysound = S
@@ -2074,7 +2076,7 @@ area/space/atmosalert()
 			if(Obj:client)
 				mysound.status = SOUND_PAUSED | SOUND_UPDATE
 				Obj << mysound
-*/
+
 	proc/process()
 		set background = 1
 
@@ -2097,6 +2099,7 @@ area/space/atmosalert()
 						H << S
 
 		spawn(60) .()
+*/
 
 /////////////////////////////////////////////////////////////////////
 /*
@@ -2169,7 +2172,9 @@ var/list/the_station_areas = list (
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
-	var/sound/mysound = null
+
+// Disabled because infinite loop bug.
+/*	var/sound/mysound = null
 
 	New()
 		..()
@@ -2218,4 +2223,4 @@ var/list/the_station_areas = list (
 						H << S
 
 		spawn(60) .()
-
+*/

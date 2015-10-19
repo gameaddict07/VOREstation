@@ -1079,6 +1079,8 @@ datum
 					/mob/living/simple_animal/hostile/bear/Hudson, // bugged
 					/mob/living/simple_animal/hostile/hivebot/tele, // bugged
 					/mob/living/simple_animal/hostile/viscerator,
+					/mob/living/simple_animal/hostile/tunnelclown,
+					/mob/living/simple_animal/hostile/tunnelclown/sentinel,
 					/*/mob/living/simple_animal/hostile/wizard, // None of these are re-added yet.
 					/mob/living/simple_animal/hostile/wizard/red,
 					/mob/living/simple_animal/hostile/wizard/marisa,
@@ -1154,6 +1156,8 @@ datum
 					/mob/living/simple_animal/hostile/bear/Hudson, // bugged
 					/mob/living/simple_animal/hostile/hivebot/tele, // bugged
 					/mob/living/simple_animal/hostile/viscerator,
+					/mob/living/simple_animal/hostile/tunnelclown,
+					/mob/living/simple_animal/hostile/tunnelclown/sentinel,
 					/*/mob/living/simple_animal/hostile/wizard, // None of these are re-added yet.
 					/mob/living/simple_animal/hostile/wizard/red,
 					/mob/living/simple_animal/hostile/wizard/marisa,

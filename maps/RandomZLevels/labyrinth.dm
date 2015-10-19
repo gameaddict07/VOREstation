@@ -1,19 +1,16 @@
 /area/awaymission/labyrinth
 	icon_state = "blank"
-	requires_power = 0
 
 /area/awaymission/labyrinth/arrival
 	icon_state = "away"
-	requires_power = 1
-	lighting_use_dynamic = 0
+	requires_power = 0
+	unlimited_power = 1
 
 /area/awaymission/labyrinth/cave
 	icon_state = "blue"
 
 /area/awaymission/labyrinth/temple
 	icon_state = "chapel"
-	lighting_use_dynamic = 1
-	luminosity = 0
 	ambience = list('sound/music/TheClownChild.ogg')
 
 // These extra areas must break up the large area, or the game crashes when machinery (like an airlock) makes sparks.
@@ -47,8 +44,6 @@
 
 /area/awaymission/labyrinth/boss
 	icon_state = "red"
-	lighting_use_dynamic = 1
-	luminosity = 0
 
 /turf/unsimulated/wall/exterior
 	opacity = 0
@@ -74,6 +69,31 @@
 /obj/effect/decal/mecha_wreckage/honker/cluwne
 	name = "cluwne mech wreckage"
 	icon_state = "cluwne-broken"
+
+
+/obj/structure/falsewall/cultspecial
+	name = "loose wall"
+	desc = "This wall tile seems loose. Try pushing on it."
+	icon_state = ""
+	mineral = "cultspecial"
+	density = 1
+	opacity = 1
+
+/obj/machinery/door/airlock/vault/temple
+	name = "Catacombs"
+	desc = "In a temple like this, these doors could be booby trapped..."
+
+/obj/machinery/door/airlock/vault/temple/New()
+	if(prob(33))
+		new /obj/structure/falsewall/cultspecial(src.loc)
+		del(src)
+	if(prob(33))
+		safe = 0
+	if(prob(33))
+		locked = 1
+
+
+
 
 /obj/mecha/combat/honker/cluwne // What have I done?
 	desc = "Mechanized Assault Device for Juggernaughting Against Clown Killers. You've only heard legends about this exosuit..."
@@ -237,8 +257,9 @@
 					prob(1);/mob/living/simple_animal/hostile/tunnelclown)
 
 /obj/item/weapon/paper/awaygate/labyrinth/calypso
-	info = {"<b>THIS IS A COPY OF THE LOGBOOKS AS COPIED BY GREYSON MAXIMUS, CAPTAIN V.O.R.E. NANOTRASEN.</b>
-			</p><p><b>//BEGIN//</b>
+	name = "copy of the Final Flight of Calypso"
+	info = {"<h3>THIS IS A COPY OF THE LOGBOOKS AS COPIED BY GREYSON MAXIMUS, CAPTAIN V.O.R.E. NANOTRASEN.</h3>
+			<p><b>//BEGIN//</b>
 			</p><p>Penned by Captain Honkington.&nbsp;
 			</p><p><b>2554-11-24</b>
 			</p><p>Base camp has been established at survey site A and construction of planetside shuttle dock has been completed. The dig team have been waiting for this moment for years, a chance to unearth a monument that has lain untouched for thousands of years. So many secrets, so many lost treasures, and we will be the ones to bring them to the fore once again, to show that our civilisation is not a joke. This will be a momentous occasion.
@@ -267,3 +288,10 @@
 			</p><p>Oh holy honkmonther preserve me, this isn't funny. This isn't funny at a-
 			</p><p>HONK</p>
 			<b>//END//</b>"}
+
+/obj/item/weapon/paper/awaygate/labyrinth/research
+	name = "research notes"
+	info = {"This must be the location of the alleged dig site mentioned in the Calypso's logs. These are the coordinates recovered from the wreck, and everything checks out.
+			My excavation team discovered two monoliths; one near the surface, and another at an underground shrine. I think this is it, but Dr. Madison hasn't come back with his team
+			to confirm. I'm about to leave and check it out for myself. I've translated some of the writing we copied, and it looks like a riddle. Maybe Dr. Madison has already figured
+			it out. He was excited to head back down with the team after I translated it. I wonder what it means. I'll translate the rest when I get back."}
