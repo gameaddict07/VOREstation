@@ -11,10 +11,39 @@
 	icon_state = "blue"
 
 /area/awaymission/labyrinth/temple
-	icon_state = "yellow"
+	icon_state = "chapel"
 	lighting_use_dynamic = 1
 	luminosity = 0
 	ambience = list('sound/music/TheClownChild.ogg')
+
+// These extra areas must break up the large area, or the game crashes when machinery (like an airlock) makes sparks.
+/area/awaymission/labyrinth/temple/south_east
+	icon_state = "red"
+
+/area/awaymission/labyrinth/temple/south_west
+	icon_state = "bluenew"
+
+/area/awaymission/labyrinth/temple/south
+	icon_state = "green"
+
+/area/awaymission/labyrinth/temple/west
+	icon_state = "purple"
+
+/area/awaymission/labyrinth/temple/center
+	icon_state = "yellow"
+
+/area/awaymission/labyrinth/temple/east
+	icon_state = "blue"
+
+/area/awaymission/labyrinth/temple/north_east
+	icon_state = "exit"
+
+/area/awaymission/labyrinth/temple/north_west
+	icon_state = "orange"
+
+/area/awaymission/labyrinth/temple/north
+	icon_state = "blue"
+
 
 /area/awaymission/labyrinth/boss
 	icon_state = "red"
@@ -206,3 +235,35 @@
 		return pick(prob(3);/mob/living/simple_animal/hostile/cluwne,
 					prob(2);/mob/living/simple_animal/hostile/tunnelclown/sentinel,
 					prob(1);/mob/living/simple_animal/hostile/tunnelclown)
+
+/obj/item/weapon/paper/awaygate/labyrinth/calypso
+	info = {"<b>THIS IS A COPY OF THE LOGBOOKS AS COPIED BY GREYSON MAXIMUS, CAPTAIN V.O.R.E. NANOTRASEN.</b>
+			</p><p><b>//BEGIN//</b>
+			</p><p>Penned by Captain Honkington.&nbsp;
+			</p><p><b>2554-11-24</b>
+			</p><p>Base camp has been established at survey site A and construction of planetside shuttle dock has been completed. The dig team have been waiting for this moment for years, a chance to unearth a monument that has lain untouched for thousands of years. So many secrets, so many lost treasures, and we will be the ones to bring them to the fore once again, to show that our civilisation is not a joke. This will be a momentous occasion.
+			</p><p><b>2554-11-29</b>
+			</p><p>The dig team have located a small structure 2.3km SSW of the shuttle dock. Upon further investigation, the entire hill upon which it sits appears to have been artificially constructed! Further survey equipment is en-route, initial scans indicate some sort of vast complex beneath, and the team believe they may have found the entrance.
+			</p><p><b>2554-12-01</b>
+			</p><p>Well, they found the entrance. A great stone door with a lead seal. We have yet to translate the markings. Probably telling us to stay out, but since when have our people ever done that? Honk.
+			</p><p><b>2554-12-02</b>
+			</p><p>The dig team have reported vast halls filled with writings, huge inscriptions upon the far wall facing the door - the images are truly breathtaking! I haven't seen a translation, but the markings on the door apparently warned of some terrible curse. It doesn't seem to have dissuaded the dig team though. If anything, they're in better spirits than ever.
+			</p><p><b>2554-12-04</b>
+			</p><p>Security had to break up a fight in the mess today. One of the archaeologists had a joke to tell and became violent upon being told we'd probably heard it before. Ruffled everyone's feathers a bit, but everyone seemed to laugh it off.
+			</p><p><b>2554-12-07</b>
+			</p><p>Security was stepped up to condition blue today. Something about the joke, the crew are getting obsessed with it, graffiti on the walls, smashing windows and screaming over comms. Tooters and I didn't hear what they said, what little we did make out was.. just noise. Medical have been doing what they can, but so far haven't isolated any kind of virus.
+			</p><p><b>2554-12-08:1</b>
+			</p><p>Red alert authorised by Captain Honkington and First Officer Tooters. Things have progressed to a full-on riot. Contact with medical has been lost.
+			</p><p>It's the joke, they brought them there, passed it on, the doctors heard it. Warden Clankers managed to get the earmuffs from the firing range, we're going to try and make a break for the launch.
+			</p><p><b>2554-12-08:2</b>
+			</p><p>Dear god, they got Tooters. Pulled the earmuffs right off his head and screamed in his ears, the poor sod just started.. giggling. Clankers and I got away, we're holed up in the engine room.
+			</p><p>We're going to rig the engines to blow. God, code Delta? How did a joke come to this?
+			</p><p><b>Date unknown</b>
+			</p><p>Clankers didn't make it. Last I saw, he was shutting off the coolant and pouring plasma into the gas mix, then... nothing but fire. I just managed to make it to the launch before the core blew, didn't even reach the cockpit, just hit the emergency boosters. I have no idea what the hell they found down there, what sort of thing could twist a crew of upstanding clowns into such... parodies of their former selves. I don't know how long I've been drifting, it could be days and I haven't been able to bring myself to even take the helm. I can only hope that whatever horrible secrets they dug up down there died with them.
+			</p><p><b>Date unknown</b>
+			</p><p>I just heard a noise. Oh god, please let me be alone.
+			</p><p><b>Date unknown</b>
+			</p><p>Oh god they're here. Some of them made it, I can hear them. What the hell did I do to deserve this? I can't even count the sounds, there must be over a dozen of them, dear god how did they fit so many of them into that tiny cockpit?
+			</p><p>Oh holy honkmonther preserve me, this isn't funny. This isn't funny at a-
+			</p><p>HONK</p>
+			<b>//END//</b>"}
