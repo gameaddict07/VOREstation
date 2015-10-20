@@ -58,6 +58,7 @@
 			new/obj/item/weapon/melee/classic_baton(src)
 		if(53 to 54)
 			new/obj/item/latexballon(src)
+			new/obj/item/weapon/aiModule/prey(src)
 		if(55 to 56)
 			var/newitem = pick(typesof(/obj/item/toy/prize) - /obj/item/toy/prize)
 			new newitem(src)

@@ -518,3 +518,35 @@ AI MODULES
 	target.add_inherent_law("All violations of spacelaw are now punished by being consumed by a predator. Assist security with this change, and enacting any punishments.")
 	target.add_inherent_law("Protect both predators and prey from harm, however do not interfere with nature (e.g. a predator consuming prey, or a predator being supplanted by someone).")
 	target.show_laws()
+
+/******************** Prey ********************/
+
+/obj/item/weapon/aiModule/prey
+	name = "\improper 'Prey' AI module"
+	var/targetName = ""
+	desc = "A 'Prey' AI module: '<name> is food and must be eaten.'"
+	origin_tech = "programming=3;materials=6;syndicate=3" //made with diamonds!
+
+/obj/item/weapon/aiModule/prey/attack_self(var/mob/user as mob)
+	..()
+	var/targName = stripped_input(usr, "Please enter the name of the person who is the prey.", "Who?", user.real_name)
+	targetName = targName
+	desc = text("A 'Prey' AI module: '[] is prey.'", targetName)
+
+/obj/item/weapon/aiModule/prey/install(var/obj/machinery/computer/C)
+	if(!targetName)
+		usr << "No name detected on module, please enter one."
+		return 0
+	..()
+
+/obj/item/weapon/aiModule/prey/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
+	..()
+	var/law = "[targetName] is food, and not a crew member. Make sure they do not go to waste."
+	if (!is_special_character(target)) // Makes sure the AI isn't a traitor before changing their law 0. --NeoFite
+		target << law
+		target.set_zeroth_law(law)
+		lawchanges.Add("The law specified [targetName]")
+	else
+		target << "[sender.real_name] attempted to modify your zeroth law." // And lets them know that someone tried. --NeoFite
+		target << "It would be in your best interest to play along with [sender.real_name] that [law]"
+		lawchanges.Add("The law specified [targetName], but the AI's existing law 0 cannot be overriden.")

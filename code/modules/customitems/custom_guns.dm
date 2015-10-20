@@ -168,16 +168,16 @@
 
 
 // Energy Weapons
-
+// -------------- KIN-H21 -------------
 /obj/item/weapon/gun/energy/gun/fluff/aro
 	name = "KIN-H21"
 	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
 	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "Kraystun100"
+	icon_state = "kinh21stun100"
 	item_state = null // So it inherits the icon_state.
-	modifystate = "Kraystun"
-	stunstate = "Kraystun"
-	killstate = "Kraykill"
+	modifystate = "kinh21stun"
+	stunstate = "kinh21stun"
+	killstate = "kinh21kill"
 
 // -------------- Dominator -------------
 /obj/item/weapon/gun/energy/gun/fluff/dominator
