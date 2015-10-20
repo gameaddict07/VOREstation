@@ -54,11 +54,10 @@ obj/item/weapon/gun/energy/retro
 	item_state = null
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	origin_tech = "combat=4;materials=3;powerstorage=3"
-	slot_flags = SLOT_BELT|SLOT_BACK
+	slot_flags = SLOT_BACK
+	w_class = 4
 	projectile_type = /obj/item/projectile/beam/heavylaser
-	charge_cost = 100 // 50% more damage, so 50% less shots.
-	charge_cost = 250
-	fire_delay = 20
+	charge_cost = 50
 
 /obj/item/weapon/gun/energy/lasercannon/mounted
 	name = "mounted laser cannon"
