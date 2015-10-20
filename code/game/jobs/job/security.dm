@@ -128,7 +128,7 @@
 	flag = OFFICER
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 3
+	total_positions = 5
 	spawn_positions = 3
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
