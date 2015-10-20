@@ -57,7 +57,7 @@
 	name = "lava"
 	icon_state = "lava"
 	density = 1
-	luminocity = 3
+	luminosity = 3
 
 /obj/structure/HonkMother
 	name = "The Honk Mother"
