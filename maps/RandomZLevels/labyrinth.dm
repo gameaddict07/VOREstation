@@ -10,6 +10,10 @@
 	icon_state = "blue"
 
 /area/awaymission/labyrinth/temple
+	icon_state = "away"
+	ambience = null // Todo: Add better ambience.
+
+/area/awaymission/labyrinth/temple/entry
 	icon_state = "chapel"
 	ambience = list('sound/music/TheClownChild.ogg')
 
@@ -91,7 +95,8 @@
 		safe = 0
 	if(prob(33))
 		locked = 1
-
+	if(prob(50)
+		secured_wires = 0
 
 
 
