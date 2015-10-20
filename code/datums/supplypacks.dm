@@ -851,12 +851,17 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	access = access_armory
 	group = "Security"
 
-/datum/supply_packs/SVD
+/datum/supply_packs/svd
 	name = "Ballistic Sharpshooter Crate"
 	contains = list(/obj/item/weapon/gun/projectile/SVD,
 					/obj/item/weapon/gun/projectile/SVD,
 					/obj/item/ammo_magazine/SVD,
 					/obj/item/ammo_magazine/SVD)
+	cost = 90
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Ballistic marksman crate"
+	access = access_armory
+	group = "Security"
 
 /datum/supply_packs/shotgunpellets
 	name = "Buckshot crate"
