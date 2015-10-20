@@ -95,7 +95,7 @@
 		safe = 0
 	if(prob(33))
 		locked = 1
-	if(prob(50)
+	if(prob(50))
 		secured_wires = 0
 
 
