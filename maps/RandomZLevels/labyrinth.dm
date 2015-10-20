@@ -57,6 +57,7 @@
 	name = "lava"
 	icon_state = "lava"
 	density = 1
+	luminocity = 3
 
 /obj/structure/HonkMother
 	name = "The Honk Mother"
@@ -106,7 +107,7 @@
 	icon_state = "cluwne"
 	initial_icon = "cluwne"
 	step_in = 2
-	health = 200
+	health = 300
 	deflect_chance = 60
 	internal_damage_threshold = 60
 	damage_absorption = list("brute"=1.2,"fire"=1.5,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
