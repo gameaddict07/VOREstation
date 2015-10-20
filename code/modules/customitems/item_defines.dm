@@ -2332,3 +2332,9 @@
 /obj/item/weapon/melee/fluff/holochain/Zippy
 	name = "Mistress Holographic Chain"
 	desc = "A High Tech solution to simple perversions. It has a red leather handle and a message on the silver base. 'To Zippy, with love, R.D.'"
+
+/obj/item/device/modkit_single/fluff/zekechimera // zekesturm:Sarah Arachi Lacecraft
+	name = "Sarah's RD rig modkit"
+	desc = "A kit containing all the tools and parts to modify an AMI rigsuit. It looks rather alien."
+	from_object = /obj/item/weapon/rig/hazmat
+	to_object = /obj/item/weapon/rig/fluff/zeke_sturm
