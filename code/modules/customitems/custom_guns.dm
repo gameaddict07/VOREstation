@@ -109,15 +109,6 @@
 	name = "\improper ZM Kar 1"
 	desc = "A reproduction of an old ZM Kar 1 Rifle from the Autocratic East Europan Imperial Alliance of Gaia. Popular among imperials and collectors within the Federation and its allies. Uses 7.62mm ammo."
 
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For target practice
-	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm ammo."
-	ammo_type = /obj/item/ammo_casing/a762/chalk
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
-	name = "ceremonial bolt-action rifle"
-	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen. Uses 7.62mm ammo."
-	ammo_type = /obj/item/ammo_casing/a762/blank
-
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
 	name = "'Wicked Butterfly' ZM Kar 1"

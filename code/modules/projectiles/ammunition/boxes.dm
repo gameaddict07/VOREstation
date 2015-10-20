@@ -239,7 +239,6 @@
 	desc = "A clip of 7.62mm rifle rounds."
 	icon_state = "762"
 	ammo_type = /obj/item/ammo_casing/a762
-	mag_type = MAGAZINE|SPEEDLOADER
 	max_ammo = 5
 	caliber = "a762"
 	multiple_sprites = 1
