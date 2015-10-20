@@ -243,7 +243,7 @@
 #define slot_legs        21
 #define slot_tie         22
 
-// Mob sprite sheets. These need to be strings as numbers 
+// Mob sprite sheets. These need to be strings as numbers
 // cannot be used as associative list keys.
 #define icon_l_hand		"slot_l_hand"
 #define icon_r_hand		"slot_r_hand"
@@ -517,7 +517,7 @@
 
 #define R_MAXPERMISSION 32768 // This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
-// Preference toggles.
+// Saved Preference toggles.
 #define SOUND_ADMINHELP 1
 #define SOUND_MIDI      2
 #define SOUND_AMBIENCE  4
@@ -536,6 +536,11 @@
 #define CHAT_NOICONS    32768
 
 #define TOGGLES_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC)
+
+// Runtime Preference Toggles
+#define CHAT_RLOOC		1
+
+#define RUNTIME_TOGGLES_DEFAULT (CHAT_RLOOC)
 
 #define BE_TRAITOR    1
 #define BE_OPERATIVE  2

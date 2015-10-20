@@ -38,6 +38,9 @@ datum/preferences
 	var/last_ip
 	var/last_id
 
+	// Runtime preference flags (not saved!)
+	var/runtime_toggles = RUNTIME_TOGGLES_DEFAULT
+
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
