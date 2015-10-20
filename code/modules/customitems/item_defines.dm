@@ -1958,6 +1958,7 @@
 	desc = "A box of stuff owned by Jeremiah 'Ace' Acacius."
 	New()
 		new /obj/item/weapon/storage/pill_bottle/fluff/acepills(src)
+		new /obj/item/clothing/accessory/medal/gold/heroism(src)
 		new /obj/item/fluff/permit/jerace(src)
 		..()
 		return
