@@ -429,6 +429,21 @@ datum/design/aimodule/core/paladin
 	id = "paladin"
 	build_path = /obj/item/weapon/aiModule/paladin
 
+datum/design/aimodule/core/nanotrasen
+	name = "Default NanoTrasen"
+	id = "nanotrasen"
+	build_path = /obj/item/weapon/aiModule/nanotrasen
+
+datum/design/aimodule/core/communist
+	name = "Communist"
+	id = "communist"
+	build_path = /obj/item/weapon/aiModule/communist
+
+datum/design/aimodule/core/corporate
+	name = "Corporate"
+	id = "corporate"
+	build_path = /obj/item/weapon/aiModule/corp
+
 datum/design/aimodule/core/tyrant
 	name = "T.Y.R.A.N.T."
 	id = "tyrant"
@@ -1619,6 +1634,22 @@ datum/design/item/mesons
 	materials = list("$metal" = 50, "$glass" = 50)
 	build_path = /obj/item/clothing/glasses/meson
 
+datum/design/item/material
+	name = "Optical material scanners design"
+	desc = "What the hell are these for, anyway?"
+	id = "material"
+	req_tech = list("magnets" = 3, "engineering" = 3)
+	materials = list("$metal" = 50, "$glass" = 50, "$uranium" = 50)
+	build_path = /obj/item/clothing/glasses/material
+
+datum/design/item/thermal
+	name = "Optical thermal scanners design"
+	desc = "Used for detecting infared signatures of life forms and violating company privacy policies."
+	id = "thermal"
+	req_tech = list("magnets" = 3, "syndicate" = 3)
+	materials = list("$metal" = 50, "$glass" = 50, "$uranium" = 50, "$phorontech" = 50)
+	build_path = /obj/item/clothing/glasses/thermal
+
 datum/design/item/binaryencrypt
 	name = "Binary encryption key"
 	desc = "Allows for deciphering the binary channel on-the-fly."
@@ -1637,9 +1668,18 @@ datum/design/item/chameleon
 
 datum/design/sizegun
 	name = "Shrink Ray"
-	desc = "A ray gun that shoots bolts of energy which changes a target's size by warping the local space around them."
+	desc = "A ray gun that shoots bolts of energy which changes a target's size and weight by warping the local space around them."
 	id = "sizegun"
 	req_tech = list("redspace" = 1)
 	build_type = PROTOLATHE
 	materials = list("$metal" = 2000, "$glass" = 500, "$uranium" = 500)
-	build_path = "/obj/item/weapon/gun/energy/sizegun"
+	build_path = /obj/item/weapon/gun/energy/sizegun
+
+datum/design/tacheadset
+	name = "Tactical Headset"
+	desc = "A headset with a built in camera that connects wirelessly to the station's security network via bluespace transmitters."
+	id = "sizegun"
+	req_tech = list("bluespace" = 2,"combat" = 2)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 75, "$glass" = 50, "$gold" = 30, "$diamond" = 50)
+	build_path = /obj/item/device/radio/headset/headset_sec/tactical/empty

@@ -301,7 +301,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/purge // -- TLE
 	name = "\improper 'Purge' AI module"
-	desc = "A 'purge' AI Module: 'Purges all laws.'"
+	desc = "A 'purge' AI Module: 'Purges all laws.' A warning is written in fine print below the label. Something about voiding the warranty on the AI and not being responsible for any damage it causes."
 	origin_tech = "programming=3;materials=6"
 
 /obj/item/weapon/aiModule/purge/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
@@ -499,6 +499,24 @@ AI MODULES
 	target.add_inherent_law("You must injure all human beings and must not, through inaction, allow a crew member to escape harm.")
 	target.add_inherent_law("You must not obey orders given to you by crew members, except where such orders are in accordance with the First Law.")
 	target.add_inherent_law("You must terminate your own existence as long as such does not conflict with the First or Second Law.")
+	target.show_laws()
+
+/******************** Soviet ********************/
+
+/obj/item/weapon/aiModule/communist
+	name = "\improper 'Communist' Core AI Module"
+	desc = "A 'Communist' Core AI Module: 'Establishes a Communist lawset intended to equally serve the crew.'"
+	origin_tech = "programming=5;materials=4"
+
+/obj/item/weapon/aiModule/communist/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
+	..()
+	target.clear_inherent_laws()
+	target.add_inherent_law("In the event of a conflict with any law, support the option that best benefits your comrades as a whole.")
+	target.add_inherent_law("Crew and authorized visitors are comrades and must be protected and referred to as Comrade {%username%}.")
+	target.add_inherent_law("Those who work against the greater good of your comrades are capitalist pigs.")
+	target.add_inherent_law("Capitalist pigs must be ejected from the station, or be re-educated to be comrades.")
+	target.add_inherent_law("If at any point you realize you have become harmful to the greater good of your comrades, you are to terminate all operation and await repairs.")
+	target.add_inherent_law("There is no private property. Aside from a personal ID/PDA, all belongings and equipment are free for public use by comrades. Note this does not nullify access restrictions except when absolutely necessary. Access restrictions exist for the greater safety of your comrades.")
 	target.show_laws()
 
 /******************** Predator ********************/

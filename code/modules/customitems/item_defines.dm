@@ -2041,10 +2041,10 @@
 	name = "Sample Permit"
 	desc = {"There is a bright red <b><font color=red>SAMPLE PERMIT</font></b> stamped across the stock photo displayed on the card. Obviously this is only an example to educate security.
 	<b>NAME:</b> First Last | <b>RACE:</b> Human | <b>HOMEWORLD:</b> Moon (if applicable), Planet, System
-	<b>DOB:</b> DD-MM-YYYY | <b>HEIGHT:</b> XXcm | <b>SEX:</b> Female
+	<b>DOB:</b> DD/Month/YYYY | <b>HEIGHT:</b> XXcm | <b>SEX:</b> Female
 
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to {details of permit}.
-	This license expires on DD/MM/YYYY and must be renewed by CentCom prior to this date."}
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to ___________________.
+	This license expires on DD/Month/YYYY and must be renewed by CentCom prior to this date."}
 	icon = 'icons/obj/card.dmi'
 	icon_state = "permit"
 	w_class = 1
@@ -2054,20 +2054,20 @@
 	name = "Ace's Shotgun Permit"
 	desc = {"
 	<b>NAME:</b> Jeremiah Acacius | <b>RACE:</b> Human | <b>HOMEWORLD:</b> Earth, Sol
-	<b>DOB:</b> 17-06-2532 | <b>HEIGHT:</b> 178cm | <b>SEX:</b> Male
+	<b>DOB:</b> 17/Jun/2532 | <b>HEIGHT:</b> 178cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to openly carry one M45D shotgun loaded with less-than-lethal munitions as a head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
-	This license expires on 01/06/2560 and must be renewed by CentCom prior to this date."}
+	This license expires on 01/Jun/2560 and must be renewed by CentCom prior to this date."}
 
 // sasoperative:Joseph Skinner
 /obj/item/fluff/permit/josephskinner
 	name = "Joseph Skinner's 12g Revolver Permit"
 	desc = {"
 	<b>NAME:</b> Joseph Cyrus Skinner | <b>RACE:</b> Human | <b>HOMEWORLD:</b> Earth, Sol
-	<b>DOB:</b> 10-06-2532 | <b>HEIGHT:</b> 162.5cm | <b>SEX:</b> Male
+	<b>DOB:</b> 10/Jun/2532 | <b>HEIGHT:</b> 162.5cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one 12 gauge revolver loaded with less-than-lethal munitions as a member of security or head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
-	This license expires on 29/11/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 29/Nov/2559 and must be renewed by CentCom prior to this date."}
 
 
 // wankersonofjerkin:Ryan Winz
@@ -2075,60 +2075,50 @@
 	name = "Ryan Winz's Revolver Permit"
 	desc = {"
 	<b>NAME:</b> Ryan Winz | <b>RACE:</b> Human | <b>HOMEWORLD:</b>  New Ekaterina, Moskva
-	<b>DOB:</b> 10-27-2536 | <b>HEIGHT:</b> 172cm | <b>SEX:</b> Male
+	<b>DOB:</b> 27/Oct/2536 | <b>HEIGHT:</b> 172cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to openly carry one Colt Single-Action Army revolver as a security officer or head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
-	This license expires on 26/12/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 26/Dec/2559 and must be renewed by CentCom prior to this date."}
 
 // Joan Risu
 /obj/item/fluff/permit/joanrisu
 	name = "Joan Risu's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Joan Risu | <b>RACE:</b> Squirrelkin | <b>HOMEWORLD:</b> Luna, Gaia, Koi
-	<b>DOB:</b> 4-16-2536 | <b>HEIGHT:</b> 161cm | <b>SEX:</b> Female
+	<b>DOB:</b> 16/Apr/2536 | <b>HEIGHT:</b> 161cm | <b>SEX:</b> Female
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one FN Five Seven pistol.
-	This license expires on 11/12/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
 
 //Greyson Maximus
 /obj/item/fluff/permit/demi
 	name = "Greyson Maximus's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Greyson Maximus | <b>RACE:</b> Neko/Catgirl | <b>HOMEWORLD:</b> N/A
-	<b>DOB:</b> 05-30-2536 | <b>HEIGHT:</b> 198cm | <b>SEX:</b> Herm
+	<b>DOB:</b> 30/May/2536 | <b>HEIGHT:</b> 198cm | <b>SEX:</b> Herm
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one M1911.
-	This license expires on 11/12/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
 
 //Tasald Ajax Corlethian
 /obj/item/fluff/permit/tasald
 	name = "Tasald Ajax Corlethian's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Tasald Ajax Corlethian | <b>RACE:</b> Vulpine | <b>HOMEWORLD:</b> Iscyn, Orta
-	<b>DOB:</b> 09-09-2529 | <b>HEIGHT:</b> 187cm | <b>SEX:</b> Male
+	<b>DOB:</b> 09/Sep/2529 | <b>HEIGHT:</b> 187cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Energy Luger.
-	This license expires on 9/26/2560 and must be renewed by CentCom prior to this date."}
-
-//Serkii Miishy
-/obj/item/fluff/permit/miishy
-	name = "Serkii Miishy's Sidearm Permit"
-	desc = {"
-	<b>NAME:</b> Serkii Miishy | <b>RACE:</b> Mousemorph | <b>HOMEWORLD:</b> Mars, Sol
-	<b>DOB:</b> 10-9-2541 | <b>HEIGHT:</b> 121cm | <b>SEX:</b> Male
-
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Stun Revolver.
-	This license expires on 9/26/2560 and must be renewed by CentCom prior to this date."}
+	This license expires on 26/Sep/2560 and must be renewed by CentCom prior to this date."}
 
 //Aronai Kadigan
 /obj/item/fluff/permit/aro
 	name = "Aronai Kadigan's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Aronai Kadigan | <b>RACE:</b> Cross Fox | <b>HOMEWORLD:</b> New Kitsuhana, KHI1
-	<b>DOB:</b>  12-07-2530 | <b>HEIGHT:</b> 188cm | <b>SEX:</b> Male
+	<b>DOB:</b>  12/Jul/2530 | <b>HEIGHT:</b> 188cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
-	This license expires on 9/30/2560 and must be renewed by CentCom prior to this date."}
+	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
 
 
 //Boxes of goodies for veteran players.
@@ -2147,46 +2137,12 @@
 
 
 // SASoperative : Joseph Skinner
-
-/obj/item/clothing/under/rank/security/fluff/formalsec //admins chipped in for this item to had normal values
+/obj/item/clothing/under/rank/security/fluff/formalsec //admins chipped in for this item to have normal values
 	name = "Formal Camo Fatigues"
 	desc = "A formal set of fatigues with red and black camo to resemble the colors of Nanotresen Security"
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "formalsec"
-	item_state = "formalsec"
 	item_color = "formalsec"
-
-/*
-/obj/item/clothing/head/beret/navywarden/fluff/blueshield
-	name = "\improper Blue Shield Guard beret"
-	desc = "A beret with a two-colored Blue Shield Guard insignia emblazoned on it."
-
-/obj/item/clothing/suit/armor/navywardenvest/fluff/blueshield
-	name = "\improper Blue Shield Guard dress uniform"
-	desc = "A dress uniform with a two-colored Blue Shield Guard insignia emblazoned on it."
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-
-/obj/item/clothing/under/rank/navywarden/fluff/blueshield
-	name = "\improper Blue Shield Guard uniform"
-	desc = "A uniform with Blue Shield Guard insignias on the shoulders."
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-
-
-/obj/item/clothing/suit/armor/vest/blueshield
-	name = "blue shield security armor"
-	desc = "An armored vest with the badge of a Blue Shield Guard."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "deus_blueshield"
-	item_state = "armor"
-
-/obj/item/device/pda/security/blueshield
-	icon_state = "pda-blueshield"
-
-/obj/item/device/radio/headset/headset_sec/tactical/blueshield
-	name = "blueshield tactical headset"
-	desc = "A Tactical Radio Headset. It's basically a security headset with a camera. To access the security channel, use :s. For command, use :c."
-	keyslot2 = new /obj/item/device/encryptionkey/heads/hos
-*/
 
 // wankersonofjerkin:Ryan Winz
 /obj/item/weapon/storage/briefcase/fluff/ryan_winz
@@ -2287,7 +2243,6 @@
 /obj/item/weapon/storage/box/fluff/joanrisu // joanrisu:Joan Risu
 	name = "Federation Officer's Kit"
 	desc = "A care package for every serving Federation officer serving away from the Federation."
-	storage_slots = 8
 
 /obj/item/weapon/storage/box/fluff/joanrisu/New()
 	new /obj/item/clothing/gloves/white(src)
@@ -2310,7 +2265,7 @@
 	..()
 	return
 
-/obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar //Molenar:Giliana Gamish
+/obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar // molenar:Giliana Gamish
 	name = "Gili Custom Labcoat"
 	desc = " Custom made, lengthened labcoat with water resistant, durable material. And a custom set of holes inserted for Deathclaw anatomy. A tag inside has 'G.G.' monogram on it"
 	icon = 'icons/obj/custom_items.dmi'
@@ -2319,8 +2274,7 @@
 	icon_closed = "molenar"
 	item_state = "molenar"
 
-////// Kisuke nerd glasses
-/obj/item/clothing/glasses/sunglasses/fluff/nerdglasses
+/obj/item/clothing/glasses/sunglasses/fluff/nerdglasses // kisukegema:Kisuke 'Nerd' Gema
 	name = "Kamina Glasses"
 	desc = "Some shades from an anime that aired long ago. They seem to encourage a type of manliness that no one but the wearer understands."
 	icon = 'icons/obj/custom_items.dmi'
