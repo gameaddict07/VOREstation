@@ -19,7 +19,7 @@
 	desc = "A Nanotrasen-designed rigsuit designed for regional/centcom medical staff."
 	icon_state = "ccmed_rig"
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 60, bomb = 30, bio = 100, rad = 100)
-	slowdown = 3
+	slowdown = 1
 	offline_vision_restriction = 1
 
 	allowed = list(/obj/item/device/flashlight,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/backpack,/obj/item/roller,/obj/item/weapon/storage/firstaid)
