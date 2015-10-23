@@ -164,6 +164,17 @@
 		if((0 < beard) && (beard <= facial_hair_styles_list.len))
 			H.f_style = facial_hair_styles_list[beard]
 
+		//Ears
+		var/ears = dna.GetUIValueRange(DNA_UI_EAR_STYLE,ear_styles_list.len)
+		if((0 < ears) && (ears <= ear_styles_list.len))
+			H.ear_style = ear_styles_list[ear_styles_list[ears]]
+
+		//Tail
+		var/tail = dna.GetUIValueRange(DNA_UI_TAIL_STYLE,tail_styles_list.len)
+		if((0 < tail) && (tail <= tail_styles_list.len))
+			H.tail_style = tail_styles_list[tail_styles_list[tail]]
+
+
 		H.update_body(0)
 		H.update_hair()
 

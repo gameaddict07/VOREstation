@@ -747,3 +747,18 @@
 		icon_state = "default"
 		icon = 'icons/mob/human_races/r_skrell.dmi'
 		species_allowed = list("Skrell")
+
+/*
+////////////////////////////
+/  =--------------------=  /
+/  == Tail Definitions ==  /
+/  =--------------------=  /
+////////////////////////////
+*/
+/datum/sprite_accessory/tail
+	var/tailsarecool = 1
+
+/datum/sprite_accessory/tail/invisible
+	name = "Hide species-sprite tail"
+	icon = null
+	icon_state = null

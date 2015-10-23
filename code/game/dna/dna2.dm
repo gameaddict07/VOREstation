@@ -33,7 +33,10 @@
 #define DNA_UI_GENDER      14
 #define DNA_UI_BEARD_STYLE 15
 #define DNA_UI_HAIR_STYLE  16
-#define DNA_UI_LENGTH      16 // Update this when you add something, or you WILL break shit.
+#define DNA_UI_EAR_STYLE   17
+#define DNA_UI_TAIL_STYLE  18
+#define DNA_UI_TAUR_BODY   19
+#define DNA_UI_LENGTH      19 // Update this when you add something, or you WILL break shit.
 
 #define DNA_SE_LENGTH 27
 // For later:
@@ -129,6 +132,17 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		character.f_style = "Shaved"
 	var/beard	= facial_hair_styles_list.Find(character.f_style)
 
+	// Demi Ears
+	var/ear_style = 0
+	if(character.ear_style)
+		ear_style = ear_styles_list.Find(character.ear_style.type)
+
+	// Demi Tails
+	var/tail_style = 0
+	if(character.tail_style)
+		tail_style = tail_styles_list.Find(character.tail_style.type)
+
+
 	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
 	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)
 	SetUIValueRange(DNA_UI_HAIR_B,    character.b_hair,    255,    1)
@@ -149,8 +163,10 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 	SetUIState(DNA_UI_GENDER,         character.gender!=MALE,        1)
 
-	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  hair_styles_list.len,       1)
-	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
+	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  		hair_styles_list.len,       1)
+	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, 		facial_hair_styles_list.len,1)
+	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style,	ear_styles_list.len,		1)
+	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style,	tail_styles_list.len,		1)
 
 	UpdateUI()
 

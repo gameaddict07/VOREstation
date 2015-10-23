@@ -426,6 +426,23 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 
+	if(ear_style && !(head && (head.flags & BLOCKHEADHAIR)))
+		var/icon/ears_s
+		if(istype(ear_style,/obj/item/clothing/head/accessory)) // Needed for kitty ears and others to change color.
+			var/obj/item/clothing/head/accessory/temp = src.ear_style
+			temp.update_icon(src)
+			ears_s = icon("icon" = temp.mob)
+		else
+			if(ear_style.icon_override)
+				ears_s = icon("icon" = ear_style.icon_override, "icon_state" = ear_style.icon_state)
+			else if(ear_style.sprite_sheets && ear_style.sprite_sheets[species.name])
+				ears_s = icon("icon" = ear_style.sprite_sheets[species.name], "icon_state" = ear_style.icon_state)
+			else
+				ears_s = icon("icon" = 'icons/mob/head.dmi', "icon_state" = ear_style.icon_state)
+
+		//ears_s = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
+		face_standing.Blend(ears_s, ICON_OVERLAY)
+
 	overlays_standing[HAIR_LAYER]	= image(face_standing)
 
 	if(update_icons)   update_icons()
@@ -932,13 +949,16 @@ proc/get_damage_icon_part(damage_state, body_part)
 		taur_s.Blend(rgb(r_taur, g_taur, b_taur), ICON_MULTIPLY) //Note, this could be moved to the switch above if needed, but currently every taur uses _MULTIPLY
 		overlays_standing[TAIL_LAYER] = image(taur_s, "pixel_x" = (-16*playerscale)) //Apply taur to overlays, with required pixel offset applied.
 
-	else
-		if(species.tail)
-			if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
-				var/icon/tail_s = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[species.tail]_s")
-				tail_s.Blend(rgb(r_skin, g_skin, b_skin), ICON_MULTIPLY) //changed icon add to multiply. Orbis
+	else if(src.tail_style)
+		if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
+			var/icon/tail_s = new/icon("icon" = src.tail_style.icon, "icon_state" = src.tail_style.icon_state)
+			overlays_standing[TAIL_LAYER] = image(tail_s)
 
-				overlays_standing[TAIL_LAYER]	= image(tail_s)
+	else if(species.tail)
+		if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
+			var/icon/tail_s = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[species.tail]_s")
+			tail_s.Blend(rgb(r_skin, g_skin, b_skin), ICON_MULTIPLY) //changed icon add to multiply. Orbis
+			overlays_standing[TAIL_LAYER] = image(tail_s)
 
 	if(update_icons)
 		update_icons()

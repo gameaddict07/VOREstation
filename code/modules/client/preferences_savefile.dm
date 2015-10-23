@@ -110,6 +110,8 @@
 	S["custom_species"]		>> custom_species
 	S["language"]			>> language
 	S["taur"]				>> taur
+	S["ear_style"]			>> ear_style
+	S["tail_style"]			>> tail_style
 	S["spawnpoint"]			>> spawnpoint
 
 	//colors to be consolidated into hex strings (requires some work with dna code)
@@ -232,6 +234,9 @@
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	b_type			= sanitize_text(b_type, initial(b_type))
+	if(ear_style) ear_style	= sanitize_inlist(ear_style,ear_styles_list,initial(ear_style))
+	if(tail_style) tail_style = sanitize_inlist(tail_style,tail_styles_list,initial(tail_style))
+
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -275,6 +280,8 @@
 	S["custom_species"]		<< custom_species
 	S["language"]			<< language
 	S["taur"]				<< taur
+	S["ear_style"]			<< ear_style
+	S["tail_style"]			<< tail_style
 	S["hair_red"]			<< r_hair
 	S["hair_green"]			<< g_hair
 	S["hair_blue"]			<< b_hair
