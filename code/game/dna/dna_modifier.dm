@@ -40,7 +40,7 @@
 	name = "\improper DNA modifier"
 	desc = "It scans DNA structures."
 	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "scanner_0"
+	icon_state = "scanner_default"
 	density = 1
 	anchored = 1.0
 	use_power = 1
@@ -51,6 +51,10 @@
 	var/mob/living/carbon/occupant = null
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
 	var/opened = 0
+	// Upgradable Stats
+	var/damage_coeff	// Rating of Lasers - TODO - Reduce damage when irradiating subjects
+	var/scan_level		// Rating of Scanner - TODO - Fully upgrading allows auto-scanning or auto-cloning.
+	var/precision_coeff	// Rating of Manipulator - TODO - Increase accuracy of modifying DNA
 
 /obj/machinery/dna_scannernew/New()
 	..()
@@ -63,6 +67,25 @@
 	component_parts += new /obj/item/stack/cable_coil(src)
 	component_parts += new /obj/item/stack/cable_coil(src)
 	RefreshParts()
+
+/obj/machinery/dna_scannernew/RefreshParts()
+	scan_level = 0
+	damage_coeff = 0
+	precision_coeff = 0
+	for(var/obj/item/weapon/stock_parts/scanning_module/P in component_parts)
+		scan_level += P.rating
+	for(var/obj/item/weapon/stock_parts/manipulator/P in component_parts)
+		precision_coeff = P.rating
+	for(var/obj/item/weapon/stock_parts/micro_laser/P in component_parts)
+		damage_coeff = P.rating
+
+/obj/machinery/dna_scannernew/update_icon()
+	if (panel_open)
+		icon_state = "scanner_maint"
+	else if (occupant)
+		icon_state = "scanner_occupied"
+	else
+		icon_state = "scanner_default"
 
 /obj/machinery/dna_scannernew/allow_drop()
 	return 0
@@ -116,11 +139,19 @@
 	usr.client.eye = src
 	usr.loc = src
 	src.occupant = usr
-	src.icon_state = "scanner_1"
+	src.update_icon()
 	src.add_fingerprint(usr)
 	return
 
 /obj/machinery/dna_scannernew/attackby(var/obj/item/weapon/item as obj, var/mob/user as mob)
+	if(!occupant)
+		if(default_deconstruction_screwdriver(user, item))
+			return
+		if(default_part_replacement(user, item))
+			return
+		if(default_deconstruction_crowbar(user, item))
+			return
+
 	if(istype(item, /obj/item/weapon/reagent_containers/glass))
 		if(beaker)
 			user << "\red A beaker is already loaded into the machine."
@@ -153,7 +184,7 @@
 		M.client.eye = src
 	M.loc = src
 	src.occupant = M
-	src.icon_state = "scanner_1"
+	src.update_icon()
 
 	// search for ghosts, if the corpse is empty and the scanner is connected to a cloner
 	if(locate(/obj/machinery/computer/cloning, get_step(src, NORTH)) \
@@ -176,7 +207,7 @@
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.loc = src.loc
 	src.occupant = null
-	src.icon_state = "scanner_0"
+	src.update_icon()
 	return
 
 /obj/machinery/dna_scannernew/ex_act(severity)
