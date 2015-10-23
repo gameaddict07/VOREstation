@@ -1666,7 +1666,7 @@ datum/design/item/chameleon
 	materials = list("$metal" = 500)
 	build_path = /obj/item/weapon/storage/box/syndie_kit/chameleon
 
-datum/design/sizegun
+datum/design/item/sizegun
 	name = "Shrink Ray"
 	desc = "A ray gun that shoots bolts of energy which changes a target's size and weight by warping the local space around them."
 	id = "sizegun"
@@ -1675,10 +1675,10 @@ datum/design/sizegun
 	materials = list("$metal" = 2000, "$glass" = 500, "$uranium" = 500)
 	build_path = /obj/item/weapon/gun/energy/sizegun
 
-datum/design/tacheadset
+datum/design/item/tacheadset
 	name = "Tactical Headset"
 	desc = "A headset with a built in camera that connects wirelessly to the station's security network via bluespace transmitters."
-	id = "sizegun"
+	id = "tacheadset"
 	req_tech = list("bluespace" = 2,"combat" = 2)
 	build_type = PROTOLATHE
 	materials = list("$metal" = 75, "$glass" = 50, "$gold" = 30, "$diamond" = 50)
