@@ -107,6 +107,7 @@
 	S["gender"]				>> gender
 	S["age"]				>> age
 	S["species"]			>> species
+	S["custom_species"]		>> custom_species
 	S["language"]			>> language
 	S["taur"]				>> taur
 	S["spawnpoint"]			>> spawnpoint
@@ -271,6 +272,7 @@
 	S["gender"]				<< gender
 	S["age"]				<< age
 	S["species"]			<< species
+	S["custom_species"]		<< custom_species
 	S["language"]			<< language
 	S["taur"]				<< taur
 	S["hair_red"]			<< r_hair

@@ -53,8 +53,11 @@
 				t_him = "her"
 
 	msg += "<EM>[src.name]</EM>"
-	if(species.name != "Human")
-		msg += ", a <b><font color='[species.flesh_color]'>[species.name]</font></b>"
+	if(species.name != "Human" || src.custom_species)
+		if(src.custom_species)
+			msg += ", a <b>[src.custom_species]</b>"
+		else
+			msg += ", a <b><font color='[species.flesh_color]'>[species.name]</font></b>"
 	msg += "!\n"
 
 	//uniform
