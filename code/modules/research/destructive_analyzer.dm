@@ -11,9 +11,9 @@ Note: Must be placed within 3 tiles of the R&D Console
 	name = "destructive analyzer"
 	icon_state = "d_analyzer"
 	var/obj/item/weapon/loaded_item = null
-	var/decon_mod = 1
+	var/decon_mod = 0.3			// 0.3 is the value with three rating 1 parts, the default
 	var/min_reliability = 90
-	
+
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 2500
@@ -29,8 +29,8 @@ Note: Must be placed within 3 tiles of the R&D Console
 
 /obj/machinery/r_n_d/destructive_analyzer/RefreshParts()
 	var/T = 0
-	for(var/obj/item/weapon/stock_parts/S in src)
-		T += S.rating
+	for(var/obj/item/weapon/stock_parts/SP in src.component_parts)
+		T += SP.rating
 	decon_mod = T * 0.1
 	min_reliability = 93 - T
 
