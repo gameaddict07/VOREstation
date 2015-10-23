@@ -10,7 +10,7 @@
 	selection_color = "#dddddd"
 	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
 	minimal_access = list(access_morgue, access_chapel_office, access_crematorium)
-	alt_titles = list("Counselor","Therapist","Priest","Cleric","Divine","Monk","Priestess","Pope")
+	alt_titles = list("Counselor","Therapist","Priest","Cleric","Divine","Monk","Priestess","Imam","Rabbi")
 
 
 	equip(var/mob/living/carbon/human/H)
