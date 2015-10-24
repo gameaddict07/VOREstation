@@ -751,14 +751,37 @@
 /*
 ////////////////////////////
 /  =--------------------=  /
+/  == Ear Definitions  ==  /
+/  =--------------------=  /
+////////////////////////////
+*/
+/datum/sprite_accessory/ears
+	var/earssarecool = 1
+	icon = 'icons/mob/fluff/ears.dmi'
+
+/datum/sprite_accessory/ears/threetail
+	name = "Gold 3-tail kitsune ears"
+	icon_state = "threetail"
+
+
+/*
+////////////////////////////
+/  =--------------------=  /
 /  == Tail Definitions ==  /
 /  =--------------------=  /
 ////////////////////////////
 */
 /datum/sprite_accessory/tail
 	var/tailsarecool = 1
+	icon = 'icons/mob/fluff/tails.dmi'
 
 /datum/sprite_accessory/tail/invisible
 	name = "Hide species-sprite tail"
 	icon = null
 	icon_state = null
+
+/* //Removed until more tails available because everyone will just pick these.
+/datum/sprite_accessory/tail/threetail
+	name = "Gold 3-tail kitsune tails"
+	icon_state = "threetail"
+*/

@@ -432,15 +432,15 @@ proc/get_damage_icon_part(damage_state, body_part)
 			var/obj/item/clothing/head/accessory/temp = src.ear_style
 			temp.update_icon(src)
 			ears_s = icon("icon" = temp.mob)
+		else if(istype(ear_style,/datum/sprite_accessory/ears))
+			ears_s = icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
+		else if(ear_style.icon_override)
+			ears_s = icon("icon" = ear_style.icon_override, "icon_state" = ear_style.icon_state)
+		else if(ear_style.sprite_sheets && ear_style.sprite_sheets[species.name])
+			ears_s = icon("icon" = ear_style.sprite_sheets[species.name], "icon_state" = ear_style.icon_state)
 		else
-			if(ear_style.icon_override)
-				ears_s = icon("icon" = ear_style.icon_override, "icon_state" = ear_style.icon_state)
-			else if(ear_style.sprite_sheets && ear_style.sprite_sheets[species.name])
-				ears_s = icon("icon" = ear_style.sprite_sheets[species.name], "icon_state" = ear_style.icon_state)
-			else
-				ears_s = icon("icon" = 'icons/mob/head.dmi', "icon_state" = ear_style.icon_state)
+			ears_s = icon("icon" = 'icons/mob/head.dmi', "icon_state" = ear_style.icon_state)
 
-		//ears_s = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
 		face_standing.Blend(ears_s, ICON_OVERLAY)
 
 	overlays_standing[HAIR_LAYER]	= image(face_standing)
