@@ -8,7 +8,6 @@
 	var/list/hud_list[9]
 	var/embedded_flag	  	//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/custom_species 		//For anything it needs to be used for
-	var/species_fluff_item	//Because demi ears going in head slot has to stop
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 
