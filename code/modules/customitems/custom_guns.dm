@@ -223,7 +223,7 @@
 	update_held_icon()
 	user << "<span class='warning'>[src.name] is now set to [src.mode_name]"
 
-/obj/item/weapon/gun/energy/gun/fluff/aro/verb/togglepower(mob/living/user as mob)
+/obj/item/weapon/gun/energy/gun/fluff/aro/verb/togglepower()
 	set name = "Toggle KIN-H21"
 	set desc = "Turn the KIN-H21 power on or off."
 	set category = "Object"
@@ -232,13 +232,13 @@
 			turnedoff = 1
 			charge_cost = INFINITY
 			icon_state = "kinh21off"
-			user << "<span class='warning'>[src.name] powered off.</span>"
+			usr << "<span class='warning'>[src.name] powered off.</span>"
 		if(1)
 			turnedoff = 0
 			charge_cost = 125
 			update_icon()
 			update_held_icon()
-			user << "<span class='warning'>[src.name] powered on.</span>"
+			usr << "<span class='warning'>[src.name] powered on.</span>"
 
 /obj/item/weapon/gun/energy/gun/fluff/aro/update_icon()
 	if(charge_meter && !turnedoff)
