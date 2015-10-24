@@ -36,6 +36,13 @@
 	return ser
 
 /////////////////////////// DNA MACHINES
+
+
+//////////////////////////////////////////////////////////////////////
+// DNA Scanner Pod
+// Used both with the cloning computer and the genetics computer.
+//////////////////////////////////////////////////////////////////////
+
 /obj/machinery/dna_scannernew
 	name = "\improper DNA modifier"
 	desc = "It scans DNA structures."
@@ -117,6 +124,12 @@
 	if(!occupant)
 		for(var/mob/M in src)//Failsafe so you can get mobs out
 			M.loc = get_turf(src)
+
+/obj/machinery/dna_scannernew/Bumped(user as mob|obj)
+	if (user == usr)
+		move_inside() // Only if we are actually being walked into by real client
+		return
+	return ..()
 
 /obj/machinery/dna_scannernew/verb/move_inside()
 	set src in oview(1)
@@ -247,6 +260,12 @@
 		for(var/atom/movable/A as mob|obj in src)
 			A.loc = src.loc
 		del(src)
+
+
+//////////////////////////////////////////////////////////////////////
+// DNA Modifier Computer
+// The genetics computer
+//////////////////////////////////////////////////////////////////////
 
 /obj/machinery/computer/scan_consolenew
 	name = "DNA Modifier Access Console"
@@ -480,15 +499,18 @@
 
 	add_fingerprint(usr)
 
+	// Change Menu
 	if (href_list["selectMenuKey"])
 		selected_menu_key = href_list["selectMenuKey"]
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Toggle Lock
 	if (href_list["toggleLock"])
 		if ((src.connected && src.connected.occupant))
 			src.connected.locked = !( src.connected.locked )
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// The "Pulse Radiation" button at the bottom. Gives random good/bad SE block or UI block change
 	if (href_list["pulseRadiation"])
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
@@ -517,6 +539,7 @@
 		src.connected.locked = lock_state
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Set Radiation Duration
 	if (href_list["radiationDuration"])
 		if (text2num(href_list["radiationDuration"]) > 0)
 			if (src.radiation_duration < 20)
@@ -526,6 +549,7 @@
 				src.radiation_duration -= 2
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Set Radiation Intensity
 	if (href_list["radiationIntensity"])
 		if (text2num(href_list["radiationIntensity"]) > 0)
 			if (src.radiation_intensity < 10)
@@ -536,7 +560,9 @@
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	////////////////////////////////////////////////////////
+	// UI (Unique Identifer) Section
 
+	// Increment the UI target value
 	if (href_list["changeUITarget"] && text2num(href_list["changeUITarget"]) > 0)
 		if (src.selected_ui_target < 15)
 			src.selected_ui_target++
@@ -559,6 +585,7 @@
 			src.selected_ui_target_hex = 0
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Decrement the UI target value
 	if (href_list["changeUITarget"] && text2num(href_list["changeUITarget"]) < 1)
 		if (src.selected_ui_target > 0)
 			src.selected_ui_target--
@@ -579,6 +606,7 @@
 			src.selected_ui_target_hex = "F"
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Select the UI block and subblock to change
 	if (href_list["selectUIBlock"] && href_list["selectUISubblock"]) // This chunk of code updates selected block / sub-block based on click
 		var/select_block = text2num(href_list["selectUIBlock"])
 		var/select_subblock = text2num(href_list["selectUISubblock"])
@@ -588,9 +616,8 @@
 			src.selected_ui_subblock = select_subblock
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Iradiate the selected UI Block
 	if (href_list["pulseUIRadiation"])
-		var/block = src.connected.occupant.dna.GetUISubBlock(src.selected_ui_block,src.selected_ui_subblock)
-
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1//lock it
@@ -604,8 +631,8 @@
 			return 1
 
 		if (prob((80 + (src.radiation_duration / 2))))
-			block = miniscrambletarget(num2text(selected_ui_target), src.radiation_intensity, src.radiation_duration)
-			src.connected.occupant.dna.SetUISubBlock(src.selected_ui_block,src.selected_ui_subblock,block)
+			var/newval = miniscrambletarget(num2text(selected_ui_target), src.radiation_intensity, src.radiation_duration)
+			src.connected.occupant.dna.SetUISubBlock(src.selected_ui_block,src.selected_ui_subblock,newval)
 			src.connected.occupant.UpdateAppearance()
 			src.connected.occupant.radiation += (src.radiation_intensity+src.radiation_duration)
 		else
@@ -634,7 +661,9 @@
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	////////////////////////////////////////////////////////
+	// SE (Structual Enzymes) Section
 
+	// Select the SE block and subblock to change
 	if (href_list["selectSEBlock"] && href_list["selectSESubblock"]) // This chunk of code updates selected block / sub-block based on click (se stands for strutural enzymes)
 		var/select_block = text2num(href_list["selectSEBlock"])
 		var/select_subblock = text2num(href_list["selectSESubblock"])
@@ -645,11 +674,8 @@
 		//testing("User selected block [selected_se_block] (sent [select_block]), subblock [selected_se_subblock] (sent [select_block]).")
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Irradiate selected SE block
 	if (href_list["pulseSERadiation"])
-		var/block = src.connected.occupant.dna.GetSESubBlock(src.selected_se_block,src.selected_se_subblock)
-		//var/original_block=block
-		//testing("Irradiating SE block [src.selected_se_block]:[src.selected_se_subblock] ([block])...")
-
 		irradiating = src.radiation_duration
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1 //lock it
@@ -661,10 +687,10 @@
 
 		if(src.connected.occupant)
 			if (prob((80 + (src.radiation_duration / 2))))
-				// FIXME: Find out what these corresponded to and change them to the WHATEVERBLOCK they need to be.
-				//if ((src.selected_se_block != 2 || src.selected_se_block != 12 || src.selected_se_block != 8 || src.selected_se_block || 10) && prob (20))
 				var/real_SE_block=selected_se_block
-				block = miniscramble(block, src.radiation_intensity, src.radiation_duration)
+				var/oldval = src.connected.occupant.dna.GetSESubBlock(src.selected_se_block,src.selected_se_subblock)
+				var/newval = miniscramble(oldval, src.radiation_intensity, src.radiation_duration)
+				// 20% chance of missing and targeting the wrong block!
 				if(prob(20))
 					if (src.selected_se_block > 1 && src.selected_se_block < DNA_SE_LENGTH/2)
 						real_SE_block++
@@ -672,7 +698,7 @@
 						real_SE_block--
 
 				//testing("Irradiated SE block [real_SE_block]:[src.selected_se_subblock] ([original_block] now [block]) [(real_SE_block!=selected_se_block) ? "(SHIFTED)":""]!")
-				connected.occupant.dna.SetSESubBlock(real_SE_block,selected_se_subblock,block)
+				connected.occupant.dna.SetSESubBlock(real_SE_block,selected_se_subblock,newval)
 				src.connected.occupant.radiation += (src.radiation_intensity+src.radiation_duration)
 				domutcheck(src.connected.occupant,src.connected)
 			else
@@ -688,6 +714,7 @@
 		src.connected.locked = lock_state
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
+	// Eject rejuvinators beaker
 	if(href_list["ejectBeaker"])
 		if(connected.beaker)
 			var/obj/item/weapon/reagent_containers/glass/B = connected.beaker
@@ -695,6 +722,7 @@
 			connected.beaker = null
 		return 1
 
+	// Eject occupant
 	if(href_list["ejectOccupant"])
 		connected.eject_occupant()
 		return 1
