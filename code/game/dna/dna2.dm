@@ -191,8 +191,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if (block<=0) return
 	ASSERT(maxvalue<=4095)
 	var/range = (4095 / maxvalue)
-	if(value)
-		SetUIValue(block,round(value * range),defer)
+	SetUIValue(block,round(value * range),defer)
 
 // Getter version of above.
 /datum/dna/proc/GetUIValueRange(var/block,var/maxvalue)
