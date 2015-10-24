@@ -756,12 +756,109 @@
 ////////////////////////////
 */
 /datum/sprite_accessory/ears
-	var/earssarecool = 1
+	name = "You should not see this..."
 	icon = 'icons/mob/fluff/ears.dmi'
+	do_colouration = 0
 
-/datum/sprite_accessory/ears/threetail
-	name = "Gold 3-tail kitsune ears"
-	icon_state = "threetail"
+	var/colored_overlay
+	var/desc = "You should not see this..."
+
+/datum/sprite_accessory/ears/squirrel_orange
+	name = "squirel, orange"
+	desc = ""
+	icon_state = "squirrel-orange"
+
+/datum/sprite_accessory/ears/squirrel_red
+	name = "squirrel, red"
+	desc = ""
+	icon_state = "squirrel-red"
+
+/datum/sprite_accessory/ears/squirrel
+	name = "squirrel, hair-colored"
+	desc = ""
+	icon_state = "squirrel"
+	do_colouration = 1
+
+/datum/sprite_accessory/ears/bunny
+	name = "bunny, hair-colored"
+	desc = ""
+	icon_state = "bunny"
+	do_colouration = 1
+
+/datum/sprite_accessory/ears/bear_brown
+	name = "bear, brown"
+	desc = ""
+	icon_state = "bear-brown"
+
+/datum/sprite_accessory/ears/bear
+	name = "bear, hair-colored"
+	desc = ""
+	icon_state = "bear"
+	do_colouration = 1
+
+/datum/sprite_accessory/ears/wolf_grey
+	name = "wolf, grey"
+	desc = ""
+	icon_state = "wolf-grey"
+
+/datum/sprite_accessory/ears/wolf_green
+	name = "wolf, green"
+	desc = ""
+	icon_state = "wolf-green"
+
+/datum/sprite_accessory/ears/wisewolf
+	name = "wolf, wise"
+	desc = ""
+	icon_state = "wolf-wise"
+
+/datum/sprite_accessory/ears/wolf
+	name = "wolf, hair-colored"
+	desc = ""
+	icon_state = "wolf"
+	do_colouration = 1
+	colored_overlay = "wolfinner"
+
+/datum/sprite_accessory/ears/mouse_grey
+	name = "mouse, grey"
+	desc = ""
+	icon_state = "mouse-grey"
+
+/datum/sprite_accessory/ears/mouse
+	name = "mouse, hair-colored"
+	desc = ""
+	icon_state = "mouse"
+	do_colouration = 1
+	colored_overlay = "mouseinner"
+
+/datum/sprite_accessory/ears/bee
+	name = "bee antennae"
+	desc = ""
+	icon_state = "bee"
+
+/datum/sprite_accessory/ears/molenar_kitsune
+	name = "quintail kitsune ears (Molenar)"
+	desc = ""
+	icon_state = "molenar-kitsune"
+
+/datum/sprite_accessory/ears/molenar_deathclaw
+	name = "deathclaw ears (Molenar)"
+	desc = ""
+	icon_state = "molenar-deathclaw"
+
+/datum/sprite_accessory/ears/runac
+	name = "fennecsune ears (Runac)"
+	desc = ""
+	icon_state = "runac"
+
+/datum/sprite_accessory/ears/kerena
+	name = "wingwolf ears (Kerena)"
+	desc = ""
+	icon_state = "kerena"
+
+/datum/sprite_accessory/ears/rosey
+	name = "tritail kitsune ears (Rosey)"
+	desc = ""
+	icon_state = "rosey"
 
 
 /*
@@ -772,16 +869,142 @@
 ////////////////////////////
 */
 /datum/sprite_accessory/tail
-	var/tailsarecool = 1
+	name = "You should not see this..."
 	icon = 'icons/mob/fluff/tails.dmi'
+	do_colouration = 0
+
+	var/colored_overlay
+	var/desc = "You should not see this..."
 
 /datum/sprite_accessory/tail/invisible
 	name = "Hide species-sprite tail"
 	icon = null
 	icon_state = null
 
-/* //Removed until more tails available because everyone will just pick these.
-/datum/sprite_accessory/tail/threetail
-	name = "Gold 3-tail kitsune tails"
-	icon_state = "threetail"
-*/
+/datum/sprite_accessory/tail/squirrel_orange
+	name = "squirel, orange"
+	desc = ""
+	icon_state = "squirrel-orange"
+
+/datum/sprite_accessory/tail/squirrel_red
+	name = "squirrel, red"
+	desc = ""
+	icon_state = "squirrel-red"
+
+/datum/sprite_accessory/tail/squirrel
+	name = "squirrel, hair-colored"
+	desc = ""
+	icon_state = "squirrel"
+	do_colouration = 1
+
+/datum/sprite_accessory/tail/bunny
+	name = "bunny, hair-colored"
+	desc = ""
+	icon_state = "bunny"
+	do_colouration = 1
+
+/datum/sprite_accessory/tail/bear_brown
+	name = "bear, brown"
+	desc = ""
+	icon_state = "bear-brown"
+
+/datum/sprite_accessory/tail/bear
+	name = "bear, hair-colored"
+	desc = ""
+	icon_state = "bear"
+	do_colouration = 1
+
+/datum/sprite_accessory/tail/wolf_grey
+	name = "wolf, grey"
+	desc = ""
+	icon_state = "wolf-grey"
+
+/datum/sprite_accessory/tail/wolf_green
+	name = "wolf, green"
+	desc = ""
+	icon_state = "wolf-green"
+
+/datum/sprite_accessory/tail/wisewolf
+	name = "wolf, wise"
+	desc = ""
+	icon_state = "wolf-wise"
+
+/datum/sprite_accessory/tail/wolf
+	name = "wolf, hair-colored"
+	desc = ""
+	icon_state = "wolf"
+	do_colouration = 1
+	colored_overlay = "wolfinner"
+
+/datum/sprite_accessory/tail/mouse_grey
+	name = "mouse, grey"
+	desc = ""
+	icon_state = "mouse-grey"
+
+/datum/sprite_accessory/tail/mouse
+	name = "mouse, hair-colored"
+	desc = ""
+	icon_state = "mouse"
+	do_colouration = 1
+	colored_overlay = "mouseinner"
+
+/datum/sprite_accessory/tail/bee
+	name = "bee thorax (+wings)"
+	desc = ""
+	icon_state = "bee"
+
+/datum/sprite_accessory/tail/succubus_purple
+	name = "succubus, purple (+wings)"
+	desc = ""
+	icon_state = "succubus-purple"
+
+/datum/sprite_accessory/tail/succubus_red
+	name = "succubus, red (+wings)"
+	desc = ""
+	icon_state = "succubus-red"
+
+/datum/sprite_accessory/tail/succubus_black
+	name = "succubus, black (+wings)"
+	desc = ""
+	icon_state = "succubus-black"
+
+/datum/sprite_accessory/tail/bat_black
+	name = "bat wings, black"
+	desc = ""
+	icon_state = "bat-black"
+
+/datum/sprite_accessory/tail/bat_red
+	name = "bat wings, red"
+	desc = ""
+	icon_state = "bat-red"
+
+/datum/sprite_accessory/tail/snag
+	name = "xenomorph bits"
+	desc = ""
+	icon_state = "snag"
+
+/datum/sprite_accessory/tail/molenar_kitsune
+	name = "quintail kitsune tails (Molenar)"
+	desc = ""
+	icon_state = "molenar-kitsune"
+
+/datum/sprite_accessory/tail/molenar_deathclaw
+	name = "deathclaw bits (Molenar)"
+	desc = ""
+	icon_state = "molenar-deathclaw"
+
+/datum/sprite_accessory/tail/runac
+	name = "fennecsune tails (Runac)"
+	desc = ""
+	icon_state = "runac"
+
+/datum/sprite_accessory/tail/kerena
+	name = "wingwolf tail (+wings) (Kerena)"
+	desc = ""
+	icon_state = "kerena"
+
+/datum/sprite_accessory/tail/rosey
+	name = "tritail kitsune tails (Rosey)"
+	desc = ""
+	icon_state = "rosey"
+

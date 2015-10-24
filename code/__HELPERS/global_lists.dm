@@ -84,7 +84,7 @@ var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Al
 				facial_hair_styles_female_list += H.name
 
 	//Custom Ears
-	paths = typesof(/obj/item/clothing/head/accessory) + typesof(/obj/item/clothing/head/fluff) + typesof(/datum/sprite_accessory/ears) - /obj/item/clothing/head/accessory - /obj/item/clothing/head/fluff - /datum/sprite_accessory/ears
+	paths = typesof(/datum/sprite_accessory/ears) - /datum/sprite_accessory/ears
 	for(var/path in paths)
 		var/obj/item/clothing/head/instance = new path()
 		ear_styles_list[path] = instance

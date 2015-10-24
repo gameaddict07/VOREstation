@@ -24,7 +24,7 @@
 	var/b_skin = 179
 
 	//Hooray furries
-	var/obj/item/ear_style = null
+	var/datum/sprite_accessory/ears/ear_style = null
 	var/datum/sprite_accessory/tail/tail_style = null
 
 	//Taur stuff

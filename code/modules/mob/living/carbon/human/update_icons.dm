@@ -428,18 +428,14 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 	if(ear_style && !(head && (head.flags & BLOCKHEADHAIR)))
 		var/icon/ears_s
-		if(istype(ear_style,/obj/item/clothing/head/accessory)) // Needed for kitty ears and others to change color.
-			var/obj/item/clothing/head/accessory/temp = src.ear_style
-			temp.update_icon(src)
-			ears_s = icon("icon" = temp.mob)
-		else if(istype(ear_style,/datum/sprite_accessory/ears))
+		if(istype(ear_style,/datum/sprite_accessory/ears))
 			ears_s = icon("icon" = ear_style.icon, "icon_state" = ear_style.icon_state)
-		else if(ear_style.icon_override)
-			ears_s = icon("icon" = ear_style.icon_override, "icon_state" = ear_style.icon_state)
-		else if(ear_style.sprite_sheets && ear_style.sprite_sheets[species.name])
-			ears_s = icon("icon" = ear_style.sprite_sheets[species.name], "icon_state" = ear_style.icon_state)
-		else
-			ears_s = icon("icon" = 'icons/mob/head.dmi', "icon_state" = ear_style.icon_state)
+			if(ear_style.do_colouration)
+				ears_s.Blend(rgb(src.r_hair, src.g_hair, src.b_hair), ICON_ADD)
+			if(ear_style.colored_overlay)
+				var/icon/overlay = new/icon("icon" = ear_style.icon, "icon_state" = ear_style.colored_overlay)
+				ears_s.Blend(overlay, ICON_OVERLAY)
+				del overlay
 
 		face_standing.Blend(ears_s, ICON_OVERLAY)
 
@@ -951,7 +947,13 @@ proc/get_damage_icon_part(damage_state, body_part)
 
 	else if(src.tail_style)
 		if(!wear_suit || !(wear_suit.flags_inv & HIDETAIL) && !istype(wear_suit, /obj/item/clothing/suit/space))
-			var/icon/tail_s = new/icon("icon" = src.tail_style.icon, "icon_state" = src.tail_style.icon_state)
+			var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.icon_state)
+			if(tail_style.do_colouration)
+				tail_s.Blend(rgb(src.r_hair, src.g_hair, src.b_hair), ICON_ADD)
+			if(tail_style.colored_overlay)
+				var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.colored_overlay)
+				tail_s.Blend(overlay, ICON_OVERLAY)
+				del overlay
 			overlays_standing[TAIL_LAYER] = image(tail_s)
 
 	else if(species.tail)
