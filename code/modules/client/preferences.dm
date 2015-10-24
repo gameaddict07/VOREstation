@@ -79,6 +79,8 @@ datum/preferences
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
+	var/ear_style = null				//Ear style
+	var/tail_style = null				//Tail style
 	var/species = "Human"               //Species datum to use.
 	var/custom_species = null			//Custom species text
 	var/species_preview                 //Used for the species selection window.
@@ -320,6 +322,8 @@ datum/preferences
 	dat += "Taur body: <a href='byond://?src=\ref[user];preference=taurbody;task=input'>[taur]</a><br>"
 	dat += "<a href='?_src_=prefs;preference=t_tone;task=input'>Taur colour</a> <font face='fixedsys' size='3' color='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur, 2)]'><table style='display:inline;' bgcolor='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur)]'><tr><td>__</td></tr></table></font> "
 	dat += "(<a href='?_src_=prefs;preference=skin2taur;task=input'>Skin tone to taur colour</A>)<br>"
+	dat += "Ear Style: <a href='byond://?src=\ref[user];preference=ear_style;task=input'>[ear_style ? "Custom" : "Normal"]</a><br>"
+	dat += "Tail Style: <a href='byond://?src=\ref[user];preference=tail_style;task=input'>[tail_style ? "Custom" : "Normal"]</a><br>"
 	dat += "Needs Glasses: <a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]</b></a><br>"
 	dat += "Limbs: <a href='byond://?src=\ref[user];preference=limbs;task=input'>Adjust</a><br>"
 	dat += "Internal Organs: <a href='byond://?src=\ref[user];preference=organs;task=input'>Adjust</a><br>"
@@ -1415,6 +1419,30 @@ datum/preferences
 					g_taur = g_skin
 					b_taur = b_skin
 
+				if("ear_style")
+					var/list/pretty_ear_styles = list("Normal")
+					for(var/path in ear_styles_list)
+						var/obj/item/clothing/head/instance = ear_styles_list[path]
+						pretty_ear_styles[instance.name] = path
+
+					var/selection = input(user, "Pick ears (doesn't update preview)", "Character Preference") as null|anything in pretty_ear_styles
+					if(selection && selection != "Normal")
+						ear_style = pretty_ear_styles[selection]
+					else
+						ear_style = null
+
+				if("tail_style")
+					var/list/pretty_tail_styles = list("Normal")
+					for(var/path in tail_styles_list)
+						var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
+						pretty_tail_styles[instance.name] = path
+
+					var/selection = input(user, "Pick tail (doesn't update preview)", "Character Preference") as null|anything in pretty_tail_styles
+					if(selection && selection != "Normal")
+						tail_style = pretty_tail_styles[selection]
+					else
+						tail_style = null
+
 				if("skin")
 					if(species != "Vox" && species != "Machine" && species != "Diona")
 						var/new_skin = input(user, "Choose your character's skin colour: ", "Character Preference", rgb(r_skin, g_skin, b_skin)) as color|null
@@ -1716,6 +1744,9 @@ datum/preferences
 	character.r_taur = r_taur
 	character.g_taur = g_taur
 	character.b_taur = b_taur
+
+	character.ear_style = ear_styles_list[ear_style]
+	character.tail_style = tail_styles_list[tail_style]
 
 	character.h_style = h_style
 	character.f_style = f_style
