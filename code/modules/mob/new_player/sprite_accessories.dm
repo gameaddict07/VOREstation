@@ -779,6 +779,13 @@
 	icon_state = "squirrel"
 	do_colouration = 1
 
+/datum/sprite_accessory/ears/kitty
+	name = "kitty, hair-colored"
+	desc = ""
+	icon_state = "kitty"
+	do_colouration = 1
+	colored_overlay = "kittyinner"
+
 /datum/sprite_accessory/ears/bunny
 	name = "bunny, hair-colored"
 	desc = ""
@@ -895,6 +902,12 @@
 	name = "squirrel, hair-colored"
 	desc = ""
 	icon_state = "squirrel"
+	do_colouration = 1
+
+/datum/sprite_accessory/tail/kitty
+	name = "kitty, hair-colored"
+	desc = ""
+	icon_state = "kitty"
 	do_colouration = 1
 
 /datum/sprite_accessory/tail/bunny
