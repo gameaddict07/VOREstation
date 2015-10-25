@@ -1021,3 +1021,39 @@
 	desc = ""
 	icon_state = "rosey"
 
+/*
+////////////////////////////
+/  =--------------------=  /
+/  == Taur Definitions ==  /
+/  =--------------------=  /
+////////////////////////////
+*/
+
+/datum/sprite_accessory/taur
+	name = "You should not see this..."
+	do_colouration = 1
+	icon = 'icons/effects/taurs.dmi'
+
+/datum/sprite_accessory/taur/wolf
+	name = "Wolf"
+	icon_state = "wolf_s"
+
+/datum/sprite_accessory/taur/naga
+	name = "Naga"
+	icon_state = "naga_s"
+
+/datum/sprite_accessory/taur/horse
+	name = "Horse"
+	icon_state = "horse_s"
+
+/datum/sprite_accessory/taur/cow
+	name = "Cow"
+	icon_state = "cow_s"
+
+/datum/sprite_accessory/taur/lizard
+	name = "Lizard"
+	icon_state = "lizard_s"
+
+/datum/sprite_accessory/taur/spider
+	name = "Spider"
+	icon_state = "spider_s"
