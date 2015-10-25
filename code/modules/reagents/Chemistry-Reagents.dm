@@ -1456,7 +1456,30 @@ datum
 			reagent_state = LIQUID
 			color = "#FFFF00" // rgb: 255, 255, 0
 
-			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
+			on_mob_life(var/mob/living/carbon/M as mob)
+				if(!M) M = holder.my_atom
+				switch(M.playerscale)
+					if(RESIZE_BIG to RESIZE_HUGE)
+						M.resize(RESIZE_HUGE)
+						M << "<font color='green'>You grow!</font>"
+					if(RESIZE_NORMAL to RESIZE_BIG)
+						M.resize(RESIZE_BIG)
+						M << "<font color='green'>You grow!</font>"
+					if(RESIZE_SMALL to RESIZE_NORMAL)
+						M.resize(RESIZE_NORMAL)
+						M << "<font color='green'>You grow!</font>"
+					if(RESIZE_TINY to RESIZE_SMALL)
+						M.resize(RESIZE_SMALL)
+						M << "<font color='green'>You grow!</font>"
+					if(RESIZE_HUGE to INFINITY)
+						//M << "<span class='alert'>You would grow, but there's no room!</span>" //Spammy if given a lot
+					else
+						M.resize(RESIZE_HUGE)
+						M << "<font color='green'>You grow!</font><span class='alert'> And you broke something in the code. Congrats on reaching a size that shouldn't have been possible.</span>"
+				holder.remove_reagent("macrocillin", 2.5)
+
+
+/*			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
 				src = null
 				if( ( (method == TOUCH) && (prob(20) ) ) || (method == INGEST) )
 					switch(M.playerscale)
@@ -1477,6 +1500,7 @@ datum
 						else
 							M.resize(RESIZE_HUGE)
 							M << "<font color='green'>You grow!</font><span class='alert'> And you broke something in the code. Congrats on reaching a size that shouldn't have been possible.</span>"
+*/
 
 		microcillin
 			name = "Microcillin"
@@ -1485,7 +1509,30 @@ datum
 			reagent_state = LIQUID
 			color = "#800080"
 
-			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
+			on_mob_life(var/mob/living/carbon/M as mob)
+				if(!M) M = holder.my_atom
+				switch(M.playerscale)
+					if(RESIZE_HUGE to INFINITY)
+						M.resize(RESIZE_BIG)
+						M << "<span class='alert'>You shrink!</span>"
+					if(RESIZE_BIG to RESIZE_HUGE)
+						M.resize(RESIZE_NORMAL)
+						M << "<span class='alert'>You shrink!</span>"
+					if(RESIZE_NORMAL to RESIZE_BIG)
+						M.resize(RESIZE_SMALL)
+						M << "<span class='alert'>You shrink!</span>"
+					if(RESIZE_SMALL to RESIZE_NORMAL)
+						M.resize(RESIZE_TINY)
+						M << "<span class='alert'>You shrink!</span>"
+					if((0 - INFINITY) to RESIZE_TINY)
+						M.resize(RESIZE_TINY)
+						//M << "<span class='alert'>You would shrink, but you can't get any smaller!</span>" //Spammy if given a lot
+					else
+						M.resize(RESIZE_TINY)
+						M << "<span class='alert'>You shrink! <b>And you broke something in the code.</b> Congrats on reaching a size that shouldn't have been possible.</span>"
+				holder.remove_reagent("microcillin", 2.5)
+
+/*			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
 				src = null
 				if( ( (method == TOUCH) && (prob(20) ) ) || (method == INGEST) )
 					switch(M.playerscale)
@@ -1508,6 +1555,7 @@ datum
 							M.resize(RESIZE_TINY)
 							M << "<span class='alert'>You shrink! <b>And you broke something in the code.</b> Congrats on reaching a size that shouldn't have been possible.</span>"
 
+*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		nanites
