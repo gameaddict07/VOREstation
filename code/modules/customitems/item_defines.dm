@@ -2302,8 +2302,9 @@
 	amount_per_transfer_from_this = 5
 	volume = 5
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/New()
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/shrink/New()
 	..()
-	reagents.add_reagent("microcillin", 5)
+	reagents.add_reagent("microcillin", 4)
+	reagents.add_reagent("neurotoxin", 1)
 	update_icon()
 	return
