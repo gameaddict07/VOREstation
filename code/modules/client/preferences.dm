@@ -319,7 +319,7 @@ datum/preferences
 	dat += "Blood Type: <a href='byond://?src=\ref[user];preference=b_type;task=input'>[b_type]</a><br>"
 	//dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>" //Goodbye Skintone, Orbis
 	//dat += "Skin pattern: <a href='byond://?src=\ref[user];preference=skin_style;task=input'>Adjust</a><br>"
-	dat += "Taur body: <a href='byond://?src=\ref[user];preference=taurbody;task=input'>[taur]</a><br>"
+	dat += "Taur body: <a href='byond://?src=\ref[user];preference=taurbody;task=input'>[taur > 0 && taur <= taur_styles_list.len ? taur_styles_list[taur] : "None"]</a><br>"
 	dat += "<a href='?_src_=prefs;preference=t_tone;task=input'>Taur colour</a> <font face='fixedsys' size='3' color='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur, 2)]'><table style='display:inline;' bgcolor='#[num2hex(r_taur, 2)][num2hex(g_taur, 2)][num2hex(b_taur)]'><tr><td>__</td></tr></table></font> "
 	dat += "(<a href='?_src_=prefs;preference=skin2taur;task=input'>Skin tone to taur colour</A>)<br>"
 	dat += "Ear Style: <a href='byond://?src=\ref[user];preference=ear_style;task=input'>[ear_style ? "Custom" : "Normal"]</a><br>"
@@ -1402,10 +1402,9 @@ datum/preferences
 			//			if(new_s_tone)
 			//				s_tone = 35 - max(min( round(new_s_tone), 220),1)
 				if("taurbody")
-					var/list/taur_types = list("None","Fluffy","Naga","Horse","Cow","Lizard","Spider")
-					var/new_taur = input(user, "Choose your character's taur body:", "Character Preference") as null|anything in taur_types  //list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
-					taur = taur_types.Find(new_taur) - 1
-
+					var/list/taur_types = list("None") + taur_styles_list
+					var/new_taur = input(user, "Choose your character's taur body:", "Character Preference") as null|anything in taur_types
+					taur = taur_types.Find(new_taur) - 1 // Subtract one to adjust for "None" being tacked on.
 
 				if("t_tone")
 					var/new_t_tone = input(user, "Choose your character's taur-tone:", "Character Preference")  as color|null

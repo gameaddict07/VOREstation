@@ -33,6 +33,8 @@ var/global/list/poster_designs = list()
 var/list/obj/item/device/uplink/world_uplinks = list()
 
 //Preferences stuff
+	// Taur body type
+var/global/list/taur_styles_list = list()
 	//Hairstyles
 var/global/list/hair_styles_list = list()			//stores /datum/sprite_accessory/hair indexed by name
 var/global/list/hair_styles_male_list = list()
@@ -58,6 +60,12 @@ var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Al
 
 /proc/makeDatumRefLists()
 	var/list/paths
+
+	// Taurs - Initialise all /datum/sprite_accessory/taur into an list indexed by taur type name
+	paths = typesof(/datum/sprite_accessory/taur) - /datum/sprite_accessory/taur
+	for(var/path in paths)
+		var/datum/sprite_accessory/taur/H = new path()
+		taur_styles_list[H.name] = H
 
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
