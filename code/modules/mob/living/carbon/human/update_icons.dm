@@ -935,6 +935,11 @@ proc/get_damage_icon_part(damage_state, body_part)
 				var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.colored_overlay)
 				tail_s.Blend(overlay, ICON_OVERLAY)
 				del overlay
+			if(tail_style.show_species_tail && species.tail)
+				var/icon/spec_tail = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[species.tail]_s")
+				spec_tail.Blend(rgb(r_skin, g_skin, b_skin), ICON_MULTIPLY)
+				tail_s.Blend(spec_tail, ICON_OVERLAY)
+
 			overlays_standing[TAIL_LAYER] = image(tail_s)
 
 	else if(species.tail)

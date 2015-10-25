@@ -881,10 +881,11 @@
 	do_colouration = 0
 
 	var/colored_overlay
+	var/show_species_tail
 	var/desc = "You should not see this..."
 
 /datum/sprite_accessory/tail/invisible
-	name = "Hide species-sprite tail"
+	name = "hide species-sprite tail"
 	icon = null
 	icon_state = null
 
@@ -985,11 +986,13 @@
 	name = "bat wings, black"
 	desc = ""
 	icon_state = "bat-black"
+	show_species_tail = 1
 
 /datum/sprite_accessory/tail/bat_red
 	name = "bat wings, red"
 	desc = ""
 	icon_state = "bat-red"
+	show_species_tail = 1
 
 /datum/sprite_accessory/tail/snag
 	name = "xenomorph bits"
