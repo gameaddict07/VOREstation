@@ -2298,12 +2298,13 @@
 	desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel. Something seems off about this one..."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "shrinkinjector"
-	item_state = "shrinkinjector"
+	//item_state = "shrinkinjector1"
 	amount_per_transfer_from_this = 5
 	volume = 5
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/shrink/New()
 	..()
+	reagents.remove_all_type(/datum/reagent,5)
 	reagents.add_reagent("microcillin", 4)
 	reagents.add_reagent("neurotoxin", 1)
 	update_icon()
