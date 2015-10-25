@@ -314,7 +314,7 @@
 	selection_color = "#dddddd"
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
-	alt_titles = list("Journalist","Forcaster")
+	alt_titles = list("Journalist")
 
 
 	equip(var/mob/living/carbon/human/H)
