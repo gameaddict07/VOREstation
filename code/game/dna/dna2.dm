@@ -142,6 +142,8 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if(character.tail_style)
 		tail_style = tail_styles_list.Find(character.tail_style.type)
 
+	// Taur
+	var/taur	= character.taur // Taur is already stored as an integer
 
 	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
 	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)
@@ -167,6 +169,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, 		facial_hair_styles_list.len,1)
 	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style,	ear_styles_list.len,		1)
 	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style,	tail_styles_list.len,		1)
+	SetUIValueRange(DNA_UI_TAUR_BODY, 	taur,  		taur_styles_list.len,       1)
 
 	UpdateUI()
 

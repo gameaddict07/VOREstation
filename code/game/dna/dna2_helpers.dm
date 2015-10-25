@@ -182,6 +182,12 @@
 		else if((0 < tail) && (tail <= tail_styles_list.len))
 			H.tail_style = tail_styles_list[tail_styles_list[tail]]
 
+		// Taur
+		var/taur = dna.GetUIValueRange(DNA_UI_TAUR_BODY,taur_styles_list.len)
+		if (taur == 0)
+			H.taur = 0
+		else if((0 < taur) && (taur <= taur_styles_list.len))
+			H.taur = taur // Taur is stored as the index for historical reasons
 
 		H.update_body(0)
 		H.update_hair()
