@@ -2292,3 +2292,18 @@
 	desc = "A kit containing all the tools and parts to modify an AMI rigsuit. It looks rather alien."
 	from_object = /obj/item/weapon/rig/hazmat
 	to_object = /obj/item/weapon/rig/fluff/zeke_sturm
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/shrink
+	name = "autoinjector"
+	desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel. Something seems off about this one..."
+	icon = "icons/obj/custom_items.dmi"
+	icon_state = "shrinkinjector"
+	item_state = "shrinkinjector"
+	amount_per_transfer_from_this = 5
+	volume = 5
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/New()
+	..()
+	reagents.add_reagent("microcillin", 5)
+	update_icon()
+	return
