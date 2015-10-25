@@ -10,6 +10,7 @@
 	selection_color = "#dddddd"
 	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue)
 	minimal_access = list(access_bar)
+	alt_titles = list("Barkeep","Butler","Steward") // Just suggestions, guys! - HawkerTheGreat
 
 
 	equip(var/mob/living/carbon/human/H)
@@ -52,7 +53,7 @@
 	selection_color = "#dddddd"
 	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue)
 	minimal_access = list(access_kitchen)
-	alt_titles = list("Cook")
+	alt_titles = list("Cook","Waiter","Waitress","Culinary Artist") 
 
 
 	equip(var/mob/living/carbon/human/H)
@@ -82,7 +83,7 @@
 	selection_color = "#dddddd"
 	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue) // Removed tox and chem access because STOP PISSING OFF THE CHEMIST GUYS // //Removed medical access because WHAT THE FUCK YOU AREN'T A DOCTOR YOU GROW WHEAT //Given Morgue access because they have a viable means of cloning.
 	minimal_access = list(access_hydroponics, access_morgue) // Removed tox and chem access because STOP PISSING OFF THE CHEMIST GUYS // //Removed medical access because WHAT THE FUCK YOU AREN'T A DOCTOR YOU GROW WHEAT //Given Morgue access because they have a viable means of cloning.
-	alt_titles = list("Hydroponicist")
+	alt_titles = list("Hydroponicist","Botanist") //I always wondered why they removed the name 'botanist' from baycode... Its still in here, right? - HawkerTheGreat
 
 
 	equip(var/mob/living/carbon/human/H)
@@ -342,6 +343,7 @@
 	selection_color = "#dddddd"
 	access = list(access_lawyer, access_court, access_sec_doors, access_maint_tunnels)
 	minimal_access = list(access_lawyer, access_court, access_sec_doors)
+	alt_titles = list("Lawyer")
 
 
 	equip(var/mob/living/carbon/human/H)
