@@ -1008,6 +1008,28 @@ datum/design/circuit/recharge_station
 	req_tech = list("programming" = 3, "engineering" = 2)
 	build_path = /obj/item/weapon/circuitboard/recharge_station
 
+////////////////////////////////////////
+/////////Civilian Circuit Boards////////
+////////////////////////////////////////
+
+datum/design/circuit/microwave
+	name = "Machine Design (Microwave Board)"
+	id = "microwave"
+	req_tech = list("programming" = 1, "magnets" = 2)
+	build_path = /obj/item/weapon/circuitboard/microwave
+
+datum/design/circuit/gibber
+	name = "gibber"
+	id = "gibber"
+	req_tech = list("programming" = 1, "materials" = 2)
+	build_path = /obj/item/weapon/circuitboard/gibber
+
+datum/design/circuit/smartfridge
+	name = "smartfridge"
+	id = "smartfridge"
+	req_tech = list("programming" = 1, "magnets" = 2, "engineering" = 2)
+	build_path = /obj/item/weapon/circuitboard/smartfridge
+
 /////////////////////////////////////////
 ////////Power Stuff Circuitboards////////
 /////////////////////////////////////////
