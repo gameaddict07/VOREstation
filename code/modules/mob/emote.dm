@@ -1,7 +1,7 @@
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.
 //m_type == 2 --> audible
-//m_type == 3 --> subtle
+//m_type == 4 --> subtle
 /mob/proc/custom_emote(var/m_type=1,var/message = null)
 
 	if(stat || !use_me && usr == src)
@@ -16,7 +16,10 @@
 		input = sanitize(copytext(input(src,"Choose an emote to display.") as text|null,1,MAX_MESSAGE_LEN))
 	else
 		input = message
-	if(input)
+
+	if(input && m_type & 4)
+		message = "<B>[src]</B> <I>[input]</I>"
+	else if(input)
 		message = "<B>[src]</B> [input]"
 	else
 		return
@@ -96,7 +99,7 @@
 					if(O) //It's possible that it could be deleted in the meantime.
 						O.see_emote(src, message, 2)
 
-		// Type 3 (Subtle) emotes are basically whispered emotes
+		// Type 4 (Subtle) emotes are basically whispered emotes
 		// This is especially useful in vore for things between pred/prey
 		else if (m_type & 4)
 			for (var/mob/O in get_mobs_in_view(1,src)) //One tile distance, set to 0 to restrict it to just pred/prey only
