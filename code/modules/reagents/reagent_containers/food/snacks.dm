@@ -38,6 +38,8 @@
 	if(!reagents.total_volume)
 		user << "<span class='danger'>None of [src] left!</span>"
 		user.drop_from_inventory(src)
+		if(trash && ispath(trash,/obj/item))
+			new trash(get_turf(src))
 		del(src)
 		return 0
 
@@ -165,6 +167,8 @@
 		reagents.trans_to(U,min(reagents.total_volume,5))
 
 		if (reagents.total_volume <= 0)
+			if(trash && ispath(trash,/obj/item))
+				new trash(get_turf(src)) // Drop where the food was
 			del(src)
 		return
 
