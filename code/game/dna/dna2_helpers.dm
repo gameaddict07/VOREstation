@@ -189,6 +189,13 @@
 		else if((0 < taur) && (taur <= taur_styles_list.len))
 			H.taur = taur // Taur is stored as the index for historical reasons
 
+		// Playerscale
+		var/playerscale = dna.GetUIValueRange(DNA_UI_PLAYERSCALE,player_sizes_list.len)
+		if (playerscale == 0)
+			H.playerscale = RESIZE_NORMAL
+		else if((0 < playerscale) && (playerscale <= player_sizes_list.len))
+			H.playerscale = player_sizes_list[player_sizes_list[playerscale]]
+
 		H.update_body(0)
 		H.update_hair()
 
