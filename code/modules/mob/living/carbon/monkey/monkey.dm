@@ -12,7 +12,7 @@
 	var/greaterform = "Human"                  // Used when humanizing a monkey.
 	icon_state = "monkey1"
 	//var/uni_append = "12C4E2"                // Small appearance modifier for different species.
-	var/list/uni_append = list(0x12C,0x4E2,0x00,0x00,0x00)    // Same as above for DNA2.
+	var/list/uni_append = list(0x12C,0x4E2,0x00,0x00,0x00,0x999)    // Same as above for DNA2.
 	var/update_muts = 1                        // Monkey gene must be set at start.
 
 /mob/living/carbon/monkey/tajara
@@ -21,7 +21,7 @@
 	speak_emote = list("mews")
 	icon_state = "tajkey1"
 	greaterform = "Tajara"
-	uni_append = list(0x0A0,0xE00,0x00,0x00,0x00) // 0A0E00
+	uni_append = list(0x0A0,0xE00,0x00,0x00,0x00,0x999) // 0A0E00
 
 /mob/living/carbon/monkey/skrell
 	name = "neaera"
@@ -29,7 +29,7 @@
 	speak_emote = list("squicks")
 	icon_state = "skrellkey1"
 	greaterform = "Skrell"
-	uni_append = list(0x01C,0xC92,0x00,0x00,0x00) // 01CC92
+	uni_append = list(0x01C,0xC92,0x00,0x00,0x00,0x999) // 01CC92
 
 /mob/living/carbon/monkey/unathi
 	name = "stok"
@@ -37,7 +37,7 @@
 	speak_emote = list("hisses")
 	icon_state = "stokkey1"
 	greaterform = "Unathi"
-	uni_append = list(0x044,0xC5D,0x00,0x00,0x00) // 044C5D
+	uni_append = list(0x044,0xC5D,0x00,0x00,0x00,0x999) // 044C5D
 
 /mob/living/carbon/monkey/New()
 
