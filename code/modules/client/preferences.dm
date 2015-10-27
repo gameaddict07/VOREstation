@@ -81,7 +81,7 @@ datum/preferences
 	var/b_eyes = 0						//Eye color
 	var/ear_style = null				//Ear style
 	var/tail_style = null				//Tail style
-	var/playerscale = 1					//Custom playerscale
+	var/playerscale = RESIZE_NORMAL					//Custom playerscale
 	var/species = "Human"               //Species datum to use.
 	var/custom_species = null			//Custom species text
 	var/species_preview                 //Used for the species selection window.
