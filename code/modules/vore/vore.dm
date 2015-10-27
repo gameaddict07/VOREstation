@@ -7,7 +7,7 @@
 	var/list/internal_contents = list()
 
 /mob/living/carbon
-	var/digestable = 1	// Humans get to decide if they are digestable or not  (TODO - Can we shoved this down to :human?)
+	var/digestable = 1	// Players get to decide if they are digestable or not  (TODO - Can we shoved this down to :human?)
 						// Set to 1 so you are digestable by default
 
 //
