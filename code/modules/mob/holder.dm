@@ -43,14 +43,21 @@
 	if(!holder_type || buckled || pinned.len)
 		return
 
+	var/mob/living/carbon/human/grubben = src
 	var/obj/item/weapon/holder/H = new holder_type(loc)
 	src.loc = H
 	H.name = loc.name
 	H.attack_hand(grabber)
-
 	grabber << "You scoop up [src]."
 	src << "[grabber] scoops you up."
 	grabber.status_flags |= PASSEMOTES
+
+	//Going to update the icon to look like the person
+	H.icon = src.icon
+	H.icon_state = src.icon_state
+	for(var/I in grubben.overlays_standing)
+		H.overlays += I
+
 	return H
 
 //Mob specific holders.
@@ -88,6 +95,10 @@
 	icon_state = "micro"
 	slot_flags = SLOT_FEET | SLOT_HEAD
 	w_class = 2
+
+/obj/item/weapon/holder/micro/examine(var/mob/user)
+	for(var/mob/living/M in contents)
+		M.examine(user)
 
 /obj/item/weapon/holder/micro/attack_self(var/mob/living/user)
 	for(var/mob/living/carbon/human/M in contents)
