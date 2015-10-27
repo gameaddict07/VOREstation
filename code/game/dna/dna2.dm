@@ -36,7 +36,8 @@
 #define DNA_UI_EAR_STYLE   17
 #define DNA_UI_TAIL_STYLE  18
 #define DNA_UI_TAUR_BODY   19
-#define DNA_UI_LENGTH      19 // Update this when you add something, or you WILL break shit.
+#define DNA_UI_PLAYERSCALE 20
+#define DNA_UI_LENGTH      20 // Update this when you add something, or you WILL break shit.
 
 #define DNA_SE_LENGTH 27
 // For later:
@@ -142,6 +143,13 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if(character.tail_style)
 		tail_style = tail_styles_list.Find(character.tail_style.type)
 
+	// Playerscale
+	var/playerscale = 3 //Currently the middle 'normal' size choice in the list
+	for(var/N in player_sizes_list)
+		if(character.playerscale == player_sizes_list[N])
+			playerscale = player_sizes_list.Find(N)
+
+
 	// Taur
 	var/taur	= character.taur // Taur is already stored as an integer
 
@@ -170,6 +178,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style,	ear_styles_list.len,		1)
 	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style,	tail_styles_list.len,		1)
 	SetUIValueRange(DNA_UI_TAUR_BODY, 	taur,  		taur_styles_list.len,       1)
+	SetUIValueRange(DNA_UI_PLAYERSCALE,	playerscale,player_sizes_list.len,		1)
 
 	UpdateUI()
 

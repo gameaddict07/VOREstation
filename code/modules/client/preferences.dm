@@ -81,6 +81,7 @@ datum/preferences
 	var/b_eyes = 0						//Eye color
 	var/ear_style = null				//Ear style
 	var/tail_style = null				//Tail style
+	var/playerscale = 1					//Custom playerscale
 	var/species = "Human"               //Species datum to use.
 	var/custom_species = null			//Custom species text
 	var/species_preview                 //Used for the species selection window.
@@ -315,6 +316,7 @@ datum/preferences
 	dat += "<br>"
 	dat += "Species: <a href='?src=\ref[user];preference=species;task=change'>[species]</a><br>"
 	dat += "Custom Species: <a href='?src=\ref[user];preference=custom_species;task=input'>[custom_species ? custom_species : "None"]</a><br>"
+	dat += "Scale: <a href='?src=\ref[user];preference=playerscale;task=input'>[playerscale]</a><br>"
 	dat += "Secondary Language:<br><a href='byond://?src=\ref[user];preference=language;task=input'>[language]</a><br>"
 	dat += "Blood Type: <a href='byond://?src=\ref[user];preference=b_type;task=input'>[b_type]</a><br>"
 	//dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>" //Goodbye Skintone, Orbis
@@ -1284,6 +1286,13 @@ datum/preferences
 						b_hair = 0//hex2num(copytext(new_hair, 6, 8))
 
 					//	s_tone = 0 //Goodbye Skintone, Orbis
+
+				if("playerscale")
+					var/list/size_types = player_sizes_list
+					var/new_size = input(user, "Choose your character's size:", "Character Preference") as null|anything in size_types
+					playerscale = size_types[new_size]
+
+
 				if("custom_species")
 					var/raw_custom_species = input(user, "Input your character's species:", "Character Preference", custom_species)  as text|null
 					custom_species = sanitize(copytext(raw_custom_species,1,MAX_MESSAGE_LEN))
@@ -1746,6 +1755,8 @@ datum/preferences
 
 	character.ear_style = ear_styles_list[ear_style]
 	character.tail_style = tail_styles_list[tail_style]
+
+	character.playerscale = playerscale
 
 	character.h_style = h_style
 	character.f_style = f_style
