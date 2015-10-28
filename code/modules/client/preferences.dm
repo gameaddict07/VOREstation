@@ -316,7 +316,7 @@ datum/preferences
 	dat += "<br>"
 	dat += "Species: <a href='?src=\ref[user];preference=species;task=change'>[species]</a><br>"
 	dat += "Custom Species: <a href='?src=\ref[user];preference=custom_species;task=input'>[custom_species ? custom_species : "None"]</a><br>"
-	dat += "Scale: <a href='?src=\ref[user];preference=playerscale;task=input'>[playerscale]</a><br>"
+	dat += "Scale: <a href='?src=\ref[user];preference=playerscale;task=input'>[round(playerscale*100)]%</a><br>"
 	dat += "Secondary Language:<br><a href='byond://?src=\ref[user];preference=language;task=input'>[language]</a><br>"
 	dat += "Blood Type: <a href='byond://?src=\ref[user];preference=b_type;task=input'>[b_type]</a><br>"
 	//dat += "Skin Tone: <a href='?_src_=prefs;preference=s_tone;task=input'>[-s_tone + 35]/220<br></a>" //Goodbye Skintone, Orbis
@@ -1290,8 +1290,8 @@ datum/preferences
 				if("playerscale")
 					var/list/size_types = player_sizes_list
 					var/new_size = input(user, "Choose your character's size:", "Character Preference") as null|anything in size_types
-					playerscale = size_types[new_size]
-
+					if(new_size)
+						playerscale = size_types[new_size]
 
 				if("custom_species")
 					var/raw_custom_species = input(user, "Input your character's species:", "Character Preference", custom_species)  as text|null
@@ -1413,7 +1413,8 @@ datum/preferences
 				if("taurbody")
 					var/list/taur_types = list("None") + taur_styles_list
 					var/new_taur = input(user, "Choose your character's taur body:", "Character Preference") as null|anything in taur_types
-					taur = taur_types.Find(new_taur) - 1 // Subtract one to adjust for "None" being tacked on.
+					if(new_taur)
+						taur = taur_types.Find(new_taur) - 1 // Subtract one to adjust for "None" being tacked on.
 
 				if("t_tone")
 					var/new_t_tone = input(user, "Choose your character's taur-tone:", "Character Preference")  as color|null
