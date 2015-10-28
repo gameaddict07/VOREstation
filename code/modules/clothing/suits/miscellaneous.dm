@@ -64,6 +64,12 @@
 	icon_state = "nazi"
 	item_state = "nazi"
 
+/obj/item/clothing/suit/kimonored
+	name = "red kimono"
+	desc = "A white and red kimono"
+	icon_state = "kimonored"
+	item_state = "kimonored"
+
 
 /obj/item/clothing/suit/johnny_coat
 	name = "johnny~~ coat"
