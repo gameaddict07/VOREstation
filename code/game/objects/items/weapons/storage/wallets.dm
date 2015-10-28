@@ -16,6 +16,7 @@
 		/obj/item/weapon/reagent_containers/dropper,
 		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
 		/obj/item/weapon/screwdriver,
+		/obj/item/seeds,
 		/obj/item/weapon/coin,
 		/obj/item/weapon/dice,
 		/obj/item/weapon/disk,
