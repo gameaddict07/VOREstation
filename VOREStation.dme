@@ -959,6 +959,7 @@
 #include "code\modules\events\event_dynamic.dm"
 #include "code\modules\events\event_manager.dm"
 #include "code\modules\events\grid_check.dm"
+#include "code\modules\events\ian_storm.dm"
 #include "code\modules\events\infestation.dm"
 #include "code\modules\events\ion_storm.dm"
 #include "code\modules\events\meteors.dm"
