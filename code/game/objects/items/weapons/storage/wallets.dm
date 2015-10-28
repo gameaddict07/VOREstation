@@ -11,6 +11,7 @@
 		/obj/item/clothing/mask/smokable/cigarette/,
 		/obj/item/device/flashlight/pen,
 		/obj/item/weapon/pen,
+		/obj/item/toy/crayon,
 		/obj/item/weapon/photo,
 		/obj/item/weapon/reagent_containers/dropper,
 		/obj/item/weapon/reagent_containers/hypospray/autoinjector,
