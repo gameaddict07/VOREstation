@@ -46,7 +46,6 @@
 			update_icon()
 
 /obj/item/weapon/storage/wallet/update_icon()
-
 	if(front_id)
 		switch(front_id.icon_state)
 			if("id")
@@ -61,8 +60,28 @@
 			if("centcom")
 				icon_state = "walletid_centcom"
 				return
-	icon_state = "wallet"
+			if("lifetime")
+				icon_state = "walletid_lifetime"
+				return
+			else
+				if(front_id.primary_color && front_id.secondary_color)
+					var/icon/new_wallet = new/icon("icon" = 'icons/obj/storage.dmi', "icon_state" = "walletid")
+					var/icon/pri_overlay = new/icon("icon" = 'icons/obj/storage.dmi', "icon_state" = "wallet_idprimary")
+					var/icon/sec_overlay = new/icon("icon" = 'icons/obj/storage.dmi', "icon_state" = "wallet_idsecondary")
 
+					pri_overlay.Blend(front_id.primary_color, ICON_ADD)
+					sec_overlay.Blend(front_id.secondary_color, ICON_ADD)
+
+					new_wallet.Blend(pri_overlay, ICON_OVERLAY)
+					new_wallet.Blend(sec_overlay, ICON_OVERLAY)
+					icon = new_wallet
+					return
+				else
+					icon_state = "walletid"
+					return
+	else
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
 /obj/item/weapon/storage/wallet/GetID()
 	return front_id
