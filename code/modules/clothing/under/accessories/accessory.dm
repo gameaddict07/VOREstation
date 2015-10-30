@@ -175,3 +175,58 @@
 		..()
 		return
 
+
+
+/obj/item/clothing/accessory/collar_blk
+	name = "Silver tag collar"
+	desc = "A collar for your little pets... or the big ones."
+	icon_state = "collar_blk"
+	item_state = "collar_blk"
+	item_color = "collar_blk"
+
+/obj/item/clothing/accessory/collar_gld
+	name = "Golden tag collar"
+	desc = "A collar for your little pets... or the big ones."
+	icon_state = "collar_gld"
+	item_state = "collar_gld"
+	item_color = "collar_gld"
+
+/obj/item/clothing/accessory/collar_bell
+	name = "Bell collar"
+	desc = "A collar with a tiny bell hanging from it, purrfect furr kitties."
+	icon_state = "collar_bell"
+	item_state = "collar_bell"
+	item_color = "collar_bell"
+
+/obj/item/clothing/accessory/shock_collar
+	name = "Shock collar"
+	desc = "A collar used to easen hungry predators."
+	icon_state = "collar_shk"
+	item_color = "collar_shk"
+	item_state = "collar_shk"
+
+/obj/item/clothing/accessory/collar_spike
+	name = "Spiked collar"
+	desc = "A collar with spikes that look as sharp as your teeth."
+	icon_state = "collar_spik"
+	item_color = "collar_spik"
+	item_state = "collar_spik"
+
+/obj/item/clothing/accessory/collar_pink
+	name = "Pink collar"
+	desc = "This collar will make your pets look FA-BU-LOUS."
+	icon_state = "collar_pnk"
+	item_color = "collar_pnk"
+	item_state = "collar_pnk"
+
+/obj/item/clothing/accessory/scarf
+	name = "Scarf"
+	desc = "A black and grey scarf. Looks comfy"
+	icon_state = "scarf"
+	item_color = "scarf"
+	item_state = "scarf"
+
+/obj/item/clothing/accessory/black
+	name = "Black tie"
+	icon_state = "blacktie"
+	item_color = "blacktie"
