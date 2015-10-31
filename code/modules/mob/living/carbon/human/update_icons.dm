@@ -385,6 +385,9 @@ proc/get_damage_icon_part(damage_state, body_part)
 	if(undershirt && species.flags & HAS_UNDERWEAR)
 		stand_icon.Blend(new /icon('icons/mob/human.dmi', undershirt), ICON_OVERLAY)
 
+	if(undersocks && species.flags & HAS_UNDERWEAR)
+		stand_icon.Blend(new /icon('icons/mob/human.dmi', undersocks), ICON_OVERLAY)
+
 	if(update_icons)
 		update_icons()
 
