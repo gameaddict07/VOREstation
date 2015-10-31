@@ -16,6 +16,10 @@
 	desc = "Does card things."
 	icon = 'icons/obj/card.dmi'
 	w_class = 1.0
+
+	var/primary_color = rgb(0,0,0)		//This is generally the stripe color on the card
+	var/secondary_color = rgb(0,0,0)	//This is generally the oval/circle in the corner
+
 	var/associated_account_number = 0
 
 	var/list/files = list(  )
@@ -311,58 +315,82 @@
 	name = "identification card"
 	desc = "A card issued to station medical staff."
 	icon_state = "med"
+	primary_color = rgb(189,237,237)
+	secondary_color = rgb(223,255,255)
 
 /obj/item/weapon/card/id/medical/head
 	name = "identification card"
 	desc = "A card which represents care and compassion."
 	icon_state = "medGold"
+	primary_color = rgb(189,237,237)
+	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/security
 	name = "identification card"
 	desc = "A card issued to station security staff."
 	icon_state = "sec"
+	primary_color = rgb(189,47,0)
+	secondary_color = rgb(223,127,95)
 
 /obj/item/weapon/card/id/security/head
 	name = "identification card"
 	desc = "A card which represents honor and protection."
 	icon_state = "secGold"
+	primary_color = rgb(189,47,0)
+	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/engineering
 	name = "identification card"
 	desc = "A card issued to station engineering staff."
 	icon_state = "eng"
+	primary_color = rgb(189,94,0)
+	secondary_color = rgb(223,159,95)
 
 /obj/item/weapon/card/id/engineering/head
 	name = "identification card"
 	desc = "A card which represents creativity and ingenuity."
 	icon_state = "engGold"
+	primary_color = rgb(189,94,0)
+	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/science
 	name = "identification card"
 	desc = "A card issued to station science staff."
 	icon_state = "sci"
+	primary_color = rgb(142,47,142)
+	secondary_color = rgb(191,127,191)
 
 /obj/item/weapon/card/id/science/head
 	name = "identification card"
 	desc = "A card which represents knowledge and reasoning."
 	icon_state = "sciGold"
+	primary_color = rgb(142,47,142)
+	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/cargo
 	name = "identification card"
 	desc = "A card issued to station cargo staff."
-	icon_state = "cargo"
+	icon_state = "car"
+	primary_color = rgb(142,94,0)
+	secondary_color = rgb(191,159,95)
 
 /obj/item/weapon/card/id/cargo/head
 	name = "identification card"
 	desc = "A card which represents service and planning."
-	icon_state = "cargoGold"
+	icon_state = "carGold"
+	primary_color = rgb(142,94,0)
+	secondary_color = rgb(255,223,127)
 
 /obj/item/weapon/card/id/civilian
 	name = "identification card"
 	desc = "A card issued to station civilian staff."
 	icon_state = "civ"
+	primary_color = rgb(0,94,142)
+	secondary_color = rgb(95,159,191)
 
 /obj/item/weapon/card/id/civilian/head //This is not the HoP. There's no position that uses this right now.
 	name = "identification card"
 	desc = "A card which represents common sense and responsibility."
 	icon_state = "civHead"
+	primary_color = rgb(0,94,142)
+	secondary_color = rgb(255,223,127)
