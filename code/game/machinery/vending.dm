@@ -1140,10 +1140,15 @@
 					/obj/item/clothing/shoes/sandal = 5,
 					/obj/item/clothing/suit/apron/overalls = 3,
 					/obj/item/clothing/suit/wcoat = 3,
-					/obj/item/clothing/suit/kimonored = 3
+					/obj/item/clothing/suit/kimonored = 3,
+					/obj/item/clothing/accessory/collar_blk = 3,
+					/obj/item/clothing/accessory/collar_gld = 3,
+					/obj/item/clothing/accessory/collar_bell = 3,
+					/obj/item/clothing/accessory/shock_collar = 3,
+					/obj/item/clothing/accessory/collar_spike = 3,
+					/obj/item/clothing/accessory/collar_pink = 3
 					)
 	contraband = list(/obj/item/clothing/under/color/orange = 3,
-					/obj/item/clothing/under/overalls = 3,
 					/obj/item/clothing/under/stripper/mankini= 3,
 					/obj/item/clothing/under/fluff/nightgown = 3,
 					/obj/item/clothing/suit/stripper/stripper_pink = 2,
