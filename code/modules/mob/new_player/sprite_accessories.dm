@@ -906,10 +906,30 @@
 	do_colouration = 1
 
 /datum/sprite_accessory/tail/kitty
-	name = "kitty, hair-colored"
+	name = "kitty, hair-colored, downwards"
 	desc = ""
-	icon_state = "kitty"
+	icon_state = "kittydown"
 	do_colouration = 1
+
+/datum/sprite_accessory/tail/kittyup
+	name = "kitty, hair-colored, upwards"
+	desc = ""
+	icon_state = "kittyup"
+	do_colouration = 1
+
+/datum/sprite_accessory/tail/tiger_white
+	name = "tiger, hair-colored, white stripes"
+	desc = ""
+	icon_state = "tiger"
+	do_colouration = 1
+	colored_overlay = "tigerinnerwhite"
+
+/datum/sprite_accessory/tail/tiger_black
+	name = "tiger, hair-colored, black stripes"
+	desc = ""
+	icon_state = "tiger"
+	do_colouration = 1
+	colored_overlay = "tigerinnerblack"
 
 /datum/sprite_accessory/tail/bunny
 	name = "bunny, hair-colored"
