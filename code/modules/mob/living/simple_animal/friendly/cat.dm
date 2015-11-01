@@ -253,6 +253,7 @@
 	icon_living = "cat"
 	icon_dead = "cat_dead"
 	befriend_job = "Chief Medical Officer"
+	isPredator = 1
 
 /mob/living/simple_animal/cat/kitten
 	name = "kitten"
