@@ -232,7 +232,7 @@
 
 	if(friend && usr == friend)
 		set_dir(get_dir(src, friend))
-		say("Meow!")
+		say("Yap!")
 		return
 
 	if (!(ishuman(usr) && befriend_job && usr.job == befriend_job))
