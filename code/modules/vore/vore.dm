@@ -117,7 +117,7 @@
 		if(confirm == "Okay")
 			pred.prey_excludes += src
 			spawn(pred.backoffTime)
-				pred.prey_excludes -= src
+				if(pred)	pred.prey_excludes -= src
 			src.loc = get_turf(src.loc)
 			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] (MOB) ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
 
