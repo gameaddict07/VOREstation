@@ -200,7 +200,7 @@
 			movement_target = null
 			stop_automated_movement = 0
 			if (prob(10))
-				say("Meow!")
+				say("Yap!")
 
 	if (!friend || movement_target != friend)
 		..()
