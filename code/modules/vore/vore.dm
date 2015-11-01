@@ -1,4 +1,16 @@
 
+// Cross-defined vars to keep vore code isolated.
+
+
+
+/mob/living/simple_animal
+	var/digest_stomach = 0				//Do they digest things in their stomach?
+	var/digestable = 1 					//Can they be digested? Probably not functional yet
+	var/isPredator = 0 					//Are they capable of performing and pre-defined vore actions for their species?
+	var/swallowTime = 30 				//How long it takes to eat its prey in 1/10 of a second. The default is 3 seconds.
+	var/backoffTime = 50 				//How long to exclude an escaped mob from being re-eaten.
+	var/list/prey_excludes = list()		//For excluding people from being eaten.
+	var/list/stomach_contents = list() 	//Stomach contents list
 
 // All living things can potentially eat you now!
 /mob/living
@@ -91,26 +103,34 @@
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 /////////////////////////////
-//// NW's emergency code ////
+////   OOC Escape Code	 ////
 /////////////////////////////
 
 /mob/living/proc/escapeOOC()
 	set name = "OOC escape"
 	set category = "Vore"
 
-	var/confirm = alert(src, "This button is for escaping from your partner if they have disconnected or your preferences are being violated. Do not use it for anything else!", "Confirmation", "Okay", "Cancel")
-
-	if(confirm == "Cancel")
-		return
-
-	else if(confirm == "Okay")
-		if(iscarbon(loc) || isanimal(loc))
-			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
-			// TODO - Properly escape with updating internal_contents
+	//You're in an animal!
+	if(istype(src.loc,/mob/living/simple_animal))
+		var/mob/living/simple_animal/pred = src.loc
+		var/confirm = alert(src, "You're in a mob. Don't use this as a trick to get out of hostile animals. This is for escaping from preference-breaking and if you're otherwise unable to escape from endo.", "Confirmation", "Okay", "Cancel")
+		if(confirm == "Okay")
+			pred.prey_excludes += src
+			spawn(pred.backoffTime)
+				if(pred)	pred.prey_excludes -= src
 			src.loc = get_turf(src.loc)
+			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] (MOB) ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
 
-		else
-			src << "<span class='alert'>You aren't inside anyone, you clod.</span>"
+	//You're in a PC!
+	else if(istype(src.loc,/mob/living/carbon))
+		var/confirm = alert(src, "You're in a player-character. This is for escaping from preference-breaking and if your predator disconnects/AFKs. If your preferences were being broken, please admin-help as well.", "Confirmation", "Okay", "Cancel")
+		if(confirm == "Okay")
+			src.loc = get_turf(src.loc)
+			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] (PC) ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
+
+	else
+		src << "<span class='alert'>You aren't inside anyone, you clod.</span>"
+
 
 /////////////////////////
 /// NW's Inside Panel ///

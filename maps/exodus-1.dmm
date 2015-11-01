@@ -3529,7 +3529,7 @@
 "bpS" = (/obj/machinery/status_display{density = 0; layer = 4; pixel_x = 0; pixel_y = -32},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/turf/simulated/floor/bluegrid,/area/turret_protected/ai)
 "bpT" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9},/turf/simulated/floor/bluegrid,/area/turret_protected/ai)
 "bpU" = (/obj/item/device/radio/intercom{anyai = 1; broadcasting = 0; freerange = 1; listening = 1; name = "Captain's Intercom"; pixel_x = -27; pixel_y = -3},/obj/structure/closet/secure_closet/captains{anchored = 1},/turf/simulated/floor/wood,/area/crew_quarters/captain)
-"bpV" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/wood,/area/crew_quarters/captain)
+"bpV" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/mob/living/simple_animal/fox/fluff/Renault,/turf/simulated/floor/wood,/area/crew_quarters/captain)
 "bpW" = (/obj/machinery/computer/card,/turf/simulated/floor/wood,/area/crew_quarters/captain)
 "bpX" = (/obj/structure/table/woodentable,/obj/machinery/recharger{pixel_y = 4},/turf/simulated/floor/wood,/area/crew_quarters/captain)
 "bpY" = (/obj/structure/table/woodentable,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/item/weapon/storage/photo_album,/obj/item/device/camera/fluff/oldcamera,/turf/simulated/floor/wood,/area/crew_quarters/captain)
