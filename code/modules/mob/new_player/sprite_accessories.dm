@@ -931,6 +931,17 @@
 	do_colouration = 1
 	colored_overlay = "tigerinnerblack"
 
+/datum/sprite_accessory/tail/stripey
+	name = "stripey taj, hair-colored"
+	desc = ""
+	icon_state = "stripeytail"
+	do_colouration = 1
+
+/datum/sprite_accessory/tail/stripeytail_brown
+	name = "stripey taj, brown"
+	desc = ""
+	icon_state = "stripeytail-brown"
+
 /datum/sprite_accessory/tail/bunny
 	name = "bunny, hair-colored"
 	desc = ""
@@ -1043,6 +1054,11 @@
 	name = "tritail kitsune tails (Rosey)"
 	desc = ""
 	icon_state = "rosey"
+
+/datum/sprite_accessory/tail/scree
+	name = "green taj tail (+wings) (Scree)"
+	desc = ""
+	icon_state = "scree"
 
 /*
 ////////////////////////////
