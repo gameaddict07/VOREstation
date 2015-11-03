@@ -1,16 +1,31 @@
 
 // Cross-defined vars to keep vore code isolated.
 
-
+/mob/living
+	var/digestable = 1					//Can the mob be digested inside a belly?
 
 /mob/living/simple_animal
-	var/digest_stomach = 0				//Do they digest things in their stomach?
-	var/digestable = 1 					//Can they be digested? Probably not functional yet
 	var/isPredator = 0 					//Are they capable of performing and pre-defined vore actions for their species?
 	var/swallowTime = 30 				//How long it takes to eat its prey in 1/10 of a second. The default is 3 seconds.
 	var/backoffTime = 50 				//How long to exclude an escaped mob from being re-eaten.
+	var/gurgleTime = 600				//How long between stomach emotes at prey
+	var/datum/belly/insides				//The place where food goes. Just one on mobs.
 	var/list/prey_excludes = list()		//For excluding people from being eaten.
-	var/list/stomach_contents = list() 	//Stomach contents list
+
+	//We have some default emotes for mobs to do to their prey.
+	var/list/stomach_emotes = list("The insides knead at you gently for a moment.",
+									"The guts glorp wetly around you as some air shifts.",
+									"Your predator takes a deep breath and sighs, shifting you somewhat.",
+									"The stomach squeezes you tight for a moment, then relaxes.",
+									"During a moment of quiet, breathing becomes the most audible thing.",
+									"The warm slickness surrounds and kneads on you.")
+	var/list/stomach_emotes_d = list("The caustic acids eat away at your form.",
+										"The acrid air burns at your lungs.",
+										"Without a thought for you, the stomach grinds inwards painfully.",
+										"The guts treat you like food, squeezing to press more acids against you.",
+										"The onslaught against your body doesn't seem to be letting up; you're food now.",
+										"The insides work on you like they would any other food.")
+	var/list/digest_emotes = list()		//To send when digestion finishes
 
 // All living things can potentially eat you now!
 /mob/living
@@ -18,11 +33,7 @@
 	// TODO - Rename this! It is too conflicty with belly.internal_contents
 	var/list/internal_contents = list()
 
-/mob/living/carbon
-	var/digestable = 1	// Players get to decide if they are digestable or not  (TODO - Can we shoved this down to :human?)
-						// Set to 1 so you are digestable by default
 
-//
 //	This is an "interface" type.  No instances of this type will exist, but any type which is supposed
 //  to be vore capable should implement the vars and procs defined here to be vore-compatible!
 /vore/pred_capable
@@ -113,20 +124,23 @@
 	//You're in an animal!
 	if(istype(src.loc,/mob/living/simple_animal))
 		var/mob/living/simple_animal/pred = src.loc
-		var/confirm = alert(src, "You're in a mob. Don't use this as a trick to get out of hostile animals. This is for escaping from preference-breaking and if you're otherwise unable to escape from endo.", "Confirmation", "Okay", "Cancel")
+		var/confirm = alert(src, "You're in a mob. Don't use this as a trick to get out of hostile animals. This is for escaping from preference-breaking and if you're otherwise unable to escape from endo. If you are in more than one pred, use this more than once.", "Confirmation", "Okay", "Cancel")
 		if(confirm == "Okay")
 			pred.prey_excludes += src
 			spawn(pred.backoffTime)
 				if(pred)	pred.prey_excludes -= src
-			src.loc = get_turf(src.loc)
-			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] (MOB) ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
+			pred.insides.release_specific_contents(src)
+			message_admins("[key_name(src)] used the OOC escape button to get out of [pred] (MOB) ([pred ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[pred.x];Y=[pred.y];Z=[pred.z]'>JMP</a>" : "null"])")
 
 	//You're in a PC!
 	else if(istype(src.loc,/mob/living/carbon))
-		var/confirm = alert(src, "You're in a player-character. This is for escaping from preference-breaking and if your predator disconnects/AFKs. If your preferences were being broken, please admin-help as well.", "Confirmation", "Okay", "Cancel")
+		var/mob/living/carbon/pred = src.loc
+		var/confirm = alert(src, "You're in a player-character. This is for escaping from preference-breaking and if your predator disconnects/AFKs. If you are in more than one pred, use this more than once. If your preferences were being broken, please admin-help as well.", "Confirmation", "Okay", "Cancel")
 		if(confirm == "Okay")
-			src.loc = get_turf(src.loc)
-			message_admins("[key_name(src)] used the OOC escape button to get out of [loc] (PC) ([loc ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>" : "null"])")
+			for(var/O in pred.internal_contents)
+				var/datum/belly/CB = pred.internal_contents[O]
+				CB.release_specific_contents(src)
+			message_admins("[key_name(src)] used the OOC escape button to get out of [pred] (PC) ([pred ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[pred.x];Y=[pred.y];Z=[pred.z]'>JMP</a>" : "null"])")
 
 	else
 		src << "<span class='alert'>You aren't inside anyone, you clod.</span>"

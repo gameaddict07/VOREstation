@@ -58,8 +58,10 @@
 	..()
 	verbs -= /mob/verb/observe
 	// Vore Code Start
-	// Setup the types of bellies present.
-	internal_contents["Stomach"] = new /datum/belly/stomach(src)
+	// Setup the types of bellies present
+
+	insides = new /datum/belly/simple(src)
+	internal_contents["Insides"] = insides
 	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
 	// Vore Code End
 
