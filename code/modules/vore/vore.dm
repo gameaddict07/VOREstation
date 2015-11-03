@@ -3,6 +3,10 @@
 
 /mob/living
 	var/digestable = 1					//Can the mob be digested inside a belly?
+	var/datum/voretype/vorifice = null	// Default to no vore capability.
+
+	// TODO - Rename this! It is too conflicty with belly.internal_contents
+	var/list/internal_contents = list()
 
 /mob/living/simple_animal
 	var/isPredator = 0 					//Are they capable of performing and pre-defined vore actions for their species?
@@ -13,26 +17,38 @@
 	var/list/prey_excludes = list()		//For excluding people from being eaten.
 
 	//We have some default emotes for mobs to do to their prey.
-	var/list/stomach_emotes = list("The insides knead at you gently for a moment.",
+	var/list/stomach_emotes = list(
+									"The insides knead at you gently for a moment.",
 									"The guts glorp wetly around you as some air shifts.",
 									"Your predator takes a deep breath and sighs, shifting you somewhat.",
 									"The stomach squeezes you tight for a moment, then relaxes.",
 									"During a moment of quiet, breathing becomes the most audible thing.",
 									"The warm slickness surrounds and kneads on you.")
-	var/list/stomach_emotes_d = list("The caustic acids eat away at your form.",
-										"The acrid air burns at your lungs.",
-										"Without a thought for you, the stomach grinds inwards painfully.",
-										"The guts treat you like food, squeezing to press more acids against you.",
-										"The onslaught against your body doesn't seem to be letting up; you're food now.",
-										"The insides work on you like they would any other food.")
+	var/list/stomach_emotes_d = list(
+									"The caustic acids eat away at your form.",
+									"The acrid air burns at your lungs.",
+									"Without a thought for you, the stomach grinds inwards painfully.",
+									"The guts treat you like food, squeezing to press more acids against you.",
+									"The onslaught against your body doesn't seem to be letting up; you're food now.",
+									"The insides work on you like they would any other food.")
 	var/list/digest_emotes = list()		//To send when digestion finishes
 
-// All living things can potentially eat you now!
-/mob/living
-	var/datum/voretype/vorifice = null // Default to no vore capability.
-	// TODO - Rename this! It is too conflicty with belly.internal_contents
-	var/list/internal_contents = list()
+/mob/living/simple_animal/verb/toggle_digestion()
+	set name = "Toggle Animal's Digestion"
+	set desc = "Enables digestion on this mob for 20 minutes."
+	set category = "Vore"
+	set src in oview(1)
 
+	if(insides.digest_mode == "Hold")
+		var/confirm = alert(usr, "Enabling digestion on [name] will cause it to digest all stomach contents. Using this to break OOC prefs is against the rules. Digestion will disable itself after 20 minutes.", "Enabling [name]'s Digestion", "Enable", "Cancel")
+		if(confirm == "Enable")
+			insides.digest_mode = "Digest"
+			spawn(12000) //12000=20 minutes
+				if(src)	insides.digest_mode = "Hold"
+	else
+		var/confirm = alert(usr, "This mob is currently set to digest all stomach contents. Do you want to disable this?", "Disabling [name]'s Digestion", "Disable", "Cancel")
+		if(confirm == "Disable")
+			insides.digest_mode = "Hold"
 
 //	This is an "interface" type.  No instances of this type will exist, but any type which is supposed
 //  to be vore capable should implement the vars and procs defined here to be vore-compatible!
