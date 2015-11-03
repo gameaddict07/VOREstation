@@ -986,6 +986,11 @@
 	desc = ""
 	icon_state = "mouse-grey"
 
+/datum/sprite_accessory/tail/crossfox
+	name = "cross fox"
+	desc = ""
+	icon_state = "crossfox"
+
 /datum/sprite_accessory/tail/mouse
 	name = "mouse, hair-colored"
 	desc = ""
