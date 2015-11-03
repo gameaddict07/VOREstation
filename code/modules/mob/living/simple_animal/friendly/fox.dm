@@ -35,8 +35,7 @@
 					sleep(30)
 					if(M in oview(1, src))
 						custom_emote(1, "swallows down [M] into their hungry gut!")
-						M.loc = src
-						stomach_contents.Add(M)
+						src.insides.nom_mob(M)
 						playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 					else
 						M << "You just manage to slip away from [src]'s jaws before you can be sent to a fleshy prison!"
@@ -57,27 +56,30 @@
 		break
 
 	if(!stat && !resting && !buckled) //SEE A MICRO AND ARE A PREDATOR, EAT IT!
-		for(var/mob/living/carbon/human/food in oview(src, 3))
+		for(var/mob/living/carbon/human/food in oview(src, 5))
+
 			if(food.playerscale <= RESIZE_A_SMALLTINY)
 				if(prob(10))
 					custom_emote(1, pick("eyes [food] hungrily!","licks their lips and turns towards [food] a little!","pants as they imagine [food] being in their belly."))
 					break
 				else
-					if(prob(2))
+					if(prob(5))
 						movement_target = food
 						break
+
 		for(var/mob/living/carbon/human/bellyfiller in oview(1, src))
+			if(bellyfiller in src.prey_excludes)
+				continue
+
 			if(bellyfiller.playerscale <= RESIZE_A_SMALLTINY && isPredator)
 				movement_target = null
 				custom_emote(1, pick("slurps [bellyfiller] with their slimey tongue.","looms over [bellyfiller] with their maw agape.","sniffs at [bellyfiller], their belly grumbling hungrily."))
-				sleep(2)
-
-				custom_emote(1, "scoops [bellyfiller] into their maw!")
+				sleep(10)
+				custom_emote(1, "starts to scoop [bellyfiller] into their maw!")
 				sleep(swallowTime)
 				if(bellyfiller in oview(1, src))
 					custom_emote(1, "swallows down [bellyfiller] with a happy yap!")
-					bellyfiller.loc = src
-					stomach_contents.Add(bellyfiller)
+					src.insides.nom_mob(bellyfiller)
 					msg_admin_attack("[key_name(bellyfiller)] got eaten by [src]!")
 					playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 				else
@@ -111,7 +113,7 @@
 
 	if(movement_target)
 		stop_automated_movement = 1
-		walk_to(src,movement_target,0,3)
+		walk_to(src,movement_target,0,10)
 
 /mob/living/simple_animal/fox/proc/handle_flee_target()
 	//see if we should stop fleeing
@@ -251,3 +253,41 @@
 	desc = "Renault, the Captain's trustworthy fox.I wonder what it says?"
 	isPredator = 1
 	befriend_job = "Captain"
+
+
+//////
+// Vorestuff that has to be here because constructors are the only place they can be.
+//////
+
+/mob/living/simple_animal/fox/stomach_emotes = list(
+							"The foxguts knead and churn around you harmlessly.",
+							"With a loud glorp, some air shifts inside the belly.",
+							"A thick drop of warm bellyslime drips onto you from above.",
+							"The fox turns suddenly, causing you to shift a little.",
+							"During a moment of relative silence, you can hear the fox breathing.",
+							"The slimey stomach walls squeeze you lightly, then relax.")
+
+/mob/living/simple_animal/fox/stomach_emotes_d = list(
+							"The guts knead at you, trying to work you into thick soup.",
+							"You're ground on by the slimey walls, treated like a mouse.",
+							"The acrid air is hard to breathe, and stings at your lungs.",
+							"You can feel the acids coating you, ground in by the slick walls.",
+							"The fox's stomach churns hungrily over your form, trying to take you.",
+							"With a loud glorp, the stomach spills more acids onto you.")
+
+
+/mob/living/simple_animal/fox/fluff/Renault/stomach_emotes = list(
+							"Renault's stomach walls squeeze around you more tightly for a moment, before relaxing, as if testing you a bit.",
+							"There's a sudden squeezing as Renault presses a forepaw against his gut over you, squeezng you against the slick walls.",
+							"The 'head fox' has a stomach that seems to think you belong to it. It might be hard to argue, as it kneads at your form.",
+							"If being in the captain's fox is a promotion, it might not feel like one. The belly just coats you with more thick foxslime.",
+							"It doesn't seem like Renault wants to let you out. The stomach and owner possessively squeeze around you.",
+							"Renault's stomach walls squeeze closer, as he belches quietly, before swallowing more air. Does he do that on purpose?")
+
+/mob/living/simple_animal/fox/fluff/Renault/stomach_emotes_d = list(
+							"Renault's stomach walls grind hungrily inwards, kneading acids against your form, and treating you like any other food.",
+							"The captain's fox impatiently kneads and works acids against you, trying to claim your body for fuel.",
+							"The walls knead in firmly, squeezing and tossing you around briefly in disorienting aggression.",
+							"Renault belches, letting the remaining air grow more acrid. It burns your lungs with each breath.",
+							"A thick glob of acids drip down from above, adding to the pool of caustic fluids in Renault's belly.",
+							"There's a loud gurgle as the stomach declares the intent to make you a part of Renault.")

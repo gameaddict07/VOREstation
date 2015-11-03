@@ -68,7 +68,7 @@
 									M << "<span class='notice'>[owner]'s stomach begins gushing your remains through their system, adding some extra weight to [owner]'s tits.</span>"
 						if(6)
 							owner << "<span class='notice'>Your stomach groans as [M] falls apart into a thick soup. You can feel their remains soon flowing deeper into your body to be absorbed.</span>"
-							M << "<span class='notice'>[owner]'s stomach groans as you falls apart into a thick soup. Your remains soon flow deeper into [owner]'s body to be absorbed.</span>"
+							M << "<span class='notice'>[owner]'s stomach groans as you fall apart into a thick soup. Your remains soon flow deeper into [owner]'s body to be absorbed.</span>"
 						if(7)
 							owner << "<span class='notice'>Your gut kneads on every fiber of [M], softening them down into mush to fuel your next hunt.</span>"
 							M << "<span class='notice'>[owner]'s gut kneads on every fiber of your body, softening you down into mush to fuel their next hunt.</span>"
