@@ -46,7 +46,7 @@
 			spawn(12000) //12000=20 minutes
 				if(src)	insides.digest_mode = "Hold"
 	else
-		var/confirm = alert(usr, "This mob is currently set to digest all stomach contents. Click the button below to disable this.", "[name]'s Digestion", "Disable", "Cancel")
+		var/confirm = alert(usr, "This mob is currently set to digest all stomach contents. Click the the disable button below to disable this.", "[name]'s Digestion", "Disable", "Cancel")
 		if(confirm == "Disable")
 			insides.digest_mode = "Hold"
 
