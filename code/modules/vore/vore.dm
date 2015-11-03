@@ -40,13 +40,13 @@
 	set src in oview(1)
 
 	if(insides.digest_mode == "Hold")
-		var/confirm = alert(usr, "Enabling digestion on [name] will cause it to digest all stomach contents. Using this to break OOC prefs is against the rules. Digestion will disable itself after 20 minutes.", "[name]'s Digestion", "Enable", "Cancel")
+		var/confirm = alert(usr, "Enabling digestion on [name] will cause it to digest all stomach contents. Using this to break OOC prefs is against the rules. Digestion will disable itself after 20 minutes.", "Enabling [name]'s Digestion", "Enable", "Cancel")
 		if(confirm == "Enable")
 			insides.digest_mode = "Digest"
 			spawn(12000) //12000=20 minutes
 				if(src)	insides.digest_mode = "Hold"
 	else
-		var/confirm = alert(usr, "This mob is currently set to digest all stomach contents. Click the the disable button below to disable this.", "[name]'s Digestion", "Disable", "Cancel")
+		var/confirm = alert(usr, "This mob is currently set to digest all stomach contents. Do you want to disable this?", "Disabling [name]'s Digestion", "Disable", "Cancel")
 		if(confirm == "Disable")
 			insides.digest_mode = "Hold"
 
