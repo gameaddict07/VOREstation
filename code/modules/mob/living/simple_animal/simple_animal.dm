@@ -61,7 +61,7 @@
 	// Setup the types of bellies present
 
 	insides = new /datum/belly/simple(src)
-	internal_contents["Insides"] = insides
+	internal_contents["Stomach"] = insides
 	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
 	// Vore Code End
 
