@@ -2274,6 +2274,7 @@
 	icon_closed = "molenar"
 	item_state = "molenar"
 
+
 /obj/item/clothing/glasses/sunglasses/fluff/nerdglasses // kisukegema:Kisuke 'Nerd' Gema
 	name = "Kamina Glasses"
 	desc = "Some shades from an anime that aired long ago. They seem to encourage a type of manliness that no one but the wearer understands."
@@ -2309,3 +2310,19 @@
 	reagents.add_reagent("neurotoxin", 1)
 	update_icon()
 	return
+
+
+//Tsunderenyaa items
+
+/obj/item/weapon/scalpel/fluff/cultknife
+	name ="Ramona's Blade"
+	desc = "A steel, curved knife, looking sharp as a razor. Perfect for a ritual sacrifice!"
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "render"
+
+/obj/item/clothing/under/rank/security/fluff/casualsec
+	name = "Casual Uniform"
+	desc = "A custom tailored security uniform, with shorts and the shirt's sleeves rolled up to the elbow."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "casey"
+	item_color = "casey"
