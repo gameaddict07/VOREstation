@@ -84,7 +84,8 @@
 
 			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
 
-				if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+				//if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+				if (fullness < 6000) //Updated to match maximum above, though inverse comparison due to how they arranged this.
 					for(var/mob/O in viewers(world.view, user))
 						O.show_message("\red [user] attempts to feed [M] [src].", 1)
 				else

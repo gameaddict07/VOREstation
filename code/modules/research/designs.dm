@@ -1008,6 +1008,18 @@ datum/design/circuit/recharge_station
 	req_tech = list("programming" = 3, "engineering" = 2)
 	build_path = /obj/item/weapon/circuitboard/recharge_station
 
+datum/design/circuit/extractor
+	name = "lysis-isolation centrifuge"
+	id = "extractor"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_path = /obj/item/weapon/circuitboard/extractor
+
+datum/design/circuit/editor
+	name = "bioballistic delivery system"
+	id = "editor"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_path = /obj/item/weapon/circuitboard/editor
+
 ////////////////////////////////////////
 /////////Civilian Circuit Boards////////
 ////////////////////////////////////////

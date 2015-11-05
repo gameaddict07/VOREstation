@@ -111,7 +111,7 @@
 	name = "micro"
 	desc = "Another crewmember, small enough to fit in your hand."
 	icon_state = "micro"
-	slot_flags = SLOT_FEET | SLOT_HEAD
+	slot_flags = SLOT_FEET | SLOT_HEAD | SLOT_ID
 	w_class = 2
 
 /obj/item/weapon/holder/micro/examine(var/mob/user)
@@ -126,6 +126,18 @@
 	if(istype(M,/mob/living/silicon/ai)) return
 	for(var/mob/living/carbon/human/O in contents)
 		O.show_inv(usr)
+
+/obj/item/weapon/holder/GetAccess()
+	var/list/access_sum = list()
+	var/obj/item/M_hand = holden_mob.get_active_hand()
+	var/obj/item/M_id = holden_mob.wear_id
+
+	if(M_hand)
+		access_sum += M_hand.GetAccess()
+	if(M_id)
+		access_sum += M_id.GetAccess()
+
+	return(access_sum)
 
 /obj/item/weapon/holder/micro/attack_self(var/mob/living/user)
 	for(var/mob/living/carbon/human/M in contents)

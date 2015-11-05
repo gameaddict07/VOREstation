@@ -68,3 +68,23 @@ obj/item/weapon/circuitboard/rdserver
 							"/obj/item/weapon/stock_parts/manipulator" = 1,
 							"/obj/item/weapon/stock_parts/micro_laser" = 1,
 							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
+/obj/item/weapon/circuitboard/extractor
+	name = "Circuit board (Lysis-isolation Centrifuge)"
+	build_path = "/obj/machinery/botany/extractor"
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=2"
+	frame_desc = "Requires 2 Matter Bins, and 2 Micro Manipulators."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/matter_bin" = 2,
+							"/obj/item/weapon/stock_parts/manipulator" = 2)
+
+/obj/item/weapon/circuitboard/editor
+	name = "Circuit board (Bioballistic Delivery System)"
+	build_path = "/obj/machinery/botany/editor"
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=2"
+	frame_desc = "Requires 3 Micro Manipulators, and 1 Micro-Laser."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/manipulator" = 3,
+							"/obj/item/weapon/stock_parts/micro_laser" = 1)
