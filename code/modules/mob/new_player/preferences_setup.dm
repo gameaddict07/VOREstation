@@ -15,6 +15,7 @@ datum/preferences
 		randomize_skin_color()
 		underwear = rand(1,underwear_m.len)
 		undershirt = rand(1,undershirt_t.len)
+		undersocks = rand(1,undersocks_t.len)
 		backbag = 2
 		age = rand(AGE_MIN,AGE_MAX)
 		if(H)
@@ -281,6 +282,10 @@ datum/preferences
 		var/icon/undershirt_s = null
 		if(undershirt && current_species.flags & HAS_UNDERWEAR)
 			undershirt_s = new/icon("icon" = 'icons/mob/human.dmi', "icon_state" = undershirt)
+
+		var/icon/undersocks_s = null
+		if(undersocks && current_species.flags & HAS_UNDERWEAR)
+			undersocks_s = new/icon("icon" = 'icons/mob/human.dmi', "icon_state" = undersocks)
 
 		var/icon/clothes_s = null
 		if(job_civilian_low & ASSISTANT)//This gives the preview icon clothes depending on which job(if any) is set to 'high'
@@ -719,6 +724,8 @@ datum/preferences
 			preview_icon.Blend(underwear_s, ICON_OVERLAY)
 		if(undershirt_s)
 			preview_icon.Blend(undershirt_s, ICON_OVERLAY)
+		if(undersocks_s)
+			preview_icon.Blend(undersocks_s, ICON_OVERLAY)
 		if(clothes_s)
 			preview_icon.Blend(clothes_s, ICON_OVERLAY)
 		preview_icon_front = new(preview_icon, dir = SOUTH)
@@ -727,4 +734,5 @@ datum/preferences
 		del(eyes_s)
 		del(underwear_s)
 		del(undershirt_s)
+		del(undersocks_s)
 		del(clothes_s)
