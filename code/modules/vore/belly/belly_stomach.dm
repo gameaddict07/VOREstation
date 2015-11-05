@@ -96,7 +96,7 @@
 	if (!(user in internal_contents))
 		return  // User is not in this belly!
 
-	if(prob(40))
+	if(prob(60))
 		var/struggle_outer_message
 		var/struggle_user_message
 		var/stomach_noun = pick("stomach","gut","tummy","belly") // To randomize the word for 'stomach'
