@@ -1447,8 +1447,9 @@ datum/preferences
 				if("ear_style")
 					var/list/pretty_ear_styles = list("Normal")
 					for(var/path in ear_styles_list)
-						var/obj/item/clothing/head/instance = ear_styles_list[path]
-						pretty_ear_styles[instance.name] = path
+						var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
+						if((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed))
+							pretty_ear_styles[instance.name] = path
 
 					var/selection = input(user, "Pick ears (doesn't update preview)", "Character Preference") as null|anything in pretty_ear_styles
 					if(selection && selection != "Normal")
@@ -1460,7 +1461,8 @@ datum/preferences
 					var/list/pretty_tail_styles = list("Normal")
 					for(var/path in tail_styles_list)
 						var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
-						pretty_tail_styles[instance.name] = path
+						if((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed))
+							pretty_tail_styles[instance.name] = path
 
 					var/selection = input(user, "Pick tail (doesn't update preview)", "Character Preference") as null|anything in pretty_tail_styles
 					if(selection && selection != "Normal")
