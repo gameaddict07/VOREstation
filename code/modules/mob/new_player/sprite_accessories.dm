@@ -866,7 +866,7 @@
 /datum/sprite_accessory/ears/kerena
 	name = "wingwolf ears (Kerena)"
 	desc = ""
-	icon_state = list("kerena")
+	icon_state = "kerena"
 	ckeys_allowed = list("somekindofpony")
 
 /datum/sprite_accessory/ears/rosey
