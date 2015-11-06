@@ -19,8 +19,8 @@
 	deform = 'icons/mob/human_races/r_def_lizard.dmi'
 	language = "Sinta'unathi"
 	tail = "sogtail"
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	primitive = /mob/living/carbon/monkey/unathi
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 3
 	gluttonous = 1
 
@@ -39,8 +39,8 @@
 	heat_level_3 = 1100 //Default 1000
 
 	flags = CAN_JOIN | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
-
 	flesh_color = "#34AF10"
+	equip_problems = BOOT_PROBLEMS | GLOVE_PROBLEMS
 
 	reagent_tag = IS_UNATHI
 	base_color = "#066000"
@@ -66,6 +66,7 @@
 	deform = 'icons/mob/human_races/r_def_tajaran.dmi'
 	language = "Siik'tajr"
 	tail = "tajtail"
+	primitive = /mob/living/carbon/monkey/tajara
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 8
 	slowdown = -1
@@ -85,14 +86,12 @@
 	heat_level_2 = 380 //Default 400
 	heat_level_3 = 800 //Default 1000
 
-	primitive = /mob/living/carbon/monkey/tajara
-
-	flags = CAN_JOIN | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR| HAS_SKIN_COLOR
-
+	flags = CAN_JOIN | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_SKIN_COLOR
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
+	equip_problems = BOOT_PROBLEMS | GLOVE_PROBLEMS
 
-	heat_discomfort_level = 312 // Is this too high?
+	heat_discomfort_level = 312
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
 		"You feel uncomfortably warm.",
@@ -109,6 +108,7 @@
 	language = "Skrellian"
 	primitive = /mob/living/carbon/monkey/skrell
 	unarmed_types = list(/datum/unarmed_attack/punch)
+
 	blurb = "An amphibious species, Skrell come from the star system known as Qerr'Vallis, which translates to 'Star of \
 	the royals' or 'Light of the Crown'.<br/><br/>Skrell are a highly advanced and logical race who live under the rule \
 	of the Qerr'Katish, a caste within their society which keeps the empire of the Skrell running smoothly. Skrell are \
@@ -116,7 +116,6 @@
 	the secrets of their empire to their allies."
 
 	flags = CAN_JOIN | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
-
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
 
@@ -128,8 +127,8 @@
 	icobase = 'icons/mob/human_races/r_diona.dmi'
 	deform = 'icons/mob/human_races/r_def_plant.dmi'
 	language = "Rootspeak"
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/diona)
 	primitive = /mob/living/carbon/alien/diona
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/diona)
 	slowdown = 7
 	rarity_value = 3
 	hud_type = /datum/hud_data/diona
@@ -166,7 +165,6 @@
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 
 	flags = CAN_JOIN | IS_WHITELISTED | NO_BREATHE | NO_SCAN | IS_PLANT | NO_BLOOD | NO_PAIN | NO_SLIP | HAS_EYE_COLOR
-
 	blood_color = "#004400"
 	flesh_color = "#907E4A"
 
@@ -225,6 +223,12 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
+	flags = CAN_JOIN | NO_BREATHE | NO_SCAN | NO_BLOOD | NO_PAIN | IS_SYNTHETIC
+	blood_color = "#1F181F"
+	flesh_color = "#575757"
+
+	has_organ = list() //TODO: Positronic brain.
+
 	heat_discomfort_level = 400
 	heat_discomfort_strings = list(
 		"Your cooling fan is maxed out, and yet it still fails to keep your core cool.",
@@ -239,14 +243,6 @@
 		"You don't even have to run your cooling fan above 5% speed."
 		)
 
-
-	flags = CAN_JOIN | NO_BREATHE | NO_SCAN | NO_BLOOD | NO_PAIN | IS_SYNTHETIC
-
-	blood_color = "#1F181F"
-	flesh_color = "#575757"
-
-	has_organ = list() //TODO: Positronic brain.
-
 /datum/species/machine/handle_death(var/mob/living/carbon/human/H)
 	..()
 	if(flags & IS_SYNTHETIC)
@@ -254,12 +250,9 @@
 		spawn(100)
 			if(H) H.update_hair()
 
-
 /datum/species/sergal
-
 	name = "Sergal"
 	name_plural = "sergals"
-
 	icobase = 'icons/mob/human_races/r_sergal.dmi'
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'
 	language = "Sâgaru"
@@ -267,6 +260,7 @@
 	primitive = /mob/living/carbon/monkey/tajara
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 8
+
 	blurb = "There are two subspecies of Sergal; Southern and Northern. Northern sergals are a highly aggressive race \
 	that lives in the plains and tundra of their homeworld. They are characterized by long, fluffy fur bodies with cold colors; \
 	usually with white abdomens, somewhat short ears, and thick faces. Southern sergals are much more docile and live in the \
@@ -276,26 +270,15 @@
 	lifespan, but due to their lust for violence, only a handful have ever survived beyond the age of 80, such as the infamous and \
 	legendary General Rain Silves who is claimed to have lived to 5000."
 
-	/* Sergals are a temperate species able to survive in a variety of environments.
-	cold_level_1 = 200 //Default 260
-	cold_level_2 = 140 //Default 200
-	cold_level_3 = 80 //Default 120
-
-	heat_level_1 = 330 //Default 360
-	heat_level_2 = 380 //Default 400
-	heat_level_3 = 800 //Default 1000
-	*/
-
 	flags = CAN_JOIN | HAS_LIPS | HAS_EYE_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR
 	flesh_color = "#AFA59E"
-	//heat_discomfort_level = 312
+	equip_problems = BOOT_PROBLEMS | GLOVE_PROBLEMS
+
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
 		"You feel uncomfortably warm.",
 		"Your overheated skin itches."
 		)
-	//cold_discomfort_level = 225
-
 
 /datum/species/shark
 	name = "Akula"
@@ -306,6 +289,7 @@
 	tail = "sharktail"
 	primitive = /mob/living/carbon/monkey/skrell
 	unarmed_types = list(/datum/unarmed_attack/bite/sharp)
+
 	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
 	They were first discovered as a primitive race of underwater dwelling tribal creatures by the Skrell. At first they were not believed \
 	to be noteworthy, but the Akula proved to be such swift and clever learners that the Skrell reclassified them as sentients. Allegedly, \
@@ -317,6 +301,7 @@
 	flags = CAN_JOIN | HAS_LIPS | HAS_EYE_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR
 	flesh_color = "#AFA59E"
 	blood_color = "#1D2CBF"
+	equip_problems = BOOT_PROBLEMS | GLOVE_PROBLEMS
 
 	heat_discomfort_strings = list(
 		"Your skin feels sore and unbearably itchy.",
