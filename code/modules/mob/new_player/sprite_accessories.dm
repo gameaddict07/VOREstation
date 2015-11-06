@@ -34,6 +34,9 @@
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
 
+	// Ckey of person allowed to use this, if defined.
+	var/list/ckeys_allowed = null
+
 
 /*
 ////////////////////////////
@@ -846,27 +849,37 @@
 	name = "quintail kitsune ears (Molenar)"
 	desc = ""
 	icon_state = "molenar-kitsune"
+	ckeys_allowed = list("molenar")
 
 /datum/sprite_accessory/ears/molenar_deathclaw
 	name = "deathclaw ears (Molenar)"
 	desc = ""
 	icon_state = "molenar-deathclaw"
+	ckeys_allowed = list("molenar")
 
 /datum/sprite_accessory/ears/runac
 	name = "fennecsune ears (Runac)"
 	desc = ""
 	icon_state = "runac"
+	ckeys_allowed = list("RebCom1807")
 
 /datum/sprite_accessory/ears/kerena
 	name = "wingwolf ears (Kerena)"
 	desc = ""
-	icon_state = "kerena"
+	icon_state = list("kerena")
+	ckeys_allowed = list("somekindofpony")
 
 /datum/sprite_accessory/ears/rosey
 	name = "tritail kitsune ears (Rosey)"
 	desc = ""
 	icon_state = "rosey"
+	ckeys_allowed = list("joey4298")
 
+/datum/sprite_accessory/ears/aronai
+	name = "aronai ears/head (Aronai)"
+	desc = ""
+	icon_state = "aronai"
+	ckeys_allowed = list("arokha")
 
 /*
 ////////////////////////////
@@ -1039,31 +1052,43 @@
 	name = "quintail kitsune tails (Molenar)"
 	desc = ""
 	icon_state = "molenar-kitsune"
+	ckeys_allowed = list("molenar")
 
 /datum/sprite_accessory/tail/molenar_deathclaw
 	name = "deathclaw bits (Molenar)"
 	desc = ""
 	icon_state = "molenar-deathclaw"
+	ckeys_allowed = list("molenar")
 
 /datum/sprite_accessory/tail/runac
 	name = "fennecsune tails (Runac)"
 	desc = ""
 	icon_state = "runac"
+	ckeys_allowed = list("RebCom1807")
 
 /datum/sprite_accessory/tail/kerena
 	name = "wingwolf tail (+wings) (Kerena)"
 	desc = ""
 	icon_state = "kerena"
+	ckeys_allowed = list("somekindofpony")
 
 /datum/sprite_accessory/tail/rosey
 	name = "tritail kitsune tails (Rosey)"
 	desc = ""
 	icon_state = "rosey"
+	ckeys_allowed = list("joey4298")
 
 /datum/sprite_accessory/tail/scree
 	name = "green taj tail (+wings) (Scree)"
 	desc = ""
 	icon_state = "scree"
+	ckeys_allowed = list("scree")
+
+/datum/sprite_accessory/tail/aronai
+	name = "aronai tail (Aronai)"
+	desc = ""
+	icon_state = "aronai"
+	ckeys_allowed = list("arokha")
 
 /*
 ////////////////////////////
