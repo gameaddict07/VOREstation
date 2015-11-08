@@ -1185,6 +1185,12 @@ var/global/list/gear_datums = list()
 	sort_category = "utility"
 	cost = 2
 
+/datum/gear/wallet_grey
+	display_name = "wallet, grey"
+	path = /obj/item/weapon/storage/wallet/grey
+	sort_category = "utility"
+	cost = 2
+
 // The rest of the trash.
 
 /datum/gear/ashtray

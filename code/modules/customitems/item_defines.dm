@@ -2311,9 +2311,7 @@
 	update_icon()
 	return
 
-
 //Tsunderenyaa items
-
 /obj/item/weapon/scalpel/fluff/cultknife
 	name ="Ramona's Blade"
 	desc = "A steel, curved knife, looking sharp as a razor. Perfect for a ritual sacrifice!"
@@ -2326,3 +2324,17 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "casey"
 	item_color = "casey"
+
+//Arokha items
+/obj/item/weapon/reagent_containers/hypospray/fluff/aronai
+	name = "worn hypospray"
+	desc = "This hypospray seems a bit well-used. The blue band indicates it's from the CentCom medical division. There's an 'A' scratched into the bottom."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "aro_hypo"
+
+/obj/item/weapon/reagent_containers/hypospray/fluff/aronai/New()
+	..()
+	reagents.add_reagent("inaprovaline", 5)
+	reagents.add_reagent("tricordrazine", 25)
+	update_icon()
+	return
