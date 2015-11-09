@@ -1146,7 +1146,8 @@
 					/obj/item/clothing/accessory/collar_bell = 3,
 					/obj/item/clothing/accessory/shock_collar = 3,
 					/obj/item/clothing/accessory/collar_spike = 3,
-					/obj/item/clothing/accessory/collar_pink = 3
+					/obj/item/clothing/accessory/collar_pink = 3,
+					/obj/item/clothing/accessory/collar_holo = 3
 					)
 	contraband = list(/obj/item/clothing/under/color/orange = 3,
 					/obj/item/clothing/under/stripper/mankini= 3,
