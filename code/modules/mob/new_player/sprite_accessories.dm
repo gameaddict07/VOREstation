@@ -861,7 +861,7 @@
 	name = "fennecsune ears (Runac)"
 	desc = ""
 	icon_state = "runac"
-	ckeys_allowed = list("RebCom1807")
+	ckeys_allowed = list("rebcom1807")
 
 /datum/sprite_accessory/ears/kerena
 	name = "wingwolf ears (Kerena)"
@@ -1064,7 +1064,7 @@
 	name = "fennecsune tails (Runac)"
 	desc = ""
 	icon_state = "runac"
-	ckeys_allowed = list("RebCom1807")
+	ckeys_allowed = list("rebcom1807")
 
 /datum/sprite_accessory/tail/kerena
 	name = "wingwolf tail (+wings) (Kerena)"
