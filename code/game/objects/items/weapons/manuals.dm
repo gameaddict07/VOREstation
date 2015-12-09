@@ -1,5 +1,13 @@
 /*********************MANUALS (BOOKS)***********************/
 
+
+/*********************READ ME UP HERE***********************/
+/*
+[config.wikiurl] was previously used in the frames of most of these guides.
+This was changed due to an compatibility problem with our wiki's format.
+*/
+
+
 /obj/item/weapon/book/manual
 	icon = 'icons/obj/library.dmi'
 	due_date = 0 // Game time in 1/10th seconds
@@ -20,7 +28,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]Guide_to_construction&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="https://wiki.vore-station.net/index.php?title=Guide_to_construction&printable=yes" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -118,7 +126,7 @@
 				<ol>
 				<li>Fill reactor loop and radiator loop with two (2) standard canisters of nitrogen gas each.</li>
 				<li>Ensure that pumps and filters are on and operating at maximum power.</li>
-				<li>Fire <del>5</del> <del>15</del> <del>2</del> <del>UNKNOWN</del> 8-12 pulses from emitter at supermatter crystal. Reactor blast doors must be open for this procedure.</li>
+				<li>Fire <del>5</del> <del>15</del> <del>2</del> <del>UNKNOWN</del> 8 pulses from emitter at supermatter crystal. Reactor blast doors must be open for this procedure.</li>
 				</ol>
 				<br>
 				<h2>OPERATION AND MAINTENANCE</h2>
@@ -150,7 +158,7 @@
 /obj/item/weapon/book/manual/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	author = "Syndicate"
 	title = "Hacking"
 
 /obj/item/weapon/book/manual/engineering_hacking/New()
@@ -161,7 +169,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]Hacking&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="https://wiki.vore-station.net/index.php?title=Hacking&printable=yes" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -718,7 +726,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]Corporate_Regulations&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='97%' src="https://wiki.vore-station.net/index.php?title=Corporate_Regulations&printable=yes" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -768,7 +776,7 @@
 
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
 
-				<iframe width='100%' height='100%' src="[config.wikiurl]Guide_to_Medicine&printable=yes&removelinks=1" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='100%' src="https://wiki.vore-station.net/index.php?title=Guide_to_Medicine&printable=yes&removelinks=1" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 
@@ -789,7 +797,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='100%' src="[config.wikiurl]Guide_to_Engineering&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>		</body>
+		<iframe width='100%' height='100%' src="https://wiki.vore-station.net/index.php?title=Guide_to_Engineering&printable=yes" frameborder="0" id="main_frame"></iframe>		</body>
 
 		</html>
 
@@ -956,7 +964,7 @@
 /obj/item/weapon/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
 	icon_state ="bookNuclear"
-	author = "Syndicate"
+	author = "NanoTrasen"
 	title = "Fission Mailed: Nuclear Sabotage 101"
 
 	dat = {"<html>
@@ -972,7 +980,7 @@
 				</head>
 				<body>
 				<h1>Nuclear Explosives 101</h1>
-				Hello and thank you for choosing the Syndicate for your nuclear information needs. Today's crash course will deal with the operation of a Fusion Class NanoTrasen made Nuclear Device.<br><br>
+				Hello and thank you for choosing NanoTrasen for all your Weapons of Mass Destruction needs. Today's crash course will deal with the operation of a Fusion Class NanoTrasen made Nuclear Device.<br><br>
 
 				First and foremost, DO NOT TOUCH ANYTHING UNTIL THE BOMB IS IN PLACE. Pressing any button on the compacted bomb will cause it to extend and bolt itself into place. If this is done, to unbolt it, one must completely log in, which at this time may not be possible.<br>
 
@@ -981,7 +989,7 @@
 					<li>Place the nuclear device in the designated detonation zone.</li>
 					<li>Extend and anchor the nuclear device from its interface.</li>
 					<li>Insert the nuclear authorisation disk into the slot.</li>
-					<li>Type the numeric authorisation code into the keypad. This should have been provided.<br>
+					<li>Type the numeric authorisation code into the keypad. This either has been provided by your superiors, or can be provided upon request.<br>
 					<b>Note</b>: If you make a mistake, press R to reset the device.
 					<li>Press the E button to log on to the device.</li>
 				</ul><br>
@@ -1198,3 +1206,24 @@
 				</body>
 			</html>
 			"}
+
+
+/obj/item/weapon/book/manual/commandguide
+	name = "The Chain that Binds"
+	icon_state = "commandGuide"
+	author = "Nicholas Dietrich Troy"
+	title = "The Chain that Binds: A Civilian's Guide to the Chain of Command"
+
+/obj/item/weapon/book/manual/commandguide/New()
+	..()
+	dat = {"
+
+		<html><head>
+		</head>
+
+		<body>
+		<iframe width='100%' height='100%' src="https://wiki.vore-station.net/index.php?title=Chain_of_Command&printable=yes" frameborder="0" id="main_frame"></iframe>		</body>
+
+		</html>
+
+		"}

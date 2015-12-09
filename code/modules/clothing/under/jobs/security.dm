@@ -59,10 +59,49 @@
 	name = "tactical jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "swatunder"
-	item_state = "swatunder"
+	item_state = "g_suit"
 	item_color = "swatunder"
 	armor = list(melee = 10, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
+
+/obj/item/clothing/under/tactical/bdu
+	name = "battle dress uniform (green)"
+	desc = "A camouflaged battle dress uniform."
+	icon_state = "bdu_olive"
+	item_color = "bdu_olive"
+
+	verb/toggle_sleeves()
+		set name = "Roll sleeves"
+		set category = "Object"
+		set src in usr
+
+		if(!usr.canmove || usr.stat || usr.restrained())
+			return 0
+
+		switch(icon_state)
+			if("bdu_olive_rolled")
+				src.icon_state = "bdu_olive"
+				src.item_color = "bdu_olive"
+				usr << "You roll down your sleeves."
+			if("bdu_olive")
+				src.icon_state = "bdu_olive_rolled"
+				src.item_color = "bdu_olive_rolled"
+				usr << "You roll up your sleeves."
+			if("bdu_d_camo_rolled")
+				src.icon_state = "bdu_d_camo"
+				src.item_color = "bdu_d_camo"
+				usr << "You roll down your sleeves."
+			if("bdu_d_camo")
+				src.icon_state = "bdu_d_camo_rolled"
+				src.item_color = "bdu_d_camo_rolled"
+				usr << "You roll up your sleeves."
+		usr.update_inv_w_uniform() // So our uniform updates on our character.
+
+/obj/item/clothing/under/tactical/bdu/camo
+	name = "battle dress uniform (tan)"
+	item_color = "bdu_d_camo"
+	icon_state = "bdu_d_camo"
+	item_state = "johnny"
 
 /*
  * Detective
@@ -181,11 +220,24 @@
 	item_color = "officerblueclothes"
 
 /obj/item/clothing/under/rank/head_of_security/navyblue
-	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
+
 	name = "head of security's uniform"
 	icon_state = "hosblueclothes"
 	item_state = "hosblueclothes"
 	item_color = "hosblueclothes"
+
+/obj/item/clothing/under/rank/head_of_security/navytan
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
+	icon_state = "hostanclothes"
+	item_color = "hostanclothes"
+	item_state = "johnny"
+
+/obj/item/clothing/under/rank/head_of_security/navytan/commander
+	name = "\improper commander's jumpsuit"
+	desc = "It's a jumpsuit worn by those few with the dedication to achieve the position of \"Commander\"."
+	icon_state = "hostanclothes"
+	item_color = "hostanclothes"
+	item_state = "johnny"
 
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."

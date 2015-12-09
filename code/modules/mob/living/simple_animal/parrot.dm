@@ -409,6 +409,18 @@
 					visible_message("[src] grabs the [held_item]!", "\blue You grab the [held_item]!", "You hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
+			// Nightwing was here!
+			if(istype(held_item,/obj/item/weapon/holder/micro)) //Is the target a micro?
+				if(isPredator) //Is the parrot a predator?
+					for(var/mob/living/M in held_item.contents)
+						if(4 * M.playerscale <= playerscale) //Is the parrot's playerscale at least 4 times larger than the micro's?
+							custom_emote(1, "opens its beak wide and begins to stuff [held_item] inside!") //EAT IT
+							sleep(swallowTime)
+							if(istype(held_item,/obj/item/weapon/holder/micro))
+								custom_emote(1, "swallows [held_item] alive, a little lump sliding into its gut!")
+								src.insides.nom_mob(held_item)
+								msg_admin_attack("[key_name(M)] got eaten by [src]!")
+								playsound(src, 'sound/vore/gulp.ogg', 100, 1)
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
 			return
 
@@ -755,3 +767,26 @@
 	parrot_state = PARROT_SWOOP | PARROT_ATTACK //Attack other animals regardless
 	icon_state = "parrot_fly"
 	return success
+
+
+
+//////
+// Vorestuff that has to be here because constructors are the only place they can be.
+//////
+/* Dunno about parrot emotes. Please add some and uncomment this! -Aro
+/mob/living/simple_animal/parrot/stomach_emotes = list(
+							"",
+							"",
+							"",
+							"",
+							"",
+							"")
+
+/mob/living/simple_animal/parrot/stomach_emotes_d = list(
+							"",
+							"",
+							"",
+							"",
+							"",
+							"")
+*/

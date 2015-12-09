@@ -2,14 +2,14 @@
 	name = "\improper PTR-7 rifle"
 	desc = "A portable anti-armour rifle fitted with a scope. Originally designed to used against armoured exosuits, it is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 14.5mm shells."
 	icon_state = "heavysniper"
-	item_state = "l6closednomag" //placeholder
+	item_state = "l6closednomag" // ToDo: Hand sprites.
 	w_class = 4
 	force = 10
-	slot_flags = SLOT_BACK
+//	slot_flags = SLOT_BACK // ToDo: Back sprite.
 	origin_tech = "combat=8;materials=2;syndicate=8"
 	caliber = "14.5mm"
 	recoil = 2 //extra kickback
-	//fire_sound = 'sound/weapons/sniper.ogg'
+	fire_sound = 'sound/weapons/cannon.ogg' // extra boom
 	handle_casings = HOLD_CASINGS
 	load_method = SINGLE_CASING
 	max_shells = 1
@@ -65,3 +65,30 @@
 
 	toggle_scope(2.0)
 
+/obj/item/weapon/gun/projectile/SVD
+	name = "\improper SVD"
+	desc = "Mass produced with an Optical Sniper Sight so simple that even Ivan can figure out how it works. Too bad for you that it's in Russian. Uses 7.62mm ammo."
+	item_state = "SVD"
+	icon_state = "SVD"
+	w_class = 4
+	accuracy = -2 //Firing from the hip.
+	fire_sound = 'sound/weapons/svd_shot.ogg'
+	slot_flags = null // ToDo: Back sprite.
+	origin_tech = "combat=2;syndicate=2"
+	magazine_type = /obj/item/ammo_magazine/SVD
+	allowed_magazines = list(/obj/item/ammo_magazine/SVD, /obj/item/ammo_magazine/c762)
+	ammo_type = /obj/item/ammo_casing/a762
+	load_method = MAGAZINE
+	caliber = "a762"
+
+/obj/item/weapon/gun/projectile/SVD/update_icon()
+	..()
+	icon_state = (ammo_magazine)? "SVD" : "SVD-empty"
+	update_held_icon()
+
+/obj/item/weapon/gun/projectile/SVD/verb/scope()
+	set category = "Object"
+	set name = "Use Scope"
+	set popup_menu = 1
+
+	toggle_scope(2.0)

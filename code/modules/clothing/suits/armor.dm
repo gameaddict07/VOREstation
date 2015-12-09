@@ -1,6 +1,14 @@
 
 /obj/item/clothing/suit/armor
-	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs)
+	allowed = list(
+				/obj/item/weapon/gun/energy,
+				/obj/item/weapon/reagent_containers/spray/pepper,
+				/obj/item/weapon/gun/projectile,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	flags = THICKMATERIAL
 
@@ -65,7 +73,7 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/armor/swat
-	name = "swat suit"
+	name = "\improper SWAT suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
 	icon_state = "deathsquad"
 	item_state = "swat_suit"
@@ -73,24 +81,21 @@
 	permeability_coefficient = 0.01
 	flags = STOPPRESSUREDAMAGE | THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency_oxygen)
+	allowed = list(
+				/obj/item/weapon/gun,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs,
+				/obj/item/weapon/tank/emergency_oxygen
+				)
 	slowdown = 1
 	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 100)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.6
-
-
-/obj/item/clothing/suit/armor/swat/officer
-	name = "officer jacket"
-	desc = "An armored jacket used in special operations."
-	icon_state = "detective"
-	item_state = "det_suit"
-	blood_overlay_type = "coat"
-	flags_inv = 0
-	body_parts_covered = UPPER_TORSO|ARMS
-
 
 /obj/item/clothing/suit/armor/det_suit
 	name = "armor"
@@ -175,6 +180,41 @@
 	else
 		holster.unholster(usr)
 
+/obj/item/clothing/suit/armor/tactical/officer
+	name = "officer jacket"
+	desc = "An armored jacket used in special operations."
+	icon_state = "detective"
+	item_state = "det_suit"
+	blood_overlay_type = "coat"
+
+//United States Colonial Marines
+/obj/item/clothing/suit/armor/tactical/m3
+	name = "\improper M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century."
+	icon_state = "m3_ppa"
+
+/obj/item/clothing/suit/armor/tactical/m3/nco
+	name = "\improper M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century. This variant is worn by a non-commissioned officer such as a sargeant."
+	icon_state = "m3_ppa_nco"
+
+/obj/item/clothing/suit/armor/tactical/m3/medic
+	name = "\improper Medic M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century. This variant is worn by a medic."
+	icon_state = "m3_ppa_medic"
+
+/obj/item/clothing/suit/armor/tactical/m3/engineer
+	name = "\improper Combat Engineer M3 Personal Armor"
+	desc = "The standard ballistic protective armor system employed by the United States Colonial Marine Corps in the 22nd century. This variant is worn by a combat engineer."
+	icon_state = "m3_ppa_enge"
+
+//United Nations Space Command
+/obj/item/clothing/suit/armor/tactical/unsc
+	name = "\improper M52B Body Armor"
+	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon--and we had to share the rock!"
+	icon_state = "unsc_armor"
+
+
 //Non-hardsuit ERT armor.
 /obj/item/clothing/suit/armor/vest/ert
 	name = "emergency response team armor"
@@ -214,7 +254,14 @@
 	icon_state = "kvest"
 	item_state = "kvest"
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs)
+	allowed = list(
+				/obj/item/weapon/gun,
+				/obj/item/weapon/reagent_containers/spray/pepper,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs)
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"
@@ -305,48 +352,34 @@
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	slowdown = 0
 
-//All of the armor below is mostly unused
-
-
-/obj/item/clothing/suit/armor/CentCom
-	name = "Cent. Com. armor"
-	desc = "A suit that protects against some damage."
-	icon_state = "centcom"
-	item_state = "centcom"
-	w_class = 4//bulky item
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency_oxygen)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	siemens_coefficient = 0
-
 /obj/item/clothing/suit/armor/heavy
-	name = "heavy armor"
-	desc = "A heavily armored suit that protects against moderate damage."
+	name = "heavy duty armor"
+	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it obsolete equipment."
 	icon_state = "heavy"
 	item_state = "swat_suit"
-	w_class = 4//bulky item
+	w_class = 4
 	gas_transfer_coefficient = 0.90
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	slowdown = 3
+	armor = list(melee = 90, bullet = 80, laser = 10, energy = 10, bomb = 80, bio = 0, rad = 0)
+	slowdown = 5 // If you're a tank you're gonna move like a tank.
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 0
+
+//All of the armor below is mostly unused
 
 /obj/item/clothing/suit/armor/tdome
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	siemens_coefficient = 1
 
 /obj/item/clothing/suit/armor/tdome/red
 	name = "Thunderdome suit (red)"
 	desc = "Reddish armor."
 	icon_state = "tdred"
 	item_state = "tdred"
-	siemens_coefficient = 1
 
 /obj/item/clothing/suit/armor/tdome/green
 	name = "Thunderdome suit (green)"
 	desc = "Pukish armor."
 	icon_state = "tdgreen"
 	item_state = "tdgreen"
-	siemens_coefficient = 1

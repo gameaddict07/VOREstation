@@ -108,7 +108,7 @@ var/list/ghostteleportlocs = list()
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
-	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
+	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg','sound/music/Minor_Turbulence.ogg')
 
 area/space/atmosalert()
 	return
@@ -163,7 +163,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape/station
 	name = "\improper Emergency Shuttle Station"
@@ -179,7 +178,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod1
 	name = "\improper Escape Pod One"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod1/station
 	icon_state = "shuttle2"
@@ -192,7 +190,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod2
 	name = "\improper Escape Pod Two"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod2/station
 	icon_state = "shuttle2"
@@ -205,7 +202,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod3
 	name = "\improper Escape Pod Three"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod3/station
 	icon_state = "shuttle2"
@@ -218,7 +214,6 @@ area/space/atmosalert()
 
 /area/shuttle/escape_pod5 //Pod 4 was lost to meteors
 	name = "\improper Escape Pod Five"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod5/station
 	icon_state = "shuttle2"
@@ -324,7 +319,6 @@ area/space/atmosalert()
 
 /area/shuttle/research
 	name = "\improper Research Shuttle"
-	music = "music/escape.ogg"
 
 /area/shuttle/research/station
 	icon_state = "shuttle2"
@@ -905,6 +899,10 @@ area/space/atmosalert()
 	name = "\improper Courtroom"
 	icon_state = "courtroom"
 
+/area/crew_quarters/liasonoffice
+	name = "\improper Liason Office"
+	icon_state = "head_quarters"
+
 /area/mint
 	name = "\improper Mint"
 	icon_state = "green"
@@ -1452,10 +1450,6 @@ area/space/atmosalert()
 	name = "Security Post - Science"
 	icon_state = "checkpoint1"
 
-/area/security/vacantoffice
-	name = "\improper Vacant Office"
-	icon_state = "security"
-
 /area/security/vacantoffice2
 	name = "\improper Vacant Office"
 	icon_state = "security"
@@ -1560,6 +1554,10 @@ area/space/atmosalert()
 /area/toxins/server
 	name = "\improper Server Room"
 	icon_state = "server"
+
+/area/toxins/breakroom
+	name = "\improper Research Break Room"
+	icon_state = "green"
 
 //Storage
 
@@ -2049,7 +2047,9 @@ area/space/atmosalert()
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
-	var/sound/mysound = null
+
+// Disabled because infinite loop bug.
+/*	var/sound/mysound = null
 
 	New()
 		..()
@@ -2090,7 +2090,7 @@ area/space/atmosalert()
 		//	if(H.s_tone > -55)
 		//		H.s_tone--
 		//		H.update_body()
-		//Goodbye Skintone, Orbis
+		//Goodbye Skintone -Orbis
 			if(H.client)
 				mysound.status = SOUND_UPDATE
 				H << mysound
@@ -2099,6 +2099,7 @@ area/space/atmosalert()
 						H << S
 
 		spawn(60) .()
+*/
 
 /////////////////////////////////////////////////////////////////////
 /*
@@ -2171,7 +2172,9 @@ var/list/the_station_areas = list (
 	luminosity = 1
 	lighting_use_dynamic = 0
 	requires_power = 0
-	var/sound/mysound = null
+
+// Disabled because infinite loop bug.
+/*	var/sound/mysound = null
 
 	New()
 		..()
@@ -2220,4 +2223,4 @@ var/list/the_station_areas = list (
 						H << S
 
 		spawn(60) .()
-
+*/

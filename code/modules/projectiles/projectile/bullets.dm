@@ -138,7 +138,7 @@
 /* "Rifle" rounds */
 
 /obj/item/projectile/bullet/rifle/a762
-	damage = 30
+	damage = 40
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a145
@@ -148,12 +148,18 @@
 	penetrating = 5
 
 /obj/item/projectile/bullet/rifle/a556
-	damage = 40
+	damage = 30
 	penetrating = 1
+
+/obj/item/projectile/bullet/rifle/chalk
+	damage = 10
+	agony = 30 // It stings, but not very deadly. Intended for target practice and warning shots.
+	embed = 0
+	sharp = 0
 
 /* Miscellaneous */
 
-/obj/item/projectile/bullet/suffocationbullet//How does this even work?
+/obj/item/projectile/bullet/suffocationbullet // How does this even work? This makes no fucking sense.
 	name = "co bullet"
 	damage = 20
 	damage_type = OXY

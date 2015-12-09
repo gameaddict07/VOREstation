@@ -105,7 +105,7 @@ Class Procs:
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/power_channel = EQUIP //EQUIP, ENVIRON or LIGHT
-	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
+	var/list/component_parts = list() //list of all the parts used to build it, if made from certain kinds of frames.
 	var/uid
 	var/panel_open = 0
 	var/global/gl_uid = 1
@@ -196,7 +196,7 @@ Class Procs:
 	user.set_machine(src)
 
 /obj/machinery/CouldNotUseTopic(var/mob/user)
-	usr.unset_machine()
+	user.unset_machine()
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -214,10 +214,10 @@ Class Procs:
 		return 1
 	if(user.lying || user.stat)
 		return 1
-	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			istype(usr, /mob/living/silicon) || \
-			istype(usr, /mob/living/carbon/monkey)) )
-		usr << "\red You don't have the dexterity to do this!"
+	if ( ! (istype(user, /mob/living/carbon/human) || \
+			istype(user, /mob/living/silicon) || \
+			istype(user, /mob/living/carbon/monkey)) )
+		user << "\red You don't have the dexterity to do this!"
 		return 1
 /*
 	//distance checks are made by atom/proc/DblClick

@@ -717,13 +717,6 @@
 
 //////////// Hats ////////////
 
-/obj/item/clothing/head/secsoft/fluff/swatcap //deusdactyl: James Girard
-	name = "\improper SWAT hat"
-	desc = "A black hat.  The inside has the words, \"Lieutenant James Girard, LPD SWAT Team Four.\""
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "swatcap"
-	body_parts_covered = 0
-
 /obj/item/clothing/head/welding/fluff/alice_mccrea_1 //madmalicemccrea: Alice McCrea
 	name = "flame decal welding helmet"
 	desc = "A welding helmet adorned with flame decals, and several cryptic slogans of varying degrees of legibility. \"Fly the Friendly Skies\" is clearly visible, written above the visor, for some reason."
@@ -1351,26 +1344,6 @@
 	name = "well-used stun baton"
 	desc = "A stun baton used for incapacitating targets; there seems to be a bunch of tally marks set into the handle."
 
-///// Deckard .44 - Callum Leamas - Roaper
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas
-	name = "Deckard .44"
-	desc = "A custom built revolver, based off the semi-popular Detective Special model."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "leamas-empty"
-	ammo_type = /obj/item/ammo_magazine/c38/rubber
-
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas/update_icon()
-	..()
-	if(loaded.len)
-		icon_state = "leamas-loaded"
-	else
-		icon_state = "leamas-empty"
-
-/obj/item/weapon/gun/projectile/revolver/detective/fluff/callum_leamas/load_ammo(var/obj/item/A, mob/user)
-	if(istype(A, /obj/item/ammo_magazine))
-		flick("leamas-reloading",src)
-	..()
-
 /obj/item/weapon/reagent_containers/food/drinks/flask/fluff/yuri_kornienkovich_flask
 	name = "Yuri's Flask"
 	desc = "An old gold plated flask. Nothing noteworthy about it besides it being gold and the red star on the worn out leather around it. There is also an engraving on the cap that is rather hard to see but it looks like \"Kornienkovich\" "
@@ -1528,18 +1501,18 @@
 	item_color = "nightgown"
 
 
-/obj/item/clothing/head/helmet/space/rig/security/fluff/hos
-	name = "HoS Hardsuit Helmet"
-	desc = "A customized security hardsuit helmet customized to include the Head of Security's signature hat. Has additional composite armor."
+/obj/item/clothing/head/helmet/space/void/security/fluff/hos // ToDo: Rig version.
+	name = "\improper prototype voidsuit helmet"
+	desc = "A customized security voidsuit helmet customized to include the Head of Security's signature hat. Has additional composite armor."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "rig0-hos"
 	item_state = "rig0-hos"
 	armor = list(melee = 65, bullet = 30, laser = 50, energy = 10, bomb = 45, bio = 100, rad = 10)
 	item_color = "hos"
 
-/obj/item/clothing/suit/space/rig/security/fluff/hos
-	name = "HoS Hardsuit"
-	desc = "A customized security hardsuit made to match the Head of Security's obession with black. Has additional composite armor."
+/obj/item/clothing/suit/space/void/security/fluff/hos // ToDo: Rig version.
+	name = "\improper prototype voidsuit"
+	desc = "A customized security voidsuit made to match the Head of Security's obession with black. Has additional composite armor."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "rig-hos"
 	item_state = "rig-hos"
@@ -1554,6 +1527,13 @@
 	item_state = "brittrenchcoat"
 	item_color = "brittrenchcoat"
 
+/obj/item/clothing/suit/armor/hos/nazi_greatcoat
+	name = "great coat"
+	desc = "Perfect attire for kicking down the doors of suspected dissidents; this coat gives off an imposing look, while offering a luxuriously plush fur liner."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "greatcoat"
+	item_state = "greatcoat"
+
 /obj/item/clothing/suit/storage/fluff/fedcoat
 	name = "Federation Uniform Jacket"
 	desc = "A uniform jacket from the United Federation. Starfleet still uses this uniform and there are variations of it. Set phasers to awesome."
@@ -1563,7 +1543,18 @@
 	item_color = "fedcoat"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
+	allowed = list(
+				/obj/item/weapon/tank/emergency_oxygen,
+				/obj/item/device/flashlight,
+				/obj/item/weapon/gun/energy,
+				/obj/item/weapon/gun/projectile,
+				/obj/item/ammo_magazine,
+				/obj/item/ammo_casing,
+				/obj/item/weapon/storage/fancy/shotgun_ammo,
+				/obj/item/weapon/melee/baton,
+				/obj/item/weapon/handcuffs,
+				/obj/item/device/detective_scanner,
+				/obj/item/device/taperecorder)
 	armor = list(melee = 50, bullet = 15, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 	verb/toggle()
@@ -1694,11 +1685,31 @@
 	item_state = "dg_suit"
 	item_color = "harmcaptain"
 
+/obj/item/device/modkit_conversion/fluff/harmonyspace
+	name = "Harmony's captain space suit modkit"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "harm_kit"
+	desc = "A kit containing all the needed tools and parts to modify a Captain's hardsuit. It has green and yellow parts inside."
+	from_helmet = /obj/item/clothing/head/helmet/space/capspace
+	from_suit = /obj/item/clothing/suit/armor/captain
+	to_helmet = /obj/item/clothing/head/helmet/space/capspace/fluff/harmhelm
+	to_suit = /obj/item/clothing/suit/armor/captain/fluff/harmsuit
+
+/obj/item/device/modkit_conversion/fluff/harmonysuit
+	name = "Harmony's captain suit modkit"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "harm_kit"
+	desc = "A sewing kit containing all the needed tools and fabric to modify a Captain's suit and hat. It has green and yellow fabrics inside."
+	from_helmet = /obj/item/clothing/head/caphat
+	from_suit = /obj/item/clothing/under/rank/captain
+	to_helmet = /obj/item/clothing/head/centhat/fluff/harmhat
+	to_suit = /obj/item/clothing/under/rank/captain/fluff/harmuniform
+
 /obj/item/clothing/under/rank/captain/fluff/harmuniform/centcom
 	name = "\improper CentCom administrator's uniform"
 	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Administrator\"."
 
-/obj/item/clothing/head/caphat/centhat/fluff/harmhat
+/obj/item/clothing/head/centhat/fluff/harmhat
 	name = "Harmony's CentCom hat"
 	desc = "It's good to be queen."
 
@@ -1730,8 +1741,6 @@
 	item_state = "talvest"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	allowed = list(/obj/item/weapon/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
-	armor = list(melee = 30, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 
 /obj/item/clothing/head/squirrel/joan //Because I hate the ears matching hair color -Joan
@@ -1740,371 +1749,7 @@
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "squirrel_old"
 
-
-/*/obj/item/weapon/claymore/fluff/scisword
-	name = "Scissor Sword"
-	desc = "You have this urge to search for whoever killed your dad. Don't Lose your Way."
-	icon = 'icons/obj/custom_items.dmi'
-//	origin_tech = "materials=7"
-	icon_state = "scisword"
-	item_state = "scisword"
-*/
-
-// Guns
-
-#define SINGLE_CASING 	1	//The gun only accepts ammo_casings. ammo_magazines should never have this as their mag_type.
-#define SPEEDLOADER 	2	//Transfers casings from the mag to the gun when used.
-#define MAGAZINE 		4	//The magazine item itself goes inside the gun
-
-/obj/item/weapon/gun/projectile/colt/detective/fluff/fnfiveseven // JoanRisu : Joan Risu
-	name = "FN Five Seven"
-	desc = "A really cool looking pistol from Earth. Unlike those cheap Martian M1911 imitations, this pistol is reliable and really real."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "fnseven"
-	magazine_type = /obj/item/ammo_magazine/c28mm
-	max_shells = 10
-	caliber = "5.7×28mm"
-	load_method = MAGAZINE
-
-/obj/item/weapon/gun/projectile/automatic/m14
-	name = "M14 Battle Rifle"
-	desc = "Famous for killing commies back in 'Nam. This robust rifle is still produced across the galaxy for both sporting and military use, despite its antique design."
-	icon = 'icons/obj/custom_items.dmi'
-	item_state = "boltaction" // Placeholder
-	icon_state = "m14"
-	w_class = 4
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	//slot_flags = SLOT_BACK
-	origin_tech = "combat=2"
-	magazine_type = /obj/item/ammo_magazine/a51mm
-	ammo_type = /obj/item/ammo_casing/a51mm
-	load_method = MAGAZINE
-	max_shells = 10
-	caliber = "7.62x51mm"
-
-
-/obj/item/weapon/gun/projectile/automatic/m14/fluff/gallian
-	name = "Gallian 4 Rifle"
-	desc = "The ever reliable Gallian 4 Rifle. Produced by the National Armory on the Planet of Gaia located in Gallia, the Gallian 4 Rifle offers high accuracy and is widely used in the United Federation's Military."
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle
-	name = "bolt action rifle"
-	desc = "A reproduction of an almost ancient weapon design from the early 20th century. Popular among hunters and collectors."
-	icon = 'icons/obj/custom_items.dmi'
-	item_state = "boltaction"
-	icon_state = "boltaction"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	max_shells = 5
-	caliber = "rifle" // Prevents loading shotgun shells into the rifle.
-	origin_tech = "combat=2" // Old as shit rifle doesn't have very good tech.
-	magazine_type = /obj/item/ammo_magazine/rifle_clip
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle
-	load_method = SINGLE_CASING | SPEEDLOADER
-	cocksound = 'sound/weapons/riflebolt.ogg' // This var is so we can change sounds for bolt-action rifles.
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/zmkar //For fluff
-	name = "ZM Kar 1"
-	desc = "A reproduction of an old ZM Kar 1 Rifle from the Autocratic East Europan Imperial Alliance of Gaia. Popular among imperials and collectors within the Federation and its allies."
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For Cargonia
-	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen."
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
-	name = "ceremonial bolt-action rifle"
-	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen."
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle/blank
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
-	name = "Wicked Butterfly"
-	desc = "A customized bolt-action sniper rifle that was carried by one of the most revered snipers in the Federation. The stock has a small butterfly engraved on it."
-	icon_state = "wickedbutterfly"
-	item_state = "boltaction"
-	recoil = 2 //extra kickback
-	accuracy = -1
-	scoped_accuracy = 2
-	load_method = SINGLE_CASING
-
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked/verb/scope()
-	set category = "Object"
-	set name = "Use Scope"
-	set popup_menu = 1
-
-	toggle_scope(2.0)
-
-/obj/item/weapon/gun/energy/fluff/dominator
-	name = "MWPSB Dominator"
-	desc = "A MWPSB's Dominator from the Federation. Like the basic Energy Gun, this gun has two settings. It is used by the United Federation Public Safety Bureau's Criminal Investigation Division."
-	icon = 'icons/obj/gun.dmi'
-	icon_state = "dominatorstun100"
-	item_state = null
-	fire_sound = 'sound/weapons/Taser.ogg'
-	charge_cost = 100 //How much energy is needed to fire.
-	projectile_type = /obj/item/projectile/energy/electrode_strong/dominator
-	origin_tech = "combat=3;magnets=2"
-	modifystate = "dominatorstun"
-	charge_meter = 1
-
-	var/mode = 0 //0 = stun, 1 = kill
-
-
-/obj/item/weapon/gun/energy/fluff/dominator/attack_self(mob/living/user as mob)
-	switch(mode)
-		if(0)
-			mode = 1
-			charge_cost = 100
-			fire_sound = 'sound/weapons/gauss_shoot.ogg'
-			user << "\red [src.name] is now in Eliminator Mode. Target will be harmed. Please aim carefully."
-			user.visible_message("\red [src.name] changes into a very intimidating looking energy gun.")
-			projectile_type = /obj/item/projectile/beam/heavylaser/dominator
-			modifystate = "dominatorkill"
-		if(1)
-			mode = 0
-			charge_cost = 100
-			fire_sound = 'sound/weapons/Taser.ogg'
-			user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
-			user.visible_message("\red [src.name] is set to Paralyzer Mode.")
-			projectile_type = /obj/item/projectile/energy/electrode_strong/dominator
-			modifystate = "dominatorstun"
-	update_icon()
-	update_held_icon()
-
-/obj/item/projectile/beam/heavylaser/dominator
-	name = "Lethal Beam"
-	icon_state = "omnilaser"
-	damage = 60
-
-/obj/item/projectile/energy/electrode_strong/dominator
-	name = "stun beam"
-	icon_state = "stun"
-	taser_effect = 1
-	nodamage = 1
-	agony = 120
-	damage_type = HALLOSS
-
-/obj/item/weapon/gun/energy/fluff/aro
-	name = "KIN-H21"
-	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "kraystun100"
-	item_state = null	//so the human update icon uses the icon_state instead.
-	fire_sound = 'sound/weapons/Taser.ogg'
-
-	charge_cost = 200 //How much energy is needed to fire.
-	projectile_type = /obj/item/projectile/energy/electrode
-	origin_tech = "combat=3;magnets=2"
-	modifystate = "kraystun"
-
-	var/mode = 0 //0 = stun, 1 = kill
-
-/obj/item/weapon/gun/energy/gun/attack_self(mob/living/user as mob)
-	switch(mode)
-		if(0)
-			mode = 1
-			charge_cost = 100
-			fire_sound = 'sound/weapons/Laser.ogg'
-			user << "<span class='warning'>[src.name] is now set to kill.</span>"
-			projectile_type = /obj/item/projectile/beam
-			modifystate = "kraykill"
-		if(1)
-			mode = 0
-			charge_cost = 100
-			fire_sound = 'sound/weapons/Taser.ogg'
-			user << "<span class='warning'>[src.name] is now set to stun.</span>"
-			projectile_type = /obj/item/projectile/beam/stun
-			modifystate = "kraystun"
-	update_icon()
-	update_held_icon()
-
-/obj/item/weapon/gun/projectile/automatic/crestrose
-	name = "Crescent Rose"
-	desc = "Can you match my resolve? If so then you will succeed. I believe that the human spirit is indomitable. Keep Moving Forward."
-	origin_tech = "materials=7"
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "crestrose"
-	item_state = "crestrose"
-	w_class = 4
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	force = 40
-	throwforce = 10
-	max_shells = 10
-	magazine_type = /obj/item/ammo_magazine/a51mm
-	load_method = MAGAZINE
-	caliber = "7.62x51mm"
-
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	var/modifystate = "crestrose"
-	var/mode = 0 //0 = stun, 1 = kill
-
-
-/obj/item/weapon/gun/projectile/automatic/crestrose/attack_self(mob/living/user as mob)
-	switch(mode)
-		if(0)
-			mode = 1
-			user.visible_message("\red [src.name] folds up into a cool looking rifle.")
-			force = 5
-			throwforce = 2
-			modifystate = "crestrose_fold"
-		if(1)
-			mode = 0
-			user.visible_message("\red [src.name] changes into a very intimidating looking weapon.")
-			force = 40
-			throwforce = 10
-			modifystate = "crestrose"
-	update_icon()
-	update_held_icon()
-
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver
-	name = "Ryan's 'Devilgun'"
-	desc = "You notice the serial number on the revolver is 666. The word 'Sin' is engraved on the blood-red wooden grip. Uses .357 ammo."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "ryan_winz"
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-
-/obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption
-	name = "Ryan's 'Redeemer'"
-	desc = "You notice the serial number on the revolver is 667. The word 'Redemption' is engraved on dark rosewood grip. Uses .357 ammo."
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge // This is hacky. Revolvers in general should use the doublebarrel code. Fix this later.
-	name = "\"The Judge\""
-	desc = "A breach-loading weapon produced by Cybersun Industries that packs the power of a 12 guage in the palm of your hand. It's never been easier to be Judge, Jury, and Executioner."
-	icon_state = "judge"
-	item_state = "gun"
-	max_shells = 5
-	w_class = 3
-	recoil = 2 // Kicks like a mule.
-	slot_flags = null // You can't wear this on your back.
-	origin_tech = "combat=4;materials=3;syndicate=4"
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-/* Maybe...
-	isHandgun()
-		return 1
-*/
-
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/judge/jury
-	name = "\"The Jury\""
-	desc = "A variant of the \"The Judge\" revolver sold by Cybersun Industries to the mercenary group Skinner's Legion."
-	icon_state = "jury"
-	load_method = SINGLE_CASING | SPEEDLOADER
-
-
-// End guns.
-
-// Ammo
-
-/obj/item/ammo_magazine/c28mm // FN ammo.
-	name = "magazine (5.7×28mm)"
-	icon_state = "45"
-	ammo_type = /obj/item/ammo_casing/c28mm
-	max_ammo = 10
-	multiple_sprites = 1
-	mag_type = MAGAZINE
-	caliber = "5.7×28mm"
-
-/obj/item/ammo_magazine/c28mm/empty
-	max_ammo = 0
-
-/obj/item/ammo_casing/c28mm
-	desc = "A 5.7×28mm bullet casing."
-	caliber = "5.7×28mm"
-	projectile_type = /obj/item/projectile/bullet/pistol/medium/fn
-
-/obj/item/projectile/bullet/pistol/medium/fn
-	damage = 35
-
-/obj/item/ammo_magazine/a51mm // M14 ammo.
-	name = "ammo magazine (M14)"
-	icon_state = "75"
-	ammo_type = /obj/item/ammo_casing/a51mm
-	mag_type = MAGAZINE
-	multiple_sprites = 1
-	max_ammo = 10
-	caliber = "7.62x51mm"
-
-/obj/item/ammo_magazine/a51mm/empty
-	name = "ammo magazine (M14)"
-	icon_state = "75"
-	ammo_type = /obj/item/ammo_casing/a51mm
-	max_ammo = 0
-
-/obj/item/ammo_casing/shotgun/rifle
-	name = "rifle round"
-	desc = "A round from a rifle."
-	icon_state = "s-casing"
-	caliber = "rifle"
-	projectile_type = /obj/item/projectile/bullet
-
-/obj/item/ammo_casing/shotgun/rifle/chalk // For target shooting.
-	name = "chalk rifle round"
-	desc = "A round from a rifle, which uses a chalk bullet."
-	caliber = "rifle"
-	projectile_type = /obj/item/projectile/bullet/weakbullet/chalk
-
-/obj/item/ammo_casing/shotgun/rifle/blank // For ceremonies.
-	name = "practice rifle round"
-	desc = "There's no bullet. Just a cartrige with a crimped top end."
-	caliber = "rifle"
-	projectile_type = /obj/item/projectile/energy/blank // Because anything else shatters windows.
-
-/obj/item/ammo_magazine/rifle_clip
-	name = "rifle clip"
-	desc = "A clip of rifle rounds"
-	icon_state = "riflestrip"
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle
-	mag_type = SPEEDLOADER
-	max_ammo = 5
-	caliber = "rifle"
-	multiple_sprites = 1
-	/* // Breaks things.
-	New() // So they scatter on the floor.
-		src.pixel_x = rand(-6.0, 6)
-		src.pixel_y = rand(-6.0, 6)
-	*/
-
-/obj/item/ammo_magazine/rifle_clip/chalk
-	name = "rifle clip of chalk rounds"
-	desc = "A clip of rifle rounds with chalk bullets."
-	caliber = "rifle"
-	ammo_type = /obj/item/ammo_casing/shotgun/rifle/chalk
-
-
-/obj/item/ammo_magazine/rifle_clip/blank
-	name = "rifle clip of blank rounds"
-	desc = "A clip of rifle rounds with chalk bullets."
-	caliber = "rifle"
-	ammo_type = /obj/item/projectile/energy/blank
-
-
-// End ammo magazines.
-
-// Bullets
-
-/obj/item/ammo_casing/a51mm
-	desc = "A 7.62x51mm bullet casing"
-	caliber = "7.62x51mm"
-	projectile_type = /obj/item/projectile/bullet/rifle/a762 // Because it uses 7.62 rounds, like the SAW. Should do the same damage.
-
-
-/obj/item/projectile/bullet/weakbullet/chalk // For the station to purchase rifles for competition shooting, loaded with chalk bullets.
-	damage = 10
-	stun = 0
-	weaken = 5 // They still hurt like a motherfucker.
-
-/obj/item/projectile/energy/blank
-	name = "electrode"
-	icon_state = null
-	nodamage = 1
-	taser_effect = 0
-	agony = 0
-	damage_type = HALLOSS
-	//Damage will be handled on the MOB side, to prevent window shattering.
-
-// End bullets.
+// Custom guns now go in custom_guns.dm so don't put them here.
 
 //Cult research book
 /obj/item/weapon/tome/prettycultbook
@@ -2127,23 +1772,23 @@
 // End Joan's stuff.
 
 // Scree's custom stuff
-/obj/item/clothing/head/helmet/space/rig/tajara/fluff/screehelm
+/obj/item/clothing/head/helmet/space/void/engineering/fluff/screehelm
 	name = "Modified Tajara Helmet"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding. This one doesn't look like it was made for humans. Its been modified to include headlights."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "rig0-scree"
 	item_state = "rig0-scree"
 	item_color = "scree"
-	species_restricted = list("Tajaran")
+	species_restricted = list("Tajara")
 
-/obj/item/clothing/suit/space/rig/tajara/fluff/screespess
+/obj/item/clothing/suit/space/void/engineering/fluff/screespess
 	name = "Modified Winged Suit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding. This one doesn't look like it was made for humans. This one was made with a special personal shielding for someone's wings."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "wingedsuit"
 	item_state = "wingedsuit"
 	item_color = "wingedsuit"
-	species_restricted = list("Tajaran")
+	species_restricted = list("Tajara")
 
 /obj/item/clothing/under/fluff/screesuit
 	name = "Scree's feathers"
@@ -2153,9 +1798,47 @@
 	item_state = "screesuit"
 	item_color = "screesuit"
 
-/obj/item/device/modkit/tajaran/fluff/screekit
+/obj/item/device/modkit_conversion/fluff/screekit
 	name = "Scree's hardsuit modification kit"
 	desc = "A kit containing all the needed tools and parts to modify a hardsuit for a specific user. This one looks like it's fitted for a winged creature."
+	from_helmet = /obj/item/clothing/head/helmet/space/void/engineering
+	from_suit = /obj/item/clothing/suit/space/void/engineering
+	to_helmet = /obj/item/clothing/head/helmet/space/void/engineering/fluff/screehelm
+	to_suit = /obj/item/clothing/suit/space/void/engineering/fluff/screespess
+
+/obj/item/clothing/head/fluff/pompom
+	name = "Pom-Pom"
+	desc = "A fluffy little thingus on a thin stalk, ideal for impersonating moogles and anglerfish. Kupomnomnom."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "pom"
+	item_state = "pom"
+	w_class = 2.0
+	on = 0
+	brightness_on = 5
+	light_overlay = null
+
+/obj/item/clothing/head/fluff/pompom/attack_self(mob/user)
+	if(brightness_on)
+		if(!isturf(user.loc))
+			user << "You cannot turn the light on while in this [user.loc]"
+			return
+		on = !on
+		user << "You [on ? "light up" : "dim"] your pom-pom."
+		update_light(user)
+	else
+		return ..(user)
+
+
+/obj/item/clothing/head/fluff/pompom/update_icon(var/mob/user)
+	if(on)
+		icon_state = "pom-on"
+		item_state = "pom-on"
+	else
+		icon_state = "pom"
+		item_state = "pom"
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_head()
 
 //End Scree's stuff
 
@@ -2169,6 +1852,7 @@
 	item_state = "snag"
 	item_color = "snag"
 
+/* Intentionally removed until replacement sprites are made. Maker of this sprite didn't want this to be open source.
 /obj/item/clothing/head/fluff/caso
 	name = "Deathclaw Accessories"
 	desc = "Big! Big! The size of three men! Claws as long as my forearm! Ripped apart! Ripped apart!"
@@ -2176,6 +1860,7 @@
 	icon_state = "caso"
 	item_state = "caso"
 	item_color = "caso"
+*/
 
 /obj/item/clothing/head/helmet/fluff/freddy
 	name = "animatronic suit helmet"
@@ -2265,6 +1950,7 @@
 	name = "officer jacket"
 	desc = "An armored jacket used in special operations--or by special snowflake Captains. Fuck off, I like my coat."
 	icon_state = "detective2"
+	slowdown = 0
 
 // JerTheAce : Jeremiah 'Ace' Acacius
 /obj/item/weapon/storage/box/fluff/ace
@@ -2272,6 +1958,7 @@
 	desc = "A box of stuff owned by Jeremiah 'Ace' Acacius."
 	New()
 		new /obj/item/weapon/storage/pill_bottle/fluff/acepills(src)
+		new /obj/item/clothing/accessory/medal/gold/heroism(src)
 		new /obj/item/fluff/permit/jerace(src)
 		..()
 		return
@@ -2326,7 +2013,26 @@
 	desc = "A pair of old-fashioned purple headphones for listening to music that also double as an NT-approved headset; they connect nicely to any standard PDA. One side is engraved with the letters NEHI, the other having an elaborate inscription of the words \"My voice is my weapon of choice\" in a fancy font. A modern polymer allows switching between modes to either allow one to hear one's surroundings or to completely block them out."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "headphones"
-	item_state = "headset"
+	item_state = "headphones"
+
+// OrbisA Items
+
+/obj/item/weapon/melee/fluff/holochain // OrbisA: Richard D'angelo
+	name = "Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and the initials R.D. on the silver base."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "holochain"
+	item_state = "holochain"
+	flags = CONDUCT | NOBLOODY
+	no_attack_log = 1 //if you want to turn on the attack log for this, comment/delete this line. Orbis.
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 3
+	w_class = 3
+	damtype = HALLOSS
+	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
+
+ // End OrbisA Items
 
 //Weapon permits to spawn with players who have them.
 
@@ -2335,10 +2041,10 @@
 	name = "Sample Permit"
 	desc = {"There is a bright red <b><font color=red>SAMPLE PERMIT</font></b> stamped across the stock photo displayed on the card. Obviously this is only an example to educate security.
 	<b>NAME:</b> First Last | <b>RACE:</b> Human | <b>HOMEWORLD:</b> Moon (if applicable), Planet, System
-	<b>DOB:</b> DD-MM-YYYY | <b>HEIGHT:</b> XXcm | <b>SEX:</b> Female
+	<b>DOB:</b> DD/Month/YYYY | <b>HEIGHT:</b> XXcm | <b>SEX:</b> Female
 
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to {details of permit}.
-	This license expires on DD/MM/YYYY and must be renewed by CentCom prior to this date."}
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to ___________________.
+	This license expires on DD/Month/YYYY and must be renewed by CentCom prior to this date."}
 	icon = 'icons/obj/card.dmi'
 	icon_state = "permit"
 	w_class = 1
@@ -2348,20 +2054,20 @@
 	name = "Ace's Shotgun Permit"
 	desc = {"
 	<b>NAME:</b> Jeremiah Acacius | <b>RACE:</b> Human | <b>HOMEWORLD:</b> Earth, Sol
-	<b>DOB:</b> 17-06-2532 | <b>HEIGHT:</b> 178cm | <b>SEX:</b> Male
+	<b>DOB:</b> 17/Jun/2532 | <b>HEIGHT:</b> 178cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to openly carry one M45D shotgun loaded with less-than-lethal munitions as a head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
-	This license expires on 01/06/2560 and must be renewed by CentCom prior to this date."}
+	This license expires on 01/Jun/2560 and must be renewed by CentCom prior to this date."}
 
 // sasoperative:Joseph Skinner
 /obj/item/fluff/permit/josephskinner
 	name = "Joseph Skinner's 12g Revolver Permit"
 	desc = {"
 	<b>NAME:</b> Joseph Cyrus Skinner | <b>RACE:</b> Human | <b>HOMEWORLD:</b> Earth, Sol
-	<b>DOB:</b> 10-06-2532 | <b>HEIGHT:</b> 162.5cm | <b>SEX:</b> Male
+	<b>DOB:</b> 10/Jun/2532 | <b>HEIGHT:</b> 162.5cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one 12 gauge revolver loaded with less-than-lethal munitions as a member of security or head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
-	This license expires on 29/11/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 29/Nov/2559 and must be renewed by CentCom prior to this date."}
 
 
 // wankersonofjerkin:Ryan Winz
@@ -2369,60 +2075,50 @@
 	name = "Ryan Winz's Revolver Permit"
 	desc = {"
 	<b>NAME:</b> Ryan Winz | <b>RACE:</b> Human | <b>HOMEWORLD:</b>  New Ekaterina, Moskva
-	<b>DOB:</b> 10-27-2536 | <b>HEIGHT:</b> 172cm | <b>SEX:</b> Male
+	<b>DOB:</b> 27/Oct/2536 | <b>HEIGHT:</b> 172cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to openly carry one Colt Single-Action Army revolver as a security officer or head of staff. Else this weapon is to be turned in to security for holding until the end of the shift.
-	This license expires on 26/12/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 26/Dec/2559 and must be renewed by CentCom prior to this date."}
 
 // Joan Risu
 /obj/item/fluff/permit/joanrisu
 	name = "Joan Risu's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Joan Risu | <b>RACE:</b> Squirrelkin | <b>HOMEWORLD:</b> Luna, Gaia, Koi
-	<b>DOB:</b> 4-16-2536 | <b>HEIGHT:</b> 161cm | <b>SEX:</b> Female
+	<b>DOB:</b> 16/Apr/2536 | <b>HEIGHT:</b> 161cm | <b>SEX:</b> Female
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one FN Five Seven pistol.
-	This license expires on 11/12/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
 
 //Greyson Maximus
 /obj/item/fluff/permit/demi
 	name = "Greyson Maximus's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Greyson Maximus | <b>RACE:</b> Neko/Catgirl | <b>HOMEWORLD:</b> N/A
-	<b>DOB:</b> 05-30-2536 | <b>HEIGHT:</b> 198cm | <b>SEX:</b> Herm
+	<b>DOB:</b> 30/May/2536 | <b>HEIGHT:</b> 198cm | <b>SEX:</b> Herm
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one M1911.
-	This license expires on 11/12/2559 and must be renewed by CentCom prior to this date."}
+	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
 
 //Tasald Ajax Corlethian
 /obj/item/fluff/permit/tasald
 	name = "Tasald Ajax Corlethian's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Tasald Ajax Corlethian | <b>RACE:</b> Vulpine | <b>HOMEWORLD:</b> Iscyn, Orta
-	<b>DOB:</b> 09-09-2529 | <b>HEIGHT:</b> 187cm | <b>SEX:</b> Male
+	<b>DOB:</b> 09/Sep/2529 | <b>HEIGHT:</b> 187cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Energy Luger.
-	This license expires on 9/26/2560 and must be renewed by CentCom prior to this date."}
-
-//Serkii Miishy
-/obj/item/fluff/permit/miishy
-	name = "Serkii Miishy's Sidearm Permit"
-	desc = {"
-	<b>NAME:</b> Serkii Miishy | <b>RACE:</b> Mousemorph | <b>HOMEWORLD:</b> Mars, Sol
-	<b>DOB:</b> 10-9-2541 | <b>HEIGHT:</b> 121cm | <b>SEX:</b> Male
-
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Stun Revolver.
-	This license expires on 9/26/2560 and must be renewed by CentCom prior to this date."}
+	This license expires on 26/Sep/2560 and must be renewed by CentCom prior to this date."}
 
 //Aronai Kadigan
 /obj/item/fluff/permit/aro
 	name = "Aronai Kadigan's Sidearm Permit"
 	desc = {"
 	<b>NAME:</b> Aronai Kadigan | <b>RACE:</b> Cross Fox | <b>HOMEWORLD:</b> New Kitsuhana, KHI1
-	<b>DOB:</b>  12-07-2530 | <b>HEIGHT:</b> 188cm | <b>SEX:</b> Male
+	<b>DOB:</b>  12/Jul/2530 | <b>HEIGHT:</b> 188cm | <b>SEX:</b> Male
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
-	This license expires on 9/30/2560 and must be renewed by CentCom prior to this date."}
+	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
 
 
 //Boxes of goodies for veteran players.
@@ -2441,75 +2137,55 @@
 
 
 // SASoperative : Joseph Skinner
-
-/obj/item/clothing/head/beret/navywarden/fluff/blueshield
-	name = "\improper Blue Shield Guard beret"
-	desc = "A beret with a two-colored Blue Shield Guard insignia emblazoned on it."
-
-/obj/item/clothing/suit/armor/navywardenvest/fluff/blueshield
-	name = "\improper Blue Shield Guard dress uniform"
-	desc = "A dress uniform with a two-colored Blue Shield Guard insignia emblazoned on it."
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-
-/obj/item/clothing/under/rank/navywarden/fluff/blueshield
-	name = "\improper Blue Shield Guard uniform"
-	desc = "A uniform with Blue Shield Guard insignias on the shoulders."
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-
-/obj/item/clothing/suit/armor/vest/blueshield
-	name = "blue shield security armor"
-	desc = "An armored vest with the badge of a Blue Shield Guard."
+/obj/item/clothing/under/rank/security/fluff/formalsec //admins chipped in for this item to have normal values
+	name = "Formal Camo Fatigues"
+	desc = "A formal set of fatigues with red and black camo to resemble the colors of Nanotresen Security"
 	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "deus_blueshield"
-	item_state = "armor"
-
-/obj/item/device/pda/security/blueshield
-	icon_state = "pda-blueshield"
-
-/obj/item/device/radio/headset/headset_sec/tactical/blueshield
-	name = "blueshield tactical headset"
-	desc = "A Tactical Radio Headset. It's basically a security headset with a camera. To access the security channel, use :s. For command, use :c."
-	keyslot2 = new /obj/item/device/encryptionkey/heads/hos
+	icon_state = "formalsec"
+	item_color = "formalsec"
 
 // wankersonofjerkin:Ryan Winz
 /obj/item/weapon/storage/briefcase/fluff/ryan_winz
 	name = "Ryan's Gun Case"
 	desc = "Used to safely transport Ryan's two personal revolvers."
 	storage_slots = 2
-	New()
-		new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver(src)
-		new /obj/item/weapon/gun/projectile/revolver/mateba/fluff/ryan_winz_revolver/redemption(src)
-		..()
-		return
+
+/obj/item/weapon/storage/briefcase/fluff/ryan_winz/New()
+	new /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver(src)
+	new /obj/item/weapon/gun/projectile/revolver/fluff/ryan_winz_revolver/redemption(src)
+	..()
+	return
 
 // ardithprime:Natasha Moscovich
 /obj/item/weapon/storage/box/fluff/soviet
 	name = "Soviet Officer's Kit"
 	desc = "Contains all the items needed to serve the Motherworld away from the Motherworld!"
 	storage_slots = 4
-	New()
-		new /obj/item/clothing/head/hgpiratecap(src)
-		new /obj/item/clothing/shoes/jackboots(src)
-		new /obj/item/clothing/suit/hgpirate(src)
-		new /obj/item/clothing/under/soviet(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/soviet/New()
+	new /obj/item/clothing/head/hgpiratecap(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/clothing/suit/hgpirate(src)
+	new /obj/item/clothing/under/soviet(src)
+	..()
+	return
 
 // jemli:Cirra Mayhem
 /obj/item/weapon/storage/box/fluff/pirate // jemli:Cirra Mayhem
 	name = "Instant Pirate Kit"
 	desc = "Just add Akula!"
 	storage_slots = 4
-	New()
-		new /obj/item/clothing/head/pirate(src)
-		new /obj/item/clothing/glasses/eyepatch(src)
-		new /obj/item/clothing/suit/pirate(src)
-		new /obj/item/clothing/under/pirate(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/pirate/New()
+	new /obj/item/clothing/head/pirate(src)
+	new /obj/item/clothing/glasses/eyepatch(src)
+	new /obj/item/clothing/suit/pirate(src)
+	new /obj/item/clothing/under/pirate(src)
+	..()
+	return
 
 /obj/item/device/fluff/id_kit_mime // joey4298:Emoticon
-	name = "Mime ID replacer"
+	name = "Mime ID reprinter"
 	desc = "Stick your ID in one end and it'll print a new ID out the other!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
@@ -2529,39 +2205,136 @@
 		user << "<span class='warning'>This isn't even an ID card you idiot.</span>"
 		return
 
+/obj/item/device/fluff/id_kit_clown // ToDo: Move these to a better location for more reusable code.
+	name = "Clown ID reprinter"
+	desc = "Stick your ID in one end and it'll print a new ID out the other!"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "labeler1"
+
+/obj/item/device/fluff/id_kit_clown/afterattack(obj/O, mob/user as mob)
+	var/new_icon = "clown"
+	if(istype(O,/obj/item/weapon/card/id) && O.icon_state != new_icon)
+		//O.icon = src.icon // just in case we're using custom sprite paths with fluff items.
+		O.icon_state = new_icon // Changes the icon without changing the access.
+		playsound(user.loc, 'sound/items/polaroid2.ogg', 100, 1)
+		user.visible_message("\red [user] reprints their ID.")
+		del(src)
+	else if(O.icon_state == new_icon)
+		user << "<span class='notice'>[O] already has been reprinted.</span>"
+		return
+	else
+		user << "<span class='warning'>This isn't even an ID card you idiot.</span>"
+		return
+
 /obj/item/weapon/storage/box/fluff/mime // joey4298:Emoticon
 	name = "Emoticon's Mime Kit"
 	desc = "Specially packaged for the hungry catgirl mime with a taste for clown."
-	New()
-		new /obj/item/device/fluff/id_kit_mime(src)
-		new /obj/item/clothing/gloves/white(src)
-		new /obj/item/clothing/head/beret(src)
-		new /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing(src)
-		new /obj/item/clothing/shoes/black(src)
-		new /obj/item/toy/crayon/mime(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/mime/New()
+	new /obj/item/device/fluff/id_kit_mime(src)
+	new /obj/item/clothing/gloves/white(src)
+	new /obj/item/clothing/head/beret(src)
+	new /obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing(src)
+	new /obj/item/clothing/shoes/black(src)
+	new /obj/item/toy/crayon/mime(src)
+	..()
+	return
 
 /obj/item/weapon/storage/box/fluff/joanrisu // joanrisu:Joan Risu
 	name = "Federation Officer's Kit"
 	desc = "A care package for every serving Federation officer serving away from the Federation."
-	storage_slots = 8
-	New()
-		new /obj/item/clothing/gloves/white(src)
-		new /obj/item/device/radio/headset/heads/captain(src)
-		new /obj/item/weapon/storage/backpack/satchel(src)
-		new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
-		new /obj/item/weapon/card/id/gold/fluff/badge/(src)
-		new /obj/item/weapon/card/id/captains_spare(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/joanrisu/New()
+	new /obj/item/clothing/gloves/white(src)
+	new /obj/item/device/radio/headset/heads/captain(src)
+	new /obj/item/weapon/storage/backpack/satchel(src)
+	new /obj/item/clothing/suit/storage/fluff/fedcoat(src)
+	new /obj/item/weapon/card/id/gold/fluff/badge/(src)
+	new /obj/item/weapon/card/id/captains_spare(src)
+	..()
+	return
 
 /obj/item/weapon/storage/box/fluff/tasaldkit // bwoincognito:Tasald Corlethian
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's clothes."
 	storage_slots = 2
-	New()
-		new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
-		new /obj/item/clothing/under/det/fluff/talsald(src)
-		..()
-		return
+
+/obj/item/weapon/storage/box/fluff/tasaldkit/New()
+	new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
+	new /obj/item/clothing/under/det/fluff/talsald(src)
+	..()
+	return
+
+/obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar // molenar:Giliana Gamish
+	name = "Gili Custom Labcoat"
+	desc = " Custom made, lengthened labcoat with water resistant, durable material. And a custom set of holes inserted for Deathclaw anatomy. A tag inside has 'G.G.' monogram on it"
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "molenar"
+	icon_open = "molenar_open"
+	icon_closed = "molenar"
+	item_state = "molenar"
+
+
+/obj/item/clothing/glasses/sunglasses/fluff/nerdglasses // kisukegema:Kisuke 'Nerd' Gema
+	name = "Kamina Glasses"
+	desc = "Some shades from an anime that aired long ago. They seem to encourage a type of manliness that no one but the wearer understands."
+	icon = 'icons/obj/custom_items.dmi'
+	prescription = 1
+	icon_state = "nerdglasses"
+	item_state = "nerdglasses"
+	item_color = "nerdglasses"
+
+/obj/item/weapon/melee/fluff/holochain/Zippy
+	name = "Mistress Holographic Chain"
+	desc = "A High Tech solution to simple perversions. It has a red leather handle and a message on the silver base. 'To Zippy, with love, R.D.'"
+
+/obj/item/device/modkit_single/fluff/zekechimera // zekesturm:Sarah Arachi Lacecraft
+	name = "Sarah's RD rig modkit"
+	desc = "A kit containing all the tools and parts to modify an AMI rigsuit. It looks rather alien."
+	from_object = /obj/item/weapon/rig/hazmat
+	to_object = /obj/item/weapon/rig/fluff/zeke_sturm
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/shrink
+	name = "autoinjector"
+	desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel. Something seems off about this one..."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "shrinkinjector"
+	//item_state = "shrinkinjector1"
+	amount_per_transfer_from_this = 5
+	volume = 5
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/shrink/New()
+	..()
+	reagents.remove_all_type(/datum/reagent,5)
+	reagents.add_reagent("microcillin", 4)
+	reagents.add_reagent("neurotoxin", 1)
+	update_icon()
+	return
+
+//Tsunderenyaa items
+/obj/item/weapon/scalpel/fluff/cultknife
+	name ="Ramona's Blade"
+	desc = "A steel, curved knife, looking sharp as a razor. Perfect for a ritual sacrifice!"
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "render"
+
+/obj/item/clothing/under/rank/security/fluff/casualsec
+	name = "Casual Uniform"
+	desc = "A custom tailored security uniform, with shorts and the shirt's sleeves rolled up to the elbow."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "casey"
+	item_color = "casey"
+
+//Arokha items
+/obj/item/weapon/reagent_containers/hypospray/fluff/aronai
+	name = "worn hypospray"
+	desc = "This hypospray seems a bit well-used. The blue band indicates it's from the CentCom medical division. There's an 'A' scratched into the bottom."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "aro_hypo"
+
+/obj/item/weapon/reagent_containers/hypospray/fluff/aronai/New()
+	..()
+	reagents.add_reagent("inaprovaline", 5)
+	reagents.add_reagent("tricordrazine", 25)
+	update_icon()
+	return

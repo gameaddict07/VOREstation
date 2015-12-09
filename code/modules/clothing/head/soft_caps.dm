@@ -5,6 +5,7 @@
 	flags = HEADCOVERSEYES
 	item_state = "helmet"
 	item_color = "cargo"
+	w_class = 2
 	var/flipped = 0
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
@@ -93,3 +94,16 @@
 	desc = "It's baseball hat in corporate colors."
 	icon_state = "corpsoft"
 	item_color = "corp"
+
+/obj/item/clothing/head/soft/unsc
+	name = "\improper UNSC officer's cap"
+	desc = "You told me you were gonna wear something nice!"
+	icon_state = "unscsoft"
+	item_color = "unsc"
+
+/obj/item/clothing/head/soft/fluff/swatcap
+	name = "\improper SWAT hat"
+	desc = "A black hat. The inside has the words, \"An-Nur Police Department, SWAT Team Four.\"" // ToDo: Make this Deathsquad related.
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "swatcap"
+	body_parts_covered = 0

@@ -10,9 +10,9 @@
 	var/hasinner = 1
 	var/icon/mob
 	var/icon/mob2
-	siemens_coefficient = 1.5 // Because fuck furries apparently? ... I'm not touching this until I know why it's here. -Ace
+	//siemens_coefficient = 1.5 // Because fuck furries apparently? ... I'm not touching this until I know why it's here. -Ace // I will, because no, not fuck furries. -Aro
 
-	update_icon(var/mob/living/carbon/human/user) // Code needed in inventory.dm:272 and update_icons.dm:599 for this to work.
+	update_icon(var/mob/living/carbon/human/user) // Code needed in human/inventory.dm:291 and human/update_icons.dm:691 for this to work.
 		if(!istype(user)) return
 		mob = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]")
 		mob2 = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]")
@@ -24,6 +24,17 @@
 			var/icon/earbit2 = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "[icon_state]inner2")
 			mob.Blend(earbit, ICON_OVERLAY)
 			mob2.Blend(earbit2, ICON_OVERLAY)
+
+/*
+==================================================
+==   STOP   STOP   STOP   STOP   STOP   STOP
+==
+==         DO NOT ADD MORE THINGS HERE!!!
+==        ADD THEM TO sprite_accessories.dm
+==
+==   STOP   STOP   STOP   STOP   STOP   STOP
+==================================================
+*/
 
 //------ Actual items ------//
 
@@ -60,15 +71,6 @@
 	desc = "The early bird gets the worm, but the second mouse gets the cheese."
 	icon_state = "mouse"
 
-/*
-/obj/item/clothing/head/accessory/fluff/threetail
-	name = "Rosey's three tails"
-	desc = "Three fox tails. They shouldn't be detached from Rosey..."
-	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "threetail"
-	hasinner = 0
-*/
-
 /obj/item/clothing/head/accessory/squirrel
 	name = "squirrel ears"
 	desc = "A pair of squirrel ears. NUTS!"
@@ -84,6 +86,16 @@
 	name = "succubus accessories"
 	desc = "A head accessory that looks like something a seductive demoness from your fantasies might wear."
 	icon_state = "succubus"
+
+/obj/item/clothing/head/fluff/succubus/dark
+	name = "succubus accessories (Dark)"
+	desc = "A head accessory that looks like something a seductive demoness from your fantasies might wear."
+	icon_state = "succubus-dark"
+
+/obj/item/clothing/head/fluff/succubus/crimson
+	name = "succubus accessories (Crimson)"
+	desc = "A head accessory that looks like something a seductive demoness from your fantasies might wear."
+	icon_state = "succubus-crimson"
 
 /obj/item/clothing/head/fluff/succubus/red
 	name = "red bat wings"
@@ -126,9 +138,14 @@
 	icon_state = "threetail"
 
 /obj/item/clothing/head/fluff/molenar // Molenar, Uya Kohakuren
-	name = "Quintail "
+	name = "Quintail"
 	desc = "Set of ears and five fluffy tails in silver and gold fur."
 	icon_state = "Molenar"
+
+/obj/item/clothing/head/fluff/molenar2 // Molenar, Giliana Gamish
+	name = "Deathclaw Accessories"
+	desc = "Everything you need to look like a radioactive chameleon, Camouflage not included."
+	icon_state = "molenar2"
 
 /obj/machinery/vending/fluffstuff // Moved this here from vending.dm so it's easier to keep track of.
 	name = "Demi Accessories"
@@ -140,6 +157,8 @@
 					/obj/item/clothing/head/accessory/mouse = 10,
 					/obj/item/clothing/head/accessory/bunny = 10,
 					/obj/item/clothing/head/fluff/succubus = 10,
+					/obj/item/clothing/head/fluff/succubus/crimson = 10,
+					/obj/item/clothing/head/fluff/succubus/dark = 10,
 					/obj/item/clothing/head/fluff/succubus/black = 10,
 					/obj/item/clothing/head/fluff/succubus/red = 10,
 					/obj/item/clothing/head/fluff/wisewolf = 10,

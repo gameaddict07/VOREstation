@@ -468,6 +468,7 @@
 //fluff variant
 /obj/structure/closet/crate/secure/large/reinforced
 	desc = "A hefty, reinforced metal crate with an electronic locking system."
+	health = 1000 // 10x more difficult to shoot open.
 	icon_state = "largermetal"
 	icon_opened = "largermetalopen"
 	icon_closed = "largermetal"

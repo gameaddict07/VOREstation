@@ -57,6 +57,13 @@
 /mob/living/simple_animal/New()
 	..()
 	verbs -= /mob/verb/observe
+	// Vore Code Start
+	// Setup the types of bellies present
+
+	insides = new /datum/belly/simple(src)
+	internal_contents["Stomach"] = insides
+	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
+	// Vore Code End
 
 /mob/living/simple_animal/Login()
 	if(src && src.client)
@@ -65,6 +72,14 @@
 
 /mob/living/simple_animal/updatehealth()
 	return
+
+// NW was here. Trying to add regenerate icons for simple animals so we can grow Ian.
+/mob/living/simple_animal/regenerate_icons()
+	var/matrix/M = matrix()
+	M.Scale(playerscale) // Resize
+	if(playerscale >= 1)
+		M.Translate(0,-1*(1-playerscale)*16) // So macro resize doesn't glitch through walls.
+	src.transform = M
 
 /mob/living/simple_animal/Life()
 
@@ -89,6 +104,17 @@
 	handle_stunned()
 	handle_weakened()
 	handle_paralysed()
+
+	// Start vore code. Digestion code is handled here.
+	// For each belly type
+	for (var/bellytype in internal_contents)
+		var/datum/belly/B = internal_contents[bellytype]
+		for(var/mob/living/M in B.internal_contents)
+			if(M.loc != src)
+				B.internal_contents -= M
+				log_debug("Had to remove [M] from belly [B] in [src]")
+		B.process_Life()
+	//End vore code.
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
@@ -283,6 +309,8 @@
 				user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
 				gib()
 			return
+	else if (istype(O, /obj/item/weapon/grab) || istype(O, /obj/item/weapon/holder/micro))
+		return ..()
 
 	if(O.force)
 		var/damage = O.force

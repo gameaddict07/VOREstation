@@ -46,7 +46,8 @@
 		user << "<span class='notice'>\The [src] is empty!</span>"
 		return
 
-	Spray_at(A, user, proximity)
+	if (Spray_at(A, user, proximity))
+		return // Do not play sound or alert if we did not spray
 
 	playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
 
@@ -61,6 +62,7 @@
 		log_game("[key_name(user)] fired Space lube from \a [src].")
 	return
 
+/* Returns 0 if successful, -1 if failed to spray */
 /obj/item/weapon/reagent_containers/spray/proc/Spray_at(atom/A as mob|obj, mob/user as mob, proximity)
 	if (A.density && proximity)
 		A.visible_message("[usr] sprays [A] with [src].")
@@ -160,10 +162,11 @@
 	safety = !safety
 	usr << "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>"
 
+/* Returns 0 if sprayed, -1 if failed to spray */
 /obj/item/weapon/reagent_containers/spray/pepper/Spray_at(atom/A as mob|obj)
 	if(safety)
 		usr << "<span class = 'warning'>The safety is on!</span>"
-		return
+		return -1
 	..()
 
 //water flower

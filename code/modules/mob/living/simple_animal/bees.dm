@@ -5,6 +5,7 @@
 	icon_state = "bees1"
 	icon_dead = "bees1"
 	mob_size = 1
+	density = 0 // You shouldn't be able to bump into bees.
 	var/strength = 1
 	var/feral = 0
 	var/mut = 0

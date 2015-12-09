@@ -209,7 +209,7 @@
 		power = max( (removed.temperature * temp_factor) * oxygen + power, 0)
 
 		//We've generated power, now let's transfer it to the collectors for storing/usage
-		//transfer_energy()
+		transfer_energy()
 
 		var/device_energy = power * REACTION_POWER_MODIFIER
 
@@ -273,7 +273,7 @@
 
 	Consume(user)
 
-/*
+
 /obj/machinery/power/supermatter/proc/transfer_energy()
 	for(var/obj/machinery/power/rad_collector/R in rad_collectors)
 		var/distance = get_dist(R, src)
@@ -281,7 +281,7 @@
 			//for collectors using standard phoron tanks at 1013 kPa, the actual power generated will be this power*POWER_FACTOR*20*29 = power*POWER_FACTOR*580
 			R.receive_pulse(power * POWER_FACTOR * (min(3/distance, 1))**2)
 	return
-*/
+
 
 /obj/machinery/power/supermatter/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\

@@ -77,11 +77,10 @@
 /obj/item/clothing/accessory/storage/knifeharness/New()
 	..()
 	hold.max_combined_w_class = 4
-	hold.can_hold = list(/obj/item/weapon/hatchet/unathiknife,\
+	hold.can_hold = list(
 	/obj/item/weapon/kitchen/utensil/knife,\
 	/obj/item/weapon/kitchen/utensil/pknife,\
-	/obj/item/weapon/kitchenknife,\
-	/obj/item/weapon/kitchenknife/ritual)
+	/obj/item/weapon/kitchenknife)
 
-	new /obj/item/weapon/hatchet/unathiknife(hold)
-	new /obj/item/weapon/hatchet/unathiknife(hold)
+	new /obj/item/weapon/kitchenknife/tacknife/unathiknife(hold)
+	new /obj/item/weapon/kitchenknife/tacknife/unathiknife(hold)

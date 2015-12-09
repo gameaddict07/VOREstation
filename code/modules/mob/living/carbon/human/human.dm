@@ -6,20 +6,9 @@
 	icon_state = "body_m_s"
 
 	var/list/hud_list[9]
-	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
-
-	// Vore code starts here.
-	var/stendo = 1 // Stomach. Endo flags set to 1 so you start with digestion off by default.
-	var/cvendo = 1 // Cockvore.
-	var/bvendo = 1 // Boobvore.
-	var/wombheal = "Hold" // Set to hold to prevent someone from transforming or melting in the womb.
-	var/cockfull = 0 // Set to 0 because you don't start the damn game with balls/womb/boobs already full.
-	var/wombfull = 0
-	var/boobfull = 0
-	var/insideflavour[4]  //Defines a list four entries long that deals with the characters' innards' descriptions - NW
-	var/predlocation = "stomach" // Checks where a prey is inside the pred
-	var/digestable = 1 // Set to 1 so you are digestable by default
-	// Vore code ends here.
+	var/embedded_flag	  	//To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/custom_species 		//For anything it needs to be used for
+	var/disconnect_time		//For setting with Logout() to when the client leaves as client.inactivity will not be usable then
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 
@@ -53,17 +42,21 @@
 		dna.real_name = real_name
 	make_blood()
 
+	// Vore Code Start
+	// Setup the types of bellies present.
+	internal_contents["Stomach"] = new /datum/belly/stomach(src)
+	internal_contents["Cock"] = new /datum/belly/cock(src)
+	internal_contents["Womb"] = new /datum/belly/womb(src)
+	internal_contents["Boob"] = new /datum/belly/boob(src)
+	vorifice = SINGLETON_VORETYPE_INSTANCES["Oral Vore"]
+	// Vore Code End
+
 	//Non-default verbs go here.
 	verbs += /mob/living/proc/set_size
-	//verbs += /mob/living/carbon/human/proc/endo_toggle // Adding vore verbs.
-	//verbs += /mob/living/carbon/human/proc/cvendo_toggle
-	//verbs += /mob/living/carbon/human/proc/bvendo_toggle
 	verbs += /mob/living/carbon/human/proc/orifice_toggle
-	//verbs += /mob/living/carbon/human/proc/womb_toggle
 	verbs += /mob/living/carbon/human/proc/vore_release
 	verbs += /mob/living/proc/escapeOOC //NW WOZ ERE 2. OOC escape verb.
 	verbs += /mob/proc/fixtaur // Temporary fix until we unfuck taurs. -Ace
-	verbs += /mob/living/carbon/human/proc/All_Digestion_Toggles //NW WOZ ERE AGAIN. Moved all the endo toggle verbs into one
 	verbs += /mob/living/carbon/human/proc/insidePanel
 	verbs += /mob/living/carbon/human/proc/I_am_not_mad // I SWEAR I'M NOT. This bit does the prey-side digestable toggle.
 
@@ -214,20 +207,20 @@
 		updatehealth()
 	return
 
-/mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
+/mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
 	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
 
-	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(M)
-	L.imp_in = M
+	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(src)
+	L.imp_in = src
 	L.implanted = 1
-	var/datum/organ/external/affected = M.organs_by_name["head"]
+	var/datum/organ/external/affected = organs_by_name["head"]
 	affected.implants += L
 	L.part = affected
 
 /mob/living/carbon/human/proc/is_loyalty_implanted(mob/living/carbon/human/M)
-	for(var/L in M.contents)
+	for(var/L in src.contents)
 		if(istype(L, /obj/item/weapon/implant/loyalty))
-			for(var/datum/organ/external/O in M.organs)
+			for(var/datum/organ/external/O in src.organs)
 				if(L in O.implants)
 					return 1
 	return 0
@@ -787,28 +780,11 @@
 
 				src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
 
-				var/tick = 0 //easiest way to check if the list has anything
-				/* Force any mob to exit their stomach. */
-				for(var/mob/M in internal_contents["Stomach"])
-
-					M.loc = src.loc //this is specifically defined as src.loc to try to prevent a mob from ending up in nullspace by byond confusion
-					internal_contents["Stomach"] -= M
-
-					if(iscarbon(src.loc)) //This makes sure that the mob behaves properly if released into another mob
-						var/mob/living/carbon/loc_mob = src.loc
-
-						if(src in loc_mob.internal_contents["Stomach"])
-							loc_mob.internal_contents["Stomach"] += M
-						if(src in loc_mob.internal_contents["Womb"])
-							loc_mob.internal_contents["Womb"] += M
-						if(src in loc_mob.internal_contents["Cock"])
-							loc_mob.internal_contents["Cock"] += M
-						if(src in loc_mob.internal_contents["Boob"])
-							loc_mob.internal_contents["Boob"] += M
-
-					tick++
-
-				if(tick)	visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
+				// Vore Code Begin
+				var/datum/belly/B = internal_contents["Stomach"]
+				if (B.release_all_contents())
+					visible_message("<font color='green'><b>[src] also hurls out the contents of their stomach!</b></font>")
+				// Vore Code End
 
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
@@ -1191,9 +1167,9 @@
 		g_skin = hex2num(copytext(species.base_color,4,6))
 		b_skin = hex2num(copytext(species.base_color,6,8))
 	else
-		r_skin = 0
-		g_skin = 0
-		b_skin = 0
+		r_skin = 238
+		g_skin = 206
+		b_skin = 179
 
 	species.handle_post_spawn(src)
 

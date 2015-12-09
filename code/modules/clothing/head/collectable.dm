@@ -135,4 +135,10 @@
 	name = "collectable Soviet officer's hat"
 	desc = "In Soviet army, it takes more courage to retreat than advance!"
 	icon_state = "hgpiratecap"
-	item_state = "hgpiratecap"
+	item_state = "syringe_kit" // Just a generic item to be held.
+
+/obj/item/clothing/head/collectable/nazi
+	name = "collectable SS Officer's Cap"
+	desc = "Don your finest, your flashiest cap, and the men will surely follow. Who could say no to such flair?"
+	icon_state = "officercap"
+	item_state = "syringe_kit"

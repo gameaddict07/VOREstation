@@ -17,6 +17,7 @@
 	circuit = "/obj/item/weapon/circuitboard/cryopodcontrol"
 	density = 0
 	interact_offline = 1
+	req_one_access = list(access_heads, access_armory)
 	var/mode = null
 
 	//Used for logging people entering cryosleep and important items they are carrying.
@@ -93,6 +94,9 @@
 		user << browse(dat, "window=cryoitems")
 
 	else if(href_list["item"])
+		if(!allowed(user))
+			user << "<span class='warning'>Access Denied.</span>"
+			return
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
@@ -113,6 +117,9 @@
 		frozen_items -= I
 
 	else if(href_list["allitems"])
+		if(!allowed(user))
+			user << "<span class='warning'>Access Denied.</span>"
+			return
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
@@ -180,7 +187,7 @@
 
 	var/mob/occupant = null       // Person waiting to be despawned.
 	var/orient_right = null       // Flips the sprite.
-	var/time_till_despawn = 18000 // 30 minutes-ish safe period before being despawned.
+	var/time_till_despawn = 599   // 1 minutes-ish safe period before being despawned.
 	var/time_entered = 0          // Used to keep track of the safe period.
 	var/obj/item/device/radio/intercom/announce //
 
@@ -190,6 +197,7 @@
 	// These items are preserved when the process() despawn proc occurs.
 	var/list/preserve_items = list(
 		/obj/item/weapon/hand_tele,
+		/obj/item/weapon/card/id, //this will make all id's do be stored. Orbis
 		/obj/item/weapon/card/id/captains_spare,
 		/obj/item/device/aicard,
 		/obj/item/device/mmi,

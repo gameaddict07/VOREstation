@@ -349,7 +349,7 @@ datum
 						human.set_species("Slime")
 				..()
 				return
-
+/*	// Black slime. Disabled due to shitloads of griefing.
 		aslimetoxin
 			name = "Advanced Mutation Toxin"
 			id = "amutationtoxin"
@@ -385,7 +385,7 @@ datum
 					del(M)
 				..()
 				return
-
+*/
 		inaprovaline
 			name = "Inaprovaline"
 			id = "inaprovaline"
@@ -1455,31 +1455,17 @@ datum
 			description = "Glowing yellow liquid."
 			reagent_state = LIQUID
 			color = "#FFFF00" // rgb: 255, 255, 0
+			custom_metabolism = 2.5
 
-			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
-				src = null
-				if((prob(20)) && (method == TOUCH || method == INGEST))
-					switch(M.playerscale)
-						if(1.5 to 1)
-							M.resize(2)
-							M << "<font color='green'>You grow!</font>"
-						if(1 to 1.5)
-							M.resize(1.5)
-							M << "<font color='green'>You grow!</font>"
-						if(0.5 to 1)
-							M.resize(1)
-							M << "<font color='green'>You grow!</font>"
-						if(0.01 to 0.25)
-							M.resize(0.5)
-							M << "<font color='green'>You grow!</font>"
-						if(-1)
-							M.resize(0.25)
-							M << "<font color='green'>You grow!</font>"
-						if(2 to INFINITY)
-							M << "<span class='alert'>Your body can't grow any larger!</span>"
-						else
-							M.resize(0.25)
-							M << "<font color='green'>You grow!</font><span class='alert'> And you broke something in the code. Congrats on reaching a size that shouldn't have been possible.</span>"
+			on_mob_life(var/mob/living/carbon/M as mob)
+				if(!M) M = holder.my_atom
+				for(var/size in list(RESIZE_SMALL, RESIZE_NORMAL, RESIZE_BIG, RESIZE_HUGE))
+					if(M.playerscale < size)
+						M.resize(size)
+						M << "<font color='green'>You grow!</font>"
+						break
+				..()
+				return
 
 		microcillin
 			name = "Microcillin"
@@ -1487,29 +1473,58 @@ datum
 			description = "Murky purple liquid."
 			reagent_state = LIQUID
 			color = "#800080"
+			custom_metabolism = 2.5
 
-			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
-				src = null
-				if((prob(20)) && (method == TOUCH || method == INGEST))
-					switch(M.playerscale)
-						if(2 to INFINITY)
-							M.resize(1.5)
-							M << "<span class='alert'>You shrink!</span>"
-						if(1.5 to 2)
-							M.resize(1)
-							M << "<span class='alert'>You shrink!</span>"
-						if(1 to 1.5)
-							M.resize(0.5)
-							M << "<span class='alert'>You shrink!</span>"
-						if(0.25 to 1)
-							M.resize(0.25)
-							M << "<span class='alert'>You can't shrink any further.</span>"
-						if(-1)
-							M.resize(0.25)
-							M << "<span class='alert'>You shrink!</span>"
-						else
-							M.resize(0.25)
-							M << "<span class='alert'>You shrink! <b>And you broke something in the code.</b> Congrats on reaching a size that shouldn't have been possible.</span>"
+			on_mob_life(var/mob/living/carbon/M as mob)
+				if(!M) M = holder.my_atom
+				for(var/size in list(RESIZE_BIG, RESIZE_NORMAL, RESIZE_SMALL, RESIZE_TINY))
+					if(M.playerscale > size)
+						M.resize(size)
+						M << "<span class='alert'>You shrink!</span>"
+						break;
+				..()
+				return
+
+		normalcillin
+			name = "Normalcillin"
+			id = "normalcillin"
+			description = "Translucent cyan liquid."
+			reagent_state = LIQUID
+			color = "#00FFFF"
+			custom_metabolism = 2.5
+
+			on_mob_life(var/mob/living/carbon/M as mob)
+				if(!M) M = holder.my_atom
+				if(M.playerscale > RESIZE_BIG)
+					M.resize(RESIZE_BIG)
+					M << "<span class='alert'>You shrink!</span>"
+				else if(M.playerscale > RESIZE_NORMAL)
+					M.resize(RESIZE_NORMAL)
+					M << "<span class='alert'>You shrink!</span>"
+				else if(M.playerscale < RESIZE_NORMAL)
+					M.resize(RESIZE_NORMAL)
+					M << "<font color='green'>You grow!</font>"
+				else if(M.playerscale < RESIZE_SMALL)
+					M.resize(RESIZE_SMALL)
+					M << "<font color='green'>You grow!</font>"
+				..()
+				return
+
+		sizeoxadone
+			name = "Sizeoxadone"
+			id = "sizeoxadone"
+			description = "A volatile liquid used as a precursor to size-altering chemicals. Causes dizziness if taken unprocessed."
+			reagent_state = LIQUID
+			color = "#1E90FF"
+			overdose = REAGENTS_OVERDOSE
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				M.make_dizzy(1)
+				if(!M.confused) M.confused = 1
+				M.confused = max(M.confused, 20)
+				..()
+				return
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -13,6 +13,11 @@
 	caliber = "75"
 	projectile_type = /obj/item/projectile/bullet/gyro
 
+/obj/item/ammo_casing/c28mm
+	desc = "A 5.7×28mm bullet casing."
+	caliber = "5.7×28mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+
 /obj/item/ammo_casing/c38
 	desc = "A .38 bullet casing."
 	caliber = "38"
@@ -20,6 +25,7 @@
 
 /obj/item/ammo_casing/c38r
 	desc = "A .38 rubber bullet casing."
+	icon_state = "r-casing"
 	caliber = "38"
 	projectile_type = /obj/item/projectile/bullet/pistol/rubber
 
@@ -30,11 +36,13 @@
 
 /obj/item/ammo_casing/c9mmf
 	desc = "A 9mm flash shell casing."
+	icon_state = "r-casing"
 	caliber = "9mm"
 	projectile_type = /obj/item/projectile/energy/flash
 
 /obj/item/ammo_casing/c9mmr
 	desc = "A 9mm rubber bullet casing."
+	icon_state = "r-casing"
 	caliber = "9mm"
 	projectile_type = /obj/item/projectile/bullet/pistol/rubber
 
@@ -46,11 +54,13 @@
 
 /obj/item/ammo_casing/c45r
 	desc = "A .45 rubber bullet casing."
+	icon_state = "r-casing"
 	caliber = ".45"
 	projectile_type = /obj/item/projectile/bullet/pistol/rubber
 
 /obj/item/ammo_casing/c45f
 	desc = "A .45 flash shell casing."
+	icon_state = "r-casing"
 	caliber = ".45"
 	projectile_type = /obj/item/projectile/energy/flash
 
@@ -95,7 +105,6 @@
 	name = "stun shell"
 	desc = "A 12 gauge taser cartridge."
 	icon_state = "stunshell"
-	spent_icon = "stunshell-spent"
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
 	matter = list("metal" = 360, "glass" = 720)
 
@@ -113,15 +122,26 @@
 
 /obj/item/ammo_casing/a762
 	desc = "A 7.62mm bullet casing."
+	icon_state = "762-casing"
 	caliber = "a762"
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
+
+/obj/item/ammo_casing/a762/blank
+	name = "A 7.62mm blank round casing"
+	desc = "A blank casing for rifles."
+	projectile_type = /obj/item/projectile/bullet/blank
+
+/obj/item/ammo_casing/a762/chalk
+	name = "A 7.62mm chalk bullet casing"
+	desc = "A round with a chalk bullet instead of metal. Good for target practice and warning shots."
+	projectile_type = /obj/item/projectile/bullet/rifle/chalk
 
 /obj/item/ammo_casing/a145
 	name = "shell casing"
 	desc = "A 14.5mm shell."
 	icon_state = "lcasing"
-	spent_icon = "lcasing-spent"
 	caliber = "14.5mm"
+	w_class = 2
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
 	matter = list("metal" = 1250)
 
@@ -131,9 +151,10 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a556
 
 /obj/item/ammo_casing/rocket
-	name = "rocket shell"
+	name = "rocket propelled grenade"
 	desc = "A high explosive designed to be fired from a launcher."
 	icon_state = "rocketshell"
+	w_class = 3 // YOU SEE IVAN, ROCKET SHOULD NOT FIT BEHIND EARS. -Ace
 	projectile_type = /obj/item/missile
 	caliber = "rocket"
 
@@ -142,6 +163,12 @@
 	desc = "A set of bullets for the Chameleon Gun."
 	projectile_type = /obj/item/projectile/bullet/chameleon
 	caliber = ".45"
+
+/obj/item/ammo_casing/a10mmc
+	desc = "A 10mm bullet enclosed in a block of solid propellant."
+	caliber = "10mmCaseless"
+	caseless = 1
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
 
 /*
 /obj/item/ammo_casing/a418

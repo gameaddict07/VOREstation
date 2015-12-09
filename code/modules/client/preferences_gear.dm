@@ -43,6 +43,104 @@ var/global/list/gear_datums = list()
 		sort_category = "[slot]"
 
 // This is sorted both by slot and alphabetically! Don't fuck it up!
+//demi ears begin here!
+
+/datum/gear/fbatblack
+	display_name = "demi accessory, bat wings black"
+	path = /obj/item/clothing/head/fluff/succubus/black
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbatred
+	display_name = "demi accessory, bat wings red"
+	path = /obj/item/clothing/head/fluff/succubus/red
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbear
+	display_name = "demi accessory, bear"
+	path = /obj/item/clothing/head/accessory/bear
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbee
+	display_name = "demi accessory, bee"
+	path = /obj/item/clothing/head/fluff/bee
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fbunny
+	display_name = "demi accessory, bunny"
+	path = /obj/item/clothing/head/accessory/bunny
+	cost = 1
+	slot = slot_head
+
+/datum/gear/ffox
+	display_name = "demi accessory, fox"
+	path = /obj/item/clothing/head/accessory/fox
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fkitty
+	display_name = "demi accessory, kitty"
+	path = /obj/item/clothing/head/accessory/kitty
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fkittycol
+	display_name = "demi accessory, kitty black"
+	path = /obj/item/clothing/head/collectable/kitty
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fmouse
+	display_name = "demi accessory, mouse"
+	path = /obj/item/clothing/head/accessory/mouse
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsuccrim
+	display_name = "demi accessory, succubus crimson"
+	path = /obj/item/clothing/head/fluff/succubus/crimson
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsucdark
+	display_name = "demi accessory, succubus dark"
+	path = /obj/item/clothing/head/fluff/succubus/dark
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsucpurp
+	display_name = "demi accessory, succubus purple"
+	path = /obj/item/clothing/head/fluff/succubus
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsquir
+	display_name = "demi accessory, squirrel"
+	path = /obj/item/clothing/head/accessory/squirrel
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fsquirred
+	display_name = "demi accessory, squirrel red"
+	path = /obj/item/clothing/head/fluff/squirrel/redsquirrel
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fwisewolf
+	display_name = "demi accessory, Wisewolf"
+	path = /obj/item/clothing/head/fluff/wisewolf
+	cost = 1
+	slot = slot_head
+
+/datum/gear/fwolf
+	display_name = "demi accessory, wolf"
+	path = /obj/item/clothing/head/accessory/wolf
+	cost = 1
+	slot = slot_head
+
 // Headslot items
 
 /datum/gear/gbandana
@@ -616,6 +714,18 @@ var/global/list/gear_datums = list()
 	slot = slot_tie
 	cost = 1
 
+/datum/gear/tie_black
+	display_name = "tie, black"
+	path = /obj/item/clothing/accessory/black
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/scarf
+	display_name = "Scarf"
+	path = /obj/item/clothing/accessory/scarf
+	slot = slot_tie
+	cost = 1
+
 /datum/gear/brown_vest
 	display_name = "webbing, engineering"
 	path = /obj/item/clothing/accessory/storage/brown_vest
@@ -635,6 +745,44 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/accessory/storage/webbing
 	slot = slot_tie
 	cost = 2
+
+// Collars
+
+/datum/gear/collar_silver
+	display_name = "Collar, Silver"
+	path = /obj/item/clothing/accessory/collar_blk
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_golden
+	display_name = "Collar, Golden"
+	path = /obj/item/clothing/accessory/collar_gld
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_
+	display_name = "Collar, Bell"
+	path = /obj/item/clothing/accessory/collar_bell
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_shock
+	display_name = "Collar, Shock"
+	path = /obj/item/clothing/accessory/shock_collar
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_spike
+	display_name = "Collar, Spike"
+	path = /obj/item/clothing/accessory/collar_spike
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_
+	display_name = "Collar, Pink"
+	path = /obj/item/clothing/accessory/collar_pink
+	slot = slot_tie
+	cost = 1
 
 // Suit slot
 
@@ -1031,6 +1179,18 @@ var/global/list/gear_datums = list()
 	sort_category = "utility"
 	cost = 2
 
+/datum/gear/wallet
+	display_name = "wallet"
+	path = /obj/item/weapon/storage/wallet
+	sort_category = "utility"
+	cost = 2
+
+/datum/gear/wallet_grey
+	display_name = "wallet, grey"
+	path = /obj/item/weapon/storage/wallet/grey
+	sort_category = "utility"
+	cost = 2
+
 // The rest of the trash.
 
 /datum/gear/ashtray
@@ -1119,6 +1279,12 @@ var/global/list/gear_datums = list()
 /datum/gear/zippo
 	display_name = "zippo"
 	path = /obj/item/weapon/flame/lighter/zippo
+	sort_category = "misc"
+	cost = 1
+
+/datum/gear/electriccig
+	display_name = "electronic cigarette"
+	path = /obj/item/clothing/mask/fluff/electriccig
 	sort_category = "misc"
 	cost = 1
 

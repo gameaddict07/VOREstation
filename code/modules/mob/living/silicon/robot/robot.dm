@@ -347,7 +347,8 @@ var/list/robot_verbs_default = list(
 
 		if("Combat")
 			module = new /obj/item/weapon/robot_module/combat(src)
-			module_sprites["Combat Android"] = "droid-combat"
+			module_sprites["Destroyer Droid"] = "droid-combat"
+			module_sprites["Mister Gutsy"] = "mrgutsy"
 			module.channels = list("Security" = 1)
 
 	//languages

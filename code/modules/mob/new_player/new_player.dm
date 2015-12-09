@@ -108,7 +108,7 @@
 
 		if(href_list["observe"])
 
-			if(alert(src,"Are you sure you wish to observe? You will have to wait 30 minutes before being able to respawn!","Player Setup","Yes","No") == "Yes")
+			if(alert(src,"Are you sure you wish to observe? You will have to wait 1 minute before being able to respawn!","Player Setup","Yes","No") == "Yes")
 				if(!client)	return 1
 				var/mob/dead/observer/observer = new()
 
@@ -151,7 +151,7 @@
 					return 0
 
 				var/datum/species/S = all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
+				if(!(S.flags & CAN_JOIN))
 					src << alert("Your current species,[client.prefs.species], is not available for play on the station.")
 					return 0
 

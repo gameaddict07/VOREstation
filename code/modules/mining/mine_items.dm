@@ -112,10 +112,10 @@
 /obj/item/weapon/pickaxe/plasmacutter
 	name = "plasma cutter"
 	icon_state = "plasmacutter"
-	item_state = "gun"
+	item_state = "plasmacutter"
 	w_class = 3.0 //it is smaller than the pickaxe
 	damtype = "fire"
-	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
+	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/light thermite on fire
 	origin_tech = "materials=4;phorontech=3;engineering=3"
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"

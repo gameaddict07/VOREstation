@@ -408,7 +408,9 @@
 			"slimejelly",
 			"cyanide",
 			"mindbreaker",
-			"stoxin"
+			"stoxin",
+			"microcillin",
+			"macrocillin"
 			)
 
 		for(var/x=1;x<=additional_chems;x++)

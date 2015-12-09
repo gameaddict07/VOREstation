@@ -67,7 +67,7 @@
 	icon_state = "mecha_laser"
 	energy_drain = 30
 	projectile = /obj/item/projectile/beam
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/blaster_pistol.ogg'
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser
 	equip_cooldown = 30
@@ -76,7 +76,7 @@
 	icon_state = "mecha_laser"
 	energy_drain = 80
 	projectile = /obj/item/projectile/beam
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/blaster_pistol.ogg'
 	required_type = list(/obj/mecha/combat, /obj/mecha/working)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
@@ -93,7 +93,7 @@
 	icon_state = "mecha_ion"
 	energy_drain = 120
 	projectile = /obj/item/projectile/ion
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/Laser3.ogg'
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse
 	equip_cooldown = 30
@@ -102,7 +102,7 @@
 	energy_drain = 120
 	origin_tech = "materials=3;combat=6;powerstorage=4"
 	projectile = /obj/item/projectile/beam/pulse/heavy
-	fire_sound = 'sound/weapons/marauder.ogg'
+	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 
 /obj/item/projectile/beam/pulse/heavy
 	name = "heavy pulse laser"
@@ -123,52 +123,6 @@
 	equip_cooldown = 8
 	projectile = /obj/item/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
-
-/* Commenting this out rather than removing it because it may be useful for reference.
-/obj/item/mecha_parts/mecha_equipment/weapon/honker
-	name = "\improper HoNkER BlAsT 5000"
-	icon_state = "mecha_honker"
-	energy_drain = 200
-	equip_cooldown = 150
-	range = MELEE|RANGED
-	construction_time = 500
-	construction_cost = list("metal"=20000,"bananium"=10000)
-
-	can_attach(obj/mecha/combat/honker/M as obj)
-		if(!istype(M))
-			return 0
-		return ..()
-
-	action(target)
-		if(!chassis)
-			return 0
-		if(energy_drain && chassis.get_charge() < energy_drain)
-			return 0
-		if(!equip_ready)
-			return 0
-
-		playsound(chassis, 'sound/items/AirHorn.ogg', 100, 1)
-		chassis.occupant_message("<font color='red' size='5'>HONK</font>")
-		for(var/mob/living/carbon/M in ohearers(6, chassis))
-			if(istype(M, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = M
-				if(istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
-					continue
-			M << "<font color='red' size='7'>HONK</font>"
-			M.sleeping = 0
-			M.stuttering += 20
-			M.ear_deaf += 30
-			M.Weaken(3)
-			if(prob(30))
-				M.Stun(10)
-				M.Paralyse(4)
-			else
-				M.make_jittery(500)
-		chassis.use_power(energy_drain)
-		log_message("Honked from [src.name]. HONK!")
-		do_after_cooldown()
-		return
-*/
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic
 	name = "general ballisic weapon"
@@ -200,7 +154,7 @@
 	icon_state = "mecha_scatter"
 	equip_cooldown = 20
 	projectile = /obj/item/projectile/bullet/pistol/medium
-	fire_sound = 'sound/weapons/Gunshot.ogg'
+	fire_sound = 'sound/weapons/big_shotgun_fire.ogg'
 	fire_volume = 80
 	projectiles = 40
 	projectiles_per_shot = 4
@@ -230,7 +184,7 @@
 	name = "\improper SRM-8 missile rack"
 	icon_state = "mecha_missilerack"
 	projectile = /obj/item/missile
-	fire_sound = 'sound/effects/bang.ogg'
+	fire_sound = 'sound/weapons/rpg.ogg'
 	projectiles = 8
 	projectile_energy_cost = 1000
 	equip_cooldown = 60

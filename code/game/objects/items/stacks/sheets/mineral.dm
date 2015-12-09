@@ -166,11 +166,13 @@ obj/item/stack/sheet/mineral/iron/New()
 	..()
 	recipes = silver_recipes
 
+/* // Good for absolutely nothing. Broken icon. Why is this still here?
 /obj/item/stack/sheet/mineral/enruranium
 	name = "enriched uranium"
 	icon_state = "sheet-enruranium"
 	origin_tech = "materials=5"
 	perunit = 1000
+*/
 
 //Valuable resource, cargo can sell it.
 /obj/item/stack/sheet/mineral/platinum
@@ -182,7 +184,7 @@ obj/item/stack/sheet/mineral/iron/New()
 
 //Extremely valuable to Research.
 /obj/item/stack/sheet/mineral/mhydrogen
-	name = "metallic hydrogen"
+	name = "metallic hydrogen" // This name makes no sense. Do you know where metallic hydrogen is found? Jupiter's core. Not on an friggin asteroid.
 	icon_state = "sheet-mythril"
 	origin_tech = "materials=6;powerstorage=5;magnets=5"
 	sheettype = "mhydrogen"

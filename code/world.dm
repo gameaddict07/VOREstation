@@ -216,7 +216,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	..(reason)
 
 
-#define INACTIVITY_KICK	6000	//10 minutes in ticks (approx.)
+#define INACTIVITY_KICK	27000	//45 minutes in ticks (approx.)
 /world/proc/KickInactiveClients()
 	spawn(-1)
 		set background = 1
@@ -226,7 +226,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				if(C.is_afk(INACTIVITY_KICK))
 					if(!istype(C.mob, /mob/dead))
 						log_access("AFK: [key_name(C)]")
-						C << "\red You have been inactive for more than 10 minutes and have been disconnected."
+						C << "\red You have been inactive for more than 45 minutes and have been disconnected."
 						del(C)
 #undef INACTIVITY_KICK
 

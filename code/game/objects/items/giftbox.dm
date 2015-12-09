@@ -7,7 +7,7 @@
 	w_class = 4
 
 	attack_self(mob/user as mob)
-		// Another way of doing this. Commented out because the other method is better.
+		// Another way of doing this. Commented out because the other method is better for this application.
 		/*var/spawn_chance = rand(1,100)
 		switch(spawn_chance)
 			if(0 to 49)
@@ -15,11 +15,11 @@
 				usr << "You got a thing!"
 			if(50 to 99)
 				new /obj/item/weapon/bikehorn/rubberducky(usr.loc)
-				new /obj/item/weapon/bikehorn(usr.loc) // Can I spawn more than one?
+				new /obj/item/weapon/bikehorn(usr.loc)
 				usr << "You got two things!"
 			if(100)
 				usr << "The box contained nothing!"
-				return // Do I need this return? I looked at abandonedcrates.dm which also spawns random loot.
+				return
 		*/
 		var/loot = pick(/obj/item/weapon/book/manual/engineering_hacking,
 						/obj/item/weapon/cloaking_device,
@@ -48,8 +48,6 @@
 						/obj/item/weapon/scythe,
 						/obj/item/weapon/weldpack,
 						/obj/item/weapon/silencer,
-						/obj/item/weapon/hatchet/unathiknife,
-						/obj/item/weapon/kitchenknife/ritual,
 						/obj/item/weapon/grenade/flashbang/clusterbang,
 						/obj/item/weapon/storage/pill_bottle/zoom,
 						/obj/item/weapon/storage/pill_bottle/happy,
@@ -60,7 +58,6 @@
 						/obj/item/weapon/grenade/spawnergrenade/spesscarp,
 						/obj/item/weapon/card/emag,
 						/obj/item/weapon/card/emag_broken,
-						/obj/item/device/encryptionkey/syndicate,
 						/obj/item/device/pda/syndicate,
 						/obj/item/weapon/shield/energy,
 						/obj/item/weapon/melee/energy/sword,
@@ -70,9 +67,16 @@
 						/obj/item/clothing/suit/armor/heavy,
 						/obj/item/clothing/suit/armor/vest,
 						/obj/item/clothing/suit/armor/laserproof,
-						// /obj/random/gun/guarenteed,
-						/obj/effect/landmark/costume) // Need to add random melee weapon spawns too.
-						// I should add phazon parts to this...
+						/obj/random/weapon/guarenteed,
+						/obj/effect/landmark/costume,
+						/obj/item/mecha_parts/chassis/phazon,
+						/obj/item/mecha_parts/part/phazon_torso,
+						/obj/item/mecha_parts/part/phazon_head,
+						/obj/item/mecha_parts/part/phazon_left_arm,
+						/obj/item/mecha_parts/part/phazon_right_arm,
+						/obj/item/mecha_parts/part/phazon_left_leg,
+						/obj/item/mecha_parts/part/phazon_right_leg,
+						/obj/item/weapon/reagent_containers/hypospray/autoinjector/shrink)
 		new loot(usr.loc)
 		usr << "You unwrap the box."
 		del(src)

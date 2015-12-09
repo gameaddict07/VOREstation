@@ -1,6 +1,7 @@
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.
 //m_type == 2 --> audible
+//m_type == 4 --> subtle
 /mob/proc/custom_emote(var/m_type=1,var/message = null)
 
 	if(stat || !use_me && usr == src)
@@ -15,7 +16,10 @@
 		input = sanitize(copytext(input(src,"Choose an emote to display.") as text|null,1,MAX_MESSAGE_LEN))
 	else
 		input = message
-	if(input)
+
+	if(input && m_type & 4)
+		message = "<B>[src]</B> <I>[input]</I>"
+	else if(input)
 		message = "<B>[src]</B> [input]"
 	else
 		return
@@ -57,7 +61,9 @@
 			 * x-ray is so rare these days anyways. (On Extended maybe, outside of R&D)
 			 */
 			for (var/mob/O in viewers(get_turf(src), null) | get_mobs_in_view(world.view,src)) //Modified by Ace to bypass problems, that said, get_turf should solve this
-
+				/*
+				Leshana - This appears to be unnecessary, because holders and prey are already in viewers()
+				This is not 100% understood in all cases, delete this code entirely only after full testing.
 				if(O.status_flags & PASSEMOTES)
 
 					for(var/obj/item/weapon/holder/H in O.contents)
@@ -65,7 +71,7 @@
 
 					for(var/mob/living/M in O.contents)
 						M.show_message(message, m_type)
-
+				*/
 				O.show_message(message, m_type)
 
 			for(var/obj/O in seeing_obj)
@@ -92,6 +98,21 @@
 				spawn(0)
 					if(O) //It's possible that it could be deleted in the meantime.
 						O.see_emote(src, message, 2)
+
+		// Type 4 (Subtle) emotes are basically whispered emotes
+		// This is especially useful in vore for things between pred/prey
+		else if (m_type & 4)
+			for (var/mob/O in get_mobs_in_view(1,src)) //One tile distance, set to 0 to restrict it to just pred/prey only
+				/* Commenting out, as on emote type 1 to stop duplicates
+				if (O.status_flags & PASSEMOTES)
+
+					for (var/obj/item/weapon/holder/H in O.contents) //People being held by the pred or people next to them can see (not inside them)
+						H.show_message(message,m_type)
+
+					for (var/mob/living/M in O.contents) //This would show it to people in other nearby people, which I don't want to do
+						M.show_message(message, m_type)
+				*/
+				O.show_message(message, m_type)
 
 /mob/proc/emote_dead(var/message)
 

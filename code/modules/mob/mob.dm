@@ -420,8 +420,8 @@ var/list/slot_equipment_priority = list( \
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
 
-		if (deathtime < 18000)
-			usr << "You must wait 30 minutes to respawn!"
+		if (deathtime < 600) // Respawn timer
+			usr << "You must wait 1 minute to respawn! Be patient!"
 			return
 		else
 			usr << "You can respawn now, enjoy your new life!"

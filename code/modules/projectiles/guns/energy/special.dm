@@ -3,7 +3,7 @@
 	desc = "A man portable anti-armor weapon designed to disable mechanical threats"
 	icon_state = "ionrifle"
 	item_state = "ionrifle"
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/Laser3.ogg'
 	origin_tech = "combat=2;magnets=4"
 	w_class = 4
 	force = 10
@@ -97,15 +97,15 @@
 /obj/item/weapon/gun/energy/mindflayer
 	name = "mind flayer"
 	desc = "A prototype weapon recovered from the ruins of Research-Station Epsilon."
-	icon_state = "xray"
+	icon_state = "alienrifle"
 	projectile_type = /obj/item/projectile/beam/mindflayer
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/marauder.ogg' // Something exotic.
 
 /obj/item/weapon/gun/energy/toxgun
-	name = "phoron pistol"
-	desc = "A specialized firearm designed to fire lethal bolts of phoron."
+	name = "plasma pistol" // Yes, I know it's phoron now. Well this is a *plasma* pistol. Fuck you. Don't change it.
+	desc = "A specialized firearm designed to fire lethal bolts of charged plasma."
 	icon_state = "toxgun"
-	fire_sound = 'sound/effects/stealthoff.ogg'
+	fire_sound = 'sound/weapons/plasmapistol.ogg'
 	w_class = 3.0
 	origin_tech = "combat=5;phorontech=4"
 	projectile_type = /obj/item/projectile/energy/phoron
@@ -213,3 +213,35 @@ obj/item/weapon/gun/energy/staff/focus
 		return ..()
 	projectile_type = type
 	. = ..()
+
+/obj/item/weapon/gun/energy/sizegun
+	name = "shrink ray"
+	desc = "A highly advanced ray gun with two settings: Shrink and Grow. Warning: Do not insert into mouth."
+	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
+	item_state = null	//so the human update icon uses the icon_state instead
+	fire_sound = 'sound/weapons/wave.ogg'
+	charge_cost = 100
+	projectile_type = /obj/item/projectile/beam/shrinklaser
+	origin_tech = "redspace=1;bluespace=4"
+	modifystate = "sizegun-shrink"
+	self_recharge = 1
+
+	var/mode = 0
+
+	attack_self(mob/living/user as mob)
+		switch(mode)
+			if(0)
+				mode = 1
+				charge_cost = 100
+				fire_sound = 'sound/weapons/pulse3.ogg'
+				user << "\red [src.name] is now set to grow."
+				projectile_type = /obj/item/projectile/beam/growlaser
+				modifystate = "sizegun-grow"
+			if(1)
+				mode = 0
+				charge_cost = 100
+				fire_sound = 'sound/weapons/wave.ogg'
+				user << "\red [src.name] is now set to shrink."
+				projectile_type = /obj/item/projectile/beam/shrinklaser
+				modifystate = "sizegun-shrink"
+		update_icon()

@@ -102,7 +102,7 @@
 	if(jobban_isbanned(src,"Cyborg"))
 		usr << "\red You are banned from playing synthetics and cannot spawn as a drone."
 		return
-		
+
 	if(!MayRespawn(1))
 		return
 
@@ -123,9 +123,9 @@
 		pluralcheck = " [deathtimeminutes] minutes and"
 	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 
-	if (deathtime < 6000)
+	if (deathtime < 600)
 		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
-		usr << "You must wait 10 minutes to respawn as a drone!"
+		usr << "You must wait 1 minute to respawn as a drone!"
 		return
 
 	for(var/obj/machinery/drone_fabricator/DF in world)

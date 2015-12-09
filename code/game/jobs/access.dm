@@ -175,6 +175,8 @@
 	switch(job)
 		if("VIP Guest")
 			return list(access_cent_general)
+		if("Human Affairs Representative")
+			return list(access_cent_general, access_cent_thunder, access_cent_living, access_cent_storage, access_cent_captain)
 		if("Custodian")
 			return list(access_cent_general, access_cent_living, access_cent_storage)
 		if("Thunderdome Overseer")
@@ -386,23 +388,23 @@
 /proc/get_centcom_access_desc(A)
 	switch(A)
 		if(access_cent_general)
-			return "Code Grey"
+			return "General Access"
 		if(access_cent_thunder)
-			return "Code Yellow"
+			return "Thunderdome"
 		if(access_cent_storage)
-			return "Code Orange"
+			return "Storage"
 		if(access_cent_living)
-			return "Code Green"
+			return "Living Quarters"
 		if(access_cent_medical)
-			return "Code White"
+			return "Medical"
 		if(access_cent_teleporter)
-			return "Code Blue"
+			return "Teleporter"
 		if(access_cent_specops)
-			return "Code Black"
+			return "Emergency Response Team"
 		if(access_cent_creed)
-			return "Code Silver"
+			return "Chief of Security"
 		if(access_cent_captain)
-			return "Code Gold"
+			return "Administrator's Office"
 
 /proc/get_all_jobs()
 	var/list/all_jobs = list()
@@ -425,7 +427,12 @@
 		"BlackOps Commander",
 		"Supreme Commander",
 		"Emergency Response Team",
-		"Emergency Response Team Leader")
+		"Emergency Response Team Leader",
+		"Nanotrasen Impartial Observer",
+		"Nanotrasen Quality Assurance Officer",
+		"CentCom Representative",
+		"CentCom Chief Administrative Officer",
+		"SWAT Commando")
 
 proc/GetIdCard(var/mob/living/carbon/human/H)
 	if(H.wear_id)

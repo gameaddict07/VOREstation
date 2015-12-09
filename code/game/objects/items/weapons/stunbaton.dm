@@ -12,7 +12,7 @@
 	w_class = 3
 	origin_tech = "combat=2"
 	attack_verb = list("beaten")
-	var/stunforce = 0
+	var/stunforce = 5 // By popular demand.
 	var/agonyforce = 60
 	var/status = 0		//whether the thing is on or not
 	var/obj/item/weapon/cell/bcell = null
@@ -54,7 +54,7 @@
 /obj/item/weapon/melee/baton/examine(mob/user)
 	if(!..(user, 1))
 		return
-	
+
 	if(bcell)
 		user <<"<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
 	if(!bcell)

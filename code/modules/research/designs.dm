@@ -429,6 +429,21 @@ datum/design/aimodule/core/paladin
 	id = "paladin"
 	build_path = /obj/item/weapon/aiModule/paladin
 
+datum/design/aimodule/core/nanotrasen
+	name = "Default NanoTrasen"
+	id = "nanotrasen"
+	build_path = /obj/item/weapon/aiModule/nanotrasen
+
+datum/design/aimodule/core/communist
+	name = "Communist"
+	id = "communist"
+	build_path = /obj/item/weapon/aiModule/communist
+
+datum/design/aimodule/core/corporate
+	name = "Corporate"
+	id = "corporate"
+	build_path = /obj/item/weapon/aiModule/corp
+
 datum/design/aimodule/core/tyrant
 	name = "T.Y.R.A.N.T."
 	id = "tyrant"
@@ -555,6 +570,7 @@ datum/design/circuit/mecha/durand_targ
 	req_tech = list("programming" = 4, "combat" = 2)
 	build_path = /obj/item/weapon/circuitboard/mecha/durand/targeting
 
+/*
 datum/design/circuit/mecha/honker_main
 	name = "'H.O.N.K' central control"
 	id = "honker_main"
@@ -569,6 +585,7 @@ datum/design/circuit/mecha/honker_targ
 	name = "'H.O.N.K' weapon control and targeting"
 	id = "honker_targ"
 	build_path = /obj/item/weapon/circuitboard/mecha/honker/targeting
+*/
 
 ////////////////////////////////////////
 /////////// Mecha Equpment /////////////
@@ -991,6 +1008,40 @@ datum/design/circuit/recharge_station
 	req_tech = list("programming" = 3, "engineering" = 2)
 	build_path = /obj/item/weapon/circuitboard/recharge_station
 
+datum/design/circuit/extractor
+	name = "lysis-isolation centrifuge"
+	id = "extractor"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_path = /obj/item/weapon/circuitboard/extractor
+
+datum/design/circuit/editor
+	name = "bioballistic delivery system"
+	id = "editor"
+	req_tech = list("programming" = 2, "engineering" = 2)
+	build_path = /obj/item/weapon/circuitboard/editor
+
+////////////////////////////////////////
+/////////Civilian Circuit Boards////////
+////////////////////////////////////////
+
+datum/design/circuit/microwave
+	name = "Machine Design (Microwave Board)"
+	id = "microwave"
+	req_tech = list("programming" = 1, "magnets" = 2)
+	build_path = /obj/item/weapon/circuitboard/microwave
+
+datum/design/circuit/gibber
+	name = "gibber"
+	id = "gibber"
+	req_tech = list("programming" = 1, "materials" = 2)
+	build_path = /obj/item/weapon/circuitboard/gibber
+
+datum/design/circuit/smartfridge
+	name = "smartfridge"
+	id = "smartfridge"
+	req_tech = list("programming" = 1, "magnets" = 2, "engineering" = 2)
+	build_path = /obj/item/weapon/circuitboard/smartfridge
+
 /////////////////////////////////////////
 ////////Power Stuff Circuitboards////////
 /////////////////////////////////////////
@@ -1368,6 +1419,55 @@ datum/design/item/weapon/phoronpistol
 	req_tech = list("combat" = 5, "phorontech" = 4)
 	materials = list("$metal" = 5000, "$glass" = 1000, "$phoron" = 3000)
 	build_path = /obj/item/weapon/gun/energy/toxgun
+	locked = 1
+
+datum/design/item/weapon/judge
+	id = "judge"
+	req_tech = list("combat" = 4, "materials" = 3)
+	materials = list("$metal" = 6000, "$silver" = 2000, "$diamond" = 1000)
+	build_path = /obj/item/weapon/gun/projectile/revolver/shotgun
+	locked = 1
+
+/* // Old VOREstation stuff. Needs to be redone to fit current materials. Some things are missing, like redspace tech.
+datum/design/energysword
+	name = "Energy Sword"
+	desc = "A blade of pure plasma emitted from a metalic hilt and suspended in an electromagnetic containment field."
+	id = "energysword"
+	req_tech = list("plasmatech" = 3, "syndicate" = 4, "magnets" = 3)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 1250, "$plasma" = 1250, "$silver" = 625, "$gold" = 625, "$diamond" = 625, "$mythril" = 1250)
+	build_path = "/obj/item/weapon/melee/energy/sword"
+	locked = 1
+
+datum/design/energyshield
+	name = "Energy Shield"
+	desc = "A shield of pure plasma emitted from a metalic disk and suspended in an electromagnetic containment field."
+	id = "energyshield"
+	req_tech = list("plasmatech" = 3, "syndicate" = 4, "magnets" = 3)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 1250, "$plasma" = 1250, "$silver" = 625, "$gold" = 625, "$diamond" = 625, "$mythril" = 1250)
+	build_path = "/obj/item/weapon/shield/energy"
+
+datum/design/change_staff
+	name = "Staff of Change"
+	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself. WARNING: Effects may be permanent!"
+	id = "change_staff"
+	req_tech = list("redspace" = 3, "biotech" = 5, "materials" = 7, "magnets" = 5, "bluespace" = 4)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 15000, "$glass" = 7500, "$plasma" = 7500, "$silver" = 7500, "$gold" = 7500, "$uranium" = 7500, "$diamond" = 7500, "$mythril" = 7500)
+	build_path = "/obj/item/weapon/gun/energy/staff"
+	locked = 1
+
+datum/design/mindflayer
+	name = "Mind Flayer"
+	desc = "A prototype weapon schematic recovered from the ruins of Research-Station Epsilon."
+	id = "mindflayer"
+	req_tech = list("redspace" = 4, "biotech" = 5, "magnets" = 5)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 4000, "$gold" = 5000, "$uranium" = 10000, "$diamond" = 625, "$mythril" = 1250)
+	build_path = "/obj/item/weapon/gun/energy/mindflayer"
+	locked = 1
+*/
 
 /////////////////////////////////////////
 /////////////////Mining//////////////////
@@ -1568,6 +1668,22 @@ datum/design/item/mesons
 	materials = list("$metal" = 50, "$glass" = 50)
 	build_path = /obj/item/clothing/glasses/meson
 
+datum/design/item/material
+	name = "Optical material scanners design"
+	desc = "What the hell are these for, anyway?"
+	id = "material"
+	req_tech = list("magnets" = 3, "engineering" = 3)
+	materials = list("$metal" = 50, "$glass" = 50, "$uranium" = 50)
+	build_path = /obj/item/clothing/glasses/material
+
+datum/design/item/thermal
+	name = "Optical thermal scanners design"
+	desc = "Used for detecting infared signatures of life forms and violating company privacy policies."
+	id = "thermal"
+	req_tech = list("magnets" = 3, "syndicate" = 3)
+	materials = list("$metal" = 50, "$glass" = 50, "$uranium" = 50, "$phorontech" = 50)
+	build_path = /obj/item/clothing/glasses/thermal
+
 datum/design/item/binaryencrypt
 	name = "Binary encryption key"
 	desc = "Allows for deciphering the binary channel on-the-fly."
@@ -1583,3 +1699,21 @@ datum/design/item/chameleon
 	req_tech = list("syndicate" = 2)
 	materials = list("$metal" = 500)
 	build_path = /obj/item/weapon/storage/box/syndie_kit/chameleon
+
+datum/design/item/sizegun
+	name = "Shrink Ray"
+	desc = "A ray gun that shoots bolts of energy which changes a target's size and weight by warping the local space around them."
+	id = "sizegun"
+	req_tech = list("redspace" = 1)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 2000, "$glass" = 500, "$uranium" = 500)
+	build_path = /obj/item/weapon/gun/energy/sizegun
+
+datum/design/item/tacheadset
+	name = "Tactical Headset"
+	desc = "A headset with a built in camera that connects wirelessly to the station's security network via bluespace transmitters."
+	id = "tacheadset"
+	req_tech = list("bluespace" = 2,"combat" = 2)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 75, "$glass" = 50, "$gold" = 30, "$diamond" = 50)
+	build_path = /obj/item/device/radio/headset/headset_sec/tactical/empty

@@ -3,11 +3,12 @@
 	desc = "A common laser weapon, designed to kill with concentrated energy blasts."
 	icon_state = "laser"
 	item_state = "laser"
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/blaster_pistol.ogg'
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = 3
 	force = 10
 	matter = list("metal" = 2000)
+	charge_cost = 50 // So there's a benefit to using carbines as opposed to eguns.
 	origin_tech = "combat=3;magnets=2"
 	projectile_type = /obj/item/projectile/beam
 	fire_delay = 1 //rapid fire
@@ -26,7 +27,7 @@ obj/item/weapon/gun/energy/retro
 	icon_state = "retro"
 	item_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/blaster_pistol.ogg'
 	slot_flags = SLOT_BELT
 	w_class = 3
 	projectile_type = /obj/item/projectile/beam
@@ -38,7 +39,7 @@ obj/item/weapon/gun/energy/retro
 	item_state = "caplaser"
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
 	force = 5
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/blaster_pistol.ogg'
 	slot_flags = SLOT_BELT
 	w_class = 3
 	projectile_type = /obj/item/projectile/beam
@@ -53,10 +54,10 @@ obj/item/weapon/gun/energy/retro
 	item_state = null
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	origin_tech = "combat=4;materials=3;powerstorage=3"
-	slot_flags = SLOT_BELT|SLOT_BACK
+	slot_flags = SLOT_BACK
+	w_class = 4
 	projectile_type = /obj/item/projectile/beam/heavylaser
-	charge_cost = 250
-	fire_delay = 20
+	charge_cost = 50
 
 /obj/item/weapon/gun/energy/lasercannon/mounted
 	name = "mounted laser cannon"
@@ -80,7 +81,7 @@ obj/item/weapon/gun/energy/retro
 	desc = "A high-power laser rifle fitted with a SMART aiming-system scope."
 	icon_state = "sniper"
 	item_state = "laser"
-	fire_sound = 'sound/weapons/marauder.ogg'
+	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	origin_tech = "combat=6;materials=5;powerstorage=4"
 	projectile_type = /obj/item/projectile/beam/sniper
 	slot_flags = SLOT_BACK
@@ -107,7 +108,7 @@ obj/item/weapon/gun/energy/retro
 	origin_tech = "combat=1;magnets=2"
 	self_recharge = 1
 	matter = list("metal" = 2000)
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/blaster_pistol.ogg'
 	projectile_type = /obj/item/projectile/beam/lastertag/blue
 	var/required_vest
 

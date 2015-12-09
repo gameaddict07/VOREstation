@@ -115,14 +115,19 @@ var/list/beam_master = list()
 	icon_state = "emitter"
 	damage = 0 // The actual damage is computed in /code/modules/power/singularity/emitter.dm
 
-/obj/item/projectile/beam/lastertag/blue
+/*
+Laser tag beams
+*/
+/obj/item/projectile/beam/lastertag
 	name = "lasertag beam"
-	icon_state = "bluelaser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 0
 	no_attack_log = 1
 	damage_type = BURN
 	check_armour = "laser"
+
+/obj/item/projectile/beam/lastertag/blue
+	icon_state = "bluelaser"
 
 /obj/item/projectile/beam/lastertag/blue/on_hit(var/atom/target, var/blocked = 0)
 	if(istype(target, /mob/living/carbon/human))
@@ -132,13 +137,7 @@ var/list/beam_master = list()
 	return 1
 
 /obj/item/projectile/beam/lastertag/red
-	name = "lasertag beam"
 	icon_state = "laser"
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 0
-	no_attack_log = 1
-	damage_type = BURN
-	check_armour = "laser"
 
 /obj/item/projectile/beam/lastertag/red/on_hit(var/atom/target, var/blocked = 0)
 	if(istype(target, /mob/living/carbon/human))
@@ -148,12 +147,7 @@ var/list/beam_master = list()
 	return 1
 
 /obj/item/projectile/beam/lastertag/omni//A laser tag bolt that stuns EVERYONE
-	name = "lasertag beam"
 	icon_state = "omnilaser"
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 0
-	damage_type = BURN
-	check_armour = "laser"
 
 /obj/item/projectile/beam/lastertag/omni/on_hit(var/atom/target, var/blocked = 0)
 	if(istype(target, /mob/living/carbon/human))
@@ -161,6 +155,9 @@ var/list/beam_master = list()
 		if((istype(M.wear_suit, /obj/item/clothing/suit/bluetag))||(istype(M.wear_suit, /obj/item/clothing/suit/redtag)))
 			M.Weaken(5)
 	return 1
+/*
+--------------
+*/
 
 /obj/item/projectile/beam/sniper
 	name = "sniper beam"
@@ -174,6 +171,51 @@ var/list/beam_master = list()
 	name = "stun beam"
 	icon_state = "stun"
 	nodamage = 1
+	damage = 0 // This needs to be here or they can open crates.
 	taser_effect = 1
 	agony = 40
 	damage_type = HALLOSS
+
+/obj/item/projectile/beam/shrinklaser
+	name = "shrink beam"
+	icon_state = "laser"
+	nodamage = 1
+	damage = 0
+	check_armour = "laser"
+
+	on_hit(var/atom/target, var/blocked = 0)
+		if(istype(target, /mob/living))
+			var/mob/living/M = target
+			switch(M.playerscale)
+				if(RESIZE_HUGE to INFINITY)
+					M.resize(RESIZE_BIG)
+				if(RESIZE_BIG to RESIZE_HUGE)
+					M.resize(RESIZE_NORMAL)
+				if(RESIZE_NORMAL to RESIZE_BIG)
+					M.resize(RESIZE_SMALL)
+				if((0 - INFINITY) to RESIZE_NORMAL)
+					M.resize(RESIZE_TINY)
+			M.update_icons()
+		return 1
+
+/obj/item/projectile/beam/growlaser
+	name = "growth beam"
+	icon_state = "bluelaser"
+	nodamage = 1
+	damage = 0
+	check_armour = "laser"
+
+	on_hit(var/atom/target, var/blocked = 0)
+		if(istype(target, /mob))
+			var/mob/M = target
+			switch(M.playerscale)
+				if(RESIZE_BIG to RESIZE_HUGE)
+					M.resize(RESIZE_HUGE)
+				if(RESIZE_NORMAL to RESIZE_BIG)
+					M.resize(RESIZE_BIG)
+				if(RESIZE_SMALL to RESIZE_NORMAL)
+					M.resize(RESIZE_NORMAL)
+				if((0 - INFINITY) to RESIZE_TINY)
+					M.resize(RESIZE_SMALL)
+			M.update_icons()
+		return 1

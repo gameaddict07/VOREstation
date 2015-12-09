@@ -38,6 +38,8 @@
 	if(!reagents.total_volume)
 		user << "<span class='danger'>None of [src] left!</span>"
 		user.drop_from_inventory(src)
+		if(trash && ispath(trash,/obj/item))
+			new trash(get_turf(src))
 		del(src)
 		return 0
 
@@ -50,16 +52,29 @@
 					H << "\red You have a monitor for a head, where do you think you're going to put that?"
 					return
 			if (fullness <= 50)
-				M << "\red You hungrily chew out a piece of [src] and gobble it!"
+				M << "\red You guzzle down a piece of [src]!"
 			if (fullness > 50 && fullness <= 150)
 				M << "\blue You hungrily begin to eat [src]."
 			if (fullness > 150 && fullness <= 350)
 				M << "\blue You take a bite of [src]."
 			if (fullness > 350 && fullness <= 550)
 				M << "\blue You unwillingly chew a bit of [src]."
-			if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
-				M << "\red You cannot force any more of [src] to go down your throat."
+			if (fullness > 550 && fullness <= 650)
+				M << "\blue You swallow some more of the [src], causing your belly to swell out a little."
+			if (fullness > 650 && fullness <= 1000)
+				M << "\blue You stuff yourself with the [src]. Your stomach feels very heavy."
+			if (fullness > 1000 && fullness <= 3000)
+				M << "\blue You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand."
+			if (fullness > 3000 && fullness <= 5500)
+				M << "\red You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits."
+			if (fullness > 5500 && fullness <= 6000)
+				M << "\red You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!"
+			if (fullness > 6000) // There has to be a limit eventually.
+				M << "\red Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat."
 				return 0
+			/*if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat // Removed because vore edit.
+				M << "\red You cannot force any more of [src] to go down your throat."
+				return 0*/
 		else
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
@@ -69,7 +84,8 @@
 
 			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
 
-				if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+				//if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+				if (fullness < 6000) //Updated to match maximum above, though inverse comparison due to how they arranged this.
 					for(var/mob/O in viewers(world.view, user))
 						O.show_message("\red [user] attempts to feed [M] [src].", 1)
 				else
@@ -152,6 +168,8 @@
 		reagents.trans_to(U,min(reagents.total_volume,5))
 
 		if (reagents.total_volume <= 0)
+			if(trash && ispath(trash,/obj/item))
+				new trash(get_turf(src)) // Drop where the food was
 			del(src)
 		return
 

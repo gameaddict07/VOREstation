@@ -10,8 +10,8 @@
 	flags =  CONDUCT | USEDELAY
 	slot_flags = 0
 	origin_tech = "combat=8;materials=5"
-	fire_sound = 'sound/effects/bang.ogg'
-	
+	fire_sound = 'sound/weapons/rpg.ogg'
+
 	release_force = 15
 	throw_distance = 30
 	var/max_rockets = 1
