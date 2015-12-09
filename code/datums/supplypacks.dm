@@ -26,9 +26,11 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 
 /datum/supply_packs/New()
 	manifest += "<ul>"
-	for(var/atom/movable/path in contains)
-		if(!path)	continue
-		manifest += "<li>[initial(path.name)]</li>"
+	for(var/path in contains)
+		if(!path || !ispath(path, /atom))
+			continue
+		var/atom/O = path
+		manifest += "<li>[initial(O.name)]</li>"
 	manifest += "</ul>"
 
 /datum/supply_packs/specialops
@@ -851,12 +853,17 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	access = access_armory
 	group = "Security"
 
-/datum/supply_packs/SVD
+/datum/supply_packs/svd
 	name = "Ballistic Sharpshooter Crate"
 	contains = list(/obj/item/weapon/gun/projectile/SVD,
 					/obj/item/weapon/gun/projectile/SVD,
 					/obj/item/ammo_magazine/SVD,
 					/obj/item/ammo_magazine/SVD)
+	cost = 90
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Ballistic marksman crate"
+	access = access_armory
+	group = "Security"
 
 /datum/supply_packs/shotgunpellets
 	name = "Buckshot crate"

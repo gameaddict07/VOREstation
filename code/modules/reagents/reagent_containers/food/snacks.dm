@@ -38,6 +38,8 @@
 	if(!reagents.total_volume)
 		user << "<span class='danger'>None of [src] left!</span>"
 		user.drop_from_inventory(src)
+		if(trash && ispath(trash,/obj/item))
+			new trash(get_turf(src))
 		del(src)
 		return 0
 
@@ -82,7 +84,8 @@
 
 			if(!istype(M, /mob/living/carbon/slime))		//If you're feeding it to someone else.
 
-				if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+				//if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+				if (fullness < 6000) //Updated to match maximum above, though inverse comparison due to how they arranged this.
 					for(var/mob/O in viewers(world.view, user))
 						O.show_message("\red [user] attempts to feed [M] [src].", 1)
 				else
@@ -165,6 +168,8 @@
 		reagents.trans_to(U,min(reagents.total_volume,5))
 
 		if (reagents.total_volume <= 0)
+			if(trash && ispath(trash,/obj/item))
+				new trash(get_turf(src)) // Drop where the food was
 			del(src)
 		return
 

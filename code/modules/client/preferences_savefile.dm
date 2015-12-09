@@ -107,8 +107,12 @@
 	S["gender"]				>> gender
 	S["age"]				>> age
 	S["species"]			>> species
+	S["custom_species"]		>> custom_species
 	S["language"]			>> language
 	S["taur"]				>> taur
+	S["ear_style"]			>> ear_style
+	S["tail_style"]			>> tail_style
+	S["playerscale"]		>> playerscale
 	S["spawnpoint"]			>> spawnpoint
 
 	//colors to be consolidated into hex strings (requires some work with dna code)
@@ -132,6 +136,7 @@
 	S["eyes_blue"]			>> b_eyes
 	S["underwear"]			>> underwear
 	S["undershirt"]			>> undershirt
+	S["undersocks"]			>> undersocks
 	S["backbag"]			>> backbag
 	S["b_type"]				>> b_type
 
@@ -203,6 +208,9 @@
 	if(isnum(undershirt))
 		undershirt = undershirt_t[undershirt_t[undershirt]]
 
+	if(isnum(undersocks))
+		undersocks = undersocks_t[undersocks_t[undersocks]]
+
 	if(isnull(language)) language = "None"
 	if(isnull(spawnpoint)) spawnpoint = "Arrivals Shuttle"
 	if(isnull(nanotrasen_relation)) nanotrasen_relation = initial(nanotrasen_relation)
@@ -210,7 +218,8 @@
 	be_random_name	= sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	gender			= sanitize_gender(gender)
 	age				= sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
-	taur			= sanitize_integer(taur, 0, 8, initial(taur))
+	taur			= sanitize_integer(taur, 0, taur_styles_list.len, initial(taur))
+	playerscale		= sanitize_inlist(playerscale, list(RESIZE_HUGE, RESIZE_BIG, RESIZE_NORMAL, RESIZE_SMALL, RESIZE_TINY), initial(playerscale))
 	r_hair			= sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair			= sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair			= sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -231,6 +240,9 @@
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	b_type			= sanitize_text(b_type, initial(b_type))
+	if(ear_style) ear_style	= sanitize_inlist(ear_style,ear_styles_list,initial(ear_style))
+	if(tail_style) tail_style = sanitize_inlist(tail_style,tail_styles_list,initial(tail_style))
+
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -271,8 +283,12 @@
 	S["gender"]				<< gender
 	S["age"]				<< age
 	S["species"]			<< species
+	S["custom_species"]		<< custom_species
 	S["language"]			<< language
 	S["taur"]				<< taur
+	S["ear_style"]			<< ear_style
+	S["tail_style"]			<< tail_style
+	S["playerscale"]		<< playerscale
 	S["hair_red"]			<< r_hair
 	S["hair_green"]			<< g_hair
 	S["hair_blue"]			<< b_hair
@@ -293,6 +309,7 @@
 	S["eyes_blue"]			<< b_eyes
 	S["underwear"]			<< underwear
 	S["undershirt"]			<< undershirt
+	S["undersocks"]			<< undersocks
 	S["backbag"]			<< backbag
 	S["b_type"]				<< b_type
 	S["spawnpoint"]			<< spawnpoint

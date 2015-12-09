@@ -109,15 +109,6 @@
 	name = "\improper ZM Kar 1"
 	desc = "A reproduction of an old ZM Kar 1 Rifle from the Autocratic East Europan Imperial Alliance of Gaia. Popular among imperials and collectors within the Federation and its allies. Uses 7.62mm ammo."
 
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/chalk // For target practice
-	desc = "A bolt-action rifle with a lightweight synthetic wood stock, designed for competitive shooting. Comes shipped with chalk rounds pre-loaded into the gun. Popular among professional marksmen. Uses 7.62mm ammo."
-	ammo_type = /obj/item/ammo_casing/a762/chalk
-
-/obj/item/weapon/gun/projectile/shotgun/pump/rifle/ceremonial // For Blueshield
-	name = "ceremonial bolt-action rifle"
-	desc = "A bolt-action rifle decorated with dazzling engravings across the stock. Usually loaded with blanks, but can fire live rounds. Popular among well-dressed guardsmen. Uses 7.62mm ammo."
-	ammo_type = /obj/item/ammo_casing/a762/blank
-
 
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/wicked
 	name = "'Wicked Butterfly' ZM Kar 1"
@@ -177,16 +168,93 @@
 
 
 // Energy Weapons
-
+// -------------- KIN-H21 -------------
+// QUAD LASER. THERE IS NO AVOIDING IT. JUMPING, IS USELESS.
 /obj/item/weapon/gun/energy/gun/fluff/aro
 	name = "KIN-H21"
-	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21, is a fairly typical energy weapon with two modes: stun, and lethal."
+	desc = "The Kitsuhana Heavy Industries standard Imperial Navy energy sidearm, commonly called the KIN21. This one appears to have been modified to have additional features at the cost of battery life."
 	icon = 'icons/obj/custom_items.dmi'
-	icon_state = "Kraystun100"
+	icon_state = "kinh21off"
 	item_state = null // So it inherits the icon_state.
-	modifystate = "Kraystun"
-	stunstate = "Kraystun"
-	killstate = "Kraykill"
+
+	modifystate = "kinh21stun"
+	stunstate = "kinh21stun"
+	killstate = "kinh21kill"
+	var/shrinkstate = "kinh21shrink"
+	var/growstate = "kinh21grow"
+
+	charge_cost = INFINITY //Starts safed
+	var/turnedoff = 1
+	var/mode_name = "<font color=\"#0000FF\">STUN</font>" //It's the default
+
+
+// Four way switch for stun, kill, shrink, grow
+/obj/item/weapon/gun/energy/gun/fluff/aro/attack_self(mob/living/user as mob)
+	switch(mode)
+		if(0)
+			mode = 1
+			fire_sound = 'sound/weapons/blaster_pistol.ogg'
+			mode_name = "<font color=\"#FF0000\">KILL</font>"
+			//user << "<span class='warning'>[src.name] is now set to kill.</span>"
+			projectile_type = /obj/item/projectile/beam
+			modifystate = killstate
+		if(1)
+			mode = 2
+			fire_sound = 'sound/weapons/wave.ogg'
+			mode_name = "<font color=\"#FF00FF\">SHRINK</font>"
+			//user << "<span class='warning'>[src.name] is now set to shrink.</span>"
+			projectile_type = /obj/item/projectile/beam/shrinklaser
+			modifystate = shrinkstate
+		if(2)
+			mode = 3
+			fire_sound = 'sound/weapons/pulse3.ogg'
+			mode_name = "<font color=\"#BBBB00\">GROW</font>"
+			//user << "<span class='warning'>[src.name] is now set to grow.</span>"
+			projectile_type = /obj/item/projectile/beam/growlaser
+			modifystate = growstate
+		if(3)
+			mode = 0 // This is the default mode, as defined in energy.dm for the egun
+			fire_sound = 'sound/weapons/Taser.ogg'
+			mode_name = "<font color=\"#0000FF\">STUN</font>"
+			//user << "<span class='warning'>[src.name] is now set to stun.</span>"
+			projectile_type = /obj/item/projectile/beam/stun
+			modifystate = stunstate
+	update_icon()
+	update_held_icon()
+	user << "<span class='warning'>[src.name] is now set to [src.mode_name]"
+
+/obj/item/weapon/gun/energy/gun/fluff/aro/verb/togglepower()
+	set name = "Toggle KIN-H21"
+	set desc = "Turn the KIN-H21 power on or off."
+	set category = "Object"
+	switch(turnedoff)
+		if(0)
+			turnedoff = 1
+			charge_cost = INFINITY
+			icon_state = "kinh21off"
+			usr << "<span class='warning'>[src.name] powered off.</span>"
+		if(1)
+			turnedoff = 0
+			charge_cost = 125
+			update_icon()
+			update_held_icon()
+			usr << "<span class='warning'>[src.name] powered on.</span>"
+
+/obj/item/weapon/gun/energy/gun/fluff/aro/update_icon()
+	if(charge_meter && !turnedoff)
+		var/ratio = power_supply.charge / power_supply.maxcharge
+
+		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
+		if(power_supply.charge < charge_cost)
+			ratio = 0
+		else
+			ratio = max(round(ratio, 0.25) * 100, 25)
+
+		if(modifystate)
+			icon_state = "[modifystate][ratio]"
+		else
+			icon_state = "[initial(icon_state)][ratio]"
+
 
 // -------------- Dominator -------------
 /obj/item/weapon/gun/energy/gun/fluff/dominator
@@ -212,7 +280,7 @@
 			modifystate = "dominatorkill"
 		if(1)
 			mode = 0
-			charge_cost = 200
+			charge_cost = 125 //Changed to match new egun value
 			fire_sound = 'sound/weapons/Taser.ogg'
 			user << "\red [src.name] is now set to Paralyzer Mode. Target will be stunned"
 			user.visible_message("\red [src.name] is set to Paralyzer Mode.")

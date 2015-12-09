@@ -714,6 +714,18 @@ var/global/list/gear_datums = list()
 	slot = slot_tie
 	cost = 1
 
+/datum/gear/tie_black
+	display_name = "tie, black"
+	path = /obj/item/clothing/accessory/black
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/scarf
+	display_name = "Scarf"
+	path = /obj/item/clothing/accessory/scarf
+	slot = slot_tie
+	cost = 1
+
 /datum/gear/brown_vest
 	display_name = "webbing, engineering"
 	path = /obj/item/clothing/accessory/storage/brown_vest
@@ -733,6 +745,44 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/accessory/storage/webbing
 	slot = slot_tie
 	cost = 2
+
+// Collars
+
+/datum/gear/collar_silver
+	display_name = "Collar, Silver"
+	path = /obj/item/clothing/accessory/collar_blk
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_golden
+	display_name = "Collar, Golden"
+	path = /obj/item/clothing/accessory/collar_gld
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_
+	display_name = "Collar, Bell"
+	path = /obj/item/clothing/accessory/collar_bell
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_shock
+	display_name = "Collar, Shock"
+	path = /obj/item/clothing/accessory/shock_collar
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_spike
+	display_name = "Collar, Spike"
+	path = /obj/item/clothing/accessory/collar_spike
+	slot = slot_tie
+	cost = 1
+
+/datum/gear/collar_
+	display_name = "Collar, Pink"
+	path = /obj/item/clothing/accessory/collar_pink
+	slot = slot_tie
+	cost = 1
 
 // Suit slot
 
@@ -1132,6 +1182,12 @@ var/global/list/gear_datums = list()
 /datum/gear/wallet
 	display_name = "wallet"
 	path = /obj/item/weapon/storage/wallet
+	sort_category = "utility"
+	cost = 2
+
+/datum/gear/wallet_grey
+	display_name = "wallet, grey"
+	path = /obj/item/weapon/storage/wallet/grey
 	sort_category = "utility"
 	cost = 2
 

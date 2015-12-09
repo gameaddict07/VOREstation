@@ -6,7 +6,9 @@
 	icon_state = "body_m_s"
 
 	var/list/hud_list[9]
-	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/embedded_flag	  	//To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/custom_species 		//For anything it needs to be used for
+	var/disconnect_time		//For setting with Logout() to when the client leaves as client.inactivity will not be usable then
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 
