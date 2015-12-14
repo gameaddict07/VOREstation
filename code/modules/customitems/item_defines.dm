@@ -2274,6 +2274,13 @@
 	icon_closed = "molenar"
 	item_state = "molenar"
 
+/obj/item/device/modkit_single/fluff/clockworkrifle // molenar:Kari Akiren
+	name = "Clockwork Rifle Modkit"
+	desc = "A kit containing all the tools and parts to modify a bolt-action rifle into a clockwork rifle."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "clockworkkit"
+	from_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle
+	to_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle/clockwork
 
 /obj/item/clothing/glasses/sunglasses/fluff/nerdglasses // kisukegema:Kisuke 'Nerd' Gema
 	name = "Kamina Glasses"
