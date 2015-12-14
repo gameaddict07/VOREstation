@@ -2120,6 +2120,16 @@
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
 	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
 
+//Kari Akiren
+/obj/item/fluff/permit/kari
+	name = "Kari Akiren's Rifle Permit"
+	desc = {"
+	<b>NAME:</b> Kari Akiren | <b>RACE:</b> Inkling | <b>HOMEWORLD:</b> Supesu
+	<b>DOB:</b>  26-Jun-2553 | <b>HEIGHT:</b> 163cm | <b>SEX:</b> Female
+
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Clockwork Rifle (bolt-action variant).
+	This license expires on 14/Dec/2560 and must be renewed by CentCom prior to this date."}
+
 
 //Boxes of goodies for veteran players.
 
