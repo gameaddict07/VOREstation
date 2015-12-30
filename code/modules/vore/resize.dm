@@ -26,7 +26,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 	animate(src,transform = resize, time = 5) //Animate the player resizing
 	playerscale = size_mod //Change playerscale so that other items can interact with them
-	message_admins("[key_name(src)] used the resize command in-game ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[pred.x];Y=[pred.y];Z=[pred.z]'>JMP</a>" : "null"])")
+	message_admins("[key_name(src)] used the resize command in-game ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 
 //Seem to have removed resize_by_item proc, which was necessary for shrink rays and such to work.
 
