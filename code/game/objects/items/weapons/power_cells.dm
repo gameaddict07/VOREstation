@@ -9,7 +9,7 @@
 	throwforce = 5.0
 	throw_speed = 3
 	throw_range = 5
-	w_class = 3.0
+	w_class = 2
 	var/charge = 0	// note %age conveted to actual charge in New
 	var/maxcharge = 1000
 	var/rigged = 0		// true if rigged to explode
@@ -90,7 +90,7 @@
 	origin_tech =  null
 	maxcharge = 30000 //determines how badly mobs get shocked
 	matter = list("metal" = 700, "glass" = 80)
-	
+
 	check_charge()
 		return 1
 	use()
