@@ -1620,4 +1620,5 @@
 #include "maps\exodus-5.dmm"
 #include "maps\exodus-6.dmm"
 #include "maps\RandomZLevels\labyrinth.dm"
+#include "maps\RandomZLevels\labyrinth.dmm"
 // END_INCLUDE

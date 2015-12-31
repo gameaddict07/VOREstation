@@ -18,6 +18,7 @@
 	ambience = list('sound/music/TheClownChild.ogg')
 
 // These extra areas must break up the large area, or the game crashes when machinery (like an airlock) makes sparks.
+// I have no idea why. It's a nasty bug.
 /area/awaymission/labyrinth/temple/south_east
 	icon_state = "red"
 
