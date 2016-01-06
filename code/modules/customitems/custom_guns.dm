@@ -370,3 +370,11 @@
 
 /obj/item/ammo_magazine/battlerifle/empty
 	initial_ammo = 0
+
+//------------- Clockwork Rifle -------------
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/clockwork
+	name = "Clockwork Rifle"
+	desc = "Brass, copper, and lots of gears. Well lubricated for fluid movement as each round is loaded, locked, and fired. Just like clockwork."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "clockworkrifle"
+	item_state = "clockworkrifle"

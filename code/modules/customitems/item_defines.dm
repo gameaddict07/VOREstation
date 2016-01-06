@@ -2128,6 +2128,16 @@
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
 	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
 
+//Kari Akiren
+/obj/item/fluff/permit/kari
+	name = "Kari Akiren's Rifle Permit"
+	desc = {"
+	<b>NAME:</b> Kari Akiren | <b>RACE:</b> Inkling | <b>HOMEWORLD:</b> Supesu
+	<b>DOB:</b>  26-Jun-2553 | <b>HEIGHT:</b> 163cm | <b>SEX:</b> Female
+
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Clockwork Rifle (bolt-action variant).
+	This license expires on 14/Dec/2560 and must be renewed by CentCom prior to this date."}
+
 
 //Boxes of goodies for veteran players.
 
@@ -2282,6 +2292,13 @@
 	icon_closed = "molenar"
 	item_state = "molenar"
 
+/obj/item/device/modkit_single/fluff/clockworkrifle // molenar:Kari Akiren
+	name = "Clockwork Rifle Modkit"
+	desc = "A kit containing all the tools and parts to modify a bolt-action rifle into a clockwork rifle."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "clockworkkit"
+	from_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle
+	to_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle/clockwork
 
 /obj/item/clothing/glasses/sunglasses/fluff/nerdglasses // kisukegema:Kisuke 'Nerd' Gema
 	name = "Kamina Glasses"
