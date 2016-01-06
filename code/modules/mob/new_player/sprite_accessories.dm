@@ -845,6 +845,8 @@
 	desc = ""
 	icon_state = "bee"
 
+// Special snowflake ears go below here.
+
 /datum/sprite_accessory/ears/molenar_kitsune
 	name = "quintail kitsune ears (Molenar)"
 	desc = ""
