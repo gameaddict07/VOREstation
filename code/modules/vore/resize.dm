@@ -26,6 +26,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 	animate(src,transform = resize, time = 5) //Animate the player resizing
 	playerscale = size_mod //Change playerscale so that other items can interact with them
+	message_admins("[key_name(src)] used the resize command in-game ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 
 //Seem to have removed resize_by_item proc, which was necessary for shrink rays and such to work.
 
@@ -55,5 +56,5 @@ If we change the basesize with other options it will cause bad results. "Tall" a
 /mob/verb/resize_Readme()
 	set name = "READ ME!!"
 	set category = "Resize"
-	usr << "<span class='alert'>DO NOT ABUSE THESE COMMANDS. At the start of the shift, you may set your size if you play a character of abnormal size. \
-			However, DON'T ABUSE IT after you leave the arrival shuttle or this feature will be removed. -Ace</span>"
+	usr << "<span class='alert'>DO NOT ABUSE THESE COMMANDS. They are not here for you to play with. We were originally going to remove them but kept them for popular demand. \
+			Do not abuse their existence outside of ERP scenes where they apply, or reverting OOCly unwanted changes like someone lolshooting the crew with a shrink ray. -Ace</span>"
