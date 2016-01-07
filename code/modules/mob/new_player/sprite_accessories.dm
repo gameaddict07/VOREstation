@@ -782,6 +782,11 @@
 	icon_state = "squirrel"
 	do_colouration = 1
 
+/datum/sprite_accessory/ears/kitty_black
+	name = "kitty, black"
+	desc = ""
+	icon_state = "kitty"
+
 /datum/sprite_accessory/ears/kitty
 	name = "kitty, hair-colored"
 	desc = ""
