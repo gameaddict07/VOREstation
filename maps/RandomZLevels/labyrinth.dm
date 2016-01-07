@@ -75,6 +75,7 @@
 /obj/effect/decal/mecha_wreckage/honker/cluwne
 	name = "cluwne mech wreckage"
 	icon_state = "cluwne-broken"
+	desc = "Not so funny anymore."
 
 
 /obj/structure/falsewall/cultspecial
@@ -117,7 +118,6 @@
 	operation_req_access = list(access_clown)
 	wreckage = /obj/effect/decal/mecha_wreckage/honker/cluwne
 	max_equip = 4
-	var/obj/item/weapon/cell/infinite
 
 
 /obj/mecha/combat/honker/cluwne/New()

@@ -640,6 +640,7 @@
 #include "code\game\objects\items\weapons\circuitboards\computer\telecomms.dm"
 #include "code\game\objects\items\weapons\circuitboards\machinery\biogenerator.dm"
 #include "code\game\objects\items\weapons\circuitboards\machinery\cloning.dm"
+#include "code\game\objects\items\weapons\circuitboards\machinery\jukebox.dm"
 #include "code\game\objects\items\weapons\circuitboards\machinery\kitchen.dm"
 #include "code\game\objects\items\weapons\circuitboards\machinery\pacman.dm"
 #include "code\game\objects\items\weapons\circuitboards\machinery\power.dm"
@@ -1620,5 +1621,10 @@
 #include "maps\exodus-4.dmm"
 #include "maps\exodus-5.dmm"
 #include "maps\exodus-6.dmm"
+#include "maps\RandomZLevels\carpfarm.dm"
 #include "maps\RandomZLevels\labyrinth.dm"
+#include "maps\RandomZLevels\listeningpost.dm"
+#include "maps\RandomZLevels\blackmarketpackers.dmm"
+#include "maps\RandomZLevels\labyrinth.dmm"
+#include "maps\RandomZLevels\listeningpost.dmm"
 // END_INCLUDE

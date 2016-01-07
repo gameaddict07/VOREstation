@@ -26,7 +26,6 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 	animate(src,transform = resize, time = 5) //Animate the player resizing
 	playerscale = size_mod //Change playerscale so that other items can interact with them
-	message_admins("[key_name(src)] used the resize command in-game ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 
 //Seem to have removed resize_by_item proc, which was necessary for shrink rays and such to work.
 
@@ -46,6 +45,9 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 			resize(RESIZE_SMALL)
 		if("Tiny")
 			resize(RESIZE_TINY)
+		if("Cancel")
+			return
+	message_admins("[key_name(src)] used the resize command in-game to be [playersize]. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 
 
 /* When we add this to character customization, "short" will set you a little smaller basesize than normal, or "tall" for one that's a little larger than normal.

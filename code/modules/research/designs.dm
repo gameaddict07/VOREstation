@@ -242,6 +242,12 @@ datum/design/circuit/arcademachine
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/arcade
 
+datum/design/circuit/jukebox
+	name = "jukebox"
+	id = "jukebox"
+	req_tech = list("programming" = 1)
+	build_path = /obj/item/weapon/circuitboard/jukebox
+
 datum/design/circuit/powermonitor
 	name = "power monitoring console"
 	id = "powermonitor"

@@ -123,6 +123,74 @@
 			I think we're going to take the deal. When I get confirmation, I'll forward a line to Mike and Dave to
 			make the trade."}
 
+/obj/item/weapon/paper/listneningpost/year2559/may
+	name = "\improper May 2559 Report"
+	info = {"V.O.R.E. found something. An abandoned space station with a weapon called a mind flayer. There's also
+			rumor about some sort of a secret weapon NT was developing; a singularity bomb. Nothing of else of
+			real interest to report."}
+
+/obj/item/weapon/paper/listneningpost/year2559/june
+	name = "\improper June 2559 Report"
+	info = {"The WW2 guy is dead. Went out in a blaze of glory killing Space Nazis. Mike and Dave are pissed.
+			They apparently broke protocol and went to help the V.O.R.E. crew in the attack, and they want to
+			keep helping. I know it's unorthodox but I have to side with Mike and Dave on this one. Respectfully
+			command, if we do not neutralize this so-called Fourth Reich, we'll have an enemy much worse than
+			NanoTrasen to deal with. Curiously, NanoTrasen refuses to officially support helping to remove this
+			threat. Possible collaberation?"}
+
+/obj/item/weapon/paper/listneningpost/year2559/july
+	name = "\improper July 2559 Report"
+	info = {"UNSC ships have been spotted in the area. Admiral Glenn Pink is on board. This guy went MIA almost
+			ten years ago, and now he's back? Why? Apparently he's got some kind of connection with V.O.R.E.'s
+			captain Ace. Sounds like they're gearing up to go kick some Nazi ass. It's like a bad action movie
+			plot. I don't know who this Admiral Pink is, but I guess Ace has at least a couple friends in high
+			places."}
+
+/obj/item/weapon/paper/listneningpost/year2559/august
+	name = "\improper August 2559 Report"
+	info = {"So, the reason Admiral Pink showed up in the last report was because these Space Nazis hijacked
+			one of his vessels; the UNSC Jormungandr or something. Well, the crazy bastards took it back.
+			We overheard radio transmissions about some kind of huge mech, bigger than anything we've ever seen
+			in regard to exosuits. Tore up the crew bad. Killed a few, wounded all of them, but after-action
+			report says someone got close and slapped C4 on its leg while its anti-tank cannon was firing.
+			They managed to even capture another one and bring it home. Recommend command try to figure out
+			what this mech is, and if we can steal it. Furthermore, Dr. Kisuke Gema was KIA. His mechanical
+			arm was destroyed, and with it, all of his genetic information to get around his cloning disorder.
+			So he's finally out of our hair."}
+
+/obj/item/weapon/paper/listneningpost/year2559/september
+	name = "\improper September 2559 Report"
+	info = {"Of course it's not that simple. The nerd is back from the dead. Wonderful. I don't know how but
+			he's back, or they have a fake Kisuke Gema, or whatever bullshit. In other news, the station has
+			been slated for demolition. They're shipping a new Mark-3 Exodus-class station from Bay Shipyards
+			all the way from the NanoTrasen branch in Nyx. The demolition keeps getting delayed."}
+
+/obj/item/weapon/paper/listneningpost/year2559/october
+	name = "\improper October 2559 Report"
+	info = {"Station was demolished and operations were put on pause for a whole week. In other news, captain
+			Ace reportedly got a promotion to CentCom but something went wrong. The stronger loyalty implant
+			had a negative effect on him and almost killed him. He was quickly demoted back to Captain. This
+			could be useful information later. Recommend command investigate thoroughly."}
+
+/obj/item/weapon/paper/listneningpost/year2559/november
+	name = "\improper November 2559 Report"
+	info = {"A clown federation owned vessel called the Calypso was discovered in the Virgo system. It was a
+			ghost ship. Allegedly everyone on board perished due to a joke so funny that everyone laughed
+			themselves to madness, then death. NanoTrasen is trying to cover it up. No one knows why."}
+
+/obj/item/weapon/paper/listneningpost/year2559/december
+	name = "\improper December 2559 Report"
+	info = {"The V.O.R.E. discovered a new gateway location; a clown temple. We need to send someone to see
+			this. Reportedly it's full of tunnel clowns and these mutants called cluwnes. A clown researcher
+			came and tried to study the ruins and translate the glyphs, but I guess he discovered the joke.
+			I remember listening to him one week just absolutely losing it. Over the command channel, captain
+			Ace and the others talked about what they had to do, how he couldn't go back to the clown planet.
+			They never said it outright, but I think Ace put him out of his misery. All I know is the clown
+			researcher turned up dead. In other news, someone stole the station's entire cloning facility at
+			the end of the month right before Xmas. That shit was hilarious. We gotta find who this guy is
+			and see if he wants a job. Ask our contacts on station. Surely one of them knows who's behind
+			the heist."}
+
 /*
 /obj/item/weapon/paper/listneningpost/year2559/may
 	name = "\improper May 2559 Report"

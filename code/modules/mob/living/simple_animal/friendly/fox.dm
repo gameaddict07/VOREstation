@@ -250,7 +250,7 @@
 //Captain fox
 /mob/living/simple_animal/fox/fluff/Renault
 	name = "Renault"
-	desc = "Renault, the Captain's trustworthy fox.I wonder what it says?"
+	desc = "Renault, the Captain's trustworthy fox. I wonder what it says?"
 	isPredator = 1
 	befriend_job = "Captain"
 
