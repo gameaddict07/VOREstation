@@ -1450,6 +1450,14 @@
 	icon_state = "aria"
 	item_state = "aria"
 
+/obj/item/weapon/twohanded/fireaxe/fluff/mjollnir //I promised this would be done a year ago before our update and forums came along. I thought it was time to actually put it in now. -Joan
+	name = "Mjollnir"
+	desc = "Large hammer that looks like it can do a great deal of damage if properly used."
+	icon = 'icons/obj/custom_items.dmi'
+	origin_tech = "materials=7"
+	icon_state = "mjollnir0"
+	attack_verb = list("attacked", "hammered", "smashed", "slammed", "crushed")
+
 /obj/item/clothing/under/suit_jacket/female/fluff/asuna
 	name = "Joan's Historia Uniform"
 	desc = "A red and white outfit used by Joan during her explorer days. Looks almost like a red school uniform."
