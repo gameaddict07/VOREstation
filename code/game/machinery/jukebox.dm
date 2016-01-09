@@ -8,7 +8,7 @@ datum/track/New(var/title_name, var/audio)
 	title = title_name
 	sound = audio
 
-/obj/machinery/media/jukebox/
+/obj/machinery/media/jukebox
 	name = "space jukebox"
 	icon = 'icons/obj/jukebox.dmi'
 	icon_state = "jukebox2-nopower"
@@ -257,6 +257,7 @@ datum/track/New(var/title_name, var/audio)
 	playing = 1
 	update_use_power(2)
 	update_icon()
+
 
 ///////////////////////////////////////////
 // Event-specific jukeboxes go below here

@@ -395,6 +395,16 @@ var/list/all_supply_groups = list("Operations",/*"Extra-vehicular activity",*/"S
 	containername = "Medical crate"
 	group = "Medical"
 
+/datum/supply_packs/glasses
+	name = "Pescription lense crate"
+	contains = list(/obj/item/device/glasses_upgrade,
+					/obj/item/device/glasses_upgrade,
+					/obj/item/device/glasses_upgrade)
+	cost = 10
+	containertype = /obj/structure/closet/crate/medical
+	containername = "Pescription lense crate"
+	group = "Medical"
+
 /datum/supply_packs/bloodpack
 	name = "BloodPack crate"
 	contains = list(/obj/item/weapon/storage/box/bloodpacks,
