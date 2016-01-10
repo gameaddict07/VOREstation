@@ -1729,24 +1729,26 @@
 	item_state = "kimonorw_s"
 	item_color = "kimonorw_s"
 
-/obj/item/clothing/under/det/fluff/talsald
-	icon_state = "talsuit"
-	item_color = "talsuit"
+/obj/item/clothing/under/det/fluff/tasald
+	name = "Tasald's outfit"
+	desc = "Tasald's outfit. Very green."
+	icon_state = "tassuit"
+	item_color = "tassuit"
 
-/obj/item/clothing/under/det/fluff/talsald/verb/rollup()
+/obj/item/clothing/under/det/fluff/tasald/verb/rollup()
 	set name = "Roll suit sleeves"
 	set category = "Object"
 	set src in usr
-	item_color = item_color == "talsuit" ? "talsuit_rolled" : "talsuit"
+	item_color = item_color == "tassuit" ? "tassuit_rolled" : "tassuit"
 	if (ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.update_inv_w_uniform(1)
 
-/obj/item/clothing/suit/storage/det_suit/fluff/talsald
+/obj/item/clothing/suit/storage/det_suit/fluff/tassald
 	name = "Vest"
 	desc = "A fancy looking vest. You look like a smooth operating officer in this."
-	icon_state = "talvest"
-	item_state = "talvest"
+	icon_state = "tasvest"
+	item_state = "tasvest"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
