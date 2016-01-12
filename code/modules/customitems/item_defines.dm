@@ -2264,6 +2264,7 @@
 	..()
 	return
 
+/* // His clothes don't exist yet.
 /obj/item/weapon/storage/box/fluff/tasaldkit // bwoincognito:Tasald Corlethian
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's clothes."
@@ -2274,6 +2275,7 @@
 	new /obj/item/clothing/under/det/fluff/talsald(src)
 	..()
 	return
+*/
 
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar // molenar:Giliana Gamish
 	name = "Gili Custom Labcoat"
