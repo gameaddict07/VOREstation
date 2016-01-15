@@ -282,7 +282,7 @@
 
 /datum/species/shark
 	name = "Akula"
-	name_plural = "akulas"
+	name_plural = "akuly"
 	icobase = 'icons/mob/human_races/r_shark.dmi'
 	deform = 'icons/mob/human_races/r_def_shark.dmi'
 	language = "Skrellian"
