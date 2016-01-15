@@ -1630,24 +1630,46 @@
 	desc = "Still wrapped in some paper."
 	icon_state = "monkeycubewrap"
 	wrapped = 1
+
+// Farwa (Tajaran)
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
 	monkey_type = /mob/living/carbon/monkey/tajara
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/farwacube
 	name = "farwa cube"
-	monkey_type =/mob/living/carbon/monkey/tajara
+	monkey_type = /mob/living/carbon/monkey/tajara
+
+// Stok (Unathi)
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/stokcube
 	name = "stok cube"
 	monkey_type = /mob/living/carbon/monkey/unathi
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
-	monkey_type =/mob/living/carbon/monkey/unathi
+	monkey_type = /mob/living/carbon/monkey/unathi
+
+// Neaera (Skrell)
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
 	monkey_type = /mob/living/carbon/monkey/skrell
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
-	monkey_type =/mob/living/carbon/monkey/skrell
+	monkey_type = /mob/living/carbon/monkey/skrell
+
+// Sobaka (Akula)
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/sobakacube
+	name = "sobaka cube"
+	monkey_type = /mob/living/carbon/monkey/shark
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sobakacube
+	name = "sobaka cube"
+	monkey_type = /mob/living/carbon/monkey/shark
+
+// Sergaling (Sergal)
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/sergalingcube
+	name = "sergaling cube"
+	monkey_type = /mob/living/carbon/monkey/sergal
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/sergalingcube
+	name = "sergaling cube"
+	monkey_type = /mob/living/carbon/monkey/sergal
 
 
 /obj/item/weapon/reagent_containers/food/snacks/spellburger
