@@ -1744,7 +1744,7 @@
 		var/mob/living/carbon/human/H = loc
 		H.update_inv_w_uniform(1)
 
-/obj/item/clothing/suit/storage/det_suit/fluff/tassald
+/obj/item/clothing/suit/storage/det_suit/fluff/tasald
 	name = "Vest"
 	desc = "A fancy looking vest. You look like a smooth operating officer in this."
 	icon_state = "tasvest"
@@ -1758,6 +1758,16 @@
 	desc = "A pair of squirrel ears. NUTS!"
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "squirrel_old"
+
+/obj/item/clothing/suit/storage/det_suit/fluff/tas_coat
+	name = "Armored Colony coat"
+	desc = "Dark green and grey colored sleeveless long coat with two thick metal shoulder pads. has seen some wear and tear, with noticeable patches in the fabric, scratches on the shoulder pads, but with a clean patch on the left upper chest. It has a red NT marked on the right shoulder pad and red Security on the left. "
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "tas_coat"
+	item_state = "tas_coat"
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
 
 // Custom guns now go in custom_guns.dm so don't put them here.
 
@@ -2097,8 +2107,8 @@
 	<b>NAME:</b> Joan Risu | <b>RACE:</b> Squirrelkin | <b>HOMEWORLD:</b> Luna, Gaia, Koi
 	<b>DOB:</b> 16/Apr/2536 | <b>HEIGHT:</b> 161cm | <b>SEX:</b> Female
 
-	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one FN Five Seven pistol.
-	This license expires on 11/Dec/2559 and must be renewed by CentCom prior to this date."}
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one MWPSB Dominator.
+	This license expires on 11/Dec/2560 and must be renewed by CentCom prior to this date."}
 
 //Greyson Maximus
 /obj/item/fluff/permit/demi
@@ -2129,6 +2139,16 @@
 
 	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one KIN-H21 (Egun Variant).
 	This license expires on 30/Sep/2560 and must be renewed by CentCom prior to this date."}
+
+//Kari Akiren
+/obj/item/fluff/permit/kari
+	name = "Kari Akiren's Rifle Permit"
+	desc = {"
+	<b>NAME:</b> Kari Akiren | <b>RACE:</b> Inkling | <b>HOMEWORLD:</b> Supesu
+	<b>DOB:</b>  26-Jun-2553 | <b>HEIGHT:</b> 163cm | <b>SEX:</b> Female
+
+	The individual named above is licensed by the Nanotrasen Department of Civil Protection to carry one Clockwork Rifle (bolt-action variant).
+	This license expires on 14/Dec/2560 and must be renewed by CentCom prior to this date."}
 
 
 //Boxes of goodies for veteran players.
@@ -2264,18 +2284,26 @@
 	..()
 	return
 
-/* // His clothes don't exist yet.
+ // His clothes do exist, just under a different name. I had neglected to correct the typo here. -Joan
 /obj/item/weapon/storage/box/fluff/tasaldkit // bwoincognito:Tasald Corlethian
 	name = "Tasald's Kit"
 	desc = "A kit containing Talsald's clothes."
 	storage_slots = 2
 
 /obj/item/weapon/storage/box/fluff/tasaldkit/New()
-	new /obj/item/clothing/suit/storage/det_suit/fluff/talsald(src)
-	new /obj/item/clothing/under/det/fluff/talsald(src)
+	new /obj/item/clothing/suit/storage/det_suit/fluff/tasald(src)
+	new /obj/item/clothing/under/det/fluff/tasald(src)
+	new /obj/item/clothing/suit/storage/det_suit/fluff/tas_coat(src)
 	..()
 	return
-*/
+
+/obj/item/device/modkit_single/fluff/clockworkrifle // molenar:Kari Akiren
+	name = "Clockwork Rifle Modkit"
+	desc = "A kit containing all the tools and parts to modify a bolt-action rifle into a clockwork rifle."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "clockworkkit"
+	from_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle
+	to_object = /obj/item/weapon/gun/projectile/shotgun/pump/rifle/clockwork
 
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/molenar // molenar:Giliana Gamish
 	name = "Gili Custom Labcoat"

@@ -147,7 +147,7 @@
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	var/modifystate = "crestrose"
-	var/mode = 0 //0 = folded, 1 = Unfolded blade
+	var/mode = 0 //0 = unfolded, 1 = folded
 
 /obj/item/weapon/gun/projectile/automatic/crestrose/attack_self(mob/living/user as mob)
 	switch(mode)
@@ -156,13 +156,13 @@
 			user.visible_message("\red [src.name] folds up into a cool looking rifle.")
 			force = 5
 			throwforce = 2
-			modifystate = "crestrose_fold"
+			modifystate = crestrose_fold
 		if(1)
 			mode = 0 // I feel like this mode should prevent it from shooting. Otherwise, what's the point? -Spades ||Probably need assistance in that. Original design of Crescent Rose is to shoot no matter what form it was in. Perhaps lowering accuracy will provide a con buffer here. -- Joan
 			user.visible_message("\red [src.name] changes into a very intimidating looking weapon.")
 			force = 40
 			throwforce = 10
-			modifystate = "crestrose"
+			modifystate = crestrose
 	update_icon()
 	update_held_icon()
 
@@ -370,3 +370,11 @@
 
 /obj/item/ammo_magazine/battlerifle/empty
 	initial_ammo = 0
+
+//------------- Clockwork Rifle -------------
+/obj/item/weapon/gun/projectile/shotgun/pump/rifle/clockwork
+	name = "Clockwork Rifle"
+	desc = "Brass, copper, and lots of gears. Well lubricated for fluid movement as each round is loaded, locked, and fired. Just like clockwork."
+	icon = 'icons/obj/custom_items.dmi'
+	icon_state = "clockworkrifle"
+	item_state = "clockworkrifle"
