@@ -257,7 +257,7 @@
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'
 	language = "Sâgaru"
 	tail = "sergtail"
-	primitive = /mob/living/carbon/monkey/tajara
+	primitive = /mob/living/carbon/monkey/sergal
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 8
 
@@ -282,12 +282,12 @@
 
 /datum/species/shark
 	name = "Akula"
-	name_plural = "akulas"
+	name_plural = "akuly"
 	icobase = 'icons/mob/human_races/r_shark.dmi'
 	deform = 'icons/mob/human_races/r_def_shark.dmi'
 	language = "Skrellian"
 	tail = "sharktail"
-	primitive = /mob/living/carbon/monkey/skrell
+	primitive = /mob/living/carbon/monkey/shark
 	unarmed_types = list(/datum/unarmed_attack/bite/sharp)
 
 	blurb = "The Akula are a species of amphibious humanoids like the Skrell, but have an appearance very similar to that of a shark. \
