@@ -1580,9 +1580,11 @@
 			Unwrap(user)
 
 	On_Consume(var/mob/M)
-		M << "<span class = 'warning'>Something inside of you suddently expands!</span>"
+		M << "<span class = 'warning'>That tasted fucking terrible!</span>"
 
-		if (istype(M, /mob/living/carbon/human))
+	/*	M << "<span class = 'warning'>Something inside of you suddently expands!</span>" // HOW ABOUT NO -Ace
+
+		if (istype(M, /mob/living/carbon/human)) // How about we not. It's a vore server.
 			//Do not try to understand.
 			var/obj/item/weapon/surprise = new/obj/item/weapon(M)
 			var/mob/ook = monkey_type
@@ -1610,7 +1612,7 @@
 			ook.name = "malformed [ook.name]"
 			ook.transform *= 0.6
 			ook.add_blood(M)
-			M.gib()
+			M.gib()*/
 		..()
 
 	proc/Expand()
