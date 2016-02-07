@@ -336,7 +336,7 @@
     heat_level_2 = 1100
     heat_level_3 = 2200
  
-    flags = CAN_JOIN | NO_BREATHE | NO_SCAN | NO_BLOOD | NO_POISON //All of this SHOULD hopefully work. No_scan put in since the skeleton has no actual "DNA" other than the organs inside of them. A big enough nerf that all the other stuff shouldn't matter.
+    flags = CAN_JOIN | NO_BREATHE | NO_SCAN | IS_WHITELISTED | NO_BLOOD | NO_POISON //All of this SHOULD hopefully work. No_scan put in since the skeleton has no actual "DNA" other than the organs inside of them. A big enough nerf that all the other stuff shouldn't matter.
     blood_color = "#FFFFFF" //White blood
     flesh_color = "#FFFFFF" //White flesh
     has_organ = list()
