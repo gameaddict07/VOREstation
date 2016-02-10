@@ -255,7 +255,7 @@
 	name_plural = "sergals"
 	icobase = 'icons/mob/human_races/r_sergal.dmi'
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'
-	language = "Sâgaru"
+	language = "Sagaru"
 	tail = "sergtail"
 	primitive = /mob/living/carbon/monkey/sergal
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
