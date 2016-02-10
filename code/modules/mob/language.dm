@@ -294,7 +294,7 @@
 	syllables = list ("gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra")
 
 /datum/language/sergal
-	name = "Sâgaru"
+	name = "Sagaru"
 	desc = "The dominant language of the Sergal homeworld, Vilous. It consists of aggressive low-pitched hissing and throaty growling."
 	speech_verb = "snarls"
 	colour = "sergal"
