@@ -758,7 +758,7 @@ datum/preferences
 	HTML += "<a href='byond://?src=\ref[user];preference=inside_flavour_text;task=Boob'>Boobs:</a> "
 	HTML += TextPreview(inside_flavour_texts["Boob"])
 	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=inside_flavour_text;task=Womb'>Tail:</a> "
+	HTML += "<a href='byond://?src=\ref[user];preference=inside_flavour_text;task=Tail'>Tail:</a> "
 	HTML += TextPreview(inside_flavour_texts["Tail"])
 	HTML += "<br>"
 	HTML += "<hr />"
