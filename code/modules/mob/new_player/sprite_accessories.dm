@@ -1092,6 +1092,11 @@
 	icon_state = "aronai"
 	ckeys_allowed = list("arokha")
 
+/datum/sprite_accessory/tail/feathered
+	name = "feathered wings"
+	desc = ""
+	icon_state = "feathered"
+
 /*
 ////////////////////////////
 /  =--------------------=  /
