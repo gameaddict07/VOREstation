@@ -369,7 +369,7 @@
 
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/slime_glomp)
-	flags = CAN_JOIN | NO_SCAN | NO_SLIP | NO_BREATHE | NO_PAIN | HAS_EYE_COLOR | HAS_SKIN_COLOR //Similar to skeleton actually.
+	flags = CAN_JOIN | NO_SCAN | NO_SLIP | NO_BREATHE | HAS_EYE_COLOR | HAS_SKIN_COLOR
 	darksight = 3
 
 	blood_color = "#05FF9B"
