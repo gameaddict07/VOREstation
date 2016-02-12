@@ -165,9 +165,10 @@
 
 	//Inside flavour text
 	S["inside_flavour_texts_stomach"]	>> inside_flavour_texts["Stomach"]
-	S["inside_flavour_texts_balls"]		>> inside_flavour_texts["Cock]
+	S["inside_flavour_texts_balls"]		>> inside_flavour_texts["Cock"]
 	S["inside_flavour_texts_womb"]		>> inside_flavour_texts["Womb"]
 	S["inside_flavour_texts_boobs"]		>> inside_flavour_texts["Boob"]
+	S["inside_flavour_texts_tail"]		>> inside_flavour_texts["Tail"]
 
 	//Flavour text for robots.
 	S["flavour_texts_robot_Default"] >> flavour_texts_robot["Default"]
@@ -348,6 +349,7 @@
 	S["inside_flavour_texts_balls"]		<< inside_flavour_texts["Cock"]
 	S["inside_flavour_texts_womb"]		<< inside_flavour_texts["Womb"]
 	S["inside_flavour_texts_boobs"]		<< inside_flavour_texts["Boob"]
+	S["inside_flavour_texts_tail"]		<< inside_flavour_texts["Tail"]
 
 	//Flavour text for robots.
 	S["flavour_texts_robot_Default"] << flavour_texts_robot["Default"]
