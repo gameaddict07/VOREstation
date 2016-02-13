@@ -109,6 +109,7 @@
 	var/floatiness = 0
 	var/charges = 0.0
 	var/nutrition = 400.0//Carbon
+	var/bloating = 400.0//For water inflation text. If this fucks up, blame gameaddict07.
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 	var/paralysis = 0.0
