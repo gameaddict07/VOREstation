@@ -18,6 +18,7 @@ datum
 		var/list/data = null
 		var/volume = 0
 		var/nutriment_factor = 0
+		var/bloating_factor = 0//For water inflation
 		var/custom_metabolism = REAGENTS_METABOLISM
 		var/overdose = 0
 		var/overdose_dam = 1
@@ -205,6 +206,7 @@ datum
 			id = "water"
 			description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
 			reagent_state = LIQUID
+			bloating_factor = 5 * custom_metabolism
 			color = "#0064C8" // rgb: 0, 100, 200
 			custom_metabolism = 0.01
 
@@ -274,6 +276,11 @@ datum
 					if(M.fire_stacks <= 0)
 						M.ExtinguishMob()
 					return
+					
+			on_mob_life(var/mob/living/M as mob)//WATER INFLATION, BLAME GAMEADDICT07 IF THIS GOES TERRIBLY WRONG.
+				M.bloating += bloating_factor
+				..()
+				return		
 
 		water/holywater
 			name = "Holy Water"
